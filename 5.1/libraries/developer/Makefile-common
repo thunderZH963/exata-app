@@ -12,6 +12,7 @@ $(DEVELOPER_SRCDIR)/adaptation_aal5.cpp \
 $(DEVELOPER_SRCDIR)/adaptation.cpp \
 $(DEVELOPER_SRCDIR)/adaptation_saal.cpp \
 $(DEVELOPER_SRCDIR)/app_cbr.cpp \
+$(DEVELOPER_SRCDIR)/app_newcbr.cpp \
 $(DEVELOPER_SRCDIR)/app_forward.cpp \
 $(DEVELOPER_SRCDIR)/app_ftp.cpp \
 $(DEVELOPER_SRCDIR)/app_gen_ftp.cpp \

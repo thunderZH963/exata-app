@@ -8058,6 +8058,16 @@ APP_Finalize(Node *node)
                 AppForwardFinalize(node, appList);
                 break;
             }
+            case APP_NEWCBR_CLIENT:
+            {
+                AppNewcbrClientFinalize(node, appList);
+                break;
+            }
+            case APP_NEWCBR_SERVER:
+            {
+                AppNewcbrServerFinalize(node, appList);
+                break;
+            }
 #ifdef CYBER_LIB
             case APP_DOS_VICTIM:
             {
