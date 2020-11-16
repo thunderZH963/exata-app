@@ -1,0 +1,25 @@
+TESTFED_TARGET = ..\bin\testfed.exe
+
+TESTFED_OBJS = $(TESTFED_VRLINK_INTERFACE_SRCS:.cpp=.obj)
+
+TESTFED_CXXFLAGS = /MD /EHsc /nologo /D_CRT_SECURE_NO_DEPRECATE $(DEBUG) $(OPT)
+
+..\interfaces\vrlink\testfed\testfed.obj: ..\interfaces\vrlink\testfed\testfed.cpp
+	$(CXX) $(TESTFED_CXXFLAGS) ..\interfaces\vrlink\testfed\testfed.cpp /Fo$@ /c
+	
+..\interfaces\vrlink\testfed\testfed_data.obj: ..\interfaces\vrlink\testfed\testfed_data.cpp 
+	$(CXX) $(TESTFED_CXXFLAGS) ..\interfaces\vrlink\testfed\testfed_data.cpp /Fo$@ /c
+	
+..\interfaces\vrlink\testfed\testfed_shared.obj: ..\interfaces\vrlink\testfed\testfed_shared.cpp
+	$(CXX) $(TESTFED_CXXFLAGS) ..\interfaces\vrlink\testfed\testfed_shared.cpp /Fo$@ /c
+	
+..\interfaces\vrlink\testfed\vrlink.obj: ..\interfaces\vrlink\testfed\vrlink.cpp
+	$(CXX) $(TESTFED_CXXFLAGS) ..\interfaces\vrlink\testfed\vrlink.cpp /Fo$@ /c
+	
+
+#Use this if a vrlink dev environment is installed and you want to build vrlink dlls
+#include ../interfaces/vrlink/testfed/Makefile-windows-dll 
+#Use this if no vrlink environment is installed and you need prebuilt lib version
+#include ../interfaces/vrlink/testfed/Makefile-windows-lib-dll
+
+build-all-and-store-testfed: $(TESTFED_TARGET) store-vrlink-testfed-dsos

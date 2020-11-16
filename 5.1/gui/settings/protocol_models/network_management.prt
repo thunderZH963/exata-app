@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<category name="NODE CONFIGURATION">
+    <subcategory name="Network Management">
+
+         <variable name="Enable SNMP Agent" key="SNMP-ENABLED" type="Selection" default="NO" help="Enables SNMP agent functionality." optional="true">
+            <option value="NO" name="No" />
+            <option value="YES" name="Yes" >
+                <variable name="SNMP Version" key="SNMP-VERSION" type="Selection" default="1" >
+                    <option value="1" name="1" />
+                    <option value="2" name="2" />
+                    <option value="3" name="3" />
+                </variable>
+                <variable name="Enable Notifications" key="SNMP-NOTIFICATION-TYPE" type="Selection" default="NONE" help="Enables SNMP-TRAP/INFORM generation.">
+                    <option value="NONE" name="None" />
+                    <option value="TRAP" name="Trap" />
+                    <option value="INFORM" name="Inform" />
+                </variable>
+                <variable name="SNMP Manager Address" key="SNMP-MANAGER-ADDRESS" type="Dotted decimal" default="192.168.0.1" optional="true" />
+                <variable name="SNMP Configuration File" key="SNMPD-CONF-FILE" type="File" default="[Required]" />
+            </option>
+        </variable>
+    </subcategory>
+</category>

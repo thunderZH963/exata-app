@@ -1,0 +1,41 @@
+PURPOSE:-
+--------
+To test ISAKMP functionality  for nested tunneling.
+
+
+SCENARIO:-
+---------
+
+------ means link connection
+
+    1                     7
+     \                   /
+      \                 /
+       3----4----5-----6
+      /                 \
+     /                   \
+    2                     8
+
+
+ Node 3, 4, 5, 6 are ISAKMP enabled
+
+ Two nested ISAKMP tunnels one between Node 3 and 6
+ and other  between Node 4 and 5  are established.
+
+
+RUN:-
+----
+Run '<QUALNET_HOME>/bin/qualnet default.config'.
+
+
+DESCRIPTION OF THE FILES:-
+-------------------------
+1. default.app -  QualNet configuration file for application input.
+2. default.config - QualNet configuration input file.
+3. default.expected.stat - QualNet statistics collection.
+4. node3.isakmp - QualNet ISAKMP configuration file for node 3
+5. node4.isakmp - QualNet ISAKMP configuration file for node 4
+6. node5.isakmp - QualNet ISAKMP configuration file for node 5
+7. node6.isakmp - QualNet ISAKMP configuration file for node 6
+8. README - This file.
+

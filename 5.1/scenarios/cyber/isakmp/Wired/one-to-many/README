@@ -1,0 +1,49 @@
+PURPOSE:-
+--------
+To test multiple applications go through one ISAKMP server to multiple
+other ISAKMP servers.
+
+
+
+SCENARIO:-
+---------
+
+------ means link connection
+
+             3-------6
+            /
+           /
+          /
+   1-----2----4------7
+         \
+          \
+           \
+             5-------8
+
+
+
+   Node 1 is sending CBR packets to Node 6, 7 and 8.
+
+
+Three isakmp tunnels are established as followed.
+    1.Between Node 2 and Node 3.
+    2.Between Node 2 and Node 4.
+    3.Between Node 2 and Node 5.
+
+
+RUN:-
+----
+Run '<QUALNET_HOME>/bin/qualnet default.config'.
+
+
+DESCRIPTION OF THE FILES:-
+-------------------------
+1. default.app -  QualNet configuration file for application input.
+2. default.config - QualNet configuration input file.
+3. default.expected.stat - QualNet statistics collection.
+4. node2.isakmp - QualNet ISAKMP configuration file for node 2
+5. node3.isakmp - QualNet ISAKMP configuration file for node 3
+6. node4.isakmp - QualNet ISAKMP configuration file for node 4
+7. node5.isakmp - QualNet ISAKMP configuration file for node 5
+5. README - This file.
+

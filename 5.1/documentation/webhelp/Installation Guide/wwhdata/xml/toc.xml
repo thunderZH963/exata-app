@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebWorksHelpTOC version="5.0" xmlns="urn:WebWorks-Help-TOC-Schema">
+  <i t="1 Installing EXata on Windows" l="1#1043894">
+    <i t="1.1 System Requirements" l="2#1097228" />
+    <i t="1.2 Installing EXata" l="3#1109182" />
+    <i t="1.3 License" l="4#1090126" />
+    <i t="1.4 Compiling EXata" l="5#1091450" />
+    <i t="1.5 Uninstalling EXata" l="6#1089261" />
+  </i>
+  <i t="2 Installing EXata on Linux" l="7#1032792">
+    <i t="2.1 System Requirements" l="8#1033904" />
+    <i t="2.2 Installing EXata" l="9#1044834">
+      <i t="2.2.1 Running EXata Installer from GUI" l="9#1063520" />
+      <i t="2.2.2 Running EXata Installer from Command Line" l="9#1069312" />
+    </i>
+    <i t="2.3 License" l="10#1079612" />
+    <i t="2.4 Installing Third-Party Software" l="11#1079655" />
+    <i t="2.5 Compiling EXata" l="12#1071070" />
+    <i t="2.6 Uninstalling EXata" l="13#1069698" />
+  </i>
+  <i t="3 Installing Connection Manager on Windows" l="14#1043894">
+    <i t="3.1 Supported Platforms" l="15#1107188" />
+    <i t="3.2 Installing Connection Manager on Windows" l="16#1104659" />
+    <i t="3.3 Testing Connection Manager on Windows" l="17#1105842" />
+  </i>
+  <i t="4 Installing Connection Manager on Linux" l="18#1032792">
+    <i t="4.1 Supported Platforms" l="19#1086542" />
+    <i t="4.2 Installing Connection Manager on Linux" l="20#1086552" />
+    <i t="4.3 Testing Connection Manager on Linux" l="21#1086567" />
+  </i>
+</WebWorksHelpTOC>

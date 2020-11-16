@@ -1,0 +1,3 @@
+1075.62732659049720 304.09593384773063 0.00000000000000 "Internal File Server.\nCan be accessed by internal host only"
+1160.70113263666303 1175.36901047420429 0.00000000000000 "Internet File Server\nCan be accessed by internal and internet hosts"
+81.14386970600583 981.75277122387683 0.00000000000000 "DMZ File Server\nCan be accessed by internal and internet hosts."

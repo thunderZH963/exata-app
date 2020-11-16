@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Wired Equivalent Privacy and CTR with CBC-MAC Protocol</title>
+    <link rel="StyleSheet" href="css/WEP_CCMP.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch2%20-%20MAC%20Layer%20Models.html#1054906">2	MAC Layer Models</a> &gt; 2.1  Wired Equivalent Privacy and CTR with CBC-MAC Protocol</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">2.1  <a name="1054906">Wired Equivalent Privacy and CTR with CBC-MAC Protocol</a></div>
+      <div class="Body"><a name="1054910">The </a><span class="Variable">EXata</span> WEP model is based on IEEE standard 802.11i-2004 and <span class="Variable">EXata</span> CCMP model is based on IEEE standard 802.11-1997.</div>
+      <div class="Heading2Numbered">2.1.1  <a name="1055921">WEP/CCMP Description</a></div>
+      <div class="Heading4"><a name="1054911">WEP Description</a></div>
+      <div class="BodyAfterHead"><a name="1029952">Wired Equivalent Privacy (WEP) is a MAC layer security protocol that provides security for wireless LANs, equivalent to the security provided in wired LANs.</a></div>
+      <div class="Body"><a name="1029953">In WEP, a secret key is distributed to cooperating STAs using an external key management path, independent of the MAC layer. The secret key combined with an Initialization Vector (IV) resulting in a seed is given as an input to a Pseudo-Random Number Generator (PRNG). The PRNG outputs a key sequence (k) of pseudorandom octets.</a></div>
+      <div class="Body"><a name="1029954">An integrity algorithm operates on plaintext data to produce an ICV to protect against unauthorized data modification. The key sequence (k) is combined with the plaintext concatenated with the ICV to generate the cipher text. The secret key remains constant while the IV changes periodically. Thus, there is a one-to-one correspondence between the IV and k. </a></div>
+      <div class="Body"><a name="1029955">The WEP algorithm is applied to the frame body of an MPDU. The (IV, frame body, ICV) triplet forms the actual data to be sent in the data frame.</a></div>
+      <div class="Heading4"><a name="1039313">CTR with CBC-MAC Protocol (CCMP) Description</a></div>
+      <div class="BodyAfterHead"><a name="1029959">CCMP (CTR with CBC-MAC Protocol) is an RSNA data confidentiality and integrity protocol. </a></div>
+      <div class="Body"><a name="1029960">WEP is known to be insecure and is replaced by CCMP. CCMP is based on the CCM of the AES encryption algorithm. CCM is a generic authenticate-and-encrypt block cipher mode. A unique temporal key (for each session) and a unique nonce value (a value that’s used only once for each frame) are required for protecting the MPDUs. CCMP uses a 48-bit Packet Number (PN) to protect the MPDUs.</a></div>
+      <div class="Anchor"><a name="1058216">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1055021">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1055023">The PN is never repeated for a series of encrypted MPDUs using the same temporal key.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1029962">CCMP encrypts the payload of a plaintext MPDU and encapsulates the resulting cipher text using the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1029963">Increment the PN, so that each MPDU has a unique PN for the same temporal key. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029964">Use the fields in the MPDU header to construct the additional authentication data (AAD) for CCM. The CCM algorithm provides integrity protection for the fields included in the AAD. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029965">Construct the CCM Nonce block from the PN, A2, and the Priority field of the MPDU where A2 is MPDU Address 2. The Priority field has a reserved value set to 0.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029966">Place the new PN and the key identifier into the 8-octet CCMP header.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">5.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029967">Use the temporal key, AAD, nonce, and MPDU data to form the cipher text and MIC. This step is known as CCM originator processing.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">6.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029968">Form the encrypted MPDU by combining the original MPDU header, the CCMP header, the encrypted data and MIC, as described in IEEE 802.11i-2004 Standard, Sec-8.3.3.2.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1029969">CCMP decrypts the payload of a cipher text MPDU and decapsulates plaintext MPDU using the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1029970">The encrypted MPDU is parsed to construct the AAD and nonce values.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029971">The AAD is formed from the MPDU header of the encrypted MPDU.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029972">The nonce value is constructed from the A2, PN, and Priority Octet fields (reserved and set to 0).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029973">The MIC is extracted for use in the CCM integrity checking.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">5.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029974">The CCM recipient processing uses the temporal key, AAD, nonce, MIC, and MPDU cipher text data to recover the MPDU plaintext data and, to check the integrity of the AAD and MPDU plaintext data.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">6.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029975">The received MPDU header and the MPDU plaintext data from the CCM recipient processing can be concatenated to form a plaintext MPDU.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">7.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1029976">The decryption processing prevents replay of MPDUs by validating that the PN in the MPDU is greater than the replay counter maintained for the session.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1029977">The decapsulation process succeeds when the calculated MIC matches the MIC value obtained from decrypting the received encrypted MPDU. The original MPDU header is concatenated with the plaintext data resulting from the successful CCM recipient processing to create the plaintext MPDU.</a></div>
+      <div class="Heading2Numbered">2.1.2  <a name="1055168">Features and Assumptions</a></div>
+      <div class="BodyAfterHead"><a name="1055169">This section describes the implemented features, omitted features, assumptions and limitations of the WEP/CCMP model.</a></div>
+      <div class="Heading3Numbered">2.1.2.1  <a name="1055170">Implemented Features</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056262">Generic WEP and CCMP encryption/decryption</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1055171">Crypto Latency</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">2.1.2.2  <a name="1055172">Omitted Features</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1055173">WEP and CCMP implementation for 802.11 broadcast traffic</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">2.1.2.3  <a name="1055174">Assumptions and Limitations</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056285">All STAs running CCMP are RSNA capable.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056286">Every WEP/CCMP enable STA’s are listed in configuration file in the form of a table. For each STA in the table, a WEP/CCMP key is defined for every reachable destination from that STA. If an entry is not found for a RA in mappings table for a STA, WEP/CCMP is off for that STA.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056287">Default keys are not implemented in WEP and CCMP. Corresponding KeyID subfields in the respective headers will be zero. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056288">	IV, ICV in WEP MPDU and PN, MIC in CCMP MPDU are dummy fields. ICV and MIC are not used to check erroneous packets.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">2.1.3  <a name="1055176">Supplemental Information</a></div>
+      <div class="BodyAfterHead"><a name="1055156">WEP is flawed and is replaced by CCMP in 802.11i standard.</a></div>
+      <div class="Heading2Numbered">2.1.4  <a name="1039839">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1055202">To specify WEP as the MAC Security protocol, include the following parameter in the scenario configuration (.config) file:</a></div>
+      <div class="Declaration"><a name="1055203">&nbsp;</a></div>
+      <div class="Declaration"><a name="1055204">[&lt;Qualifier&gt;]  MAC-SECURITY-PROTOCOL      WEP</a></div>
+      <div class="Body"><a name="1063360">To specify CCMP as the MAC Security protocol, include the following parameter in the scenario configuration file:</a></div>
+      <div class="Declaration"><a name="1063361">&nbsp;</a></div>
+      <div class="Declaration"><a name="1063362">[&lt;Qualifier&gt;]  MAC-SECURITY-PROTOCOL      CCMP</a></div>
+      <div class="Anchor"><a name="1055194">&nbsp;</a></div>
+      <div class="Body"><a name="1056370">The scope of this parameter declaration can be Global, Node, Subnet, or Interface. See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Ch1%20-%20Overview.01.2.html#1061390', '');" title="Conventions Used">Section&nbsp;1.2.1.1</a></span> for a description of <span style="font-family: &quot;Courier New&quot;">&lt;Qualifier&gt;</span> for each scope.</div>
+      <div class="Anchor"><a name="1064011">&nbsp;</a></div>
+      <div class="Heading4"><a name="1056371">Configuration Requirements</a></div>
+      <div class="BodyAfterHead"><a name="1056776">In order to run WEP or CCMP, the MAC protocol must be configured to be 802.11 MAC. See the 802.11 MAC protocol section of </a><span style="font-style: italic">Wireless Model Library</span> for details.</div>
+      <div class="Anchor"><a name="1063963">&nbsp;</a></div>
+      <div class="Heading4"><a name="1056780">WEP/CCMP Parameters</a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'WEP_CCMP.html#1056791', '');" title="Wired Equivalent Privacy and CTR with CBC-MAC Protocol" name="1056784">Table&nbsp;2-1</a></span> lists the WEP/CCMP parameters specified in the scenario configuration (.config) file. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Ch1%20-%20Overview.01.2.html#1061462', '');" title="Conventions Used">Section&nbsp;1.2.1.3</a></span> for a description of the format used for the parameter table.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 2-1.&nbsp;&nbsp;<a name="1056791">WEP/CCMP Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1056797">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 86.4pt">
+            <div class="CellHeading"><a name="1056799">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 219.6pt">
+            <div class="CellHeading"><a name="1056801">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1056803">WEP-RC4-DELAY</a></div>
+            <div class="Cell_2nd_Line"><a name="1056804">Optional</a></div>
+            <div class="CellRun-In_Plain"><a name="1056805">Scope</a></div>
+            <div class="CellBody"><a name="1056806"> Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056810">Time</a></div>
+            <div class="CellRun-In_Courier"><a name="1056811">Range</a></div>
+            <div class="CellBody_Courier"><a name="1056815">[≥ 0]</a></div>
+            <div class="CellRun-In_Courier"><a name="1056816">Default: </a></div>
+            <div class="CellBody_Courier_Indented"><a name="1058516">10US</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056818">Specifies the processing Delay for WEP's 'RC4' cryptographic algorithm.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1056820">CCMP-AES-DELAY</a></div>
+            <div class="Cell_2nd_Line"><a name="1056821">Optional</a></div>
+            <div class="CellRun-In_Plain"><a name="1056822">Scope</a></div>
+            <div class="CellBody"><a name="1056823">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056827">Time</a></div>
+            <div class="CellRun-In_Courier"><a name="1056828">Range</a></div>
+            <div class="CellBody_Courier"><a name="1056832">[≥ 0]</a></div>
+            <div class="CellRun-In_Courier"><a name="1056833">Default: </a></div>
+            <div class="CellBody_Courier_Indented"><a name="1058506">10US</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056835">Specifies the processing Delay for CCMP's 'AES' encryption algorithm with CBC HMAC.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1056837">WEP-CCMP-ALLOW-UNENC</a></div>
+            <div class="Cell_2nd_Line"><a name="1056838">Optional</a></div>
+            <div class="CellRun-In_Plain"><a name="1056839">Scope</a></div>
+            <div class="CellBody"><a name="1056840">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056844">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1056845">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1056846">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="1056847">Default: </a></div>
+            <div class="CellBody_Courier_Indented"><a name="1058496">NO</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056849">Specifies whether to allow 802.11 packets transmitted unencrypted without applying WEP or CCMP.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1056851">WEP-CONFIG-FILE</a></div>
+            <div class="Cell_2nd_Line"><a name="1056852">Required</a></div>
+            <div class="CellRun-In_Plain"><a name="1056853">Scope</a></div>
+            <div class="CellBody"><a name="1056854">All</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056858">Filename</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056860">Specifies the name of the WEP configuration file.</a></div>
+            <div class="CellBody"><a name="1056861">The WEP configuration file contains the WEP protocol parameters. This file usually has the extension “.wep”.</a></div>
+            <div class="CellBody"><a name="1056862">The format of the .wep file is described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'WEP_CCMP.html#1055591', '');" title="Wired Equivalent Privacy and CTR with CBC-MAC Protocol">Section&nbsp;2.1.4.1</a></span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1056867">CCMP-CONFIG-FILE</a></div>
+            <div class="Cell_2nd_Line"><a name="1056868">Required</a></div>
+            <div class="CellRun-In_Plain"><a name="1056869">Scope</a></div>
+            <div class="CellBody"><a name="1056870">All</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056874">Filename</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056876">Specifies the name of the CCMP configuration file.</a></div>
+            <div class="CellBody"><a name="1056877">The CCMP configuration file contains the CCMP protocol parameters. This file usually has the extension “.ccmp”.</a></div>
+            <div class="CellBody"><a name="1056878">The format of the .ccmp file is described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'WEP_CCMP.html#1055591', '');" title="Wired Equivalent Privacy and CTR with CBC-MAC Protocol">Section&nbsp;2.1.4.1</a></span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">2.1.4.1  <a name="1055591">Format of the WEP and CCMP Configuration Files</a></div>
+      <div class="BodyAfterHead"><a name="1056603">All the security protocol related configuration parameters will be put into corresponding WEP or CCMP configuration files. These two files have the same format. </a></div>
+      <div class="Body"><a name="1056638">These files contain one-one key mappings table defined per destination (RA) for a given node as shown below:</a></div>
+      <div class="Declaration"><a name="1029995">KeyMappings &lt;TA&gt; &lt;RA&gt; &lt;Key Type&gt; &lt;Key&gt;</a></div>
+      <div class="Example"><a name="1055641">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 144pt">
+            <div class="BodyCourier"><a name="1055618">&lt;TA&gt;</a></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 288pt">
+            <div class="CellBody_Large"><a name="1055620">Specifies the Transmitter address. It can be &lt;node_id | interface address | subnet address&gt;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyCourier"><a name="1055622">&lt;RA&gt;	</a></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Large"><a name="1055624">Specifies the receiver address. It can be &lt;interface address | subnet address&gt;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyCourier"><a name="1055627">&lt;Key Type&gt;</a></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Large"><a name="1055629">Key Type is a string value. For .wep files the only possible value is WEP while for .ccmp it can be WEP or CCMP.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyCourier"><a name="1055631">&lt;Key&gt;</a></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Large"><a name="1055634">Key is a string value which is the actual key value used for encryption/decryption.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1030001">For example, if you have two nodes (node 1 and 2). The entries in the file will be as follows:</a></div>
+      <div class="Declaration"><a name="1030002">KeyMappings 1 192.168.0.2 WEP ffa0 </a></div>
+      <div class="Declaration"><a name="1030004">KeyMappings 192.168.0.1 192.168.0.2 CCMP ffa0</a></div>
+      <div class="Heading2Numbered">2.1.5  <a name="1055731">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1051774">This section describes how to configure WEP or CCMP in the </a><span class="Variable">EXata</span> GUI.</div>
+      <div class="Anchor"><a name="1057110">&nbsp;</a></div>
+      <div class="Heading4"><a name="1063950">Configuration Requirements</a></div>
+      <div class="BodyAfterHead"><a name="1057111">To use WEP or CCMP in a scenario, the MAC Protocol must be set as </a><span style="font-style: italic">802.11.</span> Refer to <span style="font-style: italic">Wireless Model Library</span> for details of configuring MAC protocol parameters.</div>
+      <div class="Anchor"><a name="1063937">&nbsp;</a></div>
+      <div class="Heading4"><a name="1057112">WEP/CCMP Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1057113">To configure the WEP or CCMP, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1057114">Go to one of the following locations:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1057115">To set properties at the subnet level, go to </a><span class="Menu_Item">Wireless Subnet Properties Editor </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> MAC Layer</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1057116">To set properties at the interface level, go to one of the following locations:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_Sub1_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_Sub1_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_Sub1_inner"><span class="Menu_Item"><a name="1057129">Interface Properties Editor </a></span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Interfaces </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Interface # </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Network Layer </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> MAC Layer</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_Sub1_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_Sub1_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_Sub1_inner"><span class="Menu_Item"><a name="1057142">Default Device Properties Editor </a></span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Interfaces </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Interface # </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Network Layer </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> MAC Layer</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1057143">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1057147">To configure WEP, set </a><span class="Menu_Item">MAC Protocol</span> <span class="Value">[= 802.11]</span><span style="font-style: italic"> </span><span class="Bold">&gt;</span><span style="font-style: italic"> </span><span class="Menu_Item">Security Protocol </span>to <span class="Value">WEP</span> and set the dependent parameters listed in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'WEP_CCMP.html#1063789', '');" title="Wired Equivalent Privacy and CTR with CBC-MAC Protocol">Table&nbsp;2-2</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1057154"><img class="Default" src="images/WEPParameters.png" width="596" height="468" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-1.&nbsp;&nbsp;<a name="1057157">Setting WEP Parameters</a></div>
+      <div class="Normal" style="color: #000000; font-family: &quot;Times New Roman&quot;; font-size: 11.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1063818">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 2-2.&nbsp;&nbsp;<a name="1063789">Command Line Equivalent of WEP Parameters</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 180pt">
+            <div class="CellHeading"><a name="1063795">GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 108pt">
+            <div class="CellHeading"><a name="1063797">Scope of GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 180pt">
+            <div class="CellHeading"><a name="1063799">Command Line Parameter</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1063801">RC4 Encryption Delay</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1063803">Subnet, Interface</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="1063805">WEP-RC4-DELAY</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1063807">Exclude Unencrypted</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1063809">Subnet, Interface</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="1063811">WEP-CCMP-ALLOW-UNENC</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1063813">WEP Configuration File</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1063815">Subnet, Interface</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="1063817">WEP-CONFIG-FILE</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1063823">To configure CCMP, set </a><span class="Menu_Item">MAC Protocol</span> <span class="Value">[= 802.11]</span><span style="font-style: italic"> </span><span class="Bold">&gt;</span><span style="font-style: italic"> </span><span class="Menu_Item">Security Protocol</span> to <span class="Value">CCMP</span> and set the dependent parameters listed in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'WEP_CCMP.html#1057211', '');" title="Wired Equivalent Privacy and CTR with CBC-MAC Protocol">Table&nbsp;2-3</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1057204"><img class="Default" src="images/CCMPParameters.png" width="596" height="468" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-2.&nbsp;&nbsp;<a name="1057207">Setting CCMP Parameters</a></div>
+      <div class="Normal" style="color: #000000; font-family: Calibri; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1057240">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 2-3.&nbsp;&nbsp;<a name="1057211">Command Line Equivalent of CCMP Parameters</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 180pt">
+            <div class="CellHeading"><a name="1057217">GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 108pt">
+            <div class="CellHeading"><a name="1057219">Scope of GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 180pt">
+            <div class="CellHeading"><a name="1057221">Command Line Parameter</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1057223">AES Encryption Delay</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1057225">Subnet, Interface</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="1057227">CCMP-AES-DELAY</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1057229">Exclude Unencrypted</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1057231">Subnet, Interface</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="1057233">WEP-CCMP-ALLOW-UNENC</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1057235">CCMP Configuration File</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1057237">Subnet, Interface</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="1057239">CCMP-CONFIG-FILE</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">2.1.6  <a name="1055817">Statistics</a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'WEP_CCMP.html#1035700', '');" title="Wired Equivalent Privacy and CTR with CBC-MAC Protocol" name="1055803">Table&nbsp;2-4</a></span> lists the statistics collected for the WEP/CCMP model that are output to the statistics (.stat) file at the end of simulation.. </div>
+      <table class="Format_A" style="margin-left: 7.2pt; text-align: left; width: 459.91728pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 2-4.&nbsp;&nbsp;<a name="1035700">WEP/CCMP Statistics&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 156.00024pt">
+            <div class="CellHeading"><a name="1035704">Statistic</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 303.91704pt">
+            <div class="CellHeading"><a name="1035706">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom" colspan="2">
+            <div class="CellHeading"><a name="1035708">WEP</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035712">Packets Encrypted </a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035714">Number of WEP encrypted packets.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035716">Packets Decrypted</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035718">Number of WEP decrypted packets.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035720">Packets Discarded</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035722">Number of non-WEP packets discarded by a STA on reception.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035724">Packets Undecrypted</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035726">Number of protected packets unable to decrypt.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom" colspan="2">
+            <div class="CellHeading"><a name="1035728">      CCMP</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035732">Packets Encrypted </a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035734">Number of CCMP encrypted packets.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035736">Packets Decrypted</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035738">Number of CCMP decrypted packets.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035740">Packets Discarded</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035742">Number of non-WEP packets discarded by a STA on reception.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035744">Packets Undecrypted</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1035746">Number of protected packets unable to decrypt.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">2.1.7  <a name="1030005">Sample Scenario</a></div>
+      <div class="Heading3Numbered">2.1.7.1  <a name="1035787">Scenario Description</a></div>
+      <div class="BodyAfterHead"><a name="1040154">In the sample scenario, five nodes (nodes 1 through 5) are connected through a wireless subnet. WEP or CCMP is enabled for the subnet. <img class="Default" src="images/WEP_CCMP.03.1.3.jpg" width="392" height="203" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-3.&nbsp;&nbsp;<a name="1056726">WEP/CCMP Sample Scenario</a></div>
+      <div class="Heading3Numbered">2.1.7.2  <a name="1040155">Command Line Configuration</a></div>
+      <div class="Heading4"><a name="1040164">WEP scenario</a></div>
+      <div class="BodyAfterHead"><a name="1040156">To configure the sample scenario using WEP, include the following lines in the scenario configuration (.config) file: </a></div>
+      <div class="Declaration"><a name="1039465">SUBNET N8-192.0.0.0 { 1 thru 5 } 451.95 1145.77 0.0</a></div>
+      <div class="Declaration"><a name="1030044">[ N8-192.0.0.0 ] MAC-PROTOCOL MACDOT11</a></div>
+      <div class="Declaration"><a name="1030045">[ N8-192.0.0.0 ] MAC-SECURITY-PROTOCOL WEP</a></div>
+      <div class="Declaration"><a name="1030046">[ N8-192.0.0.0 ] WEP-RC4-DELAY 5US</a></div>
+      <div class="Declaration"><a name="1030047">[ N8-192.0.0.0 ] WEP-CCMP-ALLOW-UNENC YES</a></div>
+      <div class="Declaration"><a name="1030048">[ N8-192.0.0.0 ] WEP-CONFIG-FILE wirelesssubnet-wep-on.wep</a></div>
+      <div class="Declaration"><a name="1030049">[ N8-192.0.0.0 ] NETWORK-PROTOCOL IP</a></div>
+      <div class="Body"><a name="1030050">Include the following lines int he WEP configuration file “wirelesssubnet-wep-on.wep”:</a></div>
+      <div class="Declaration"><a name="1030051">KeyMappings 1 192.0.0.3 WEP ffa0</a></div>
+      <div class="Declaration"><a name="1030052">KeyMappings 192.0.0.3 192.0.0.1 WEP ffa0</a></div>
+      <div class="Anchor"><a name="1039457">&nbsp;</a></div>
+      <div class="Heading4"><a name="1063976">CCMP scenario</a></div>
+      <div class="BodyAfterHead"><a name="1040184">To configure the sample scenario using CCMP, include the following lines in the scenario configuration (.config) file: </a></div>
+      <div class="Declaration"><a name="1039469">SUBNET N8-192.0.0.0 { 1 thru 5 } 451.95 1145.77 0.0</a></div>
+      <div class="Declaration"><a name="1030055">[ N8-192.0.0.0 ] MAC-PROTOCOL MACDOT11</a></div>
+      <div class="Declaration"><a name="1030056">[ N8-192.0.0.0 ] MAC-SECURITY-PROTOCOL CCMP</a></div>
+      <div class="Declaration"><a name="1030057">[ N8-192.0.0.0 ] CCMP-AES-DELAY 5US</a></div>
+      <div class="Declaration"><a name="1030058">[ N8-192.0.0.0 ] CCMP-CONFIG-FILE wirelesssubnet-ccmp-on.ccmp</a></div>
+      <div class="Body"><a name="1030059">Include the following lines int he WEP configuration file “wirelesssubnet-ccmp-on.ccmp”:</a></div>
+      <div class="Declaration"><a name="1030060">KeyMappings 1 192.0.0.3 CCMP ffa0</a></div>
+      <div class="Declaration"><a name="1030061">KeyMappings 192.0.0.3 192.0.0.1 CCMP ffa0</a></div>
+      <div class="Heading3Numbered">2.1.7.3  <a name="1055991">GUI Configuration</a></div>
+      <div class="Heading4"><a name="1056982">WEP Scenario</a></div>
+      <div class="BodyAfterHead"><a name="1063228">Perform the following steps to create this sample scenario using the GUI: </a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1063229">Place five nodes of the Default device type and a wireless subnet on the canvas. Connect all the four nodes to the wireless subnet.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056983">To configure WEP, go to </a><span class="SC_7_2515">the </span><span class="Menu_Item">Wireless Subnet Properties Editor </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> MAC Layer</span>. Set <span class="Field">MAC Protocol <br /></span><span class="Value">[= 802.11]</span><span style="font-style: italic"> </span><span class="Bold">&gt;</span><span style="font-style: italic"> </span><span class="Menu_Item">Security Protocol</span> to <span class="Variable" style="font-style: italic">WEP</span><span style="font-style: italic"> </span>as shown in <span class="Cross-Ref">Figure&nbsp;2-1</span><span style="font-style: italic"> </span>and set the dependent parameters as below.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><span class="Field"><a name="1056990">RC4 Encryption Delay</a></span> to <span class="Value">5US</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><span class="Menu"><a name="1056991">Exclude Unencrypted</a></span>   to <span class="Value">YES</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><span class="Field"><a name="1056992">WEP Configuration File</a></span> to <span class="Value">wirelesssubnet-wep-on.wep</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056993">Create the wirelesssubnet-wep-on.wep file as described in command line configuration section.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1056994">&nbsp;</a></div>
+      <div class="Heading4"><a name="1056995">CCMP Scenario</a></div>
+      <div class="BodyAfterHead"><a name="1063241">Perform the following steps to create this sample scenario using the GUI: </a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1063242">Place five nodes of the Default device type and a wireless subnet on the canvas. Connect all the four nodes to the wireless subnet.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056996">To configure CCMP, go to </a><span class="SC_7_2515">the </span><span class="Menu_Item">Wireless Subnet Properties Editor </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> MAC Layer</span>. Set <span class="Field">MAC Protocol </span><span class="Value">[= 802.11]</span><span style="font-style: italic"> </span><span class="Bold">&gt;</span><span style="font-style: italic"> </span><span class="Menu_Item">Security Protocol</span> to <span class="Value">CCMP</span> as shown in <span class="Cross-Ref">Figure&nbsp;2-1</span> and set the dependent parameters as below.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><span class="Field"><a name="1057003">AES Encryption Delay</a></span> to <span class="Value">5US</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><span class="Field"><a name="1057004">CCMP Configuration File</a></span> to <span class="Value">wirelesssubnet-ccmp-on.ccmp</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1057005">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1057006">Create the wirelesssubnet-ccmp-on.ccmp file as described in command line configuration section.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">2.1.8  <a name="1051870">Scenarios Included in </a><span class="Variable">EXata</span></div>
+      <div class="BodyAfterHead"><a name="1051874">The </a><span class="Variable">EXata</span> distribution includes several sample scenarios for the WEP/CCMP model. All scenarios are located in the directory <span class="Variable">EXATA_HOME</span>/scenarios/cyber/wep-ccmp. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'WEP_CCMP.html#1051887', '');" title="Wired Equivalent Privacy and CTR with CBC-MAC Protocol">Table&nbsp;2-5</a></span> lists the sub-directory where each scenario is located.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 2-5.&nbsp;&nbsp;<a name="1051887">WEP/CCMP Model Scenarios&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 180pt">
+            <div class="CellHeading"><a name="1051891">Scenario Sub-directory</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 288pt">
+            <div class="CellHeading"><a name="1051893">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051895">Mixed-wep-ccmp-wep</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051897">Shows the wireless scenario with both WEP and CCMP capability</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051899">UnprotectedPackets-case-1</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051901">Shows the scenario with both WEP and CCMP configured</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051903">wirelesssubnets-wep-ccmp-on-mobility</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051905">Shows the mobility scenario with both WEP and CCMP configured</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">2.1.9  <a name="1055950">References</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1056766">IEEE Std 802.11-1997. Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) specifications.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1055951">IEEE Std 802.11i-2004. Amendment 6: Medium Access Control (MAC) Security Enhancements.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

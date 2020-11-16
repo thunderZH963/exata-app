@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Running Applications</title>
+    <link rel="StyleSheet" href="css/Ch3_Using%20Connection%20Manager.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch3_Using%20Connection%20Manager.4.1.html#1023018">3	Using Connection Manager</a> &gt; 3.3  Running Applications</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">3.3  <a name="1023018">Running Applications</a></div>
+      <div class="BodyAfterHead"><a name="1023518">Connection Manager offers an easy mechanism to launch applications on the operational hosts that connect to the emulated nodes in </a><span class="Variable">EXata</span>. This section describes how to set up applications at operational hosts to run on the emulated network using Connection Manager.</div>
+      <div class="Body"><a name="1023528">Connection Manager can be used to launch applications in two ways:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1023545">Assign one emulated node in </a><span class="Variable">EXata</span> to map to the operational host. All applications launched on the operational host will run on this emulated node (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1023590', '');" title="Running Applications">Section&nbsp;3.3.1</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1023567">When launching an individual application, select the emulated node it should run on. In this way, different applications on the same operational host can connect to different emulated nodes (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1023814', '');" title="Running Applications">Section&nbsp;3.3.2</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">3.3.1  <a name="1023590">Launching Applications on a Single Emulated Node</a></div>
+      <div class="BodyAfterHead"><a name="1023691">In this mode, the operational host can be a viewed as a physical counterpart of one of the emulated nodes: any application launched on this operational host will send and receive traffic to and from the protocol stack of that particular emulated node. To achieve this, it is required to configure the </a><span class="Variable">EXata</span> emulator to create a one-to-one mapping between the emulated node and the operational host. This section describes how to create such a mapping using Connection Manager</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1034542', '');" title="Running Applications" name="1034530">Figure&nbsp;3‑11</a></span> provides the schematic diagram for this mode of operation. A mapping between the operational host and one node in the emulated network (henceforth referred to as the <span style="font-style: italic">External Node</span>) is created. Subsequently, any application launched on the operational host will use the emulated protocol stack of the External node for communications. Note that as many operational hosts are required as the desired number of External nodes, since there is a unique one-to-one mapping between the operational hosts and External nodes. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1023814', '');" title="Running Applications">Section&nbsp;3.3.2</a></span> describes the <span class="Variable">EXata</span> mode that removes this restriction.</div>
+      <div class="Body"><a name="1034540"><img class="Default" src="images/diagram-ipne-mode.png" width="400" height="300" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3‑11.&nbsp;&nbsp;<a name="1034542">Applications on Operational Host Connecting to Default External Node in </a><span class="Variable">EXata</span></div>
+      <div class="Heading3Numbered">3.3.1.1  <a name="1023766">Setting a Default External Node</a></div>
+      <div class="BodyAfterHead"><a name="1056358">To create a one-to-one mapping between the operational host and an External Node in </a><span class="Variable">EXata</span>, perform the following steps:</div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1056362">On the emulated server, run a</a>n <span class="Variable">EXata</span> scenario in emulation mode, either from the GUI or command line interface. (In the rest of the section we assume that <span class="Variable">EXata</span> was launched from GUI.) </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1056366">Connect the operational host and the emulated server using Connection Manager, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1037271', '');" title="Connecting Operational Hosts with the Emulation Server">Section&nbsp;3.2</a></span>.</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056373">Wait a few seconds until Connection Manager recognizes that </a><span class="Variable">EXata</span> is running and displays a list of all the nodes in the <span class="Menu">Network</span> tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056374">Select one of the nodes in Connection Manager’s display window by clicking on it, and click the </a><span class="Menu">Set Default</span> button. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1056375">If an emulated node has multiple interfaces, then expand the display for the node and select one interface. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1056384', '');" title="Running Applications">Figure&nbsp;3-12</a></span> shows an example where node 5 (host5) has two interfaces with addresses <span class="Courier">192.168.10.5</span> and <span class="Courier">192.0.1.1</span>.</div>
+      <div class="Anchor"><a name="1056382"><img class="Default" src="images/cm-set-default.PNG" width="306" height="348" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-12.&nbsp;&nbsp;<a name="1056384">Setting Default External Node</a></div>
+      <div class="NumberedCont"><a name="1056385">The selected interface is displayed in the </a><span class="Menu">Default Interface</span> box and is highlighted in the node list.</div>
+      <div class="Anchor"><a name="1056389"><img class="Default" src="images/CM-DefaultNodeSelected.png" width="327" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-13.&nbsp;&nbsp;<a name="1056390">Default Node Configured</a></div>
+      <div class="NumberedCont"><a name="1009289">If </a><span class="Variable">EXata</span> GUI is running, the selected node is highlighted on the canvas (see node 3 in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1041508', '');" title="Running Applications">Figure&nbsp;3‑14</a></span>).</div>
+      <div class="NumberedCont"><a name="1042129"><img class="Default" src="images/gui-set-external-node.PNG" width="335" height="323" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3‑14.&nbsp;&nbsp;<span class="Variable"><a name="1041508">EXata</a></span> GUI Displaying the Default External Node</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1041509">Verify by connecting to other nodes in the scenario by using one of the EXata emulated server applications (refer to </a><span class="Variable" style="font-style: italic">EXata User’s Guide</span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1023775">An application run from the operational host will now also run on the default node.</a></span></div>
+      <div class="Heading3Numbered">3.3.1.2  <a name="1009510">Unsetting the Default </a><span class="Variable">EXata</span> Node</div>
+      <div class="BodyAfterHead"><a name="1009448">To tear down an established connection between the operational host and the External node, you can unset the default node by following these steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1009462">Click on the interface that is currently configured as the default </a><span class="Variable">EXata</span> External node.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1023782">The button text in the </a><span class="Menu_D">Default Interface</span> text box will change to <span class="Menu_D">Reset Default</span>. Click on the button.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1023787">The </a><span class="Menu">Default Interface</span> box displays that no default interface is set and the unset interface is no longer highlighted in the list.</div>
+      <div class="NumberedCont"><a name="1023788">If </a><span class="Variable">EXata</span> GUI is running, the node is no longer highlighted on the canvas.</div>
+      <div class="Heading3Numbered">3.3.1.3  <a name="1023795">Changing the Default </a><span class="Variable">EXata</span> Node</div>
+      <div class="BodyAfterHead"><a name="1023802">While the scenario is running in </a><span class="Variable">EXata</span>, you can change the operational host to connect to any other emulated node. This will enable the operational host to insert or receive traffic from different nodes in the scenario during the same execution run.</div>
+      <div class="Body"><a name="1009517">To change the default </a><span class="Variable">EXata</span> node, do one of the following:</div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1009524">Reset the current default </a><span class="Variable">EXata</span> node and set a new one, as described above.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1009531">Select the new node by clicking on it in the node list and click the </a><span style="font-weight: bold">Set Default</span> button.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">3.3.2  <a name="1023814">Launching Applications on Different Emulated Nodes</a></div>
+      <div class="BodyAfterHead"><a name="1023815">In this mode, when launching an application, the user can select on which emulated node in </a><span class="Variable">EXata</span> the application should be executed. Thus, it is possible to run multiple applications on different emulated nodes, all from the same operational host. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1040168', '');" title="Running Applications">Figure&nbsp;3‑15</a></span>.</div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1052904">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1052906">This feature is available only on operational hosts running Windows 32-bit editions.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1011634"><img class="Default" src="images/RunningApplicationsOnDifferentNodes.png" width="549" height="337" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3‑15.&nbsp;&nbsp;<a name="1040168">Multiple Applications on a Single Operational Host Connecting to Different Emulated Nodes</a></div>
+      <div class="Heading3Numbered">3.3.2.1  <a name="1040170">Launching an Application on a Selected Emulated Node</a></div>
+      <div class="BodyAfterHead"><a name="1023825">To select an emulated node on which to run an application at the time of launching an application, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1023826">Set up a connection between the operational host and the emulation server using Connection Manager, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1037271', '');" title="Connecting Operational Hosts with the Emulation Server">Section&nbsp;3.2</a></span>. Ensure that the scenario is running in <span class="Variable">EXata</span> in Emulation mode and Connection Manager displays the list of nodes in the <span class="Menu">Network </span>tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1009585">To launch an application, right-click on the application icon on the desktop and click on </a><span class="Menu">Run on </span><span class="Variable" style="font-weight: bold">EXata</span><span class="Menu"> node</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1039057"><img class="Default" src="images/upa-right-click.PNG" width="248" height="334" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3‑16.&nbsp;&nbsp;<a name="1039061">Running Application on an </a><span class="Variable">EXata</span> Node</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1039065">A dialog box appears that lists all the nodes in the scenario. Enter a node ID or hostname or select a node from the pull-down list and click </a><span class="Menu">OK</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1009629"><img class="Default" src="images/CM-SelectNodeForApplication.png" width="192" height="120" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3‑17.&nbsp;&nbsp;<a name="1009636">Selecting an Emulated Node</a></div>
+      <div class="NumberedCont"><a name="1056438">Once the application has started, the </a><span class="Menu">Application</span> tab of Connection Manager will display the application name and the emulated node (called an <span style="font-style: italic">External Application Node</span>) on which it is configured to run.</div>
+      <div class="Anchor"><a name="1056442"><img class="Default" src="images/CM-ApplicationList.png" width="307" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-18.&nbsp;&nbsp;<a name="1056448">Application Tab of Connection Manager</a></div>
+      <table class="NoteTable" style="text-align: left; width: 421.2pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 25.2pt">
+            <div class="Body" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="1056445">Tip:</a></span></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1056447">You can double-click the application in the </a><span class="Menu">Application</span> tab of Connection Manager to bring the application window to the front.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1052098">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1052092">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1052094">To run another application from command line, first launch the command window application (cmd.exe) to run on the emulated node via the steps outlined above. Then, run the application from this command window. This approach works because any child process launched by a process that was configured to use </a><span class="Variable">EXata</span>, will also continue to use the same configuration.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="NumberedCont"><a name="1052112">If </a><span class="Variable">EXata</span> GUI is running, the selected node is highlighted on the canvas by a green triangle (see node 8 in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1052172', '');" title="Running Applications">Figure&nbsp;3‑19</a></span>).</div>
+      <div class="NumberedCont"><a name="1052119"><img class="Default" src="images/ExternalApplicationNode.PNG" width="367" height="364" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3‑19.&nbsp;&nbsp;<span class="Variable"><a name="1052172">EXata</a></span> GUI Displaying an External Application Node</div>
+      <div class="Heading3Numbered">3.3.2.2  <a name="1052099">Restoring an Application Session</a></div>
+      <div class="BodyAfterHead"><a name="1052100">An application session is the record of information for all the currently running applications. The information includes the name of application, the path of the application executable binary, and the ID of the emulated node it is running on. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1039744', '');" title="Running Applications">Figure&nbsp;3‑20</a></span> shows an example of application session of four applications running over two emulated nodes.</div>
+      <div class="Anchor"><a name="1056504"><img class="Default" src="images/CM-ApplicationSession.png" width="307" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3‑20.&nbsp;&nbsp;<a name="1039744">An Active Application Session</a></div>
+      <div class="BodyAfterHead"><a name="1039748">At the termination of the </a><span class="Variable">EXata</span> process, either manually by the user or through the successful completion of the scenario, all applications running on the emulated nodes are terminated. However, before terminating the applications, Connection Manager saves the last application session. When the <span class="Variable">EXata</span> process is restarted, Connection Manager provides the option to restore the last application session. </div>
+      <div class="Body"><a name="1056528">To restore the last application session from a</a>n <span class="Variable">EXata</span> run, perform the following steps:</div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1056532">Restart the scenario in </a><span class="Variable">EXata</span> in emulation mode from the GUI or the command line.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056533">In the </a><span class="Menu">Applications</span> window of Connection Manager, click on the <span class="Menu">Restore</span> button in the toolbar.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1056537"><img class="Default" src="images/CM-RestoreSession.png" width="327" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-21.&nbsp;&nbsp;<a name="1056538">Restore Application Session Button</a></div>
+      <div class="Heading3Numbered">3.3.2.3  <a name="1039782">Saving and Loading Application Sessions</a></div>
+      <div class="BodyAfterHead"><a name="1039783">You can also save an application session in a file while a scenario is running and load it at a later time. </a></div>
+      <div class="Body"><a name="1039784">To save an application session while a scenario is running, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1010071">In the </a><span class="Menu">Applications</span> window of Connection Manager, click on the <span class="Menu">Save</span> button in the toolbar.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1010081">Provide the filename and the directory path where to save the application session information.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1010064">To load a previously saved application session, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1010092">Ensure that the </a><span class="Variable">EXata</span> is running in Emulation mode.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1010102">In the </a><span class="Menu">Applications</span> window of Connection Manager, click on the <span class="Menu">Load</span> button in the toolbar.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1010109">In the file browser, select the name of the application session file to load.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1056564"><img class="Default" src="images/CM-LoadSession.png" width="327" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-22.&nbsp;&nbsp;<a name="1056565">Load Application Session Button</a></div>
+      <div class="Heading3Numbered">3.3.2.4  <a name="1016131">Quick Launch Application Tray</a></div>
+      <div class="BodyAfterHead"><a name="1023892">The </a><span class="Menu">Applications</span> tab in Connection Manager also features a quick launch application tray to quickly launch the frequently used applications. </div>
+      <div class="Body"><a name="1023951">To add an application to the quick launch tray, drag and drop the application icon from the desktop into the tray area. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1010211', '');" title="Running Applications">Figure&nbsp;3‑23</a></span> shows an example with applications loaded in the quick launch tray.</div>
+      <div class="Body"><a name="1023955">To launch an application, click on the icon in the tray. This will open a dialog box (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1009636', '');" title="Running Applications">Figure&nbsp;3‑17</a></span>) to select an emulated node. </div>
+      <div class="BodyAfterHead"><a name="1010200"><img class="Default" src="images/cm-application-trayfilled.PNG" width="248" height="351" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3‑23.&nbsp;&nbsp;<a name="1010211">Quick Launch Application Tray</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

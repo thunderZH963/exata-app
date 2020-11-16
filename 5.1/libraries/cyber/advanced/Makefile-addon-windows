@@ -1,0 +1,49 @@
+CYBER_ADDON_OPTIONS = -DCYBER_LIB
+
+CYBER_ADDON_DIR = ../libraries/cyber/advanced/src
+
+CYBER_ADDON_SRCS = \
+ $(CYBER_ADDON_DIR)/attack_sequence.cpp \
+ $(CYBER_ADDON_DIR)/channel_scanner.cpp \
+ $(CYBER_ADDON_DIR)/app_sigint.cpp \
+ $(CYBER_ADDON_DIR)/mac_wormhole.cpp \
+ $(CYBER_ADDON_DIR)/mac_wep.cpp \
+ $(CYBER_ADDON_DIR)/mac_ccmp.cpp \
+ $(CYBER_ADDON_DIR)/routing_anodr.cpp \
+ $(CYBER_ADDON_DIR)/network_secure_neighbor.cpp \
+ $(CYBER_ADDON_DIR)/app_eaves.cpp \
+ $(CYBER_ADDON_DIR)/app_jammer.cpp \
+ $(CYBER_ADDON_DIR)/certificate_wtls.cpp \
+ $(CYBER_ADDON_DIR)/crypto_certificate.cpp \
+ $(CYBER_ADDON_DIR)/os_resource_manager.cpp \
+ $(CYBER_ADDON_DIR)/app_dos.cpp \
+ $(CYBER_ADDON_DIR)/firewall_rule.cpp \
+ $(CYBER_ADDON_DIR)/firewall_chain.cpp \
+ $(CYBER_ADDON_DIR)/firewall_table.cpp \
+ $(CYBER_ADDON_DIR)/firewall_model.cpp
+
+CYBER_ADDON_INCLUDES = -I$(CYBER_ADDON_DIR)
+
+CYBER_ADDON_HDRS = \
+ $(CYBER_ADDON_DIR)/attack_sequence.h \
+ $(CYBER_ADDON_DIR)/channel_scanner.h \
+ $(CYBER_ADDON_DIR)/app_sigint.h \
+ $(CYBER_ADDON_DIR)/mac_wormhole.h \
+ $(CYBER_ADDON_DIR)/mac_dot11_security.h \
+ $(CYBER_ADDON_DIR)/routing_anodr.h \
+ $(CYBER_ADDON_DIR)/app_eaves.h \
+ $(CYBER_ADDON_DIR)/app_jammer.h \
+ $(CYBER_ADDON_DIR)/network_secure_neighbor.h \
+ $(CYBER_ADDON_DIR)/certificate_wtls.h \
+ $(CYBER_ADDON_DIR)/os_resource_manager.h \
+ $(CYBER_ADDON_DIR)/app_dos.h \
+  $(CYBER_ADDON_DIR)/firewall_rule.h \
+ $(CYBER_ADDON_DIR)/firewall_chain.h \
+ $(CYBER_ADDON_DIR)/firewall_table.h \
+ $(CYBER_ADDON_DIR)/firewall_model.h 
+ 
+ADDON_OPTIONS   = $(ADDON_OPTIONS) $(CYBER_ADDON_OPTIONS) -DWIN32 -D__WIN32__
+ADDON_HDRS      = $(ADDON_HDRS) $(CYBER_ADDON_HDRS)
+ADDON_SRCS      = $(ADDON_SRCS) $(CYBER_ADDON_SRCS)
+ADDON_INCLUDES  = $(ADDON_INCLUDES) $(CYBER_ADDON_INCLUDES)
+ADDON_LIBRARIES = $(ADDON_LIBRARIES)

@@ -1,0 +1,34 @@
+PURPOSE:-
+--------
+To read existing certificates and private key files.
+
+
+SCENARIO:-
+---------
+In this scenario, we have two two nodes connected through a wired link.
+
+
+      1 ------------- 2
+
+
+RUN:-
+----
+
+Run '<QUALNET_HOME>/bin/qualnet signEncrypt.config'.
+
+
+
+DESCRIPTION OF THE FILES:-
+-------------------------
+1.  signEncrypt.config - QualNet configuration input file.
+2.  signEncrypt.nodes - Node position file
+3.  signEncrypt.pki - pki configuration file
+4.  cert4.pem - PEM certificate
+5.  pkey4.pem - Private Key
+6.  CSS-000000011-SecretComm.p12 - P12 Certificate
+7.  sharedcert5.pem - Shared PEM Certificate
+8.  cert5.pem - PEM Certificate
+9.  pkey5.pem - Private Key 
+10. sharedcert4.pem - Shared PEM Certificate 
+11. CSS-000000011-SecretComm.p7b - Shared P7B Certificate
+12. README - This file.

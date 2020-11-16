@@ -1,0 +1,1565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Public Key Infrastructure (PKI) Model</title>
+    <link rel="StyleSheet" href="css/PKI.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch3%20-%20Newtork%20Layer%20Models.html#998318">3	Network Layer Models</a> &gt; 3.6  Public Key Infrastructure (PKI) Model</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">3.6  <a name="998318">Public Key Infrastructure (PKI) Model</a></div>
+      <div class="Heading2Numbered">3.6.1  <a name="998422">Description</a></div>
+      <div class="BodyAfterHead"><a name="998431">A PKI is an infrastructure that uses digital certificates as an authentication mechanism and is built to better manage certificates and their associated keys. A digital certificate is itself a way to reliably identify the user or computer claiming to be the owner of a specific public key.</a></div>
+      <div class="Body"><a name="998440">A PKI can be implemented within an organization, for the use of the users on its network, or it can be a commercial entity that issues certificates to Internet users, such as VeriSign. The PKI consists of the following components:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998452">At least one certification authority (CA) to issue certificates.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998461">Policies that govern the operation of the PKI.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998470">The digital certificates.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="998480">The PKI model supports the basic features of security including encryption-decryption, signing, verification, and certificate reading.</a></div>
+      <div class="Heading2Numbered">3.6.2  <a name="998494">Features and Assumptions</a></div>
+      <div class="BodyAfterHead"><a name="998503">This section describes the implemented features, omitted features, assumptions and limitations of the PKI model.</a></div>
+      <div class="Heading3Numbered">3.6.2.1  <a name="998515">Implemented Features</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998550">Assigning certificates to a node through configuration parameter.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998559">Generation of X.509 certificate.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998570">Generation of X.509 private key file.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998581">Extracting information from certificate.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998590">Encrypt a packet/message.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998599">Decrypt the packet/message.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998608">Sign packet.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998617">Verify the signature.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">3.6.2.2  <a name="998644">Omitted Features</a></div>
+      <div class="BodyAfterHead"><a name="998657">None.</a></div>
+      <div class="Heading3Numbered">3.6.2.3  <a name="998667">Assumptions and Limitations</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998688">Currently PKI uses des_ede3_cbc cipher and SHA1 hash algorithm.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998715">Certificate Authority (CA) is not supported.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998728">The certificates are available to all nodes at the start of the simulation and are read during the initialization phase.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998742">Certificate management protocols are not supported.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998755">The certificate revocation list is not supported.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">3.6.3  <a name="998769">Supplemental Information</a></div>
+      <div class="BodyAfterHead"><a name="998778">None.</a></div>
+      <div class="Heading2Numbered">3.6.4  <a name="998788">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="998806">To specify PKI model, include the following parameter in the scenario configuration (.config) file:</a></div>
+      <div class="Declaration"><a name="998819">&nbsp;</a></div>
+      <div class="Declaration"><a name="998828">[&lt;Qualifier&gt;]  </a><span style="font-weight: bold">PKI-ENABLED 	YES</span> </div>
+      <div class="Body"><a name="998844">The scope of this parameter declaration can be Global or Node. See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Ch1%20-%20Overview.01.2.html#1061390', '');" title="Conventions Used">Section&nbsp;1.2.1.1</a></span> for a description of <span style="font-family: &quot;Courier New&quot;">&lt;Qualifier&gt;</span> for each scope. </div>
+      <div class="Anchor"><a name="1015058">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1015065">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1015067">The default value of the parameter </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">PKI-ENABLED</span> is <span style="font-family: &quot;Courier New&quot;; font-weight: bold">NO</span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="998879">&nbsp;</a></div>
+      <div class="Heading4"><a name="1010967">PKI Model Parameters</a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'PKI.html#1014900', '');" title="Public Key Infrastructure (PKI) Model" name="998892">Table&nbsp;3-28</a></span> lists the configuration parameters for the PKI model. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Ch1%20-%20Overview.01.2.html#1061462', '');" title="Conventions Used">Section&nbsp;1.2.1.3</a></span> for a description of the format used for the parameter table.</div>
+      <div class="Anchor"><a name="1015024">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-28.&nbsp;&nbsp;<a name="1014900">IAHEP Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1014906">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 90pt">
+            <div class="CellHeading"><a name="1014908">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 216pt">
+            <div class="CellHeading"><a name="1014910">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><span style="font-weight: bold"><a name="1015041">PKI-CONFIGURATION-FILE</a></span></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1015042">Required</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1015043">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1015044">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015046">Filename</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015048">Specifies the name of the PKI Configuration file.</a></div>
+            <div class="CellBody"><a name="1015052">See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'PKI.html#999082', '');" title="Public Key Infrastructure (PKI) Model">Section&nbsp;3.6.4.1</a></span> for the format of the PKI Configuration file.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">3.6.4.1  <a name="999082">Format of PKI Configuration File</a></div>
+      <div class="BodyAfterHead"><a name="999096">The PKI Configuration file has the same format as the scenario configuration (.config) file. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'PKI.html#1014334', '');" title="Public Key Infrastructure (PKI) Model">Table&nbsp;3-29</a></span> describes the parameters that can be specified in the PKI Configuration file. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Ch1%20-%20Overview.01.2.html#1061462', '');" title="Conventions Used">Section&nbsp;1.2.1.3</a></span> for a description of the format used for the parameter table.</div>
+      <div class="Anchor"><a name="1014458">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-29.&nbsp;&nbsp;<a name="1014334">PKI Configuration File Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1014340">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 90pt">
+            <div class="CellHeading"><a name="1014342">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 216pt">
+            <div class="CellHeading"><a name="1014344">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014846">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014847">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014848">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014849">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014851">Integer</a></div>
+            <div class="CellRun-In_Courier"><a name="1014852">Range</a></div>
+            <div class="CellBody_Courier_Indented"><a name="1014856">≥ 0</a></div>
+            <div class="CellRun-In_Courier"><a name="1014857">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="1014858">0</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014860">Number of certificates allocated to a node that are generated by the PKI model. </a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014828">CERTIFICATE-FILENAME</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014829">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014830">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014831">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014832">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014833">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014835">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014836">Default</a></div>
+            <div class="CellBody_Courier_Indented" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014837">See description</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014839">Name of the generated certificate file. </a></div>
+            <div class="CellBody"><a name="1014840">By default, the generated certificate file is called </a><span style="font-family: &quot;Courier New&quot;">certificate.&lt;nodeID&gt;.&lt;instance&gt;.pem</span></div>
+            <div class="CellBody"><a name="1014841">where</a></div>
+            <div class="CellBody"><a name="1014842">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellBody"><a name="1014843">	</a><span style="font-family: &quot;Courier New&quot;">&lt;index&gt;</span>:	Index of the generated certificate</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014844">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014814">CERTIFICATE-OWNER-COUNTRYNAME</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014815">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014816">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014817">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014818">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014819">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014821">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014822">Default</a></div>
+            <div class="CellBody"><a name="1014823">US</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014825">Name of the owner’s country for the generated certificate.</a></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014826">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014797">CERTIFICATE-OWNER-STATENAME</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014798">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014799">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014800">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014801">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014802">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014804">String </a></div>
+            <div class="CellRun-In_Courier"><a name="1014805">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014806">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014808">Name of the owner’s state for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014809">By default, the state name is </a><span style="font-family: &quot;Courier New&quot;">CA_&lt;nodeID&gt;</span></div>
+            <div class="CellBody"><a name="1014810">where</a></div>
+            <div class="CellBody"><a name="1014811">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014812">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014780">CERTIFICATE-OWNER-LOCATION</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014781">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014782">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014783">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014784">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014785">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014787">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014788">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014789">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014791">Owner’s location for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014792">By default, the location is </a><span style="font-family: &quot;Courier New&quot;">LA_&lt;nodeID&gt;</span></div>
+            <div class="CellBody"><a name="1014793">where</a></div>
+            <div class="CellBody"><a name="1014794">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014795">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014763">CERTIFICATE-OWNER-ORGNAME</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014764">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014765">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014766">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014767">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014768">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014770">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014771">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014772">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014774">Name of the owner’s organization for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014775">By default, the organization name is </a><span style="font-family: &quot;Courier New&quot;">SNT_&lt;nodeID&gt;</span></div>
+            <div class="CellBody"><a name="1014776">where</a></div>
+            <div class="CellBody"><a name="1014777">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014778">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014746">CERTIFICATE-OWNER-ORGUNIT</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014747">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014748">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014749">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014750">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014751">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014753">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014754">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014755">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014757">Owner’s organization unit for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014758">By default, the organization unit is </a><span style="font-family: &quot;Courier New&quot;">EXata_&lt;nodeID&gt;</span></div>
+            <div class="CellBody"><a name="1014759">where</a></div>
+            <div class="CellBody"><a name="1014760">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014761">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014727">CERTIFICATE-OWNER-COMMONNAME</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014728">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014729">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014730">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014731">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014732">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014734">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014735">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014736">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014738">Name of the owner for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014739">By default, the common name is </a><span style="font-family: &quot;Courier New&quot;">QualNet_&lt;nodeID&gt;_&lt;instance&gt;</span></div>
+            <div class="CellBody"><a name="1014740">where</a></div>
+            <div class="CellBody"><a name="1014741">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellBody"><a name="1014742">	</a><span style="font-family: &quot;Courier New&quot;">&lt;index&gt;</span>:	Index of the generated certificate</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014743">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><span style="font-family: &quot;Courier New&quot;"><a name="1014744">CERTIFICATE-OWNER-COMMONNAME</a></span> should be different for each certificate.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014713">CERTIFICATE-OWNER-EMAIL</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014714">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014715">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014716">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014717">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014718">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014720">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014721">Default</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014722">support@<br />scalable-networks.com</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014724">Owner’s e-mail ID for the generated certificate.</a></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014725">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014699">CERTIFICATE-ISSUER-COUNTRYNAME</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014700">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014701">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014702">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014703">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014704">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014706">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014707">Default</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014708">US</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014710">Name of the issuer’s country for the generated certificate.</a></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014711">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014682">CERTIFICATE-ISSUER-STATENAME </a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014683">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014684">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014685">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014686">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014687">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014689">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014690">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014691">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014693">Name of the issuer’s state for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014694">By default, the state name is </a><span style="font-family: &quot;Courier New&quot;">CA_&lt;nodeID&gt;</span></div>
+            <div class="CellBody"><a name="1014695">where</a></div>
+            <div class="CellBody"><a name="1014696">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014697">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014665">CERTIFICATE-ISSUER-LOCATION</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014666">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014667">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014668">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014669">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014670">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014672">String </a></div>
+            <div class="CellRun-In_Courier"><a name="1014673">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014674">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014676">Issuer’s location for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014677">By default, the location is </a><span style="font-family: &quot;Courier New&quot;">LA_&lt;nodeID&gt;</span></div>
+            <div class="CellBody"><a name="1014678">where</a></div>
+            <div class="CellBody"><a name="1014679">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014680">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014648">CERTIFICATE-ISSUER-ORGNAME</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014649">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014650">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014651">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014652">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014653">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014655">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014656">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014657">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014659">Name of the issuer’s organization for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014660">By default, the organization name is </a><span style="font-family: &quot;Courier New&quot;">SNT_&lt;nodeID&gt;</span></div>
+            <div class="CellBody"><a name="1014661">where</a></div>
+            <div class="CellBody"><a name="1014662">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014663">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014631">CERTIFICATE-ISSUER-ORGUNIT</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014632">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014633">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014634">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014635">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014636">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014638">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014639">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014640">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014642">Issuer’s organization unit for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014643">By default, the organization unit is </a><span style="font-family: &quot;Courier New&quot;">EXata_&lt;nodeID&gt;</span></div>
+            <div class="CellBody"><a name="1014644">where</a></div>
+            <div class="CellBody"><a name="1014645">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014646">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014613">CERTIFICATE-ISSUER-COMMONNAME</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014614">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014615">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014616">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014617">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014618">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014620">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014621">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014622">See description</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014624">Issuer’s name for the generated certificate.</a></div>
+            <div class="CellBody"><a name="1014625">By default, the common name is </a><span style="font-family: &quot;Courier New&quot;">QualNet_&lt;nodeID&gt;_&lt;instance&gt;</span></div>
+            <div class="CellBody"><a name="1014626">where</a></div>
+            <div class="CellBody"><a name="1014627">	</a><span style="font-family: &quot;Courier New&quot;">&lt;nodeID&gt;</span>:	ID of the node</div>
+            <div class="CellBody"><a name="1014628">	</a><span style="font-family: &quot;Courier New&quot;">&lt;index&gt;</span>:	Index of the generated certificate</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014629">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014599">CERTIFICATE-ISSUER-EMAIL</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014600">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014601">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014602">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014603">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014604">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014606">String</a></div>
+            <div class="CellRun-In_Courier"><a name="1014607">Default</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014608">support@<br />scalable-networks.com</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014610">Issuer’s E-mail ID for the generated certificate.</a></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014611">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014583">PRIVATE-KEY-TYPE</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014584">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014585">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014586">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014587">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014588">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014590">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1014591">DSA</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1014592">RSA</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="1014593">Default</a></div>
+            <div class="Cell_2nd_Line"><a name="1014594"> </a><span style="font-family: &quot;Courier New&quot;">RSA</span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014596">Private key type for the generated certificate.</a></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014597">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014567">PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT </a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014568">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014569">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014570">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014572">Integer</a></div>
+            <div class="CellRun-In_Courier"><a name="1014573">Range</a></div>
+            <div class="CellBody_Courier_Indented"><a name="1014577">≥ 0</a></div>
+            <div class="CellRun-In_Courier"><a name="1014578">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="1014579">0</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014581">Number of pre-configured &lt;private key, certificate&gt; pairs assigned to a node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014552">PRECONFIGURED-CERTIFICATE-FILE-TYPE </a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014553">Required</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014554">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014555">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014556">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014557">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014559">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1014560">PEM</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1014561">P12</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014563">Type of the pre-configured certificate file.</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="font-family: Arial"><a name="1014564">There should be </a></span>PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT<span style="font-family: Arial"> instances of this parameter.</span></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014565">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014539">PRECONFIGURED-CERTIFICATE-FILE</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014540">Required</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014541">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014542">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014543">Instances</a></div>
+            <div class="Parameter_Name"><span style="font-family: Arial; font-size: 9.0pt"><a name="1014544">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014546">String</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014548">Name of the pre-configured certificate file.</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="font-family: Arial"><a name="1014549">There should be </a></span>PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT<span style="font-family: Arial"> instances of this parameter.</span></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014550">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014526">PRECONFIGURED-PRIVATE-KEY-FILE</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014527">Required</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014528">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014529">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014530">Instances</a></div>
+            <div class="Parameter_Name"><span style="font-family: Arial; font-size: 9.0pt"><a name="1014531">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014533">String</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014535">Name of the pre-configured private key file.</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="font-family: Arial"><a name="1014536">There should be </a></span>PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT<span style="font-family: Arial"> instances of this parameter.</span></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014537">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014510">PRECONFIGURED-SHARED-CERTIFICATE-COUNT</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014511">Optional</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014512">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014513">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014515">Integer</a></div>
+            <div class="CellRun-In_Courier"><a name="1014516">Range</a></div>
+            <div class="CellBody_Courier_Indented"><a name="1014520">≥ 0</a></div>
+            <div class="CellRun-In_Courier"><a name="1014521">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="1014522">0</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014524">Number of pre-configured shared certificates allocated to a node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014495">PRECONFIGURED-SHARED-CERTIFICATE-FILE-TYPE</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014496">Required</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014497">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014498">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014499">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014500">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014502">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1014503">PEM</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1014504">P7B</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014506">Type of the pre-configured shared certificate file which will be loaded at the node.</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="font-family: Arial"><a name="1014507">There should be </a></span>PRECONFIGURED-SHARED-CERTIFICATE-COUNT<span style="font-family: Arial"> instances of this parameter.</span></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014508">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">PRECONFIGURED-SHARED-CERTIFICATE-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1014482">PRECONFIGURED-SHARED-CERTIFICATE-FILE</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014483">Required</a></span></div>
+            <div class="CellRun-In_Plain"><a name="1014484">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="1014485">Global, Node</a></div>
+            <div class="CellRun-In_Plain"><a name="1014486">Instances</a></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014487">Index of the certificate</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Cell_2nd_Line"><a name="1014489">String</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1014491">Name of the pre-configured shared certificate file. </a></div>
+            <div class="CellBody"><a name="1014492">There should be </a><span style="font-family: &quot;Courier New&quot;">PRECONFIGURED-SHARED-CERTIFICATE-COUNT</span> instances of this parameter.</div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1014493">This parameter is applicable only if </a><span style="font-family: &quot;Courier New&quot;">PRECONFIGURED-SHARED-CERTIFICATE-COUNT</span> &gt; 0.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">3.6.5  <a name="1002511">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1017585">To configure the PKI model in the GUI, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1017586">Go to </a><span class="Menu_Item">Default Device Properties Editor &gt; Node Configuration &gt; Network Layer &gt; Cyber</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1017590">Set </a><span class="Field">Enable PKI</span> to <span class="Value">Yes</span> and set the dependent parameters listed in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'PKI.html#1015403', '');" title="Public Key Infrastructure (PKI) Model">Table&nbsp;3-30</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1015353"><img class="Default" src="images/PKI-EnablePKI.gif" width="564" height="356" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-10.&nbsp;&nbsp;<a name="1015360">Enabling PKI</a></div>
+      <div class="Anchor"><a name="1015432">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-30.&nbsp;&nbsp;<a name="1015403">Command Line Equivalent of PKI Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 153pt">
+            <div class="CellHeading"><a name="1015409">GUI Parameter </a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 135pt">
+            <div class="CellHeading"><a name="1015411">Scope of GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 180pt">
+            <div class="CellHeading"><a name="1015413">Command Line Parameter</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015415">Enable PKI</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015417">Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="1015419">PKI-ENABLED</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015421">PKI Configuration File</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015423">Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="1015425">PKI-CONFIGURATION-FILE</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="NumberedCont" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="1015471">Setting Parameters</a></span></div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1015472">Set </a><span class="Field">PKI Configuration File</span> to the name of the PKI configuration file. The format of the PKI configuration file is described in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'PKI.html#999082', '');" title="Public Key Infrastructure (PKI) Model">Section&nbsp;3.6.4.1</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">3.6.6  <a name="1013846">Statistics</a></div>
+      <div class="BodyAfterHead"><a name="1002757">No statistics are collected for the PKI model.</a></div>
+      <div class="Heading2Numbered">3.6.7  <a name="1002833">Sample Scenario</a></div>
+      <div class="Heading3Numbered">3.6.7.1  <a name="1002845">Scenario Description</a></div>
+      <div class="BodyAfterHead"><a name="1002857">There are two nodes connected by a point-to-point link which generate certificates and private key files for communication.</a></div>
+      <div class="Heading3Numbered">3.6.7.2  <a name="1013077"> Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1003086">The scenario configuration (.config) file for the sample scenario should include the following parameters:</a></div>
+      <div class="Declaration"><a name="1003098">EXPERIMENT-NAME cert-privateKey-generate</a></div>
+      <div class="Declaration"><a name="1003107">SIMULATION-TIME   10M</a></div>
+      <div class="Declaration"><a name="1003116">SEED   1</a></div>
+      <div class="Declaration"><a name="1003125">&nbsp;</a></div>
+      <div class="Declaration"><a name="1003134">COORDINATE-SYSTEM    CARTESIAN</a></div>
+      <div class="Declaration"><a name="1003143">TERRAIN-DIMENSIONS   (1500, 1500)</a></div>
+      <div class="Declaration"><a name="1003161">NODE-PLACEMENT FILE</a></div>
+      <div class="Declaration"><a name="1003170">NODE-POSITION-FILE cert-privateKey-generate.nodes</a></div>
+      <div class="Declaration"><a name="1003179">MOBILITY   FILE</a></div>
+      <div class="Declaration"><a name="1003197">LINK N2-190.0.1.0  { 1, 2 }</a></div>
+      <div class="Declaration"><a name="1003207">LINK-BANDWIDTH           112000</a></div>
+      <div class="Declaration"><a name="1003216">LINK-PROPAGATION-DELAY   50MS</a></div>
+      <div class="Declaration"><a name="1003234">MAC-PROTOCOL MAC802.3</a></div>
+      <div class="Declaration"><a name="1003244">SUBNET-DATA-RATE             10000000</a></div>
+      <div class="Declaration"><a name="1003253">SUBNET-PROPAGATION-DELAY     1US</a></div>
+      <div class="Declaration"><a name="1003262">PROMISCUOUS-MODE   NO</a></div>
+      <div class="Declaration"><a name="1003280">NETWORK-PROTOCOL   IP</a></div>
+      <div class="Declaration"><a name="1003289">IP-QUEUE-NUM-PRIORITIES   3</a></div>
+      <div class="Declaration"><a name="1003298">IP-QUEUE-PRIORITY-QUEUE-SIZE   50000</a></div>
+      <div class="Declaration"><a name="1003307">IP-QUEUE-TYPE   FIFO</a></div>
+      <div class="Declaration"><a name="1003316">IP-QUEUE-SCHEDULER   STRICT-PRIORITY</a></div>
+      <div class="Declaration"><a name="1003325">IP-FORWARDING YES</a></div>
+      <div class="Declaration"><a name="1003334">ROUTING-PROTOCOL   OSPFv2</a></div>
+      <div class="Declaration"><a name="1003343">&nbsp;</a></div>
+      <div class="Declaration"><a name="1003352">PKI-ENABLED YES</a></div>
+      <div class="Declaration"><a name="1003361">PKI-CONFIGURATION-FILE signEncrypt.pki</a></div>
+      <div class="BodyAfterHead"><a name="1003379">The PKI configuration file, signEncrypt.pki, is:</a></div>
+      <div class="Declaration"><a name="1003391">&nbsp;</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003400">[1] PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT 2</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003412">[1] PRECONFIGURED-CERTIFICATE-FILE-TYPE[0] PEM</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003423">[1] PRECONFIGURED-CERTIFICATE-FILE[0] cert4.pem</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003434">[1] PRECONFIGURED-PRIVATE-KEY-FILE[0] pkey4.pem</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1012969">[1] PRECONFIGURED-CERTIFICATE-FILE-TYPE[1] P12</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1012970">[1] PRECONFIGURED-CERTIFICATE-FILE[1] CSS-000000011-SecretComm.p12</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1012971"> </a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003479">[1] PRECONFIGURED-SHARED-CERTIFICATE-COUNTS 1</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003490">[1] PRECONFIGURED-SHARED-CERTIFICATE-FILE-TYPE[0] PEM</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003501">[1] PRECONFIGURED-SHARED-CERTIFICATE-FILE[0] sharedcert5.pem</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003512">&nbsp;</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003521">[2] PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT  1</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003533">[2] PRECONFIGURED-CERTIFICATE-FILE-TYPE[0] PEM</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003544">[2] PRECONFIGURED-CERTIFICATE-FILE[0] cert5.pem</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003555">[2] PRECONFIGURED-PRIVATE-KEY-FILE[0] pkey5.pem</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003566">&nbsp;</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003575">[2] PRECONFIGURED-SHARED-CERTIFICATE-COUNTS 2</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003586">[2] PRECONFIGURED-SHARED-CERTIFICATE-FILE-TYPE[0] PEM</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1003598">[2] PRECONFIGURED-SHARED-CERTIFICATE-FILE[0] sharedcert4.pem</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1012965">[2] PRECONFIGURED-SHARED-CERTIFICATE-FILE-TYPE[1] P7B</a></div>
+      <div class="Declaration" style="text-indent: -18.75024pt"><a name="1012966">[2] PRECONFIGURED-SHARED-CERTIFICATE-FILE[1] CSS-000000011-SecretComm.p7b</a></div>
+      <div class="Heading3Numbered">3.6.7.3  <a name="1003634">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1003647">To configure the sample scenario in GUI, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1003656">Place two default nodes.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003670">Create a file, signEncrypt.pki, as described in Section </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'PKI.html#1013077', '');" title="Public Key Infrastructure (PKI) Model">Section&nbsp;3.6.7.2</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003688">For each of the nodes, go to </a><span style="font-weight: bold">Default Device Properties Editor &gt; Node Configuration &gt; Network Layer &gt; Cyber</span> (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'PKI.html#1015360', '');" title="Public Key Infrastructure (PKI) Model">Figure&nbsp;3-10</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Indented_Sub1__0028first_0029_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Indented_Sub1__0028first_0029_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Indented_Sub1__0028first_0029_inner"><a name="1003712">Set </a><span style="font-weight: bold">Enable PKI</span> to <span style="font-weight: bold">Yes</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Indented_Sub1_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Indented_Sub1_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Indented_Sub1_inner"><a name="1003726">Set </a><span style="font-weight: bold">PKI Configuration File </span>to<span style="font-weight: bold"> </span>signEncrypt.pki.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">3.6.8  <a name="1003751">Scenarios Included in </a><span class="Variable">EXata</span></div>
+      <div class="BodyAfterHead"><a name="1015137">The </a><span class="Variable">EXata</span> distribution includes several sample scenarios for the PKI model. All scenarios are located in the directory <span class="Variable">EXATA_HOME</span>/scenarios/cyber/pki. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'PKI.html#1015147', '');" title="Public Key Infrastructure (PKI) Model">Table&nbsp;3-31</a></span> lists the sub-directory where each scenario is located.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-31.&nbsp;&nbsp;<a name="1015147">PKI Scenarios Included in </a><span class="Variable">EXata</span>&nbsp;</div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 107.99928pt">
+            <div class="CellHeading"><a name="1015151">Scenario</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 360.00072pt">
+            <div class="CellHeading"><a name="1015153">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015195">SignEncrypt</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015197">Shows PKI configuration for pem/ p12/P7B certificate files which can be used by any application to sign/verify or encrypt/decrypt data.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015199">pki-certificate-generation</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015201">Shows certificates and private key generation.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015203">pki-signencrypt-single</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1015205">Shows PKI configuration for single certificate file which can be used by any application to sign/verify or encrypt/decrypt data.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1017757">Passphrase\pki-certificate-generation</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1017759">Shows certiface and private key (both RSA and DSA) generation of PKI.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1017753">Passphrase\pki-signencrypt-single</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1017755">Shows sign/verification and encryption/decryption of PKI using single certificate file.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">3.6.9  <a name="1003965">References</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1003974">RFC 5280: Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003980">RFC 2510: Internet X.509 Public Key Infrastructure Certificate Management Protocols</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003986">RFC 2459: Internet X.509 Public Key Infrastructure Certificate and CRL Profile</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003989">Article on Public Key Infrastructure (</a><span class="Hyperlink">http://en.wikipedia.org/wiki/Public_key_infrastructure</span>) </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">5.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1015304">Article on Public Key Cryptography (</a><span class="Hyperlink">http://en.wikipedia.org/wiki/Public-key_cryptography</span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">6.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1015306">Microsoft’s Technical Article on PKI (</a><span class="Hyperlink">http://technet.microsoft.com/en-us/library/cc779826(WS.10).aspx)</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

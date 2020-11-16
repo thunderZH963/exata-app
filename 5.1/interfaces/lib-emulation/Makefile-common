@@ -1,0 +1,59 @@
+LIB_EMULATION_DIR    = ../interfaces/lib-emulation
+
+#
+## common sources
+#
+LIB_EMULATION_SRCS = \
+../main/socketlayer.cpp \
+../libraries/developer/src/app_eftp.cpp \
+../libraries/developer/src/app_ehttp.cpp \
+../libraries/developer/src/app_etelnet.cpp \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_advanced.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_asn1.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_802.11.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_802.1q.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_802.1x.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_802.2.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_802.3.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_arp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_bgp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_cdp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_data.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_dhcp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_dns.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_ethernet.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_fddi.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_gre.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_icmp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_igmp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_ip.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_ipsec.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_isl.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_mpls.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_ntp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_ospf.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_rip.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_rpc.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_snmp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_stp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_tcp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_token_ring.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_build_udp.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_checksum.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_cq.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_crc.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_error.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_if_addr.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_init.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_internal.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_pblock.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_port_list.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_raw.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_resolve.c \
+$(LIB_EMULATION_DIR)/libnet/src/libnet_write.c
+
+LIB_EMULATION_INCLUDES = \
+-I$(LIB_EMULATION_DIR)/libnet/include \
+-I$(LIB_EMULATION_DIR)/libnet/include/libnet \
+-I$(LIB_EMULATION_DIR)/libpcap/include
+

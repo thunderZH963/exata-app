@@ -1,0 +1,10 @@
+#
+# Define LTE Library models.
+#
+
+include ../libraries/lte/Makefile-common
+
+ADDON_OPTIONS   = $(ADDON_OPTIONS) $(LTE_OPTIONS)
+ADDON_SRCS      = $(ADDON_SRCS) $(LTE_SRCS)
+ADDON_INCLUDES  = $(ADDON_INCLUDES) $(LTE_INCLUDES)
+

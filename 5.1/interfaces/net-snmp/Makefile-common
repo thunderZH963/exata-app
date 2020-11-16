@@ -1,0 +1,118 @@
+NETSNMP_INTERFACE_OPTIONS = -DNETSNMP_INTERFACE -DHAVE_AES
+
+NETSNMP_INTERFACE_DIR    = ../interfaces/net-snmp
+
+NETSNMP_INTERFACE_SRCDIR = $(NETSNMP_INTERFACE_DIR)/src
+NETSNMP_INTERFACE_NETSNMP_SRCDIR = $(NETSNMP_INTERFACE_SRCDIR)/net-snmp
+
+
+NETSNMP_INTERFACE_SRCS = \
+$(NETSNMP_INTERFACE_SRCDIR)/app_netsnmp.cpp \
+$(NETSNMP_INTERFACE_SRCDIR)/netSnmpAgent.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_vars_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/agent_registry_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_api_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/null_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/agent_handler_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_agent_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/bulk_to_next.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/agent_read_config_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/agent_trap_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/read_config_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/mib_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/parse_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/table_data_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/callback_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/default_store_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/mt_support_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_client_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_enum_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_secmod_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/system_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/tools_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/data_list_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/serialize_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/all_helpers_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/read_only_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/table_dataset_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/oid_stash_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/table_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmpv3_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/mib_modules_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/watcher_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/scalar_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/updates_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/instance_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/containers_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_alarm_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/vacm_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_service_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmpusm_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/lcd_time_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/keytools_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/scapi_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/container_binary_array_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/container_list_ssll_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/container_null_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/asn1_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_transport_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_auth_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmpCallbackDomain_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/vacm_conf_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/snmp_parse_args_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/ipAddr_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/var_route_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/scalar_group_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/old_api_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/cache_handler_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/stash_cache_netsnmp.cpp \
+$(NETSNMP_INTERFACE_NETSNMP_SRCDIR)/stash_to_next_netsnmp.cpp \
+$(NETSNMP_INTERFACE_SRCDIR)/MIBII/at_netsnmp.cpp \
+$(NETSNMP_INTERFACE_SRCDIR)/MIBII/interfaces_netsnmp.cpp \
+$(NETSNMP_INTERFACE_SRCDIR)/MIBII/ip_netsnmp.cpp \
+$(NETSNMP_INTERFACE_SRCDIR)/MIBII/snmp_mib_netsnmp.cpp \
+$(NETSNMP_INTERFACE_SRCDIR)/MIBII/system_mib_netsnmp.cpp \
+$(NETSNMP_INTERFACE_SRCDIR)/MIBII/tcp_netsnmp.cpp \
+$(NETSNMP_INTERFACE_SRCDIR)/MIBII/udp_netsnmp.cpp \
+$(NETSNMP_INTERFACE_SRCDIR)/MIBII/icmp_netsnmp.cpp \
+
+
+NETSNMP_INTERFACE_INCLUDES =    -I$(NETSNMP_INTERFACE_DIR)/src \
+                -I$(NETSNMP_INTERFACE_NETSNMP_SRCDIR) \
+                -I$(NETSNMP_INTERFACE_DIR)/src/MIBII
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,83 @@
+!IFNDEF RTI_HOME
+!ERROR You must set the environment variable RTI_HOME to the RTI installation directory.
+!ENDIF
+
+!IFNDEF RTI_INCLUDE_DIR
+RTI_INCLUDE_DIR = $(RTI_HOME)\include
+!ENDIF
+
+!IFNDEF D
+RTI_HLA13_INCLUDE_DIR = $(RTI_INCLUDE_DIR)\HLA13
+!ENDIF
+
+!IF !EXISTS( $(RTI_HLA13_INCLUDE_DIR)\RTI.hh )
+RTI_HLA13_INCLUDE_DIR = $(RTI_INCLUDE_DIR)
+!IF !EXISTS( $(RTI_HLA13_INCLUDE_DIR)\RTI.hh )
+!ERROR Could not find the directory containing the RTI HLA13 include files. Please \
+set the environment variable RTI_HLA13_INCLUDE_DIR to the directory containing the \
+RTI include files.
+!ENDIF
+!ENDIF
+
+!IFNDEF RTI_HLA1516_INCLUDE_DIR
+RTI_HLA1516_INCLUDE_DIR = $(RTI_INCLUDE_DIR)\HLA1516
+!ENDIF
+
+!IF !EXISTS( $(RTI_HLA1516_INCLUDE_DIR)\RTI\RTI1516.h )
+RTI_HLA1516_INCLUDE_DIR = $(RTI_INCLUDE_DIR)
+!IF !EXISTS( $(RTI_HLA1516_INCLUDE_DIR)\RTI\RTI1516.h )
+!ERROR Could not find the directory containing the RTI HLA1516 include files. Please \
+set the environment variable RTI_HLA1516_INCLUDE_DIR to the directory containing the \
+RTI include files.
+!ENDIF
+!ENDIF
+
+!IFNDEF RTI_LIB_DIR
+RTI_LIB_DIR = $(RTI_HOME)\lib
+!ENDIF
+
+!IF !EXISTS( $(RTI_LIB_DIR) )
+!ERROR Could not find the directory containing the RTI library files. Please \
+set the environment variable RTI_LIB_DIR to the directory containing the RTI \
+library files.
+!ENDIF
+
+#
+# Look for the MaK 64 bit RTI for HLA13
+!IF !DEFINED( RTI_HLA13_LIBRARY ) && "$(ARCH)" == "windows-x64" && EXISTS( $(RTI_LIB_DIR)\libRTI-NG_64.lib )
+RTI_HLA13_LIBRARY = libRTI-NG_64.lib libFedTime_64.lib
+#
+# Look for the MaK 32 bit RTI for HLA13
+!ELSEIF !DEFINED( RTI_HLA13_LIBRARY ) &&  EXISTS( $(RTI_LIB_DIR)\libRTI-NG.lib )
+RTI_HLA13_LIBRARY = libRTI-NG.lib libFedTime.lib
+#
+# Some other RTI
+!ELSEIF !DEFINED( RTI_HLA13_LIBRARY )
+!ERROR Could not find the RTI library for HLA13 in $(RTI_LIB_DIR). Please set the \
+environment variable RTI_HLA13_LIBRARY to the name of the RTI library and the \
+environment variable RTI_LIB_DIR to the directory containing the RTI library \
+files.
+!ENDIF
+
+#
+# Look for the MaK 64 bit RTI for HLA1516
+!IF !DEFINED( RTI_HLA1516_LIBRARY ) && "$(ARCH)" == "windows-x64" && EXISTS( $(RTI_LIB_DIR)\librti1516_64.lib )
+RTI_HLA1516_LIBRARY = librti1516_64.lib libfedtime1516_64.lib
+#
+# Look for the MaK 32 bit RTI for HLA1516
+!ELSEIF !DEFINED( RTI_HLA1516_LIBRARY ) &&  EXISTS( $(RTI_LIB_DIR)\librti1516.lib )
+RTI_HLA1516_LIBRARY = librti1516.lib libfedtime1516.lib
+#
+
+# Some other RTI
+!ELSEIF !DEFINED( RTI_HLA13_LIBRARY )
+!ERROR Could not find the RTI library for HLA1516 in $(RTI_LIB_DIR). Please set the \
+environment variable RTI_HLA1516_LIBRARY to the name of the RTI library and the \
+environment variable RTI_LIB_DIR to the directory containing the RTI library \
+files.
+!ENDIF
+
+!IFNDEF RTI_DEFINES
+RTI_DEFINES = -DRTI_USES_STD_FSTREAM
+!ENDIF
+

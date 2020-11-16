@@ -1,0 +1,25 @@
+# Copyright (c) 2001-2013, SCALABLE Network Technologies, Inc.  All Rights Reserved.
+#                          600 Corporate Pointe
+#                          Suite 1200
+#                          Culver City, CA 90230
+#                          info@scalable-networks.com
+#
+# This source code is licensed, not sold, and is subject to a written
+# license agreement.  Among other things, no portion of this source
+# code may be copied, transmitted, disclosed, displayed, distributed,
+# translated, used as the basis for a derivative work, or used, in
+# whole or in part, for any program or purpose other than its intended
+# use in compliance with the license agreement as part of the QualNet
+# software.  This source code and certain of the algorithms contained
+# within it are confidential trade secrets of Scalable Network
+# Technologies, Inc. and may not be used as the basis for any other
+# software, hardware, product or service.
+
+1 0 (369.47, 606.03, 0.0) 0 0
+2 0 (582.26, 570.16, 0.0) 0 0
+2 20S (577.922077922078, 476.19047619047615, 0.0) 0.0 0.0
+2 40S (575.7575757575759, 346.32034632034606, 0.0) 0.0 0.0
+2 50S (567.099567099567, 225.10822510822527, 0.0) 0.0 0.0
+3 0 (777.72, 620.72, 0.0) 0 0
+4 0 (423.4, 873.16, 0.0) 0 0
+5 0 (740.61, 892.28, 0.0) 0 0

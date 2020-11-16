@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Credential Model: IFF Certificate</title>
+    <link rel="StyleSheet" href="css/Certificate.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch3%20-%20Newtork%20Layer%20Models.html#1054621">3	Network Layer Models</a> &gt; 3.1  Credential Model: IFF Certificate</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">3.1  <a name="1054621">Credential Model: IFF Certificate</a></div>
+      <div class="Body"><a name="1054625">The </a><span class="Variable">EXata</span> Certificate model is based on WTLSCert certificate defined in WAP WTLS WAP-199-WTLS Wireless Application Protocol Wireless Transport Layer Security Specification.</div>
+      <div class="Heading2Numbered">3.1.1  <a name="1054641">Description</a></div>
+      <div class="BodyAfterHead"><a name="1054642">The certificate model implements credentials for the purpose of authentication, IFF (Identification of Friend and Foe), authorization, access control, accounting and auditing. In digital signature systems built on top of public key crypto systems, a signature signed by private key SK can be verified by corresponding public key PK, and the signature cannot be forged by an adversary without knowing the signing key SK.</a></div>
+      <div class="Body"><a name="1015789">In a secured wireless network, each node must be capable of authenticating itself to its colleague network members, and vice versa. In </a><span class="Variable">EXata</span>'s Network Security modeling, every network member must acquire a signed credential from an offline authority or Certificate Authority (CA) prior to network operations. The credential is a certificate signed by the CA's private key <span style="font-style: italic">SK</span><span style="font-style: italic; vertical-align: sub">CA</span>, and can be verified by the well-known public key <span style="font-style: italic">PK</span><span style="font-style: italic; vertical-align: sub">CA</span>, which is assumed to be cached by every network member's local storage. In summary, at the time of <span style="font-style: italic">a priori</span> offline registration, network member <span style="font-style: italic">X</span> obtains <span style="font-style: italic">PK</span><span style="font-style: italic; vertical-align: sub">CA</span> (CA's public key) and <span style="font-style: italic">CERT</span><span style="font-style: italic; vertical-align: sub">X</span> (X's own certificate signed by <span style="font-style: italic">SK</span><span style="font-style: italic; vertical-align: sub">CA</span>). </div>
+      <div class="Body"><a name="1015791">The certificate </a><span style="font-style: italic">CERT</span><span style="font-style: italic; vertical-align: sub">X</span> is in the form of<span style="font-style: italic"> [X,pk</span><span style="vertical-align: sub">X</span><span style="font-style: italic">,validtime] signed_by_SK</span><span style="font-style: italic; vertical-align: sub">CA</span> where unique id <span style="font-style: italic">X</span> is assigned to a node, <span style="font-style: italic">pk</span><span style="font-style: italic; vertical-align: sub">X</span> is the certified public key of the id <span style="font-style: italic">X</span>, and <span style="font-style: italic">validtime</span> limits the valid period of the certificate. In <span class="Variable">EXata</span>, <span style="font-style: italic">X</span> is a unique network address, like an IP address. For example, on a node having multiple network interfaces with IP addresses 11.11.11.11 and 22.22.22.22, the node must obtain two different certificates for both of its network interfaces, respectively. </div>
+      <div class="Body"><a name="1015794">This certificate modeling is provided for authentication services in the entire protocol stack. The current implementation uses a short certificate format defined by WTLS. Certificate renewal and revocation are not implemented. Distributed solutions of certificate renewal and revocation are discussed in Ubiquitous and Robust Security Architecture (URSA) and similar proposals relying on threshold cryptography. URSA proposes to distribute partial shares of the certificate signing key </a><span style="font-style: italic">SK</span><span style="font-style: italic; vertical-align: sub">CA</span> to <span style="font-style: italic">n</span> nodes playing the role of partial CA, and <span style="font-style: italic">k</span> out of <span style="font-style: italic">n</span> partial CAs can produce <span style="font-style: italic">k</span> partial certificates which combine into a full certificate (or certificate-revocation/counter-certificate). The scheme tolerates up to <span style="font-style: italic">k-1</span> node intrusions and <span style="font-style: italic">n-k</span> node crashes.</div>
+      <div class="Heading2Numbered">3.1.2  <a name="1055829">Features and Assumptions</a></div>
+      <div class="BodyAfterHead"><a name="1055830">This section describes the implemented features, omitted features, assumptions and limitations of the Certificate model.</a></div>
+      <div class="Heading3Numbered">3.1.2.1  <a name="1055831">Implemented Features</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056704">WAP WTLS certificate format</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1055832">Certificate for each IP interface</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">3.1.2.2  <a name="1055833">Omitted Features</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056715">X.509 certificate format</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056716">Actual cryptography</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1055834">Certificate Revocation List (CRL)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">3.1.2.3  <a name="1056735">Assumptions and Limitations</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056743">Actual cryptography can be added if the crypto module does not require SNT to open all sources.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056736">The required crypto modules are MD5, SHA1, AES, 3DES, and Elliptic Curve Cryptography.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">3.1.3  <a name="1056737">Supplemental Information</a></div>
+      <div class="BodyAfterHead"><a name="1055821">None.</a></div>
+      <div class="Heading2Numbered">3.1.4  <a name="1036894">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1055863">To enable Certificate model, include the following parameter in the scenario configuration (.config) file:</a></div>
+      <div class="Declaration"><a name="1055864">&nbsp;</a></div>
+      <div class="Declaration"><a name="1055865">[&lt;Qualifier&gt;] CERTIFICATE-ENABLED    YES</a></div>
+      <div class="Declaration"><a name="1055891">&nbsp;</a></div>
+      <div class="BodyAfterHead"><a name="1055855">The scope of this parameter declaration can be Global, Node, Subnet, or Interface. See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Ch1%20-%20Overview.01.2.html#1061390', '');" title="Conventions Used">Section&nbsp;1.2.1.1</a></span> for a description of <span style="font-family: &quot;Courier New&quot;">&lt;Qualifier&gt;</span> for each scope.</div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1055912">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1055914">The default value of this parameter is NO.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="1055967">Certificate-specific Parameters</a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Certificate.html#1056050', '');" title="Credential Model: IFF Certificate" name="1055997">Table&nbsp;3-1</a></span> lists the Certificate parameters specified in the scenario configuration (.config) file. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Ch1%20-%20Overview.01.2.html#1061462', '');" title="Conventions Used">Section&nbsp;1.2.1.3</a></span> for a description of the format used for the parameter table.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-1.&nbsp;&nbsp;<a name="1056050">Certificate-specific Parameters</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1056056">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 86.4pt">
+            <div class="CellHeading"><a name="1056058">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 219.6pt">
+            <div class="CellHeading"><a name="1056060">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="1056158">CERTIFICATE-FILE-LOG</a></div>
+            <div class="Cell_2nd_Line"><a name="1056159">Optional</a></div>
+            <div class="CellRun-In_Plain"><a name="1056160">Scope</a></div>
+            <div class="CellBody"><a name="1056161">All</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056165">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1056166">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="1056167">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="1056168">Default: </a></div>
+            <div class="CellBody_Courier_Indented"><a name="1058535">YES</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1056186">Specifies whether the certificate contents are logged in a file.</a></div>
+            <div class="CellBody"><a name="1056171">YES	: If this parameter is set to YES, the certificate contents are logged in the file “default.certificate.&lt;interface-address&gt;”. </a></div>
+            <div class="CellBody"><a name="1056172">NO	: If this parameter is set to NO, no certificate log file is generated.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="1051156">Examples of Parameter Usage</a></div>
+      <div class="BodyAfterHead"><a name="1056800">The following configuration enables certificate model in a wireless subnet:</a></div>
+      <div class="Declaration"><a name="1056801">[ N8-192.0.0.0 ] CERTIFICATE-ENABLED YES</a></div>
+      <div class="Declaration"><a name="1056792">[ N8-192.0.0.0 ] CERTIFICATE-FILE-LOG YES</a></div>
+      <div class="Heading2Numbered">3.1.5  <a name="1056303">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1056982">To configure the Certificate model parameters, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1056983">Go to one of the following locations:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1056990">To set properties at the subnet level, go to </a><span class="Menu_Item">Wireless Subnet Properties Editor </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Network Layer </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Cyber</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1056997">To set properties at the node level, go to </a><span class="Menu_Item">Default Device Properties Editor </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Node Configuration </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Cyber</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1056998">To set properties at the interface level, go to one of the following locations:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_Sub1_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_Sub1_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_Sub1_inner"><span class="Menu_Item"><a name="1057011">Interface Properties Editor </a></span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Interfaces </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Interface # </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Network Layer </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Cyber</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_Sub1_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_Sub1_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_Sub1_inner"><span class="Menu_Item"><a name="1057024">Default Device Properties Editor </a></span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Interfaces </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Interface # </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Network Layer </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Cyber</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1057025">&nbsp;</a></div>
+      <div class="NumberedCont"><a name="1057026">In this section, we show how to configure IFF Certification parameters for a specific node using the Default Device Properties Editor. Parameters can be set in the other properties editors in a similar way.</a></div>
+      <div class="Anchor"><a name="1057027">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1057031">Set Enable IFF Certification to Yes and set the dependent parameters listed in the </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Certificate.html#1057043', '');" title="Credential Model: IFF Certificate">Table&nbsp;3-2</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1057032">Set </a><span class="Field">Do Certificate File Log</span> to <span class="Value">Yes</span>, if certificate contents are needed to be logged in a file. <br />Otherwise, set it to <span class="Value">No</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1057036"><img class="Default" src="images/EnableCertificateModel.png" width="597" height="323" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-1.&nbsp;&nbsp;<a name="1057038">Enable Certificate Model</a></div>
+      <div class="Anchor"><a name="1057060">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-2.&nbsp;&nbsp;<a name="1057043">Command Line Equivalent of IFF Certification Parameters</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 180pt">
+            <div class="CellHeading"><a name="1057049">GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 90pt">
+            <div class="CellHeading"><a name="1057051">Scope of GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 198pt">
+            <div class="CellHeading"><a name="1057053">Command Line Parameter</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Normal" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 8.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1057055">Do Certificate File Log</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Normal" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 8.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1057057">Node, Subnet, Interface</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Normal" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 8.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1057059">CERTIFICATE-FILE-LOG</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">3.1.6  <a name="1056633">Statistics</a></div>
+      <div class="BodyAfterHead"><a name="1056375">There are no statistics generated for the Certificate model.</a></div>
+      <div class="Heading2Numbered">3.1.7  <a name="1051254">Scenarios Included in </a><span class="Variable">EXata</span></div>
+      <div class="BodyAfterHead"><a name="1051258">The </a><span class="Variable">EXata</span> distribution includes several sample scenarios for the Certificate model. All scenarios are located in the directory <span class="Variable">EXATA_HOME</span>/scenarios/cyber/certification. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Certificate.html#1051271', '');" title="Credential Model: IFF Certificate">Table&nbsp;3-3</a></span> lists the sub-directory where each scenario is located.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-3.&nbsp;&nbsp;<a name="1051271">Certificate Model Scenarios&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 136.49976pt">
+            <div class="CellHeading"><a name="1051275">Scenario Sub-directory</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 331.50024pt">
+            <div class="CellHeading"><a name="1051277">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051279">wtls-interface-test</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051281">Shows the functionality of WTLS certification implementation in a scenario when certificate is enabled on the interfaces.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051283">wtls-node-test</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051285">Shows the functionality of WTLS certification implementation in a wireless scenario when certificate is enabled on all the nodes.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051287">wtls-subnet-test</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051289">Shows the functionality of WTLS certification implementation in a scenario when certificate is enabled on the subnet.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051291">wtls-wired-test</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1051293">Shows the functionality of WTLS certification implementation in a wired scenario when certificate is enabled on all the nodes.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">3.1.8  <a name="1056505">References</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1056866">[WTLS] WAP Forum. Wireless Transport Layer Security (Version 06-Apr-2001), Wireless Application Protocol, WAP-261-WTLS-20010406-a.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056506">[SanzgiriDLSR02] Kimaya Sanzgiri, Bridget Dahill, Brian Neil Levine, Clay Shields, Elizabeth Royer, “A Secure Routing Protocol for Ad Hoc Networks”, pp.78-89, in Proceedings of The Tenth IEEE International Conference on Network Protocols (ICNP), 2002. November 12-15. Paris, France.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+VRLINK_INTERFACE_DIS_DSO_NAME = vrlink_interface-dis.dll
+VRLINK_INTERFACE_HLA13_DSO_NAME = vrlink_interface-hla13.dll
+VRLINK_INTERFACE_HLA1516_DSO_NAME = vrlink_interface-hla1516.dll
+
+VRLINK_VLUTIL_DLL = vlutil.dll
+VRLINK_VLUTIL_D_DLL = vlutild.dll
+VRLINK_VL_DLL = vl.dll
+VRLINK_MATRIX_DLL = matrix.dll
+VRLINK_MTL_DLL = mtl.dll
+VRLINK_VLDIS_DLL = vlDIS.dll
+VRLINK_VLHLA13_DLL = vlHLA13.dll
+VRLINK_VLHLA1516_DLL = vlHLA1516.dll
+
+!IF "$(ARCH)" == "windows-x64"
+VRLINK_LIBXML_DLL = libxml2_64.dll
+VRLINK_ICONV_DLL = iconv_64.dll
+!ELSE
+VRLINK_LIBXML_DLL = libxml2.dll
+VRLINK_ICONV_DLL = iconv.dll
+!ENDIF
+
+../bin/$(VRLINK_INTERFACE_DIS_DSO_NAME): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_INTERFACE_DIS_DSO_NAME) ..\bin\$(VRLINK_INTERFACE_DIS_DSO_NAME)
+
+../bin/$(VRLINK_INTERFACE_HLA13_DSO_NAME): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_INTERFACE_HLA13_DSO_NAME) ..\bin\$(VRLINK_INTERFACE_HLA13_DSO_NAME)
+
+../bin/$(VRLINK_INTERFACE_HLA1516_DSO_NAME): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_INTERFACE_HLA1516_DSO_NAME) ..\bin\$(VRLINK_INTERFACE_HLA1516_DSO_NAME)
+
+../bin/$(VRLINK_VLUTIL_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_VLUTIL_DLL) ..\bin\$(VRLINK_VLUTIL_DLL)
+
+../bin/$(VRLINK_VLUTIL_D_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_VLUTIL_D_DLL) ..\bin\$(VRLINK_VLUTIL_D_DLL)
+        
+../bin/$(VRLINK_VL_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_VL_DLL) ..\bin\$(VRLINK_VL_DLL)        
+
+../bin/$(VRLINK_MATRIX_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_MATRIX_DLL) ..\bin\$(VRLINK_MATRIX_DLL)
+
+../bin/$(VRLINK_MTL_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_MTL_DLL) ..\bin\$(VRLINK_MTL_DLL)
+
+../bin/$(VRLINK_LIBXML_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_LIBXML_DLL) ..\bin\$(VRLINK_LIBXML_DLL)        
+        
+../bin/$(VRLINK_ICONV_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_ICONV_DLL) ..\bin\$(VRLINK_ICONV_DLL) 
+
+../bin/$(VRLINK_VLDIS_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_VLDIS_DLL) ..\bin\$(VRLINK_VLDIS_DLL) 
+
+../bin/$(VRLINK_VLHLA13_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_VLHLA13_DLL) ..\bin\$(VRLINK_VLHLA13_DLL) 
+
+../bin/$(VRLINK_VLHLA1516_DLL): force
+        copy ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_VLHLA1516_DLL) ..\bin\$(VRLINK_VLHLA1516_DLL) 
+
+#
+# Targets
+#
+VRLINK_INTERFACE_SHARED_OBJECTS = \
+    ../bin/$(VRLINK_INTERFACE_DIS_DSO_NAME) \
+    ../bin/$(VRLINK_INTERFACE_HLA13_DSO_NAME) \
+    ../bin/$(VRLINK_INTERFACE_HLA1516_DSO_NAME) \
+    ../bin/$(VRLINK_VLUTIL_DLL) \
+    ../bin/$(VRLINK_VLUTIL_D_DLL) \
+    ../bin/$(VRLINK_VL_DLL) \
+    ../bin/$(VRLINK_MATRIX_DLL) \
+    ../bin/$(VRLINK_MTL_DLL) \
+    ../bin/$(VRLINK_LIBXML_DLL) \
+    ../bin/$(VRLINK_ICONV_DLL) \
+    ../bin/$(VRLINK_VLDIS_DLL) \
+    ../bin/$(VRLINK_VLHLA13_DLL) \
+    ../bin/$(VRLINK_VLHLA1516_DLL) 
+
+ADDON_DEPS      = $(ADDON_DEPS) $(VRLINK_INTERFACE_SHARED_OBJECTS)
+
+clean-vrlink-all:
+    -del ..\bin\$(VRLINK_INTERFACE_DIS_DSO_NAME) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA13_DSO_NAME) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA1516_DSO_NAME) > NUL 2>&1    
+    -del ..\bin\$(VRLINK_VLUTIL_DLL) > NUL 2>&1
+    -del ..\bin\$(VRLINK_VLUTIL_D_DLL) > NUL 2>&1
+    -del ..\bin\$(VRLINK_VL_DLL) > NUL 2>&1
+    -del ..\bin\$(VRLINK_MATRIX_DLL) > NUL 2>&1
+    -del ..\bin\$(VRLINK_MTL_DLL) > NUL 2>&1
+    -del ..\bin\$(VRLINK_LIBXML_DLL) > NUL 2>&1
+    -del ..\bin\$(VRLINK_ICONV_DLL) > NUL 2>&1
+    -del ..\bin\$(VRLINK_VLDIS_DLL) > NUL 2>&1
+    -del ..\bin\$(VRLINK_VLHLA13_DLL) > NUL 2>&1
+    -del ..\bin\$(VRLINK_VLHLA1516_DLL) > NUL 2>&1 
+
+ADDONS_CLEAN = $(ADDONS_CLEAN) clean-vrlink-all
+
+force :

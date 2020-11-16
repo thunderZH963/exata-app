@@ -1,0 +1,20 @@
+GATEWAY_INTERFACE_OPTIONS = -DGATEWAY_INTERFACE
+
+GATEWAY_INTERFACE_DIR    = ../interfaces/gateway
+GATEWAY_INTERFACE_SRCDIR = ../interfaces/gateway/src
+
+IPNE_INTERFACE_DIR = ../interfaces/ipne
+
+#
+# common sources
+#
+GATEWAY_INTERFACE_SRCS = \
+$(GATEWAY_INTERFACE_SRCDIR)/internetgateway.cpp \
+$(GATEWAY_INTERFACE_SRCDIR)/gateway_packet.cpp \
+$(GATEWAY_INTERFACE_SRCDIR)/gateway_osutils.cpp \
+$(GATEWAY_INTERFACE_SRCDIR)/gateway_interface.cpp \
+$(GATEWAY_INTERFACE_SRCDIR)/gateway_nat.cpp
+
+GATEWAY_INTERFACE_INCLUDES = \
+-I$(GATEWAY_INTERFACE_DIR)/src 
+

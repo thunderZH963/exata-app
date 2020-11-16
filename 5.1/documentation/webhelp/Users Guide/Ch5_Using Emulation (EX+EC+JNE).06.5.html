@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Connecting to the Internet</title>
+    <link rel="StyleSheet" href="css/Ch5_Using%20Emulation%20(EX+EC+JNE).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch5_Using%20Emulation%20(EX+EC+JNE).06.1.html#1024018">5	Using Emulation</a> &gt; 5.4  Connecting to the Internet</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">5.4  <a name="1024018">Connecting to the Internet</a></div>
+      <div class="BodyAfterHead"><span class="Variable"><a name="1024041">EXata</a></span> allows Internet-based applications running on operational hosts to connect to the Internet via the emulated network. This allows applications like instant messengers, streaming video, VoIP, and others to run over <span class="Variable">EXata</span> just like in the real world. This is achieved by designating one node in the emulated network as an <span style="font-style: italic">Internet Gateway Node</span> that serves as a boundary node between the emulated nodes within <span class="Variable">EXata</span> and the Internet. Any traffic, originating from within the <span class="Variable">EXata</span> scenario or from an operational host, destined to the Internet is routed to this gateway node and from there routed to the Internet. Similarly, any response from the Internet is received by the Internet Gateway node and subsequently forwarded to the intended emulated node. </div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1011505', '');" title="Connecting to the Internet" name="1024073">Figure&nbsp;5-46</a></span> illustrates the <span class="Variable">EXata</span> Internet Gateway feature. On the emulation server, the <span class="Variable">EXata</span> process is executing a scenario that models an emulated network. One of the nodes is connected with an operational host that is running an Internet-based application. A different node in the emulated network is designated as the Internet Gateway node that manages all the traffic flows between the emulated network and the Internet. <span class="Variable">EXata</span> transparently manages the necessary Network Address Translation (NAT).</div>
+      <div class="Anchor"><a name="1024067"><img class="Default" src="images/diagram-internet-gateway.png" width="400" height="300" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-46.&nbsp;&nbsp;<a name="1011505">Illustration of the Internet Gateway</a></div>
+      <div class="BodyAfterHead"><a name="1040519">To configure a</a>n <span class="Variable">EXata</span> Internet Gateway, the following conditions should be true:</div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1040520">The emulation server should be connected to the Internet. This is can be verified by the opening a web browser and pointing it to any website. If the emulation server cannot reach the Internet, consult your network administrator.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1040521">The network interface card on the emulation server that is used to connect to the Internet should not be shared with any operational host. Therefore, at least two network interface cards are required on the emulation server: one to connect to the Internet, and the remaining to connect to the operational hosts.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1050621">The operational host should not be running any application (such as a routing protocol) that modifies the routing table on the operational host.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1040401', '');" title="Connecting to the Internet" name="1028008">Section&nbsp;5.4.1</a></span> describes how to configure the Internet Gateway in Windows. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1122649', '');" title="Connecting to the Internet">Section&nbsp;5.4.2</a></span> describes how to configure the Internet Gateway in Linux. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1041017', '');" title="Connecting to the Internet">Section&nbsp;5.4.3</a></span> describes how to verify the configuration.</div>
+      <div class="Heading2Numbered">5.4.1  <a name="1040401">Internet Gateway Configuration for Windows</a></div>
+      <div class="BodyAfterHead"><a name="1122618">To configure the </a><span class="Variable">EXata</span> Internet Gateway on a Windows 7 or Windows 8 platform, perform the following steps:</div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1122622">Designate one node in the emulated network as the Internet Gateway Node. For configuring a gateway to an IPv4 network, the Internet Gateway Node must run IPv4 or Dual IP. For configuring a gateway to an IPv6 network, the Internet Gateway Node must run IPv6 or Dual IP. See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2006755', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.2</a></span> for details of configuring the Internet Gateway for the command line interface and the GUI.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1049499">If </a><span class="Variable">EXata</span> GUI is running, the selected node is highlighted on the canvas by an orange triangle (see node 15 in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1049508', '');" title="Connecting to the Internet">Figure&nbsp;5-47</a></span>). </div>
+      <div class="Anchor"><a name="1049503"><img class="Default" src="images/gui-set-internet-gateway-node.PNG" width="372" height="373" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-47.&nbsp;&nbsp;<span class="Variable"><a name="1049508">EXata</a></span> GUI Displaying the Internet Gateway Node</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1028016">Enable the firewall on the emulation server and configure it to drop any unsolicited packets from the outside. Configure the firewall to exempt the </a><span class="Variable">EXata</span> process. To achieve this, do the following:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1028017">Select </a><span class="Menu">Start</span><span class="Menu_D"> </span><span class="Bold">&gt;</span><span class="Menu" style="font-family: Arial; font-style: normal"> Control Panel</span><span class="Menu_D" style="font-family: Arial; font-style: normal"> </span><span class="Bold">&gt;</span><span class="Menu" style="font-family: Arial; font-style: normal"> Windows Firewall</span>. Click on <span class="Menu">Turn Windows Firewall on or off</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1123003"><img class="Default" src="images/TurnFirewallOnOff.gif" width="546" height="385" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-48.&nbsp;&nbsp;<a name="1123010">Controlling Windows Firewall</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1123017">Turn on Windows firewall.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1123080"><img class="Default" src="images/TurnFirewallOn.gif" width="546" height="385" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-49.&nbsp;&nbsp;<a name="1123107">Turn Windows Firewall On</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">c.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1123024">Navigate to the previous screen and calcite on </a><span class="Field">Allow a program or feature through Windows Firewall</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1123117"><img class="Default" src="images/Firwall-AllowFeatures.gif" width="546" height="385" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-50.&nbsp;&nbsp;<a name="1123146">Allow a Feature through Firewall</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">d.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1123124">In the next screen, examine the programs listed under </a><span class="Field">Allowed programs and features</span>. If exata.exe is listed, then select the access levels by checking the corresponding boxes and click <span class="Field">OK</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1123156"><img class="Default" src="images/AllowEXataThroughFirewall.gif" width="546" height="385" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-51.&nbsp;&nbsp;<a name="1123163">Allow EXata through Firewall</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">e.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1123204">If exata.exe is not listed under </a><span class="Field">Allowed programs and features</span>, then click on <span class="Field">Allow another program</span>. In the next screen, select exata.exe (if it is listed under <span class="Field">Programs</span>) or browse to exata.exe and click on <span class="Field">Add</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1123256"><img class="Default" src="images/Firewall-AllowAnotherProgram.gif" width="546" height="385" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-52.&nbsp;&nbsp;<a name="1123290">Allowing another Program through Firewall</a></div>
+      <div class="NumberedCont"><a name="1123263">Select the access levels by checking the corresponding boxes and click </a><span class="Field">OK</span>.</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1028020">Determine the addresses of the Domain Name Servers (DNS) on the emulation server as follows:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1028021">Open a command window and type </a><span class="Courier" style="font-weight: bold">ipconfig /all</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1028022">Locate the network connection that is used to connect to the Internet and note the DNS entries. An example is shown in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1040620', '');" title="Connecting to the Internet">Figure&nbsp;5-53</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1028026"><img class="Default" src="images/windows-ipconfig-all.PNG" width="534" height="264" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-53.&nbsp;&nbsp;<a name="1040620">DNS Address in Windows</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1040622">Apply the DNS address, obtained in the preceding step, on the operational host as follows: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1028030">Open the network configuration editor from </a><span class="Menu_D">Start &gt; Control Panel &gt; Network and Sharing Center &gt; Change adapter settings</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1122208">Select the network interface card that is used to connect to the emulation server, right-click and select </a><span class="Menu_D">Properties</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">c.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1122218"> In the </a><span class="Menu">Networking</span> tab, scroll down in the list to <span class="Menu">Internet Protocol Version 4 (TCP/IPv4)</span> or <span class="Menu">Internet Protocol Version 6 (TCP/IPv6)</span> and click the <span class="Menu">Properties</span> button. Select <span class="Menu">Use the following DNS server addresses</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">d.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1122212">Enter the DNS address obtained in previous step. An example using IPv4 addresses is shown in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1028035', '');" title="Connecting to the Internet">Figure&nbsp;5-54</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1028034"><img class="Default" src="images/windows-dns.PNG" width="323" height="363" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-54.&nbsp;&nbsp;<a name="1028035">Setting the DNS Address in Windows Operational Host</a></div>
+      <div class="Body"><a name="1122646">Verify the configuration, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1041017', '');" title="Connecting to the Internet">Section&nbsp;5.4.3</a></span>.</div>
+      <div class="Heading2Numbered">5.4.2  <a name="1122649">Internet Gateway Configuration for Linux</a></div>
+      <div class="BodyAfterHead"><a name="1122653">To configure the </a><span class="Variable">EXata</span> Internet Gateway on Linux, perform the following steps:</div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1040712">Designate one node in the emulated network as the Internet Gateway Node. See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2006755', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.2</a></span> for details of configuring the Internet Gateway for the command line interface and the GUI.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1049555">If </a><span class="Variable">EXata</span> GUI is running, the selected node is highlighted on the canvas by an orange triangle (see node 15 in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1049508', '');" title="Connecting to the Internet">Figure&nbsp;5-47</a></span>).</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1028053">Verify that the </a><span style="font-weight: bold">iptables</span> program is installed. Open a terminal window and type:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1028054">&nbsp;</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1028055">whereis iptables</a></span></div>
+      <div class="Declaration"><a name="1036158">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1036164">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1036166">The above command will print the location of this program, if it is installed, otherwise it will report it as missing. If iptables is not available on your computer, consult your system administrator on how to install this program.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1040754">	Determine the addresses of the Domain Name Servers (DNS) on the emulation server as follows:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1028060">Open a terminal window and type </a><span class="Courier" style="font-weight: bold">cat /etc/resolv.conf</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1028061">Note the IP addresses next to the string </a><span style="font-family: &quot;Courier New&quot;">namespace</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1028062">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1040791">Apply the DNS address, obtained in the preceding step, on the operational host as follows: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1028072">Open the </a><span style="font-style: italic">/etc/resolv.conf</span> file in your preferred editor. Comment out any existing lines (by typing <span style="font-family: &quot;Courier New&quot;; font-style: italic">#</span> at the beginning of the line). Enter new lines in the following format:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="1040849"> </a></div>
+      <div class="Declaration"><a name="1040866">nameserver &lt;dns-address&gt; </a></div>
+      <div class="Declaration"><a name="1040927">&nbsp;</a></div>
+      <div class="NumberedCont" style="margin-left: 28.8pt; text-indent: 0pt"><a name="1040859">where </a><span style="font-family: &quot;Courier New&quot;">&lt;dns-address&gt; </span>is the DNS-address obtained in the preceding step. Enter each DNS address on a separate line.</div>
+      <div class="NumberedCont" style="margin-left: 28.8pt; text-indent: 0pt"><a name="1040934">Save and close the file.</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1040821">Open a terminal window and type:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 18pt; text-transform: none; vertical-align: baseline"><a name="1035761">&nbsp;</a></div>
+      <div class="Command_Input" style="text-indent: 18pt"><span class="Courier" style="font-weight: bold"><a name="1040955">sudo service network restart</a></span></div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 18pt; text-transform: none; vertical-align: baseline"><a name="1035816">&nbsp;</a></div>
+      <div class="BulletedCont" style="text-indent: 29.455200000000005pt"><a name="1035773">If the above command fails, type:</a></div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 18pt; text-transform: none; vertical-align: baseline"><a name="1035801">&nbsp;</a></div>
+      <div class="Command_Input" style="text-indent: 18pt"><span class="Courier" style="font-weight: bold"><a name="1035802">/etc/init.d/networking restart</a></span></div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 18pt; text-transform: none; vertical-align: baseline"><a name="1035781">&nbsp;</a></div>
+      <div class="Anchor"><a name="1048457">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1048454">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1048456">If you are logged in as </a><span style="font-style: italic">root</span> in the terminal window, you can omit the <span class="Courier" style="font-weight: bold">sudo</span> keyword.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1048406">Verify the configuration, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1041017', '');" title="Connecting to the Internet">Section&nbsp;5.4.3</a></span>.</div>
+      <div class="Heading2Numbered">5.4.3  <a name="1041017">Verifying Internet Gateway Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1041033">To verify that the Internet Gateway is correctly configured, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1041044">Verify that the Internet Gateway is reachable from the external node (mapped to the operational host). To do this, from the operational host, start a command window application on the external node and type</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1120743">ping &lt;IPv4-address&gt;</a></span><span style="font-family: Arial; font-weight: normal">             (on Windows or Linux)</span></div>
+      <div class="NumberedCont" style="margin-left: 14.4pt; text-indent: 0pt"><a name="1120744">or</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1120745">ping6 &lt;IPv6-address&gt; </a></span><span style="font-family: Arial; font-weight: normal">         (on Windows)</span></div>
+      <div class="NumberedCont" style="margin-left: 14.4pt; text-indent: 0pt"><a name="1120804">or</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1120805">ping -6 &lt;IPv6-address&gt; </a></span><span style="font-family: Arial; font-weight: normal">     (on Linux)</span></div>
+      <div class="Example" style="margin-left: 14.4pt; text-indent: 0pt"><a name="1120866">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 417.6252pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 111.6252pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1120853">&lt;IPv4-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 306pt">
+            <div class="Body"><a name="1120858">IPv4 address of the Internet Gateway node assigned by </a><span class="Variable">EXata</span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1120860">&lt;IPv6-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1120865">IPv6 address of the Internet Gateway node assigned by </a><span class="Variable">EXata</span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1120867">&nbsp;</a></div>
+      <div class="NumberedCont"><a name="1120868"> If there is no response to the ping command, then select a different emulated node as the external node that is reachable from the Internet Gateway.</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1041122">From the operational host, start a web browser application to run on the external node. Enter the address of a web site in the browser. If the Internet Gateway configuration is correct, the specified web site will open in the browser. In addition, if </a><span class="Variable">EXata</span> GUI is running, traffic (indicated by blue arrows) will flow between the external node and the Internet Gateway.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

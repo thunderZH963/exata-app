@@ -1,0 +1,122 @@
+// Copyright (c) 2001-2013, SCALABLE Network Technologies, Inc.  All Rights Reserved.
+//                          600 Corporate Pointe
+//                          Suite 1205 
+//                          Culver City, CA 90230
+//                          info@scalable-networks.com
+//
+// This source code is licensed, not sold, and is subject to a written
+// license agreement.  Among other things, no portion of this source
+// code may be copied, transmitted, disclosed, displayed, distributed,
+// translated, used as the basis for a derivative work, or used, in
+// whole or in part, for any program or purpose other than its intended
+// use in compliance with the license agreement as part of the EXata
+// software.  This source code and certain of the algorithms contained
+// within it are confidential trade secrets of Scalable Network
+// Technologies, Inc. and may not be used as the basis for any other
+// software, hardware, product or service.
+
+;-------------------------------------------------------------------------------
+; ENETV.INF
+;
+; EXata Virtual Ethernet Adapter
+;-------------------------------------------------------------------------------
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Msft%
+DriverVer=07/23/2010,6.1.7600.16385
+DriverPackageType = PlugAndPlay
+DriverPackageDisplayName = EXata Virtual Ethernet Adapter
+CatalogFile="enetv.cat"
+
+[ControlFlags]
+ExcludeFromSelect={b85b7c50-6a01-11d2-b841-00c04fad5171}\ENetV
+
+[Manufacturer]
+%Msft% = Msft,NTx86,NTia64,NTamd64
+
+; For Win2k
+[Msft]
+%ENetV.DeviceDesc%    = ENetV.ndi, root\ENetV ; Root enumerated 
+%ENetV.DeviceDesc%    = ENetV.ndi, {b85b7c50-6a01-11d2-b841-00c04fad5171}\ENetV ; Toaster Bus enumerated 
+
+; For XP and later
+[Msft.NTx86]
+%ENetV.DeviceDesc%    = ENetV.ndi, root\ENetV ; Root enumerated 
+%ENetV.DeviceDesc%    = ENetV.ndi, {b85b7c50-6a01-11d2-b841-00c04fad5171}\ENetV ; Toaster Bus enumerated 
+
+[Msft.NTia64]
+%ENetV.DeviceDesc%    = ENetV.ndi, root\ENetV ; Root enumerated 
+%ENetV.DeviceDesc%    = ENetV.ndi, {b85b7c50-6a01-11d2-b841-00c04fad5171}\ENetV ; Toaster Bus enumerated 
+
+[Msft.NTamd64]
+%ENetV.DeviceDesc%    = ENetV.ndi, root\ENetV ; Root enumerated 
+%ENetV.DeviceDesc%    = ENetV.ndi, {b85b7c50-6a01-11d2-b841-00c04fad5171}\ENetV ; Toaster Bus enumerated 
+
+;-------------------------------------------------------------------------------
+; EXata Virtual Ethernet Adapter
+;
+[ENetV.ndi]
+Characteristics = 0x1 ; NCF_VIRTUAL
+AddReg          = ENetV.Reg
+CopyFiles       = ENetV.CopyFiles
+
+[ENetV.ndi.Services]
+AddService      = ENetV, 2, ENetV.Service, ENetV.EventLog
+
+;-----------------------------------------------------------------------------
+; EXata Virtual Miniport Common
+;
+[ENetV.Reg]
+HKR,    ,                         BusNumber,           0, "0" 
+HKR, Ndi,                         Service,             0, "ENetV"
+HKR, Ndi\Interfaces,              UpperRange,          0, "ndis5"
+HKR, Ndi\Interfaces,              LowerRange,          0, "ethernet"
+
+;-----------------------------------------------------------------------------
+; Driver and Service Section
+;
+[ENetV.CopyFiles]
+ENetV.sys,,,2
+
+[ENetV.Service]
+DisplayName     = %ENetV.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\enetv.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.Reg
+
+[ENetV.EventLog]
+AddReg = ENetV.AddEventLog.Reg
+
+[ENetV.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[TextModeFlags.Reg]
+HKR, , TextModeFlags,    0x00010001, 0x0001
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+enetv.sys  = 1,,
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+ENetV.CopyFiles = 12
+
+;-----------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Msft                       = "exata"                      
+ENetV.DeviceDesc        = "EXata Virtual Ethernet Adapter"
+ENetV.Service.DispName    = "EXata Virtual Interface"
+DiskId1 = "EXata Virtual Miniport Device Installation Disk #1"

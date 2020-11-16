@@ -1,0 +1,86 @@
+#
+# Define executables.
+#
+
+all: product
+
+#
+# Set product type so we can do some product specific rules in other makefiles
+#
+
+# This is nmake syntax that allows us to specify BUILD=exata on the
+# nmake command line to build EXata instead of QualNet. We can swap
+# the defaults in EXata releases.
+
+BUILD_TARGET = exata
+
+! IF "$(BUILD)"=="ces"
+BUILD_TARGET = ces
+! ELSE
+! IF "$(BUILD)"=="jne"
+BUILD_TARGET = jne
+! ELSE
+! IF "$(BUILD)"=="exata"
+BUILD_TARGET = exata
+! ELSE
+! IF "$(BUILD)"=="qualnet"
+BUILD_TARGET = qualnet
+! ENDIF
+! ENDIF
+! ENDIF
+! ENDIF
+
+! IF "$(BUILD_TARGET)"=="ces"
+PRODUCT_TYPE = ces
+#include ../interfaces/lib-emulation/Makefile-windows
+include ../addons/stats_manager/Makefile-windows
+include ../addons/parser/Makefile-windows
+include ../libraries/ces/Makefile-windows
+include ../interfaces/ces/Makefile-windows
+include ../libraries/cyber/core/Makefile-windows
+include ../interfaces/openSSL/Makefile-windows
+include ../addons/db/Makefile-windows
+FLAGS = -DEXATA -DADDON_BOEINGFCS
+! ELSE
+! IF "$(BUILD_TARGET)"=="jne"
+PRODUCT_TYPE = jne
+include ../interfaces/lib-emulation/Makefile-windows
+include ../addons/stats_manager/Makefile-windows
+include ../addons/parser/Makefile-windows
+include ../libraries/ces/Makefile-windows
+include ../interfaces/ces/Makefile-windows
+include ../libraries/jne/Makefile-windows #JWNM models (CA, MA, PR, Audit)
+include ../interfaces/jne/Makefile-windows   # JNE interfaces (JSR, C2, HITL, VMF)
+include ../libraries/cyber/core/Makefile-windows
+include ../interfaces/openSSL/Makefile-windows
+include ../interfaces/zlib/Makefile-windows
+include ../interfaces/netconf/Makefile-windows
+include ../addons/db/Makefile-windows
+FLAGS = -DEXATA -DADDON_BOEINGFCS
+! ELSE
+! IF "$(BUILD_TARGET)"=="exata"
+PRODUCT_TYPE = exata
+include ../interfaces/lib-emulation/Makefile-windows
+include ../addons/db/Makefile-windows
+include ../interfaces/openSSL/Makefile-windows
+FLAGS = -DEXATA -DEXATA_CYBER
+include ../libraries/cyber/Makefile-windows
+! ELSE
+! IF "$(BUILD_TARGET)"=="qualnet"
+PRODUCT_TYPE = qualnet
+include ../addons/db/Makefile-windows
+! ENDIF
+! ENDIF
+! ENDIF
+! ENDIF
+
+SIM_EXEC         = ..\bin\$(PRODUCT_TYPE).exe
+RADIO_RANGE_EXEC = ..\bin\radio_range.exe
+UPGRADE_SCENARIO_EXEC = ..\bin\upgrade_scenario.exe
+MTS2_EXEC = ..\bin\mts-socket.exe
+SHPTOXML_EXEC = ..\bin\shptoxml.exe
+
+# Libraries will overwrite this value
+LIBRARIES_CLEAN = ""
+
+ALL_TARGETS = $(SIM_EXEC)

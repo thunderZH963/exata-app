@@ -1,0 +1,43 @@
+##############################################------PKI CONFIGURATION-------################################################
+
+#################################
+##
+##  Node Configuration for Node 1
+##
+#################################
+
+[1] PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT 2
+
+[1] PRECONFIGURED-CERTIFICATE-FILE-TYPE[0] PEM
+[1] PRECONFIGURED-CERTIFICATE-FILE[0] cert4.pem
+[1] PRECONFIGURED-PRIVATE-KEY-FILE[0] pkey4.pem
+
+[1] PRECONFIGURED-CERTIFICATE-FILE-TYPE[1] P12
+[1] PRECONFIGURED-CERTIFICATE-FILE[1] CSS-000000011-SecretComm.p12
+
+[1] PRECONFIGURED-SHARED-CERTIFICATE-COUNT 1
+
+[1] PRECONFIGURED-SHARED-CERTIFICATE-FILE-TYPE[0] PEM
+[1] PRECONFIGURED-SHARED-CERTIFICATE-FILE[0] sharedcert5.pem
+
+#################################
+##
+##  Node Configuration for Node 2
+##
+#################################
+
+[2] PRECONFIGURED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT 1
+
+[2] PRECONFIGURED-CERTIFICATE-FILE-TYPE[0] PEM
+[2] PRECONFIGURED-CERTIFICATE-FILE[0] cert5.pem
+[2] PRECONFIGURED-PRIVATE-KEY-FILE[0] pkey5.pem
+
+[2] PRECONFIGURED-SHARED-CERTIFICATE-COUNT 2
+
+[2] PRECONFIGURED-SHARED-CERTIFICATE-FILE-TYPE[0] PEM
+[2] PRECONFIGURED-SHARED-CERTIFICATE-FILE[0] sharedcert4.pem
+
+[2] PRECONFIGURED-SHARED-CERTIFICATE-FILE-TYPE[1] P7B
+[2] PRECONFIGURED-SHARED-CERTIFICATE-FILE[1] CSS-000000011-SecretComm.p7b
+
+##############################################------PKI CONFIGURATION END------################################################

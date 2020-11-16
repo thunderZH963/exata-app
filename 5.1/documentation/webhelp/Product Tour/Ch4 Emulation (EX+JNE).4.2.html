@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Setting up the Testbed</title>
+    <link rel="StyleSheet" href="css/Ch4%20Emulation%20(EX+JNE).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch4%20Emulation%20(EX+JNE).4.1.html#1020926">4	Emulation Testbed and Demo</a> &gt; 4.1  Setting up the Testbed</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">4.1  <a name="1020926">Setting up the Testbed</a></div>
+      <div class="BodyAfterHead"><a name="1022270">We will first describe how to set up the emulation testbed.</a></div>
+      <div class="Heading2Numbered">4.1.1  <a name="1021048">Hardware Requirements</a></div>
+      <div class="BodyAfterHead"><a name="1021049">For this emulation testbed, we will need the following:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1021050">Three computers, each with one Ethernet adapter.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1021051">One hub or switch.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1021052">Three Ethernet cables.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1021474">Two of the computers will serve as operational hosts and the third will serve as the emulation server. Connect the three computers as shown in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch4%20Emulation%20(EX+JNE).4.2.html#1021499', '');" title="Setting up the Testbed">Figure&nbsp;4‑1</a></span>.</div>
+      <div class="Body"><a name="1022842">&nbsp;</a></div>
+      <div class="Body"><a name="1022849"><img class="Default" src="images/NetworkConnections.png" width="400" height="328" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4‑1.&nbsp;&nbsp;<a name="1021499">Network Connections</a></div>
+      <div class="Heading2Numbered">4.1.2  <a name="1021054">Creating Network Connections</a></div>
+      <div class="BodyAfterHead"><a name="1021513">We will now configure the network connections on the three computers.</a></div>
+      <div class="Anchor"><a name="1021520">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1021527">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1021529">Be sure to make a note of the network connections on each of the computers before making the changes described in this section. After completing this exercise, restore the network configuration on each computer to the original settings. Failure to do so may result in the computers being unable to connect to networks or the Internet. </a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.1.2.1  <a name="1021095">Network Configuration at Operational Host 1</a></div>
+      <div class="BodyAfterHead"><a name="1021096">On the first operational host (the one connected to Mobile Station 1), assign IP address of 10.10.1.1 with subnet mask of 255.255.255.0 to the Ethernet interface, and configure the emulation server as the </a><span style="font-style: italic">default gateway</span> device for the operational host, as described below.</div>
+      <div class="Anchor"><a name="1021214">&nbsp;</a></div>
+      <div class="Heading4"><a name="1021569">Configuring Default Gateway on Windows Systems</a></div>
+      <div class="BodyAfterHead"><a name="1024389">Go to </a><span class="Menu_D">Start &gt; Control Panel &gt; Network and Sharing Center &gt; Change adapter settings</span>. Right-click on the network interface card that is used to connect to the emulation server and select <span class="Menu_D">Properties</span>. In the <span class="Menu_D">Networking</span> tab, select <span class="Menu_D">Internet Protocol Version 4 (TCP/IPv4)</span> from the scroll down list and click on the <span class="Menu_D">Properties</span> button. Select the <span style="font-weight: bold">Use the following IP Address</span> radio button, and make following assignments:</div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1021104">IP Address: 10.10.1.1</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1021105">Subnet Mask: 255.255.255.0</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1021106">Default Gateway: 10.10.1.100</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1021107"><img class="Default" src="images/SettingIPAddressAndGateway.gif" width="323" height="358" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4‑2.&nbsp;&nbsp;<a name="1021577">Network Assignments for Operational Host 1</a></div>
+      <div class="Heading4"><a name="1021111">Configuring Default Gateway on Linux Systems</a></div>
+      <div class="BodyAfterHead"><a name="1021200">To assign the IP address and subnet mask, open a terminal window and type the following command:</a></div>
+      <div class="Command_Input"><a name="1021988">sudo ifconfig eth0 10.10.1.1 netmask 255.255.255.0 up</a></div>
+      <div class="Body"><a name="1022007">If prompted for password, provide the root password on this machine.</a></div>
+      <div class="Body"><a name="1022018">To configure the default gateway, type the following command:</a></div>
+      <div class="Command_Input"><a name="1021112">sudo route add default gw 10.10.1.100</a></div>
+      <div class="Command_Input"><a name="1022027">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1022034">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1022036">The interface names and commands to assign an IP address, subnet mask, and default gateway depend on the Linux distribution. If these commands do not work, consult the documentation for your system.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.1.2.2  <a name="1021722">Network Configuration at Operational Host 2</a></div>
+      <div class="BodyAfterHead"><a name="1021749">On the second operational host (the one connected to Mobile Station 3), make the following assignments to the Ethernet interface, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch4%20Emulation%20(EX+JNE).4.2.html#1021095', '');" title="Setting up the Testbed">Section&nbsp;4.1.2.1</a></span>:</div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1022108">IP Address: 10.10.1.2</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1022109">Subnet Mask: 255.255.255.0</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1022110">Default Gateway: 10.10.1.100</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">4.1.2.3  <a name="1022048">Network Configuration at the Emulation Server</a></div>
+      <div class="BodyAfterHead"><a name="1022804">On the emulation server (the machine running </a><span class="Variable">EXata</span>), make the following assignments to the Ethernet interface, as described in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch4%20Emulation%20(EX+JNE).4.2.html#1021095', '');" title="Setting up the Testbed">Section&nbsp;4.1.2.1</a></span>:</div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1022808">IP Address: 10.10.1.100</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1022809">Subnet Mask: 255.255.255.0</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1022080">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1022087">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1022089">Do not change the default gateway configuration on the emulation server</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.1.2.4  <a name="1021115">Verifying Setup</a></div>
+      <div class="BodyAfterHead"><a name="1021462">After assigning the IP addresses and default gateway, verify that the three machines are connected by pinging the emulation server from each of the operational hosts. To ping the emulation server from an operational host, open a command window (on Windows) or terminal window (on Linux) on the operational host and type:</a></div>
+      <div class="Command_Input"><a name="1021463">	ping 10.10.1.100</a></div>
+      <div class="Body"><a name="1021117">Successful responses to the ping requests indicate a proper connection between the operational host and emulation server. </a></div>
+      <div class="Heading2Numbered">4.1.3  <a name="1024117">Creating Mappings between Operational Hosts and Emulated Nodes</a></div>
+      <div class="BodyAfterHead"><a name="1024118">We will now map Mobile Stations 1 and 3 to the Operational Hosts 1 and 2, respectively, by using the external node mapping editor in </a><span class="Variable">EXata</span> GUI. </div>
+      <div class="BodyAfterHead"><a name="1024125">To create a mapping between an </a><span class="Variable">EXata</span> node and an operational host, do the following:</div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1024129">Click the </a><span style="font-weight: bold">Mapping Editor</span> button in the <span class="Menu">Emulation</span> toolbar (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch4%20Emulation%20(EX+JNE).4.2.html#1024135', '');" title="Setting up the Testbed">Figure&nbsp;4‑3</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1024133"><img class="Default" src="images/EmulationToolbar.gif" width="163" height="76" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4‑3.&nbsp;&nbsp;<a name="1024135">Emulation Toolbar</a></div>
+      <div class="NumberedCont"><a name="1024139">This will launch the External Node Mapping Editor (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch4%20Emulation%20(EX+JNE).4.2.html#1024145', '');" title="Setting up the Testbed">Figure&nbsp;4‑4</a></span>).</div>
+      <div class="Anchor"><a name="1024143"><img class="Default" src="images/MappingOperationalHost.gif" width="470" height="310" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4‑4.&nbsp;&nbsp;<a name="1024145">External Node Mapping Editor</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1024149">To create a new mapping, click the <img class="Default" src="images/PlusIcon.png" width="21" height="21" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1024153">From the pull-down menu in the</a><span class="Field"> EXata Node IP Address</span> column, select the <span class="Variable">EXata</span> node.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1024154">In the right column, enter the IP address of the operational host which is to be mapped to the selected </a><span class="Variable">EXata</span> node. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1024158">Map Mobile Station 1 (1 -&gt; 190.0.2.1) to Operational Host 1 (10.10.1.1) and Mobile Station 3 (3 -&gt; 190.0.2.2) to Operational Host 2 (10.10.1.2). </a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+# Copyright (c) 2001-2013, SCALABLE Network Technologies, Inc.  All Rights Reserved.
+#                          600 Corporate Pointe
+#                          Suite 1200
+#                          Culver City, CA 90230
+#                          info@scalable-networks.com
+#
+# This source code is licensed, not sold, and is subject to a written
+# license agreement.  Among other things, no portion of this source
+# code may be copied, transmitted, disclosed, displayed, distributed,
+# translated, used as the basis for a derivative work, or used, in
+# whole or in part, for any program or purpose other than its intended
+# use in compliance with the license agreement as part of the QualNet
+# software.  This source code and certain of the algorithms contained
+# within it are confidential trade secrets of Scalable Network
+# Technologies, Inc. and may not be used as the basis for any other
+# software, hardware, product or service.
+#
+# IPsec configuration file
+#
+# To create an SA (Security Association)
+#
+# Syntax:
+#
+# [Node] SA <Src Addr> <Dest Addr> <Protocol> <SPI> <[-m Mode]> <[-E <encryption_algo> <"key">]> <[ -A <auth_algo> 
+# <"key"> ]>
+#
+# To create an SPD (Security Policy Database Entry) entry
+#
+# Syntax:
+#
+# [Node|Interface Address]  SP <Src Addr> <Dest Addr> <Next Layer Protocol> <-P IN|OUT> <DISCARD | BYPASS | IPSEC> 
+# <protocol/mode/src-dst/level>
+
+
+[1] SA 0.0.1.1 0.0.7.2 ESP 12345 -m TRANSPORT -E DES-CBC "CCCCCCCC";
+[1] SA 0.0.1.1 0.0.7.2 AH 12346 -m TRANSPORT -A HMAC-MD5-96 "hmacmd5authentic";
+[1] SP N2-1.0 N2-7.0 UDP -P OUT IPSEC ESP/TRANSPORT//REQUIRE AH/TRANSPORT//REQUIRE;
+
+[2] SA 0.0.2.1 0.0.7.2 ESP 12345 -m TRANSPORT -E DES-CBC "CCCCCCCC";
+[2] SA 0.0.2.1 0.0.7.2 AH 12346 -m TRANSPORT -A HMAC-MD5-96 "hmacmd5authentic";
+[2] SP N2-2.0 N2-7.0 UDP -P OUT IPSEC ESP/TRANSPORT//REQUIRE AH/TRANSPORT//REQUIRE;
+
+[3] SA 0.0.3.1 0.0.7.2 ESP 12345 -m TRANSPORT -E DES-CBC "CCCCCCCC";
+[3] SA 0.0.3.1 0.0.7.2 AH 12346 -m TRANSPORT -A HMAC-MD5-96 "hmacmd5authentic";
+[3] SP N2-3.0 N2-7.0 UDP -P OUT IPSEC ESP/TRANSPORT//REQUIRE AH/TRANSPORT//REQUIRE;
+
+[8] SA 0.0.1.1 0.0.7.2 ESP 12345 -m TRANSPORT -E DES-CBC "CCCCCCCC";
+[8] SA 0.0.1.1 0.0.7.2 AH 12346 -m TRANSPORT -A HMAC-MD5-96 "hmacmd5authentic";
+[8] SP N2-1.0 N2-7.0 UDP -P IN IPSEC ESP/TRANSPORT//REQUIRE AH/TRANSPORT//REQUIRE;
+
+[8] SA 0.0.2.1 0.0.7.2 ESP 12345 -m TRANSPORT -E DES-CBC "CCCCCCCC";
+[8] SA 0.0.2.1 0.0.7.2 AH 12346 -m TRANSPORT -A HMAC-MD5-96 "hmacmd5authentic";
+[8] SP N2-2.0 N2-7.0 UDP -P IN IPSEC ESP/TRANSPORT//REQUIRE AH/TRANSPORT//REQUIRE;
+
+[8] SA 0.0.3.1 0.0.7.2 ESP 12345 -m TRANSPORT -E DES-CBC "CCCCCCCC";
+[8] SA 0.0.3.1 0.0.7.2 AH 12346 -m TRANSPORT -A HMAC-MD5-96 "hmacmd5authentic";
+[8] SP N2-3.0 N2-7.0 UDP -P IN IPSEC ESP/TRANSPORT//REQUIRE AH/TRANSPORT//REQUIRE;

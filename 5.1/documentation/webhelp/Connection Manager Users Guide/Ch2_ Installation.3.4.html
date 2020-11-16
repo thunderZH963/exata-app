@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Installing Connection Manager on Linux</title>
+    <link rel="StyleSheet" href="css/Ch2_%20Installation.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch2_%20Installation.3.1.html#1054329">2	Installing Connection Manager</a> &gt; 2.3  Installing Connection Manager on Linux</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">2.3  <a name="1054329">Installing Connection Manager on Linux</a></div>
+      <div class="BodyAfterHead"><a name="1056257">This section describes how to install Connection Manager on a Linux system.</a></div>
+      <div class="Anchor"><a name="1056267">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1056260">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="Note_Numbered__0028first_0029_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Note_Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">1.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Note_Numbered__0028first_0029_inner"><a name="1056262">Connection Manager should be installed on an operational host, </a><span style="font-style: italic">not</span> the emulation server (i.e., the machine running <span class="Variable">EXata</span>).</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Note_Numbered_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Note_Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">2.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Note_Numbered_inner"><a name="1056263">Connection Manager is small enough that each user can install a separate copy of the software in their home directory. It need not be installed in /usr/local or other shared directories. </a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Note_Numbered_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Note_Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">3.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Note_Numbered_inner"><a name="1056266">For help with installation procedures or problems, contact </a><span class="Hyperlink"><a href="mailto:support@scalable-networks.com" target="external_window">support@scalable-</a></span><span class="Hyperlink"><a href="mailto:support@scalable-networks.com" target="external_window">networks.com</a></span>.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="BodyAfterHead"><a name="1056268">To install Connection Manager on a Linux system, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1056269">Download the installation package from the </a><span class="Variable">EXata</span> download page or load it from the installation CD.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1056270">The installation package for 32-bit platforms is exata-</a><span class="Variable">5.1</span>-connection-manager-linux-installer-32bit.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1056271">The installation package for 64-bit platforms is exata-</a><span class="Variable">5.1</span>-connection-manager-linux-installer-64bit.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1056272">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056273">Double-click on the installation package and follow the prompts.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1056274">By default, Connection Manager is installed in /home/&lt;user&gt;/Scalable/EXata-Connection-Manager/</a><span class="Variable">5.1</span>.</div>
+      <div class="Body"><a name="1054815">To test the Connection Manager installation, start Connection Manager as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.2.html#1050330', '');" title="Starting Connection Manager">Section&nbsp;3.1.2</a></span>.</div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

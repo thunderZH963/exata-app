@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Installing Connection Manager on Windows</title>
+    <link rel="StyleSheet" href="css/Ch3.%20Installing%20CM%20on%20Windows.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch3.%20Installing%20CM%20on%20Windows.4.1.html#1104659">3	Installing Connection Manager on Windows</a> &gt; 3.2  Installing Connection Manager on Windows</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">3.2  <a name="1104659">Installing Connection Manager on Windows</a></div>
+      <div class="BodyAfterHead"><a name="1107200">This section describes how to install Connection Manager on a Windows system.</a></div>
+      <div class="Anchor"><a name="1109812">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1109801">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="Note_Numbered__0028first_0029_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Note_Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">1.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Note_Numbered__0028first_0029_inner"><a name="1109803">Connection Manager should be installed on an operational host, </a><span style="font-style: italic">not</span> the emulation server (i.e., the machine running <span class="Variable">EXata</span>).</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Note_Numbered_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Note_Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">2.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Note_Numbered_inner"><a name="1109807">The Graphical User Interface (GUI) of Connection Manager is released under the GPL license. You must accept the GPL license agreement to install Connection Manager.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Note_Numbered_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Note_Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">3.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Note_Numbered_inner"><a name="1109808">After installing Connection Manager, the installer will install a Microsoft patch for runtime components of Visual C++ libraries that is required to run Connection Manager.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Note_Numbered_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Note_Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">4.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Note_Numbered_inner"><a name="1109811">For help with installation procedures or problems, contact </a><span class="Hyperlink"><a href="mailto:support@scalable-networks.com" target="external_window">support@scalable-</a></span><span class="Hyperlink"><a href="mailto:support@scalable-networks.com" target="external_window">networks.com</a></span>. </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="BodyAfterHead"><a name="1109825">To install Connection Manager on a Windows system, perform the following steps:.</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1109816">Download the installation package (file exata-</a><span class="Variable">5.1</span>-connection-manager-windows-installer.exe) from the <span class="Variable">EXata</span> download page or load it from the installation CD.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1107222">Double‑click on the installation package, and follow the installation prompts.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1110193">The installer will prompt you to install the WinPcap software.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1110198">If you choose to install WinPcap on Windows 8, the following Program Compatibility Assistant window is displayed. Select </a><span class="Menu_Item">Run the Program without getting help</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1110202"><img class="Default" src="images/WinPcap-Compatibility.png" width="321" height="249" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1110203">Follow the prompts to continue installing WinPcap. If the following warning message is displayed, click on </a><span class="Menu_Item">OK</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1110207"><img class="Default" src="images/WinPcap-Error.png" width="396" height="221" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">c.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1110208">Follow the prompts to complete WinPcap installation.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1110209"> </a></div>
+      <div class="Body"><a name="1109704">By default, Connection Manager is installed in C:\Program Files\Scalable\EXata\</a><span class="Variable">5.1</span> (on 32-bit platforms) and in C:\Program Files (x86)\Scalable\EXata\<span class="Variable">5.1</span> (for 64-bit platforms).</div>
+      <div class="Anchor"><a name="1110049">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1110046">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="Body"><a name="1110048">Some firewall programs may prevent Connection Manager from running. You may need to add it to the exception list of your firewall program. Check the documentation of your firewall program for details on adding a program to the exception list or contact your system administrator. If you are using Microsoft Windows firewall, visit the Microsoft website for details of adding a program to the exception list.</a></div>
+          </td>
+        </tr>
+      </table>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

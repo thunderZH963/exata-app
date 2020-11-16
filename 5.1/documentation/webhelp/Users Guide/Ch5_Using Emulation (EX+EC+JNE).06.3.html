@@ -1,0 +1,1192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Running Applications</title>
+    <link rel="StyleSheet" href="css/Ch5_Using%20Emulation%20(EX+EC+JNE).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch5_Using%20Emulation%20(EX+EC+JNE).06.1.html#1023340">5	Using Emulation</a> &gt; 5.2  Running Applications</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">5.2  <a name="1023340">Running Applications</a></div>
+      <div class="BodyAfterHead"><a name="1045799">This section describes how to set up applications at operational hosts to run on the emulated network.</a></div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1045808', '');" title="Running Applications" name="1045857">Section&nbsp;5.2.1</a></span>describes how to launch applications on operational hosts. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1043863', '');" title="Running Applications">Section&nbsp;5.2.2</a></span> describes the emulated server applications implemented in <span class="Variable">EXata</span>. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1045064', '');" title="Running Applications">Section&nbsp;5.2.3</a></span> describes the additional configuration requirements for running multicast applications on an emulated network.</div>
+      <div class="Anchor"><a name="1045843">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1045832">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1045834">Additional instructions for Internet-based applications and network managers are provided in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.4.html#1067414', '');" title="Connecting to Routers">Section&nbsp;5.3</a></span> and <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.6.html#1123915', '');" title="Simple Network Management Protocol (SNMP)">Section&nbsp;5.5</a></span>, respectively.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">5.2.1  <a name="1045808">Launching Applications</a></div>
+      <div class="BodyAfterHead"><a name="1045248">This section describes how to launch applications on operational hosts that connect to </a><span class="Variable">EXata</span> nodes within the emulated network scenario.</div>
+      <div class="Body"><a name="1045218">If you have connected the operational host with the emulation server using Connection Manager (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1022605', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.2.1</a></span>), follow the instructions in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1043726', '');" title="Running Applications">Section&nbsp;5.2.1.1</a></span>.</div>
+      <div class="Body"><a name="1045228">If you have connected the operational host with the emulation server manually (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1023069', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.2.2</a></span>), follow the instructions in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1006310', '');" title="Running Applications">Section&nbsp;5.2.1.2</a></span>.</div>
+      <div class="Heading3Numbered">5.2.1.1  <a name="1043726">Launching Applications Using Connection Manager</a></div>
+      <div class="BodyAfterHead"><a name="1023518">Connection Manager offers an easy mechanism to launch applications on the operational hosts that connect to the emulated nodes in </a><span class="Variable">EXata</span>. </div>
+      <div class="Body"><a name="1023528">Connection Manager can be used to launch applications in two ways:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1070346">Assign one emulated node in </a><span class="Variable">EXata</span> to map to the operational host. All applications launched on the operational host will run on this emulated node (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023590', '');" title="Running Applications">Section&nbsp;5.2.1.1.1</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1070350">When launching an individual application, select the emulated node it should run on. In this way, different applications on the same operational host can connect to different emulated nodes (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023814', '');" title="Running Applications">Section&nbsp;5.2.1.1.2</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4Numbered">5.2.1.1.1  <a name="1023590">Launching Applications on a Single Emulated Node</a></div>
+      <div class="BodyAfterHead"><a name="1023691">In this mode, the operational host can be a viewed as a physical counterpart of one of the emulated nodes: any application launched on this operational host will send and receive traffic to and from the protocol stack of that particular emulated node. To achieve this, it is required to configure the </a><span class="Variable">EXata</span> emulator to create a one-to-one mapping between the emulated node and the operational host. This section describes how to create such a mapping using Connection Manager (<span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1006310', '');" title="Running Applications">Section&nbsp;5.2.1.2</a></span> describes the how to create this mapping without using Connection Manager).</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1034542', '');" title="Running Applications" name="1034530">Figure&nbsp;5-21</a></span> provides the schematic diagram for this mode of operation. A mapping between the operational host and one node in the emulated network (henceforth referred to as the <span style="font-style: italic">External Node</span>) is created. Subsequently, any application launched on the operational host will use the emulated protocol stack of the External Node for communications. Note that as many operational hosts are required as the desired number of External Nodes, since there is a unique one-to-one mapping between the operational hosts and External Nodes. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023814', '');" title="Running Applications">Section&nbsp;5.2.1.1.2</a></span> describes the <span class="Variable">EXata</span> mode that removes this restriction.</div>
+      <div class="Anchor"><a name="1034540"><img class="Default" src="images/diagram-ipne-mode.png" width="400" height="300" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-21.&nbsp;&nbsp;<a name="1034542">Applications on Operational Host Connecting to Default External Node in </a><span class="Variable">EXata</span></div>
+      <div class="Heading4"><a name="1023766">Setting a Default External Node</a></div>
+      <div class="BodyAfterHead"><a name="1023767">To create a one-to-one mapping between the operational host and an External Node in </a><span class="Variable">EXata</span>, perform the following steps:</div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1009181">On the emulated server, run a</a>n <span class="Variable">EXata</span> scenario in emulation mode, either from the GUI or command line interface. (In the rest of the section we assume that <span class="Variable">EXata</span> was launched from GUI.) </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1038746">Connect the operational host and the emulated server using Connection Manager, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1022605', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.2.1</a></span>.</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1009191">Wait a few seconds until Connection Manager recognizes that </a><span class="Variable">EXata</span> is running and displays a list of all the nodes in the <span class="Menu">Network</span> tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1009403">Select one of the nodes in Connection Manager’s display window by clicking on it, and click the </a><span class="Menu">Set Default</span> button. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1009404">If an emulated node has multiple interfaces, then expand the display for the node and select one interface. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1009250', '');" title="Running Applications">Figure&nbsp;5-22</a></span> shows an example where node 5 (host5) has two interfaces with addresses <span class="Courier">192.168.10.5</span> and <span class="Courier">192.0.1.1</span>.</div>
+      <div class="Anchor"><a name="1009230"><img class="Default" src="images/cm-set-default.PNG" width="306" height="348" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-22.&nbsp;&nbsp;<a name="1009250">Setting Default External Node</a></div>
+      <div class="NumberedCont"><a name="1009260">The selected interface is displayed in the </a><span class="Menu">Default Interface</span> box and is highlighted in the node list.</div>
+      <div class="Anchor"><a name="1009303"><img class="Default" src="images/CM-DefaultNodeSelected.png" width="327" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-23.&nbsp;&nbsp;<a name="1009330">Default Node Configured</a></div>
+      <div class="NumberedCont"><a name="1009289">If </a><span class="Variable">EXata</span> GUI is running, the selected node is highlighted on the canvas by a purple triangle (see node 3 in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1041508', '');" title="Running Applications">Figure&nbsp;5-24</a></span>).</div>
+      <div class="Anchor"><a name="1042129"><img class="Default" src="images/gui-set-external-node.PNG" width="335" height="323" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-24.&nbsp;&nbsp;<span class="Variable"><a name="1041508">EXata</a></span> GUI Displaying the Default External Node</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1041509">Verify by connecting to other nodes in the scenario by using one of the </a><span class="Variable">EXata</span> emulated server applications (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.4.html#1067414', '');" title="Connecting to Routers">Section&nbsp;5.3</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1023775">An application run from the operational host will now also run on the default node.</a></span></div>
+      <div class="Anchor"><a name="1042857">&nbsp;</a></div>
+      <div class="Heading4"><a name="1009510">Unsetting the External Node</a></div>
+      <div class="BodyAfterHead"><a name="1009448">To tear down an established connection between the operational host and the External Node, you can unset the default node by following these steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1009462">Click on the interface that is currently configured as the External Node.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1023782">The button text in the </a><span class="Menu_D">Default Interface</span> text box will change to <span class="Menu_D">Reset Default</span>. Click on the button.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1023787">The </a><span class="Menu">Default Interface</span> box displays that no default interface is set and the unset interface is no longer highlighted in the list.</div>
+      <div class="NumberedCont"><a name="1115037">If </a><span class="Variable">EXata</span> GUI is running, the node is no longer highlighted on the canvas.</div>
+      <div class="Anchor"><a name="1115038">&nbsp;</a></div>
+      <div class="Heading4"><a name="1115039">Changing the External Node</a></div>
+      <div class="BodyAfterHead"><a name="1023802">While the scenario is running in </a><span class="Variable">EXata</span>, you can change the operational host to connect to any other emulated node. This will enable the operational host to insert or receive traffic from different nodes in the scenario during the same execution run.</div>
+      <div class="Body"><a name="1009517">To change the External Node, do one of the following:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1009524">Reset the current External Node and set a new one, as described above.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1009531">Select the new node by clicking on it in the node list and click the </a><span style="font-weight: bold">Set Default</span> button.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4Numbered">5.2.1.1.2  <a name="1023814">Launching Applications on Different Emulated Nodes</a></div>
+      <div class="BodyAfterHead"><a name="1023815">In this mode, when launching an application, the user can select on which emulated node in </a><span class="Variable">EXata</span> the application should be executed. Thus, it is possible to run multiple applications on different emulated nodes, all from the same operational host. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1040168', '');" title="Running Applications">Figure&nbsp;5-25</a></span>.</div>
+      <div class="Anchor"><a name="1125926">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1050691">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1050693">This feature is available only on operational hosts running Windows 7 (32-bit) or Windows 8 (32-bit and 64-bit) editions.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1011634"><img class="Default" src="images/RunningApplicationsOnDifferentNodes.png" width="549" height="337" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-25.&nbsp;&nbsp;<a name="1040168">Multiple Applications on a Single Operational Host Connecting to Different Emulated Nodes</a></div>
+      <div class="Heading5Numbered">5.2.1.1.2.1  <a name="1040170">Launching an Application on a Selected Emulated Node</a></div>
+      <div class="BodyAfterHead"><a name="1023825">To select an emulated node on which to run an application at the time of launching an application, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1023826">Set up a connection between the operational host and the emulation server using Connection Manager, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1022605', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.2.1</a></span>. Ensure that the scenario is running in <span class="Variable">EXata</span> in Emulation mode and Connection Manager displays the list of nodes in the <span class="Menu">Network </span>tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1009585">To launch an application, right‑click on the application icon on the desktop and click on </a><span class="Menu">Run on </span><span class="Variable" style="font-weight: bold">EXata</span><span class="Menu"> node</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1039057"><img class="Default" src="images/upa-right-click.PNG" width="208" height="306" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-26.&nbsp;&nbsp;<a name="1039061">Running Application on a</a>n <span class="Variable">EXata</span> Node</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1124457">A dialog box appears that lists all the nodes in the scenario. Enter a node ID or hostname or select a node from the pull-down list and click </a><span class="Menu">OK</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1124458"><img class="Default" src="images/CM-SelectNodeForApplication.png" width="192" height="120" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-27.&nbsp;&nbsp;<a name="1124460">Selecting an Emulated Node</a></div>
+      <div class="NumberedCont"><a name="1009656">Once the application has started, the </a><span class="Menu">Application</span> tab of Connection Manager will display the application name and the emulated node (called an <span style="font-style: italic">External Application Node</span>) on which it is configured to run.</div>
+      <div class="Anchor"><a name="1009666"><img class="Default" src="images/CM-ApplicationList.png" width="307" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-28.&nbsp;&nbsp;<a name="1067311">Application Tab of Connection Manager</a></div>
+      <table class="NoteTable" style="text-align: left; width: 421.2pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 25.2pt">
+            <div class="Body" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="1067308">Tip:</a></span></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1067310">You can double-click the application in the </a><span class="Menu">Application</span> tab of Connection Manager to bring the application window to the front.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1067320">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1067314">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1067316">To run another application from command line, first launch the command window application (cmd.exe) to run on the emulated node via the steps outlined above. Then, run the application from this command window. This approach works because any child process launched by a process that was configured to use </a><span class="Variable">EXata</span>, will also continue to use the same configuration.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="NumberedCont"><a name="1067337">If </a><span class="Variable">EXata</span> GUI is running, the selected node is highlighted on the canvas by a green triangle (see node 8 in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1067349', '');" title="Running Applications">Figure&nbsp;5-29</a></span>).</div>
+      <div class="Anchor"><a name="1067344"><img class="Default" src="images/ExternalApplicationNode.PNG" width="367" height="364" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-29.&nbsp;&nbsp;<span class="Variable"><a name="1067349">EXata</a></span> GUI Displaying an External Application Node</div>
+      <div class="Heading5Numbered">5.2.1.1.2.2  <a name="1067321">Restoring an Application Session</a></div>
+      <div class="BodyAfterHead"><a name="1039666">An application session is the record of information for all the currently running applications. The information includes the name of application, the path of the application executable binary, and the ID of the emulated node it is running on. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1039744', '');" title="Running Applications">Figure&nbsp;5-30</a></span> shows an example of application session of two applications running over two different emulated nodes.</div>
+      <div class="Anchor"><a name="1039698"><img class="Default" src="images/CM-ApplicationSession.png" width="307" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-30.&nbsp;&nbsp;<a name="1039744">An Active Application Session</a></div>
+      <div class="BodyAfterHead"><a name="1039748">At the termination of the </a><span class="Variable">EXata</span> process, either manually by the user or through the successful completion of the scenario, all applications running on the emulated nodes are terminated. However, before terminating the applications, Connection Manager saves the last application session. When the <span class="Variable">EXata</span> process is restarted, Connection Manager provides the option to restore the last application session. </div>
+      <div class="Body"><a name="1009904">To restore the last application session from a</a>n <span class="Variable">EXata</span> run, perform the following steps:</div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1009915">Restart the scenario in </a><span class="Variable">EXata</span> in emulation mode from the GUI or the command line.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1009950">In the </a><span class="Menu">Applications</span> window of Connection Manager, click on the <span class="Menu">Restore</span> button in the toolbar.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1009951"><img class="Default" src="images/CM-RestoreSession.png" width="327" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-31.&nbsp;&nbsp;<a name="1009952">Restore Application Session Button</a></div>
+      <div class="Heading5Numbered">5.2.1.1.2.3  <a name="1039782">Saving and Loading Application Sessions</a></div>
+      <div class="BodyAfterHead"><a name="1039783">You can also save an application session in a file while a scenario is running and load it at a later time. </a></div>
+      <div class="Body"><a name="1039784">To save an application session while a scenario is running, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1010071">In the </a><span class="Menu">Applications</span> window of Connection Manager, click on the <span class="Menu">Save</span> button in the toolbar.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1010081">Provide the filename and the directory path where to save the application session information.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1010064">To load a previously saved application session, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1010092">Ensure that the </a><span class="Variable">EXata</span> is running in Emulation mode.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1010102">In the </a><span class="Menu">Applications</span> window of Connection Manager, click on the <span class="Menu">Load</span> button in the toolbar.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1126741">In the file browser, select the name of the application session file to load.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1126742"><img class="Default" src="images/CM-LoadSession.png" width="327" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-32.&nbsp;&nbsp;<a name="1126775">Load Application Session Button</a></div>
+      <div class="Heading5Numbered">5.2.1.1.2.4  <a name="1126743">Quick Launch Application Tray</a></div>
+      <div class="BodyAfterHead"><a name="1023892">The </a><span class="Menu">Applications</span> tab in Connection Manager also features a quick launch application tray to quickly launch the frequently used applications. </div>
+      <div class="Body"><a name="1023951">To add an application to the quick launch tray, drag and drop the application icon from the desktop into the tray area. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1010211', '');" title="Running Applications">Figure&nbsp;5-33</a></span> shows an example with applications loaded in the quick launch tray.</div>
+      <div class="Body"><a name="1023955">To launch an application, click on the icon in the tray. This will open a dialog box (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1124460', '');" title="Running Applications">Figure&nbsp;5-27</a></span>) to select an emulated node on which to run the application.</div>
+      <div class="Anchor"><a name="1010200"><img class="Default" src="images/cm-application-trayfilled.PNG" width="248" height="351" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-33.&nbsp;&nbsp;<a name="1010211">Quick Launch Application Tray</a></div>
+      <div class="Heading3Numbered">5.2.1.2  <a name="1006310">Launching Applications without Using Connection Manager</a></div>
+      <div class="BodyAfterHead"><a name="1027915">The operational hosts that do not run Connection Manager can be configured to connect with the emulated nodes with the mapping editor in the GUI or through the command line interface.</a></div>
+      <div class="Body"><a name="1027916">See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2006622', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.1</a></span> for details on how to connect to operational hosts to emulated nodes.</div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1039994">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1039996">This mode sets up a default emulated node for an operational host. All applications running on the operational host are run on the same default emulated node. It is not possible to select different emulated nodes for different applications in this mode.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">5.2.2  <span class="Variable"><a name="1043863">EXata</a></span> Emulated Server Applications</div>
+      <div class="BodyAfterHead"><a name="1045125">This section describes how to use the emulated server applications implemented in </a><span class="Variable">EXata</span>.</div>
+      <div class="Body"><a name="1046054">The emulated server applications run on all emulated nodes in the scenario. A client application running on an operational host can access the corresponding emulated server application in exactly the same way as it would access a server application running on a physical machine.</a></div>
+      <div class="BodyAfterHead"><span class="Variable"><a name="1045129">EXata</a></span> implements the following server applications:</div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1045130">FTP Server</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1045131">HTTP Server</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1045132">TELNET Server</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1045140">All three applications can be run in the default </a><span class="Variable">EXata</span> node mode (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023590', '');" title="Running Applications">Section&nbsp;5.2.1.1.1</a></span>) or the manual emulated node selection mode (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023814', '');" title="Running Applications">Section&nbsp;5.2.1.1.2</a></span>).</div>
+      <div class="Anchor"><a name="1046039">&nbsp;</a></div>
+      <div class="Heading4"><a name="1045144">Emulated FTP Server</a></div>
+      <div class="BodyAfterHead"><a name="1045145">To access the emulated FTP server application from an operational host, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1046076">Start a command window application to run on the emulated node. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1046139">In the command window, type the following command:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 7.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1045146">&nbsp;</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1046104">ftp &lt;server-ID&gt;</a></span></div>
+      <div class="Body" style="text-indent: 18pt"><a name="1045152">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 90pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1045149">&lt;server-ID&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 342pt">
+            <div class="Body"><a name="1045151">IP address or host name of the emulated server node</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1045153">Provide the following authentication details in the FTP client:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body" style="text-indent: 36pt"><span style="font-weight: bold"><a name="1045154">Username</a></span>: <span class="Courier">anonymous</span></div>
+      <div class="Body" style="text-indent: 36pt"><span style="font-weight: bold"><a name="1045155">Password</a></span>: <span class="Courier">(leave blank)</span></div>
+      <div class="Body" style="text-indent: 18pt"><a name="1045156">or </a></div>
+      <div class="Body" style="text-indent: 36pt"><span style="font-weight: bold"><a name="1045157">Username</a></span>: <span class="Courier">(leave blank)</span></div>
+      <div class="Body" style="text-indent: 36pt"><span style="font-weight: bold"><a name="1045158">Password</a></span>: <span class="Courier">(leave blank)</span></div>
+      <div class="Body"><a name="1045159">You can now list and download files from the emulated FTP server. (Note that you can not upload files to the emulated FTP server.) The following FTP commands are supported by the emulated FTP server:</a></div>
+      <div class="Anchor"><a name="1111105">&nbsp;</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 324pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111112">ABOR</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111114">PASV</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111116">STOR</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111118">AUTH</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111120">PORT</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111122">SYST</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111124">LIST</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111126">PWD</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111128">TYPE</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111130">NLST</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111132">QUIT</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111134">USER</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111136">PASS</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111138">RETR</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1111140">XPWD</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1045160">&nbsp;</a></div>
+      <div class="Heading4"><a name="1045161">Emulated HTTP Server</a></div>
+      <div class="BodyAfterHead"><a name="1046118">To access the emulated HTTP server application from am operational host, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1045162">Start a web browser to run on the emulated node. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1046132">Enter the IP address or the host name of emulated server node in the address bar.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1126008">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1126015">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1126017">If an IPv6 address is used to access the emulated server node, then the address must be enclosed between </a><span style="font-family: &quot;Courier New&quot;">[</span> and <span style="font-family: &quot;Courier New&quot;">]</span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1045163">&nbsp;</a></div>
+      <div class="Heading4"><a name="1046146">Emulated TELNET Server</a></div>
+      <div class="BodyAfterHead"><a name="1118934">To access the emulated TELNET server application from an operational host, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1118935">Start a command window application to run on the emulated node.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1118936">In the command window, type the following command:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 7.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1046189">&nbsp;</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1046181">telnet &lt;server-ID&gt;</a></span></div>
+      <div class="Body" style="text-indent: 18pt"><a name="1045172">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 90pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1045169">&lt;server-ID&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 342pt">
+            <div class="Body"><a name="1045171">IP address or host name of the emulated server node</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1045176">The </a><span class="Variable">EXata</span> emulated server provides a limited set of commands that can be accessed by the TELNET client. Type <span class="Courier" style="font-weight: bold">help</span> in the TELNET client window to show a list of supported commands.</div>
+      <div class="Heading2Numbered">5.2.3  <a name="1045064">Configuration for Multicast Applications</a></div>
+      <div class="BodyAfterHead"><a name="1044903">When a unicast application is run from an operational host, packets are routed to the destination node via the emulated network running on the emulation server. The destination node does not receive packets directly from the source node even if they are both on the same subnet.</a></div>
+      <div class="Body"><a name="1044904">For a multicast application, however, application packets can be directly received by destination nodes if they are on the same subnet as the source node. To make all multicast application traffic go through the emulated network, direct routing of application traffic between source and destination nodes must be disabled. This is achieved by setting up firewalls on all operational hosts. The firewall on each operational host is configured to block traffic from all other operational hosts.</a></div>
+      <div class="Body"><a name="1044905">To configure a testbed for a multicast application, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1046643">On each operational host running Windows, configure a firewall to accept multicast application packets only from the emulation server, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1118972', '');" title="Running Applications">Section&nbsp;5.2.3.1</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1046657">On each operational host running Linux, configure a firewall to block all traffic from each of the other operational hosts, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1120118', '');" title="Running Applications">Section&nbsp;5.2.3.2</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1046717">Configuring the firewalls on all operational hosts in this manner ensures that only those multicast application packets will be received at a destination that are sent by the emulation server (and, therefore, have traversed the emulated network).</a></div>
+      <div class="Body"><a name="1047935">To configure a firewall on a Windows machine, the IP address of the emulation server is needed. To configure a firewall on a Linux machine, the hardware (MAC) addresses of the other operational hosts are needed. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1047808', '');" title="Running Applications">Section&nbsp;5.2.3.3</a></span> describes how to identify the IP and hardware addresses on Windows and Linux machines.</div>
+      <div class="Heading3Numbered">5.2.3.1  <a name="1118972">Configuring Firewalls on Windows</a></div>
+      <div class="BodyAfterHead"><a name="1118973">To configure a firewall on a Windows 7 or Windows 8 platform that accepts multicast application packets only from the emulation server, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1118980">Select </a><span class="Menu">Start</span><span class="Menu_D"> </span><span class="Bold">&gt;</span><span class="Menu" style="font-family: Arial; font-style: normal"> Control Panel</span><span class="Menu_D" style="font-family: Arial; font-style: normal"> </span><span class="Bold">&gt;</span><span class="Menu" style="font-family: Arial; font-style: normal"> Windows Firewall</span>. Click on <span class="Menu">Advanced settings</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1118987"><img class="Default" src="images/WindowsFirewallAdvancedSettings.gif" width="564" height="292" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-34.&nbsp;&nbsp;<a name="1118989">Windows Firewall Configuration</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1118990">Under </a><span class="Menu">Getting Started</span>, click on <span class="Menu">Inbound Rules</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1118997"><img class="Default" src="images/SelectInboundRules.gif" width="520" height="600" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-35.&nbsp;&nbsp;<a name="1118998">Selecting Inbound Rules</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1119002">Launch the </a><span class="Menu">New Rule Wizard</span> by clicking on <span class="Menu">New Rule</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1119303"><img class="Default" src="images/SelectNewRule.gif" width="547" height="277" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-36.&nbsp;&nbsp;<a name="1119311">Launching the New Rule Wizard</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1119291">In the </a><span class="Menu">New Rule Wizard</span>, select <span class="Menu">Program</span> and click <span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1119429"><img class="Default" src="images/NewRuleWizard.gif" width="576" height="460" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-37.&nbsp;&nbsp;<a name="1119461">New Rule Wizard</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">5.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1119437">Select </a><span class="Menu">This program path</span>, browse to the multicast application, and press <span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1119006"><img class="Default" src="images/SelectMulticastApplication.gif" width="576" height="460" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-38.&nbsp;&nbsp;<a name="1119008">Specify Multicast Application</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">6.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1119013">In the next window, select </a><span class="Menu">Allow the connection</span> and click <span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1119020"><img class="Default" src="images/AllowConnection.gif" width="576" height="460" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-39.&nbsp;&nbsp;<a name="1119022">Select Action for Rule</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">7.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1119026">In the next window, select the profiles and click </a><span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1119646"><img class="Default" src="images/SelectProfiles.gif" width="576" height="460" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-40.&nbsp;&nbsp;<a name="1119722">Select Profiles for Rule</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">8.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1119723">In the next window, enter the name and description of the rule and click </a><span class="Menu">Finish</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1119724"><img class="Default" src="images/Rule-Name.gif" width="576" height="460" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-41.&nbsp;&nbsp;<a name="1119802">Enter Name of Rule</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">9.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1119803">In the</a><span class="Menu"> Windows Firewall and Advanced Security Window</span>, select <span class="Menu">Inbound Rules</span> in the left panel. Right click on the newly created rule and select <span class="Menu">Properties</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1119778"><img class="Default" src="images/PropertiesOfNewRule.gif" width="586" height="211" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-42.&nbsp;&nbsp;<a name="1119829">Set Properties of New Rule</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">10.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1119785">In the properties wizard for the new rule, select the </a><span class="Menu">Scope</span> tab. Under <span class="Menu">Remote IP address</span>, select <span class="Menu">These IP addresses</span> and click <span class="Menu">Add</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1119921"><img class="Default" src="images/RuleProperitesWizard.gif" width="349" height="459" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-43.&nbsp;&nbsp;<a name="1120016">Specifying IP Addresses for Rule</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">11.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1120102">In the </a><span class="Menu">IP Address</span> dialog, select <span class="Menu">This IP address or subnet</span>. Enter the IP address of the emulation server click <span class="Menu">OK</span>. (See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1047808', '');" title="Running Applications">Section&nbsp;5.2.3.3</a></span> for the procedure to find the IP address of a Windows or Linux machine.)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1120106"><img class="Default" src="images/IPAddressOfEmulationServer.gif" width="275" height="294" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-44.&nbsp;&nbsp;<a name="1120040">Specifying IP Address of Emulation Server</a></div>
+      <div class="Heading3Numbered">5.2.3.2  <a name="1120118">Configuring Firewalls on Linux</a></div>
+      <div class="BodyAfterHead"><a name="1044961">To configure a firewall on an operational host that blocks packets from the other operational hosts, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1046831">Open a command window on the operational host where you are configuring the firewall.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1046832">If you are logged in as root, type the following command:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1046833">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1046838">iptables -A INPUT -m mac --mac-source &lt;HW-Address&gt; -j DROP</a></div>
+      <div class="Body" style="text-indent: 18pt"><a name="1046882">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 90pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1046879">&lt;HW-Address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 342pt">
+            <div class="Body"><a name="1046881">Hardware address of the network interface card used to connect </a><span style="font-weight: bold">the other operational host</span> to the emulation server. </div>
+            <div class="BodyAfterHead"><a name="1047996">See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1047877', '');" title="Running Applications">Section&nbsp;5.2.3.3.1</a></span> for the procedure to find the hardware address of a Windows machine. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1046904', '');" title="Running Applications">Section&nbsp;5.2.3.3.2</a></span> for the procedure to find the hardware address of a Linux machine.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="NumberedCont"><a name="1044964">If you are not logged in as root, use the following command:</a></div>
+      <div class="Command_Input"><a name="1046863">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1046864">sudo iptables -A INPUT -m mac --mac-source &lt;HW-Address&gt; -j DROP</a></div>
+      <div class="Command_Input"><a name="1046865">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1046855">Repeat the previous step for each of the other operational hosts.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">5.2.3.3  <a name="1047808">Identifying IP and Hardware Addresses</a></div>
+      <div class="BodyAfterHead"><a name="1047825">This section describes how to identify the IP address and hardware (MAC) address for Windows machines (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1047877', '');" title="Running Applications">Section&nbsp;5.2.3.3.1</a></span>) and Linux machines (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1046904', '');" title="Running Applications">Section&nbsp;5.2.3.3.2</a></span>).</div>
+      <div class="Heading4Numbered">5.2.3.3.1  <a name="1047877">Identifying IP and Hardware Addresses for a Windows Machine</a></div>
+      <div class="BodyAfterHead"><a name="1047878">To identify the IP address and hardware (MAC) address of a the network interface card used to connect the operational host to the emulation server, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1047879">Open a command window on the operational host.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1047880">Type the following command and press enter:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1047881">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1047882">ipconfig /all</a></div>
+      <div class="Anchor"><a name="1047883">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1047884">Information about all interfaces on the machine is displayed in the command window. Locate the network interface that is used to connect to the emulation server. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1047885">As an example, the following is the information displayed for an ethernet interface:</a></div>
+      <div class="Command_Input"><a name="1047886">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1047887">Ethernet adapter Local Area Connection:</a></div>
+      <div class="Command_Input"><a name="1047888">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1120157">   Connection-specific DNS Suffix  . : snt.loc</a></div>
+      <div class="Command_Input"><a name="1120158">   Description . . . . . . . . . . . : Intel(R) 82579LM Gigabit ...</a></div>
+      <div class="Command_Input"><a name="1120159">   Physical Address. . . . . . . . . : AB-CD-EF-GH-IJ-KL</a></div>
+      <div class="Command_Input"><a name="1120160">   DHCP Enabled. . . . . . . . . . . : Yes</a></div>
+      <div class="Command_Input"><a name="1120161">   Autoconfiguration Enabled . . . . : Yes</a></div>
+      <div class="Command_Input"><a name="1120237">   IPv6 Address. . . . . . . . . . . : #::#:#:#:#</a></div>
+      <div class="Command_Input"><a name="1120162">   Link-local IPv6 Address . . . . . : #::#:#:#:#</a></div>
+      <div class="Command_Input"><a name="1120163">   IPv4 Address. . . . . . . . . . . : #.#.#.#</a></div>
+      <div class="Command_Input"><a name="1120164">   Subnet Mask . . . . . . . . . . . : 255.255.255.0</a></div>
+      <div class="Command_Input"><a name="1120165">   Lease Obtained. . . . . . . . . . : Tuesday, ...</a></div>
+      <div class="Command_Input"><a name="1120166">   Lease Expires . . . . . . . . . . : Wednesday, ...</a></div>
+      <div class="Command_Input"><a name="1120167">   Default Gateway . . . . . . . . . : #.#.#.#</a></div>
+      <div class="Command_Input"><a name="1120168">   DHCP Server . . . . . . . . . . . : #.#.#.#</a></div>
+      <div class="Command_Input"><a name="1120169">   DHCPv6 IAID . . . . . . . . . . . : 123456789</a></div>
+      <div class="Command_Input"><a name="1120170">   DHCPv6 Client DUID. . . . . . . . : AB-CD-EF-GH-IJ...</a></div>
+      <div class="Command_Input"><a name="1120171">   DNS Servers . . . . . . . . . . . : #.#.#.#</a></div>
+      <div class="Command_Input"><a name="1120173">   Primary WINS Server . . . . . . . : #.#.#.#</a></div>
+      <div class="Command_Input"><a name="1047889">   NetBIOS over Tcpip. . . . . . . . : Enabled</a></div>
+      <div class="Anchor"><a name="1120192">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1047903">The hardware address of an interface is displayed after </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">Physical Address</span>. The IPv4 address is displayed after <span style="font-family: &quot;Courier New&quot;; font-weight: bold">IPv4 Address</span>. The IPv6 address is displayed after <span style="font-family: &quot;Courier New&quot;; font-weight: bold">IPv6 Address</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4Numbered">5.2.3.3.2  <a name="1046904">Identifying IP and Hardware Addresses for a Linux Machine</a></div>
+      <div class="BodyAfterHead"><a name="1047011">To identify the IP address and hardware (MAC) address of a the network interface card used to connect the operational host to the emulation server, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1046925">Open a command window on the operational host.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1046926">Type the following command and press enter:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1047056">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1047057">ifconfig</a></div>
+      <div class="Command_Input"><a name="1047169">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1047077">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1048307">If the following error message is displayed in the command window: </a></div>
+            <div class="Command_Input"><a name="1048308">'ifconfig: command not found', </a></div>
+            <div class="Declaration"><a name="1047131">&nbsp;</a></div>
+            <div class="NoteText"><a name="1047107">then use the following command:</a></div>
+            <div class="Command_Input"><a name="1047146">&nbsp;</a></div>
+            <div class="Command_Input"><a name="1047147">/sbin/ifconfig</a></div>
+            <div class="Command_Input"><a name="1047158">&nbsp;</a></div>
+            <div class="NoteText"><a name="1047121">If the problem still persists, contact your system administrator for help with running the ifconfig command.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1046928">Information about all interfaces on the machine is displayed in the command window. Locate the name of the network interface that is used to connect to the emulation server. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1046929">As an example, the following is the information displayed for an ethernet interface </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">eth0</span>:</div>
+      <div class="Command_Input"><a name="1046930">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1047587">eth0      Link encap:Ethernet  HWaddr AB-CD-EF-GH-IJ-KL  </a></div>
+      <div class="Command_Input"><a name="1047588">          inet addr:#.#.#.#  Bcast:#.#.#.#  Mask:255.255.255.0</a></div>
+      <div class="Command_Input"><a name="1047589">          inet6 addr:#::#:#:#:#  Scope:...</a></div>
+      <div class="Command_Input"><a name="1120297">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</a></div>
+      <div class="Command_Input"><a name="1047591">          RX packets:703762 errors:0 dropped:0 overruns:0 frame:0</a></div>
+      <div class="Command_Input"><a name="1047592">          TX packets:364863 errors:0 dropped:0 overruns:0 carrier:0</a></div>
+      <div class="Command_Input"><a name="1047593">          collisions:0 txqueuelen:1000 </a></div>
+      <div class="Command_Input"><a name="1047594">          RX bytes:560600001 (534.6 MiB)  </a></div>
+      <div class="Command_Input"><a name="1047595">          TX bytes:137121730 (130.7 MiB) </a></div>
+      <div class="Command_Input"><a name="1047596">          Interrupt:11 Base address:0x1400 </a></div>
+      <div class="Command_Input"><a name="1047355">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1046950">The hardware address of an interface is displayed after </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">HWaddr</span> in the first line of the information displayed for the interface. The IPv4 address is displayed after <span style="font-family: &quot;Courier New&quot;; font-weight: bold">inet addr</span> on the second line. The IPv6 address is displayed after <span style="font-family: &quot;Courier New&quot;; font-weight: bold">inet6 addr</span> on the third line.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

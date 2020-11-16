@@ -1,0 +1,19 @@
+include ../interfaces/lib-emulation/Makefile-common
+
+ADDON_OPTIONS   = $(ADDON_OPTIONS) $(LIB_EMULATION_OPTIONS) -DWIN32 -D__WIN32__ -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE
+ADDON_SRCS      = $(ADDON_SRCS) $(LIB_EMULATION_SRCS) $(LIB_EMULATION_DIR)/libnet/src/libnet_link_win32.c
+ADDON_INCLUDES  = $(ADDON_INCLUDES) $(LIB_EMULATION_INCLUDES) \
+-I$(LIB_EMULATION_DIR)/libnet/include/win32 \
+-I$(LIB_EMULATION_DIR)/wpdpack/Include
+
+ADDON_LIBRARIES = $(ADDON_LIBRARIES) $(LIB_EMULATION_DIR)/lib/$(ARCH)/wpcap.lib $(LIB_EMULATION_DIR)/lib/$(ARCH)/packet.lib
+
+# INSERT INTERFACES HERE
+include ../interfaces/ipne/Makefile-windows
+include ../interfaces/auto-ipne/Makefile-windows
+include ../interfaces/upa/Makefile-windows 
+include ../interfaces/gateway/Makefile-windows 
+include ../interfaces/pas/Makefile-windows
+include ../interfaces/interfacetutorial/Makefile-windows
+#include ../interfaces/qsh/Makefile-windows
+include ../interfaces/net-snmp/Makefile-windows

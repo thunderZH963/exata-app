@@ -1,0 +1,24 @@
+CYBER_OPTIONS = -DCYBER_CORE
+
+CYBER_DIR = ../libraries/cyber/core/src
+
+CYBER_SRCS =  $(CYBER_DIR)/crypto_lib.cpp \
+ $(CYBER_DIR)/network_isakmp.cpp \
+ $(CYBER_DIR)/network_iahep.cpp \
+ $(CYBER_DIR)/network_ipsec.cpp \
+ $(CYBER_DIR)/network_ipsec_esp.cpp \
+ $(CYBER_DIR)/network_pki.cpp \
+ $(CYBER_DIR)/network_ipsec_ah.cpp
+
+
+CYBER_INCLUDES = -I$(CYBER_DIR)
+
+CYBER_HDRS = $(CYBER_DIR)/crypto.h \
+ $(CYBER_DIR)/network_isakmp.h \
+ $(CYBER_DIR)/network_iahep.h \
+ $(CYBER_DIR)/network_ipsec.h \
+ $(CYBER_DIR)/network_ipsec_esp.h \
+ $(CYBER_DIR)/network_pki.h \
+ $(CYBER_DIR)/network_pki_header.h \
+ $(CYBER_DIR)/network_ipsec_ah.h
+ 

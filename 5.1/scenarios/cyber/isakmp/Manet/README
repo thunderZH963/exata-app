@@ -1,0 +1,59 @@
+# Copyright (c) 2001-2013, SCALABLE Network Technologies, Inc.  All Rights Reserved.
+#                          600 Corporate Pointe
+#                          Suite 1200
+#                          Culver City, CA 90230
+#                          info@scalable-networks.com
+#
+# This source code is licensed, not sold, and is subject to a written
+# license agreement.  Among other things, no portion of this source
+# code may be copied, transmitted, disclosed, displayed, distributed,
+# translated, used as the basis for a derivative work, or used, in
+# whole or in part, for any program or purpose other than its intended
+# use in compliance with the license agreement as part of the QualNet
+# software.  This source code and certain of the algorithms contained
+# within it are confidential trade secrets of Scalable Network
+# Technologies, Inc. and may not be used as the basis for any other
+# software, hardware, product or service.
+
+
+PURPOSE:-
+--------
+To test wildcard ISAKMP settings(in .isakmp file)
+in a mobile ad hoc network.
+
+
+SCENARIO:-
+---------
+                
+           3  
+ 1          
+          
+                    
+   
+        2        4
+
+
+Total 4 nodes in default wireless subnet,
+each of them with ISAKMP enabled on the same
+ISAKMP setting (due to wildcard specification).
+
+
+APPLICATIONS:-
+-------------
+Node 1 is sending CBR packet to Node 4 
+
+
+RUN:-
+----
+Run '<QUALNET_HOME>/bin/qualnet Manet.config'
+
+
+DESCRIPTION OF THE FILES:-
+-------------------------
+
+1. Manet.app - QualNet configuration file for application input.
+2. Manet.config - QualNet configuration input file.
+3. Manet.expected.stat - QualNet statistics collection.
+4. Manet.nodes - QualNet configuration file for node position.
+5. Manet-Wildcard.isakmp - QualNet isakmp configuration file
+6. README - This file.

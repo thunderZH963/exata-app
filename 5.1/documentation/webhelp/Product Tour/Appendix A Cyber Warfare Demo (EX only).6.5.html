@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Demonstrating Firewall-based Defense of Blue Force Network</title>
+    <link rel="StyleSheet" href="css/Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.1.html#1003735">A	Cyber Warfare Demo</a> &gt; A.4  Demonstrating Firewall-based Defense of Blue Force Network</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">A.4  <a name="1003735">Demonstrating Firewall-based Defense of Blue Force Network</a></div>
+      <div class="BodyAfterHead"><a name="1003736">In the CyberWarfareDemo</a><span style="font-weight: bold"> </span>scenario, a firewall has been configured at node 9 (the CAOC) to reject all packets originating from node 19.</div>
+      <div class="Body"><a name="1009916">In the scenario, the Source host has been mapped to node 16. Change the mapping of the Source host to node 12, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch4%20Emulation%20(EX+JNE).4.2.html#1024117', '');" title="Setting up the Testbed">Section&nbsp;4.1.3</a></span>. In the <span class="Variable">EXata</span> GUI, the purple triangle shifts from node 16 to node 12. The Destination host will continue to display the video because node 12 is a “good” node. </div>
+      <div class="Body"><a name="1006697">Next, change the mapping of the Source host to node 19. In the </a><span class="Variable">EXata</span> GUI, the purple triangle will now shift to node 19. However, this time the video will freeze at the Destination host. Blue arrows reaching node 9 are still visible, indicating the packets have reached the CAOC node, but these packets are rejected by the firewall and therefore, the video traffic does not reach the VLC application at the Destination host.</div>
+      <div class="Body"><a name="1006704">Switch the mapping of the Source host back to node 16. The video will now resume playing at the Destination host.</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

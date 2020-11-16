@@ -1,0 +1,16 @@
+PAS_INTERFACE_OPTIONS = -DPAS_INTERFACE
+
+PAS_INTERFACE_DIR    = ../interfaces/pas
+PAS_INTERFACE_SRCDIR = ../interfaces/pas/src
+
+#
+# common sources
+#
+PAS_INTERFACE_SRCS = \
+$(PAS_INTERFACE_SRCDIR)/packet_analyzer.cpp \
+$(PAS_INTERFACE_SRCDIR)/byte_ordering.cpp \
+$(PAS_INTERFACE_SRCDIR)/pas_filter.cpp
+
+PAS_INTERFACE_INCLUDES = \
+-I$(PAS_INTERFACE_DIR)/src 
+

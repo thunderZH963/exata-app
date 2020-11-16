@@ -1,0 +1,15 @@
+Installation
+
+1. Double-click Add Hardware wizard in Control Panel. 
+2. In the Welcome to the Add Hardware Wizard page, click Next. 
+3. Select Yes, I have already connected the hardware, and then click Next. 
+4. Select Add a new hardware device from the list, and then click Next. 
+5. Select Install the hardware that I manually select from a list (Advanced), and then click Next. 
+5. Select Network Devices, and then click Next. 
+6. Click Have Disk, make sure that "EXATA_HOME/interfaces/pas/virtual_windows/<windows edition:xp/vista/win7><i386/amd64>/enetv.inf" is in the Copy manufacturer's files from: box. Choose 1386 if you are running EXata on 32 bit Windows or amd64 if you are running EXata on 64 bit Windows. Click OK. 
+7. Click on the desired entry, and then click Next. 
+8. In the The wizard is ready to install your hardware page, click Next. 
+9. Click Finish. 
+
+
+

@@ -1,0 +1,37 @@
+SYNCH_TARGET = ..\bin\synch.exe
+
+SYNCH_OBJS = $(SYNCH_VRLINK_INTERFACE_SRCS:.cpp=.obj)
+
+SYNCH_CXXFLAGS = /MT /EHsc /nologo /D_CRT_SECURE_NO_DEPRECATE $(DEBUG) $(OPT)
+
+..\interfaces\vrlink\synch\sim_types.obj: ..\interfaces\vrlink\synch\sim_types.cpp
+	$(CXX) $(SYNCH_CXXFLAGS) ..\interfaces\vrlink\synch\sim_types.cpp /Fo$@ /c
+	
+..\interfaces\vrlink\synch\synch_types.obj: ..\interfaces\vrlink\synch\synch_types.cpp 
+	$(CXX) $(SYNCH_CXXFLAGS) ..\interfaces\vrlink\synch\synch_types.cpp /Fo$@ /c
+	
+..\interfaces\vrlink\synch\configFiles.obj: ..\interfaces\vrlink\synch\configFiles.cpp
+	$(CXX) $(SYNCH_CXXFLAGS) ..\interfaces\vrlink\synch\configFiles.cpp /Fo$@ /c
+	
+..\interfaces\vrlink\synch\Config.obj: ..\interfaces\vrlink\synch\Config.cpp
+	$(CXX) $(SYNCH_CXXFLAGS) ..\interfaces\vrlink\synch\Config.cpp /Fo$@ /c
+
+..\interfaces\vrlink\synch\synch.obj: ..\interfaces\vrlink\synch\synch.cpp
+	$(CXX) $(SYNCH_CXXFLAGS) ..\interfaces\vrlink\synch\synch.cpp /Fo$@ /c
+
+..\interfaces\vrlink\synch\vrlink.obj: ..\interfaces\vrlink\synch\vrlink.cpp
+	$(CXX) $(SYNCH_CXXFLAGS) ..\interfaces\vrlink\synch\vrlink.cpp /Fo$@ /c	
+
+#Use this if a vrlink dev environment is installed and you want to build vrlink dlls
+#include ../interfaces/vrlink/synch/Makefile-windows-dll 
+#Use this if no vrlink environment is installed and you need prebuilt lib version
+#include ../interfaces/vrlink/synch/Makefile-windows-lib-dll
+
+build-all-and-store-synch: $(SYNCH_TARGET) store-vrlink-synch-dsos
+
+#TARGET_DEPENDENCIES = $(TARGET_DEPENDENCIES) ..\..\..\bin\Extractor.exe
+
+..\..\..\bin\Extractor.exe: force
+		copy ..\..\..\gui\lib\$(ARCH)\Extractor.exe ..\..\..\bin\Extractor.exe
+
+force :

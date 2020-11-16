@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Connecting Operational Hosts with the Emulation Server</title>
+    <link rel="StyleSheet" href="css/Ch3_Using%20Connection%20Manager.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch3_Using%20Connection%20Manager.4.1.html#1037271">3	Using Connection Manager</a> &gt; 3.2  Connecting Operational Hosts with the Emulation Server</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">3.2  <a name="1037271">Connecting Operational Hosts with the Emulation Server</a></div>
+      <div class="BodyAfterHead"><a name="1022581">To connect hardware-in-the-loop and to run applications on emulated nodes, including Internet-based applications and SNMP managers, it is required to connect the operational hosts with </a><span class="Variable">EXata</span> running on the emulation server. This section describes the steps involved in establishing such a connection between the operational hosts and the emulation server using Connection Manager.</div>
+      <div class="BodyAfterHead"><a name="1048592">Connection Manager application runs on an operational host and is responsible for managing the operational host’s networking configuration. Connection Manager is used to establish a connection between the host and the emulation server. When a connection is established, Connection Manager displays the list of emulated network nodes. Connection Manager can also be used to run multiple applications on different emulated nodes from the same operational host (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1023814', '');" title="Running Applications">Section&nbsp;3.3.2</a></span>). </div>
+      <div class="BodyAfterHead"><a name="1050392">After launching Connection Manager, a connection can be established between the operational host and the emulation server, either by manually providing the address of the emulation server (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1022785', '');" title="Connecting Operational Hosts with the Emulation Server">Section&nbsp;3.2.1</a></span>), or by letting Connection Manager automatically detect the emulation server (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1022944', '');" title="Connecting Operational Hosts with the Emulation Server">Section&nbsp;3.2.2</a></span>). <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1023018', '');" title="Running Applications">Section&nbsp;3.3</a></span> describes how to verify the connectivity between the operational host and the emulation server.</div>
+      <div class="Heading2Numbered">3.2.1  <a name="1022785">Manual Specification of Emulation Server</a></div>
+      <div class="BodyAfterHead"><a name="1056904">Before manually specifying the emulation server in Connection Manager, ensure the following:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056926">The operational host and the emulation server are connected with each other (you can use the </a><span class="Courier" style="font-weight: bold">ping</span> command to verify this).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056930">On the emulation server, the </a><span class="Variable">EXata</span> process is not blocked by the firewall.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056931">On the operational host, Connection Manager is not blocked by the firewall.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1055804">To specify the emulation server manually, provide the address of the emulation server to Connection Manager as follows:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1055805">Start Connection Manager and select </a><span class="Field">Manually configure EXata hostname or IP Address</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1055806">&nbsp;</a></div>
+      <div class="Body"><a name="1055810"><img class="Default" src="images/EmulationServer-ManualConfiguration.png" width="327" height="354" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-2.&nbsp;&nbsp;<a name="1055811">Manual Specification of Emulation Server</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1055812">Enter the IP address (e.g., 10.10.3.103 or fe80::216:35ff:fe64:3a5a) or host name (e.g., server01.mydomain) of the emulation server. You can also select from previously entered addresses from the pull down menu.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1055818">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1055815">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1055817">If you are providing a hostname, ensure that the operational host is reachable from the local DNS server.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1055819">Click </a><span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1055820">Connection Manager will attempt to configure the network settings on the operational host to create an emulated link between this host and the emulation server. If Connection Manager is successful in creating a connection, the address configuration screen will be replaced with Network and Application configuration screen (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1055837', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-3</a></span>). If this is the case, skip the remaining steps.</div>
+      <div class="NumberedCont"><a name="1055827">(If EXata is not running on the emulation server, the left screen in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1055837', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-3</a></span> is displayed. If EXata is running on the emulation server, a screen similar to the right screen in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1055837', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-3</a></span> is displayed.) </div>
+      <div class="Anchor"><a name="1055835"><img class="Default" src="images/Ch3_Using%20Connection%20Manager.4.3.2.jpg" width="620" height="332" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-3.&nbsp;&nbsp;<a name="1055837">Emulation Server Successfully Connected</a></div>
+      <div class="NumberedCont"><a name="1055838">If, however, Connection Manager is unable to create a connection, it will display a message (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1055847', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-4</a></span>) asking for further network configuration information.</div>
+      <div class="Anchor"><a name="1055845"><img class="Default" src="images/CM-AutoConfigureFailure-IPv4.png" width="404" height="105" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-4.&nbsp;&nbsp;<a name="1055847">Connection Manager Failed to Connect to Emulation Server</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1055848">If Connection Manager is unsuccessful in creating a connection, click </a><span class="Menu">OK</span> on the displayed message (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1055847', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-4</a></span>). This changes the Connection Manager display (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1055864', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-5</a></span>) to let you enter additional configuration information. (The left screen in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1055864', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-5</a></span> is for IPv4 connections and the right screen is for IPv6 connections.)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1055862">.<img class="Default" src="images/Ch3_Using%20Connection%20Manager.4.3.4.jpg" width="620" height="322" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-5.&nbsp;&nbsp;<a name="1055864">Advanced Configuration Options</a></div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1055865">Connection Manager lists the available network interfaces available on the operational host. From the pull-down menu, choose the interface that has been configured in the same subnet as the emulation server.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1055866">Enter the subnet mask (for IPv4) or prefix (for IPv6) of the network interface device </a><span style="font-style: italic">on the emulation server</span> that is used to connect to this operational host.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1055872">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1055869">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1055871">To identify this subnet mask, open a command-line window and type </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">ipconfig</span>. Note the subnet mask for the appropriate network interface.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">c.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1055873">Click </a><span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">d.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1055874">If Connection Manager is unable to generate a valid IP address in the same subnet as the emulation server, it will display a message (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1055883', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-6</a></span>) asking to enter a valid IP address.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1055881"><img class="Default" src="images/CM-UnableToGenerateIPAddress.png" width="360" height="95" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-6.&nbsp;&nbsp;<a name="1055883">Connection Manager Failed to Generate a Valid IP Address</a></div>
+      <div class="NumberedCont"><a name="1055884">If this happens, click </a><span class="Menu">OK</span> on the displayed message. This changes the Connection Manager display to let you enter a valid IP address and subnet mask (for IPv4) or network prefix (for IPv6) to be assigned to the selected interface.</div>
+      <div class="Anchor"><a name="1055889"><img class="Default" src="images/Ch3_Using%20Connection%20Manager.4.3.6.jpg" width="619" height="319" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-7.&nbsp;&nbsp;<a name="1055890">Assign Valid IP Address</a></div>
+      <div class="Anchor"><a name="1055896">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1055893">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1055895">If Connection Manager still cannot connect to the emulation server, it is likely, that the operational host and the emulation server are not connected with each other. Check the network cables for proper connectivity and consult your network administrator</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">3.2.2  <a name="1022944">Automatic Detection of Emulation Server</a></div>
+      <div class="BodyAfterHead"><a name="1056064">Connection Manager can also auto-detect emulation servers in the same subnet. For this mode to work, ensure the following:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056068">A scenario is running on </a><span class="Variable">EXata</span>, either via GUI or command line.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056069">The operational host and the emulation server are connected with each other (you can use the </a><span class="Courier" style="font-weight: bold">ping</span> command to verify this).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056073">On the emulation server, the </a><span class="Variable">EXata</span> process is not blocked by the firewall.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1056074">On the operational host, Connection Manager is not blocked by the firewall.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1056075">If all the above conditions are met, you can automatically configure the emulation server by doing the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1056076">Start Connection Manager and select </a><span class="Field">Automatically detect EXata machine</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1056080"><img class="Default" src="images/cm-autodetect.PNG" width="327" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-8.&nbsp;&nbsp;<a name="1056082">Automatically Detecting Emulation Servers</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056086">If Connection Manager is able to detect any running </a><span class="Variable">EXata</span> processes, it will display all the detected emulation servers in a pull down menu (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1056082', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-8</a></span>). If an IPv4 scenario is running on an emulation server, then the label <span style="font-weight: bold">NETWORK_IPV4</span> appears next to the interface address of the emulation server. If an IPv6 scenario is running on an emulation server, then the label <span style="font-weight: bold">NETWORK_IPV6</span> appears next to the interface address of the emulation server. If a mixed IPv4/IPv6 scenario is running on an emulation server, then there are two entries for the server in the list: one for IPv4 and the other for IPv6. Select the emulation server that you wish to connect to.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1056090">Click </a><span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">3.2.3  <a name="1056092">Verifying the Connectivity</a></div>
+      <div class="BodyAfterHead"><a name="1056096">After Connection Manager has successfully connected to the emulation server, start the scenario in </a><span class="Variable">EXata</span> in <span style="font-style: italic">Emulation mode</span> if you have not already done so.</div>
+      <div class="Body"><a name="1056103">Connection Manager will indicate in its status bar that it has detected a</a>n <span class="Variable">EXata</span> process (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1056112', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-9</a></span>) and display a list of the nodes in the scenario being executed by <span class="Variable">EXata</span>. </div>
+      <div class="Anchor"><a name="1056110"><img class="Default" src="images/CM-ShowEmulatedNodes.png" width="327" height="346" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-9.&nbsp;&nbsp;<a name="1056112">List of Emulated Nodes in Network Tab</a></div>
+      <div class="Anchor"><a name="1056122">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1056115">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1056117">If a node has only one interface, then its address is displayed in the same row as the ID of the node. If a node has multiple interfaces, then the list of interfaces and their addresses can be displayed by clicking on the ‘+’ sign before the node ID.</a></div>
+            <div class="NoteText"><a name="1056118">Connection Manager lists all nodes and interfaces in the scenario. If you have connected the operational host to the emulation server using an IPv4 (IPv6) address, then only emulated interfaces with IPv4 (IPv6) addresses are enabled and can be selected as the default external node (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.4.html#1023590', '');" title="Running Applications">Section&nbsp;3.3.1</a></span>). </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1056126">When Connection Manager forms a connection to an </a><span class="Variable">EXata</span> process, a message is also displayed in the system tray icon (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Connection_Manager_Users_Guide', 'Ch3_Using%20Connection%20Manager.4.3.html#1056135', '');" title="Connecting Operational Hosts with the Emulation Server">Figure&nbsp;3-10</a></span>).</div>
+      <div class="Anchor"><a name="1056133"><img class="Default" src="images/cm-systemtray.PNG" width="185" height="66" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-10.&nbsp;&nbsp;<a name="1056135">Connection Manager System Tray Icon</a></div>
+      <div class="Body"><a name="1056139">When the </a><span class="Variable">EXata</span> execution is terminated (by pressing the <span class="Menu">Stop</span> button in the GUI toolbar, or terminating the <span class="Variable">EXata</span> process on the command line interface), the list of nodes will disappear and Connection Manager will indicate that <span class="Variable">EXata</span> is offline, both in the status bar and the system tray.</div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

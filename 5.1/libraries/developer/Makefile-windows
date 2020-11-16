@@ -1,0 +1,12 @@
+#
+# Define Developer library models.
+#
+
+include ../libraries/developer/Makefile-common
+
+ADDON_OPTIONS   = $(ADDON_OPTIONS) $(DEVELOPER_OPTIONS)
+ADDON_INCLUDES  = $(ADDON_INCLUDES) $(DEVELOPER_INCLUDES)
+
+DEVELOPER_OBJS = $(DEVELOPER_SRCS:.cpp=.obj)
+
+LIBRARIES_OBJ = $(LIBRARIES_OBJ) $(DEVELOPER_OBJS)

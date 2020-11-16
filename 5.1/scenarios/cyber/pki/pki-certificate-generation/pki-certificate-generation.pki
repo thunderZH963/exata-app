@@ -1,0 +1,55 @@
+# Copyright (c) 2001-2013, SCALABLE Network Technologies, Inc.  All Rights Reserved.
+#                          600 Corporate Pointe
+#                          Suite 1200
+#                          Culver City, CA 90230
+#                          info@scalable-networks.com
+#
+# This source code is licensed, not sold, and is subject to a written
+# license agreement.  Among other things, no portion of this source
+# code may be copied, transmitted, disclosed, displayed, distributed,
+# translated, used as the basis for a derivative work, or used, in
+# whole or in part, for any program or purpose other than its intended
+# use in compliance with the license agreement as part of the QualNet
+# software.  This source code and certain of the algorithms contained
+# within it are confidential trade secrets of Scalable Network
+# Technologies, Inc. and may not be used as the basis for any other
+# software, hardware, product or service.
+
+
+[4] GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT 1
+[1] GENERATED-CERTIFICATE-PRIVATEKEY-PAIR-COUNT 1
+
+[4] CERTIFICATE-FILENAME[0] cert1.pem
+[4] CERTIFICATE-OWNER-COUNTRYNAME[0] US
+[4] CERTIFICATE-OWNER-STATENAME[0] LA   
+[4] CERTIFICATE-OWNER-LOCATION[0]  SNT
+[4] CERTIFICATE-OWNER-ORGNAME[0] QUALNET
+[4] CERTIFICATE-OWNER-ORGUNIT[0]     QA
+[4] CERTIFICATE-OWNER-COMMONNAME[0]  QN
+[4] CERTIFICATE-OWNER-EMAIL[0]  s@gmail.com
+[4] CERTIFICATE-ISSUER-COUNTRYNAME[0] us
+[4] CERTIFICATE-ISSUER-STATENAME[0] sjm
+[4] CERTIFICATE-ISSUER-LOCATION[0] DS 
+[4] CERTIFICATE-ISSUER-ORGNAME[0] scl
+[4] CERTIFICATE-ISSUER-ORGUNIT[0] test
+[4] CERTIFICATE-ISSUER-COMMONNAME[0]   sam
+[4] CERTIFICATE-ISSUER-EMAIL[0] sam@gmail.com
+[4] PRIVATE-KEY-TYPE[0]     RSA
+
+
+[1] CERTIFICATE-FILENAME[0] cert2.pem
+[1] CERTIFICATE-OWNER-COUNTRYNAME[0] US
+[1] CERTIFICATE-OWNER-STATENAME[0] NK   
+[1] CERTIFICATE-OWNER-LOCATION[0]  SNT
+[1] CERTIFICATE-OWNER-ORGNAME[0] EXATA
+[1] CERTIFICATE-OWNER-ORGUNIT[0]  DEV
+[1] CERTIFICATE-OWNER-COMMONNAME[0] EX
+[1] CERTIFICATE-OWNER-EMAIL[0]  s@gmail.com
+[1] CERTIFICATE-ISSUER-COUNTRYNAME[0] us
+[1] CERTIFICATE-ISSUER-STATENAME[0] sjm
+[1] CERTIFICATE-ISSUER-LOCATION[0] asdf 
+[1] CERTIFICATE-ISSUER-ORGNAME[0] snt
+[1] CERTIFICATE-ISSUER-ORGUNIT[0] test
+[1] CERTIFICATE-ISSUER-COMMONNAME[0]    sam
+[1] CERTIFICATE-ISSUER-EMAIL[0] sam@gmail.com
+[1] PRIVATE-KEY-TYPE[0]     DSA

@@ -1,0 +1,20 @@
+IPNE_INTERFACE_OPTIONS = -DIPNE_INTERFACE
+
+IPNE_INTERFACE_DIR    = ../interfaces/ipne
+IPNE_INTERFACE_SRCDIR = ../interfaces/ipne/src
+
+#
+# common sources
+#
+IPNE_INTERFACE_SRCS = \
+$(IPNE_INTERFACE_SRCDIR)/ipnetworkemulator.cpp \
+$(IPNE_INTERFACE_SRCDIR)/arp_interface.cpp \
+$(IPNE_INTERFACE_SRCDIR)/ospf_interface.cpp \
+$(IPNE_INTERFACE_SRCDIR)/udp_interface.cpp \
+$(IPNE_INTERFACE_SRCDIR)/tcp_interface.cpp \
+$(IPNE_INTERFACE_SRCDIR)/voip_interface.cpp \
+$(IPNE_INTERFACE_SRCDIR)/olsr_interface.cpp \
+
+IPNE_INTERFACE_INCLUDES = \
+-I$(IPNE_INTERFACE_DIR)/src \
+

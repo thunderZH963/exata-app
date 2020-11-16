@@ -1,0 +1,23 @@
+function FileData_Pairs(x)
+{
+x.t("2008","2013");
+x.t("scalable","network");
+x.t("describes","install");
+x.t("exata","connection");
+x.t("connection","manager");
+x.t("installing","connection");
+x.t("network","technologies");
+x.t("install","exata");
+x.t("2013","scalable");
+x.t("chapter","describes");
+x.t("section","2.1");
+x.t("section","2.3");
+x.t("windows","section");
+x.t("manager","installing");
+x.t("manager","chapter");
+x.t("manager","windows");
+x.t("linux","section");
+x.t("systems","2008");
+x.t("2.1","linux");
+x.t("2.3","systems");
+}

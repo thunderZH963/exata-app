@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Firewall Model</title>
+    <link rel="StyleSheet" href="css/Firewall%20Model.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch3%20-%20Newtork%20Layer%20Models.html#998318">3	Network Layer Models</a> &gt; 3.2   Firewall Model</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">3.2  <a name="998318"> Firewall Model</a></div>
+      <div class="Heading2Numbered">3.2.1  <a name="998420">Description</a></div>
+      <div class="BodyAfterHead"><a name="998429">Firewalls are software or hardware components in a computer host or system that are used to implement network access and security policies. All traffic must pass through firewalls, which determines, based on access or security policies, the traffic that is allowed to pass through the network, or dropped at the firewalls.</a></div>
+      <div class="Body"><a name="998438">The firewall model in </a><span class="Variable">EXata</span> is a <span style="font-style: italic">packet-based</span> <span style="font-style: italic">stateless</span> <span style="font-style: italic">software</span> firewall. That is, the firewall model in <span class="Variable">EXata</span> is a software process that inspects each packet to determine if the said packet should be allowed or denied access. The firewall model is stateless, that is, it does not retain state once a packet has been processed by the firewall.</div>
+      <div class="Body"><a name="998454">The firewall model in </a><span class="Variable">EXata</span> is based on the <span style="font-style: italic">iptables</span> packet filter software found in Linux/Unix based systems (see [1]). Specifically, the model in <span class="Variable">EXata</span> models the <span style="font-style: italic">Filter</span> table of iptables, which is used for firewall actions (other tables, such as NAT, MANGLE, etc., are used for packet filtering and modification actions that are unrelated with firewalls).</div>
+      <div class="Heading2Numbered">3.2.2  <a name="998668">Features and Assumptions</a></div>
+      <div class="Heading3Numbered">3.2.2.1  <a name="998677">Implemented Features</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998691">The FILTER table of iptables.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998700">The INPUT, OUTPUT, and FORWARD chains of the FILTER table.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998712">Table actions: create a chain.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998721">Chain actions: set default policy, append rule, insert rule.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998730">Firewall rule predicates: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><a name="1009616">From MAC header: source address, destination address. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><a name="1009596">From IP header: protocol, source address, destination address, source address type, destination address type, fragmentation flags. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><a name="1009603">From TCP/UDP header: source port, destination port.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><a name="1009638">From TCP header: TCP flags.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><a name="1009645">Incoming interface index.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><a name="1009652">Outgoing interface index.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998739">Firewall rule actions: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><span class="Courier" style="font-family: Arial"><a name="1009659">Drop</a></span> a packet</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><span class="Courier" style="font-family: Arial"><a name="1009666">Accept</a></span> a packet</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><span class="Courier" style="font-family: Arial"><a name="1009673">Jump</a></span> to a custom chain</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><span class="Courier" style="font-family: Arial"><a name="1009680">Goto</a></span> a custom chain</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><a name="1009687"> </a><span class="Courier" style="font-family: Arial">Return</span> to the parent chain.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">3.2.2.2  <a name="998748">Omitted Features</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998760">Delete or rename custom chains</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998769">Erase or replace rules in a chain</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">3.2.2.3  <a name="998778">Assumptions and Limitations</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998790">The firewall model is a stateless implementation, which implies rules cannot be configured, therefore relies on previous state of the firewall, such as connection tracking.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">3.2.3  <a name="998799">Supplemental Information</a></div>
+      <div class="BodyAfterHead"><a name="1005593">None.</a></div>
+      <div class="Heading2Numbered">3.2.4  <a name="1005596">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1005597">To specify Firewall model, include the following parameter in the scenario configuration (.config) file:</a></div>
+      <div class="Declaration"><a name="1005598">&nbsp;</a></div>
+      <div class="Declaration"><a name="1005599">FIREWALL-CONFIG-FILE	&lt;firewall-config-file&gt;</a></div>
+      <div class="Example"><a name="1005600">where</a></div>
+      <div class="Anchor"><a name="998874">&nbsp;</a></div>
+      <table class="" style="margin-bottom: 6.0pt; margin-left: 36pt; margin-right: 0pt; margin-top: 6.0pt; padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; text-align: left; width: 414pt" summary="">
+        <caption></caption>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 144pt">
+            <div class="BodyCourier"><a name="998895">&lt;firewall-config-file&gt;</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 270pt">
+            <div class="CellBody_Large"><a name="998907">Name of the file that enumerates the firewall rules for the nodes in the scenario.</a></div>
+            <div class="CellBody_Large"><a name="998916">It is recommended that the filename extension of this file be </a><span style="font-style: italic">.firewall</span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">3.2.4.1  <a name="998944">Format of Firewall Configuration File</a></div>
+      <div class="BodyAfterHead"><a name="1007637">The firewall commands are defined in the Firewall Configuration file, one command per line. Commands for more than one node can be specified in the same Firewall Configuration file. The Firewall model is activated for those nodes in a scenario only for which there is at least one rule defined in the Firewall Configuration file.</a></div>
+      <div class="Body"><a name="1008011">There are three “chains” that handle different classes of traffic as follows:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1008012">INPUT: This chain inspects all incoming packets that are successfully received by the host and are passed on to the Application layer.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1008013">OUTPUT: This chain inspects all outgoing packets that were generated by applications on the host.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1008014">FORWARD: This chain inspects all packets that are forwarded by the host. That is, these packets were neither generated by nor delivered to the applications on this host; rather these are the packets that are forwarded by the Network layer of the host.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1008015">Firewall commands are defined to configure the behavior of the firewall. A firewall command has two parts: Table Description and Chain Description. The syntax of these is identical to the iptables syntax.</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1008016">Table Description: Identify the table to which the command applies. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1008020">Chain Description: Identify the chain within the table to which the command applies. These can be the three predefined chains: </a><span class="Courier">INPUT</span>, <span class="Courier">OUTPUT</span>, or <span class="Courier">FORWARD</span>, or it can be a user-defined chain.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1009745">The chain description specifies the action to perform on the chain: create a new chain, rename a chain, or append a firewall rule to a chain. A firewall rule has two components: Conditions and Action.</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1008021">Conditions: Conditions on the properties or characteristics of a packet (e.g., the IP source address, the TCP flags, etc) that must match for this rule can be activated. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1008022">Action: Action to be performed on a packet if it has been matched against the specified conditions. Two actions are supported in the Firewall model in </a><span class="Variable">EXata</span>: drop the packet or accept the packet.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1007627">The syntax for specifying a firewall command is (all parameters are entered on the same line):</a></div>
+      <div class="Declaration" style="margin-left: 89.1252pt"><a name="998992">&nbsp;</a></div>
+      <div class="Declaration" style="margin-left: 89.1252pt"><a name="1007391">FIREWALL &lt;node-id&gt; &lt;table-desc&gt; &lt;chain-desc&gt; </a></div>
+      <div class="Example"><a name="999002">where </a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="BodyCourier"><a name="1005360">&lt;node-id&gt;</a></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 324pt">
+            <div class="Body"><a name="1005362">Node ID of the node for which this rule is configured.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyCourier"><a name="1005364">&lt;table-desc&gt;</a></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1005366">Table description. </a></div>
+            <div class="BodyAfterHead"><a name="1007462">The table description clauses are described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1007054', '');" title="Firewall Model">Table&nbsp;3-4</a></span>.</div>
+            <div class="BodyAfterHead" style="margin-left: 28.8pt"><span style="font-weight: bold"><a name="1007499">Note:</a></span>	Table description is optional in a firewall command.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyCourier"><a name="1007486">&lt;chain-desc&gt;</a></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1007488">Chain description. </a></div>
+            <div class="BodyAfterHead"><a name="1007971">This specifies the chain and the operation to perform on the chain.</a></div>
+            <div class="BodyAfterHead"><a name="1007492">The chain description clauses are described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1007140', '');" title="Firewall Model">Table&nbsp;3-5</a></span>.</div>
+            <div class="BodyAfterHead" style="margin-left: 28.8pt"><span style="font-weight: bold"><a name="1007524">Note:</a></span>	One and only one of the chain description commands must be specified.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="999049">Table Clauses</a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1007054', '');" title="Firewall Model" name="1005849">Table&nbsp;3-4</a></span> describes the table clause of firewall commands.</div>
+      <div class="Anchor"><a name="999069">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-4.&nbsp;&nbsp;<a name="1007054">Table Clauses&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 180pt">
+            <div class="CellHeading"><a name="1007058">Command</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 288pt">
+            <div class="CellHeading"><a name="1007060">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007062">-t &lt;table-name&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007686">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007063">--table &lt;table-name&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1007066">Indicates the table to which this rule applies.</a></div>
+            <div class="CellBody"><a name="1007067">Since the firewall model in </a><span class="Variable">EXata</span> supports only one table (the FILTER table), this command is optional.</div>
+            <div class="CellBody"><a name="1007068">The only valid value for </a><span style="font-family: &quot;Courier New&quot;">&lt;table-name&gt;</span> is <span style="font-family: &quot;Courier New&quot;">FILTER</span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="999256">Chain Clauses</a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1007140', '');" title="Firewall Model" name="1005886">Table&nbsp;3-5</a></span> describes the chain clauses of firewall commands.</div>
+      <div class="Anchor"><a name="1007172">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-5.&nbsp;&nbsp;<a name="1007140">Chain Clauses&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 252pt">
+            <div class="CellHeading"><a name="1007144">Command</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 216pt">
+            <div class="CellHeading"><a name="1007146">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007697">-P &lt;chain-name&gt; &lt;policy&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007698">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007149">--policy &lt;chain-name&gt; &lt;policy&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1007151">Set the default policy of the chain.</a></div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1007152">&lt;chain-name&gt;</a></span> is the name of the chain.</div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1007153">&lt;policy&gt;</a></span> is one of <span class="Courier" style="font-size: 9.0pt">DROP</span> or <span class="Courier" style="font-size: 9.0pt">ACCEPT</span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007712">-N &lt;new-chain-name&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007155">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007156">--new-chain &lt;new-chain-name&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1007158">Create a new chain in the table.</a></div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1007159">&lt;new-chain-name&gt;</a></span> must be different from predefined or previously defined chains.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007725">-A &lt;chain-name&gt; &lt;conditions&gt; &lt;action&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007161">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007162">--append &lt;chain-name&gt; &lt;conditions&gt; &lt;action&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1007164">Append the </a><span class="Courier" style="font-size: 9.0pt">&lt;conditions&gt;</span> and <span class="Courier" style="font-size: 9.0pt">&lt;action&gt;</span> pair as the last rule in the chain specified by <span style="font-family: &quot;Courier New&quot;">&lt;chain-name&gt;</span>. </div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1008771">&lt;conditions&gt;</a></span> specifies the condition(s) that a packet must satisfy and <span class="Courier" style="font-size: 9.0pt">&lt;action&gt;</span> specifies the action to perform on the packet if the condition(s) is true.</div>
+            <div class="BodyAfterHead" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 5.0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008697">&lt;conditions&gt;</a></span> can have zero, one, or multiple <span style="font-style: italic">predicate clauses</span>. If no predicate clause is specified, then all packets satisfy the firewall condition. If more than one predicate clause is specified, then the firewall condition is satisfied if all predicates evaluate to true.</div>
+            <div class="BodyAfterHead" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 5.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008701">The predicate clauses for firewall rules are described in </a></span><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1008457', '');" title="Firewall Model">Table&nbsp;3-6</a></span>.</div>
+            <div class="BodyAfterHead" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 5.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008726">The action clauses for firewall rules are described in </a></span><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1007100', '');" title="Firewall Model">Table&nbsp;3-7</a></span>.</div>
+            <div class="BodyAfterHead" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 5.0pt; margin-left: 28.8pt; text-transform: none; vertical-align: baseline"><span style="font-weight: bold"><a name="1008727">Note:</a></span>	One and only one of the action clauses must be specified.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="1007175">Syntax for Predicate Clauses</a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1008457', '');" title="Firewall Model" name="1005920">Table&nbsp;3-6</a></span> describes the predicate clauses in firewall rules.</div>
+      <div class="Anchor"><a name="999529">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-6.&nbsp;&nbsp;<a name="1008457">Predicate Clauses in Firewall Rules&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1008461">Command</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 306pt">
+            <div class="CellHeading"><a name="1008463">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008465">-p &lt;protocol&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008466">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008467">--protocol &lt;protocol&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1008469">Match the protocol ID field of the IP header.</a></div>
+            <div class="CellBody"><a name="1008470">The </a><span class="Courier" style="font-size: 9.0pt">&lt;protocol&gt;</span> can be an integer value, or one of the following strings:</div>
+            <div class="CellBody" style="margin-left: 36.36pt; text-indent: -21.96pt"><span style="font-family: &quot;Courier New&quot;"><a name="1008471">tcp</a></span>: 	Match protocol ID = 6 (TCP protocol ID)</div>
+            <div class="CellBody" style="margin-left: 36.36pt; text-indent: -21.96pt"><span style="font-family: &quot;Courier New&quot;"><a name="1008472">udp</a></span>: 	Match protocol ID = 17 (UDP protocol ID)</div>
+            <div class="CellBody" style="margin-left: 36.36pt; text-indent: -21.96pt"><span style="font-family: &quot;Courier New&quot;"><a name="1008473">icmp</a></span>: 	Match protocol ID = 1 (ICMP protocol ID)</div>
+            <div class="CellBody" style="margin-left: 36.36pt; text-indent: -21.96pt"><span style="font-family: &quot;Courier New&quot;"><a name="1008474">all</a></span>: 	Match all protocols</div>
+            <div class="Anchor"><a name="1008476">&nbsp;</a></div>
+            <div class="CellBody"><a name="1008980">This command has a negation form:</a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008477">-p ! &lt;protocol&gt;</a></span></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008478">or </a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008479">--protocol ! &lt;protocol&gt;</a></span></div>
+            <div class="CellBody"><a name="1008480">The clause will match only if the protocol in the packet header is not as indicated by </a><span class="Courier" style="font-size: 9.0pt">&lt;protocol&gt;</span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008482">-s &lt;address&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008483">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008484">--src &lt;address&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008485">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008486">--source &lt;address&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1008488">Match the source address field of the IP header.</a></div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1008489">&lt;address&gt;</a></span> can be one of the following:</div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1008490">Host address (e.g., 10.10.0.1)</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1008491">Subnet address, in host bit notation(e.g., 10.10.0.0/24)</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1008492">Subnet address, in subnet mask notation (e.g., 10.10.0.0/255.255.255.0)</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Anchor"><a name="1008494">&nbsp;</a></div>
+            <div class="CellBody"><a name="1008970">This command has a negation form:</a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008495">-s ! &lt;address&gt;</a></span></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008496">or </a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008497">--src ! &lt;address&gt;</a></span></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008498">or </a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008499">--source ! &lt;address&gt;</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008501">-d &lt;address&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008502">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008503">--dst &lt;address&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008504">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008505">--destination &lt;address&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1008507">Match the destination address field of the IP header.</a></div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1008995">&lt;address&gt;</a></span> can be one of the following:</div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1008996">Host address (e.g., 10.10.0.1)</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1008997">Subnet address, in host bit notation(e.g., 10.10.0.0/24)</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1008998">Subnet address, in subnet mask notation (e.g., 10.10.0.0/255.255.255.0)</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Anchor"><a name="1008512">&nbsp;</a></div>
+            <div class="CellBody"><a name="1008513">This command has a negation form:</a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008514">-d ! &lt;address&gt;</a></span></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008515">or </a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008516">--dst ! &lt;address&gt;</a></span></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008517">or </a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008518">--destination ! &lt;address&gt;</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008520">-f</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008521">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008522">--fragment</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1008524">Match the second or later fragments of a fragmented packet.</a></div>
+            <div class="Anchor"><a name="1008525">&nbsp;</a></div>
+            <div class="CellBody"><a name="1009016">This command has a negation form:</a></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008526">! -f</a></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008527">! --fragment</a></div>
+            <div class="CellBody"><a name="1008528">This will match the first fragment or unfragmented packets.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008530">--sport &lt;port&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008531">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008532">--source-port &lt;port&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1008534">Match the source port field of the TCP or UDP header.</a></div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1008535">&lt;port&gt;</a></span> can be one of the following:</div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1008536">An integer value (e.g., </a><span class="Courier" style="font-size: 9.0pt">--sport 80</span> will match packets with source port equal to 80)</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1009036">A range (e.g., 80:100 will match ports in range 80 through 100, inclusive). <br />Either the lower or the upper end of the range can be omitted. <br /></a><span style="font-style: italic"><br />Example</span>s:<br /> <span class="Courier" style="font-size: 9.0pt">--sport :80</span> will match all ports that are less than or equal to 80.<br /><span class="Courier" style="font-size: 9.0pt">--sport 80:</span> will match all ports that are greater than or equal to 80.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Anchor"><a name="1009037">&nbsp;</a></div>
+            <div class="CellBody"><a name="1008539">The command has a negation form:</a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 11.49984pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008540">--sport ! &lt;port&gt;</a></span></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008541">or </a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 11.49984pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008542">--source-port ! &lt;port&gt;</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008550">--dport &lt;port&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008551">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008552">--destination-port &lt;port&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1008554">Match the destination port field of the TCP or UDP header.</a></div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1009137">&lt;port&gt;</a></span> can be one of the following:</div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1009138">An integer value (e.g., </a><span class="Courier" style="font-size: 9.0pt">--sport 80</span> will match packets with destination port equal to 80)</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_outer" style="margin-left: 9pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_inner"><a name="1009139">A range (e.g., 80:100 will match ports in range 80 through 100, inclusive). <br />Either the lower or the upper end of the range can be omitted. <br /></a><span style="font-style: italic"><br />Example</span>s:<br /> <span class="Courier" style="font-size: 9.0pt">--sport :80</span> will match all ports that are less than or equal to 80.<br /><span class="Courier" style="font-size: 9.0pt">--sport 80:</span> will match all ports that are greater than or equal to 80.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Anchor"><a name="1008559">&nbsp;</a></div>
+            <div class="CellBody"><a name="1009152">The command has a negation form:</a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008560">--dport ! &lt;port&gt;</a></span></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008561">or </a></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><span class="Courier" style="font-size: 9.0pt"><a name="1008562">--destination-port ! &lt;port&gt;</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008570">--tcp-flags &lt;mask&gt; &lt;check&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1008572">Match when the TCP flags are set as specified. </a></div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1008573">&lt;mask&gt;</a></span> is the flags which are examined, written as a comma-separated list.</div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1009239">&lt;check&gt;</a></span> is a comma-separated list of flags which must be set. </div>
+            <div class="CellBody"><a name="1009240">Flags are: </a><span class="Courier" style="font-size: 9.0pt">SYN, ACK, FIN, RST, URG, PSH, ALL, NONE</span>. </div>
+            <div class="Anchor"><a name="1009241">&nbsp;</a></div>
+            <div class="CellBody"><span style="font-style: italic"><a name="1008577">Example</a></span>:</div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 14.4pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1009229">tcp --tcp-flags SYN,ACK,FIN,RST SYN</a></span></div>
+            <div class="CellBody" style="margin-left: 14.4pt; text-indent: 0pt"><a name="1009193">This will only match packets with the SYN flag set, and the ACK, FIN and RST flags unset.</a></div>
+            <div class="Anchor"><a name="1008578">&nbsp;</a></div>
+            <div class="CellBody"><a name="1009200">This command has negation form:</a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008579">--tcp-flags ! &lt;mask&gt; &lt;check&gt;</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008581">-i &lt;index&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008582">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008583">--in-interface &lt;index&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1008585">Match packets that arrive from interface index equal to </a><span class="Courier" style="font-size: 9.0pt">&lt;index&gt;</span>.</div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1008586">&lt;index&gt;</a></span> is an integer.</div>
+            <div class="Anchor"><a name="1008587">&nbsp;</a></div>
+            <div class="CellBody"><a name="1008588">This command has a negation form:</a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008589">-i ! &lt;index&gt;</a></span></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008590">or </a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008591">--in-interface ! &lt;index&gt;</a></span></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1008592">This predicate cannot be used with the OUTPUT chain.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008594">-o &lt;index&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008595">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1008596">--out-interface &lt;index&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1008598">Match packets that will be transmitted from interface index equal to </a><span class="Courier" style="font-size: 9.0pt">&lt;index&gt;</span>.</div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1008599">&lt;index&gt;</a></span> is an integer.</div>
+            <div class="Anchor"><a name="1008600">&nbsp;</a></div>
+            <div class="CellBody"><a name="1008601">This command has a negation form:</a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008602">-o ! &lt;index&gt;</a></span></div>
+            <div class="CellBody" style="margin-left: 12.00024pt; text-indent: 0pt"><a name="1008603">or </a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-left: 12.00024pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-size: 9.0pt"><a name="1008604">--out-interface ! &lt;index&gt;</a></span></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="1008605">This predicate cannot be used with the INPUT chain.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="1000537">Syntax for Action Clauses </a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1007100', '');" title="Firewall Model" name="1005951">Table&nbsp;3-7</a></span> describes the action clauses in firewall rules.</div>
+      <div class="Anchor"><a name="1000557">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-7.&nbsp;&nbsp;<a name="1007100">Actions Clauses in Firewall Rules&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1007104">Command</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 306pt">
+            <div class="CellHeading"><a name="1007106">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007868">-j &lt;action&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007108">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007109">--jump &lt;action&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1007111">Action to be performed on the packet. </a></div>
+            <div class="CellBody"><span class="Courier" style="font-size: 9.0pt"><a name="1009248">&lt;action&gt;</a></span> can be one of the following:</div>
+            <div class="CellBody" style="margin-left: 72pt"><span class="Courier" style="font-size: 9.0pt"><a name="1007112">ACCEPT</a></span>:	Accept the packet and allow it to proceed in the protocol stack. No further rules are checked for this packet.</div>
+            <div class="CellBody" style="margin-left: 72pt"><span class="Courier" style="font-size: 9.0pt"><a name="1007113">DROP</a></span>	Drop the packet. No further rules are checked for this packet.</div>
+            <div class="CellBody" style="margin-left: 72pt"><span class="Courier" style="font-size: 9.0pt"><a name="1007114">&lt;chain-name&gt;</a></span>	Jump immediately to the first rule in the chain <span class="Courier" style="font-size: 9.0pt">&lt;chain-name&gt;</span>, and continue matching rules from that chain. If that chain has not provided any response, continue with the next rule in the current chain.</div>
+            <div class="CellBody" style="margin-left: 72pt"><span class="Courier" style="font-size: 9.0pt"><a name="1007115">RETURN</a></span>	Go back to the parent chain from which the current chain was called (via <span class="Courier" style="font-size: 9.0pt">--jump</span> or <span class="Courier" style="font-size: 9.0pt">--goto</span> command).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007881">-g &lt;chain-name&gt;</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007117">or</a></span></div>
+            <div class="Parameter_Name" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 2.0pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1007118">--goto &lt;chain-name&gt;</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1007120">Jump immediately to the first rule in the chain </a><span class="Courier" style="font-size: 9.0pt">&lt;chain-name&gt;</span>, and continue matching rules from that chain.</div>
+            <div class="CellBody"><a name="1007122">Unlike the </a><span class="Courier" style="font-size: 9.0pt">--jump</span> option return will not continue processing in the current chain; instead in the parent chain that called the current chain via <span class="Courier" style="font-size: 9.0pt">--jump</span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="1008146">Example</a></div>
+      <div class="BodyAfterHead"><a name="1008173">As an example, consider the following firewall command in the Firewall Configuration file:</a></div>
+      <div class="Declaration"><a name="1008147">-t FILTER -A INPUT -s 10.10.0.0/24 --tcp-flags SYN,ACK SYN <br />--in-interface 0  -j DROP</a></div>
+      <div class="Body"><a name="1008148">This command specifies that a rule must be appended to the INPUT chain of the FILTER table.</a></div>
+      <div class="Body"><a name="1009347">The firewall rule to be appended has three predicates: </a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><span class="Courier"><a name="1008152">-s 10.10.0.0/24</a></span>: This indicates that the source address in the IP header must belong to the subnet 10.10.0.0/24t.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><span class="Courier"><a name="1008153">--tcp-flags SYN,ACK SYN</a></span>: This indicates that the SYN flag of the TCP header must be set, and the ACK flag must not be set.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><span class="Courier"><a name="1008154">--in-interface 0</a></span>: This indicates that the packet must have arrived from interface index 0 on this host.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1009362">The action to perform if all three predicates are true is to drop the packet.</a></div>
+      <div class="Body"><a name="1008200">To summarize, the above rule instructs the firewall to drop all packets that arrive on interface index 0, from subnet 10.10.0.0/24, and have the </a><span class="Courier">SYN</span> flag set and the <span class="Courier">ACK</span> flag not set in the TCP header.</div>
+      <div class="Heading2Numbered">3.2.5  <a name="1000787">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1005347">To configure the Firewall model in the GUI, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1000796">Go to </a><span class="Menu_Item">Scenario Property Editor</span><span style="font-weight: bold"> </span><span class="Bold">&gt;</span><span style="font-weight: bold"> </span><span class="Menu_Item">Cyber</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1005410">Set the parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1009411', '');" title="Firewall Model">Table&nbsp;3-8</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1005302"><img class="Default" src="images/Firewall%20Configuration%20File.png" width="596" height="185" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 3-2.&nbsp;&nbsp;<a name="1000817">Setting Firewall Configuration File</a></div>
+      <div class="Anchor"><a name="1009428">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-8.&nbsp;&nbsp;<a name="1009411">Command Line Equivalent of Firewall Configuration File Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1009417">GUI Parameter </a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 144pt">
+            <div class="CellHeading"><a name="1009419">Scope of GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1009421">Command Line Parameter</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody" style="margin-bottom: 3.0pt"><a name="1009423">Firewall Configuration File</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1009425">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier" style="margin-bottom: 1.0pt"><a name="1009427">FIREWALL-CONFIG-FILE</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4" style="text-indent: 14.4pt"><a name="1009397">Setting Parameters</a></div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1009511">Set </a><span class="Field">Firewall Configuration File</span> to the name of the Firewall Configuration file. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#998944', '');" title="Firewall Model">Section&nbsp;3.2.4.1</a></span> for the format of this file.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">3.2.6  <a name="1009526">Runtime Commands for Firewall Model</a></div>
+      <div class="BodyAfterHead"><a name="1009512">Firewall commands can executed during the scenario execution Human-In-The-Loop (HITL) interface of the </a><span class="Variable">EXata</span> GUI (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Ch6%20-%20Attack%20Models.16.2.html#999930', '');" title="Initiating Attacks from EXata GUI">Section&nbsp;6.1</a></span>).</div>
+      <div class="BodyAfterHead"><a name="1009513">To interact with the firewall model at runtime, execute the following command from the HITL interface:</a></div>
+      <div class="Declaration"><a name="1000846">&nbsp;</a></div>
+      <div class="Declaration" style="margin-left: 89.1252pt"><a name="1009568">firewall &lt;node-id&gt; &lt;table-desc&gt; &lt;chain-desc&gt; </a></div>
+      <div class="Body"><a name="1000865">The syntax of this command is described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1005596', '');" title="Firewall Model">Section&nbsp;3.2.4</a></span>.</div>
+      <div class="Heading2Numbered">3.2.7  <a name="1005188">Statistics</a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1005545', '');" title="Firewall Model" name="1005194">Table&nbsp;3-9</a></span> lists the Firewall model statistics that are output to the statistics (.stat) file at the end of simulation.</div>
+      <div class="Anchor"><a name="1005576">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-9.&nbsp;&nbsp;<a name="1005545">Firewall Model Statistics&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 216pt">
+            <div class="CellHeading"><a name="1005549">Statistic</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 252pt">
+            <div class="CellHeading"><a name="1005551">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005553">INPUT Chain Number of Packets Inspected</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005555">Number of packet that were inspected by the INPUT chain.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005557">INPUT Chain Number of Packets Dropped</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005559">Number of packet that were denied access by the INPUT chain.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005561">OUTPUT Chain Number of Packets Inspected</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005563">Number of packet that were inspected by the OUTPUT chain.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005565">OUTPUT Chain Number of Packets Dropped</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005567">Number of packet that were denied access by the OUTPUT chain.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005569">FORWARD Chain Number of Packets Inspected</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005571">Number of packet that were inspected by the FORWARD chain.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005573">FORWARD Chain Number of Packets Dropped</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1005575">Number of packet that were denied access by the FORWARD chain.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">3.2.8  <a name="1005578">Scenarios Included in </a><span class="Variable">EXata</span></div>
+      <div class="BodyAfterHead"><a name="1001223">The </a><span class="Variable">EXata</span> distribution includes several sample scenarios for the Firewall model. All scenarios are located in the directory <span class="Variable">EXATA_HOME</span>/scenarios/cyber/firewall. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Firewall%20Model.html#1005010', '');" title="Firewall Model">Table&nbsp;3-10</a></span> lists the sub-directory where each scenario is located.</div>
+      <div class="Anchor"><a name="1001245">&nbsp;</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 3-10.&nbsp;&nbsp;<a name="1005010">Firewall Scenarios Included in </a><span class="Variable">EXata</span></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 108pt">
+            <div class="CellHeading"><a name="1005014">Scenario</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 360pt">
+            <div class="CellHeading"><a name="1005016">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1001289">dmz-network</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1001291">Represents a canonical enterprise network with private and DMZ networks. Firewall model is used to restrict access to internal network.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1001309">blacklist-node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1001311">A multihop wireless network where one node is blacklisted. Any node in the network will not receive packets from this node.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">3.2.9  <a name="1001328">References</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1001349">The netfilter.org project: http://www.netfilter.org.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

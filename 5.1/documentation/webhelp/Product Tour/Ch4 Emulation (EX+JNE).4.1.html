@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Emulation Testbed and Demo</title>
+    <link rel="StyleSheet" href="css/Ch4%20Emulation%20(EX+JNE).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">4	Emulation Testbed and Demo</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="ChapterTitle_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="ChapterTitle_inner" style="width: 72pt; white-space: nowrap;">
+                <span class="ChapterNumber">4	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="ChapterTitle_inner"><a name="1004543">Emulation Testbed and Demo</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1020922">In this chapter, we will demonstrate how to set up an emulation testbed. We will use the scenario described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch2%20Simulation.2.1.html#1031918', '');" title="Simulation Demo">Chapter&nbsp;2</a></span> as the emulated network. Two external machines (called <span style="font-style: italic">operational hosts</span>) will be connected to the machine running <span class="Variable">EXata</span> (called the <span style="font-style: italic">emulation server</span>), as shown in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch4%20Emulation%20(EX+JNE).4.2.html#1021499', '');" title="Setting up the Testbed">Figure&nbsp;4‑1</a></span>. </div>
+      <div class="Body"><a name="1020923">The scenario described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch2%20Simulation.2.1.html#1031918', '');" title="Simulation Demo">Chapter&nbsp;2</a></span> (WiFiDemo) will run on the emulation server (in emulation mode). One operational host will map to Mobile Station 1 in the WiFiDemo scenario and the other operational host will map to Mobile Station 3. A video streaming application will be run between the two operational hosts. The effect of this will be that video traffic from Operational Host 1 (the one mapped to Mobile Station 1) will be injected into the emulated network at Mobile Station 1. The video traffic will be routed through the emulated network from Mobile Station 1 to Mobile Station 3. Since Mobile Station 3 is mapped to Operational Host 2, the video traffic will arrive at Operational Host 2 and can be viewed using a video viewer. </div>
+      <div class="Body"><a name="1020924">The video traffic will be subject to changes in network conditions within the emulated network. For example, at the time of the two handoffs for Mobile Station 1, some video packets will get dropped and the video quality at Operational Host 2 will temporarily deteriorate. (Depending on the speed at which the video is streamed and the buffering capacity, the deterioration may or may not be noticeable.)</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

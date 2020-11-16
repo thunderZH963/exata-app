@@ -1,0 +1,17 @@
+
+include ../interfaces/ocula/Makefile-common
+
+ADDON_OPTIONS   = $(ADDON_OPTIONS) $(OCULA_INTERFACE_OPTIONS)
+ADDON_SRCS      = $(ADDON_SRCS) $(OCULA_INTERFACE_SRCS)
+ADDON_INCLUDES  = $(ADDON_INCLUDES) $(OCULA_INTERFACE_INCLUDES) 
+ADDON_LIBRARIES = $(ADDON_LIBRARIES) ..\lib\$(ARCH)\boost\libboost_date_time-$(COMPILER)0-mt-s-1_52.lib
+
+ocula_tester:
+	$(CXX) $(CXXFLAGS) /ZI /EHsc /nologo -c $(OCULA_INTERFACE_DIR)/CommonFunctions.cpp $(OCULA_INTERFACE_OPTIONS) -I$(OCULA_INTERFACE_INCLUDES)  -I../include/windows/ -I../include/ /Fo$(OCULA_INTERFACE_DIR)/CommonFunctions.obj
+	$(CXX) $(CXXFLAGS) /ZI /EHsc /nologo -c $(OCULA_INTERFACE_DIR)/ExecSettings.cpp $(OCULA_INTERFACE_OPTIONS) -I$(OCULA_INTERFACE_INCLUDES)  -I../include/windows/ -I../include/ /Fo$(OCULA_INTERFACE_DIR)/ExecSettings.obj
+	$(CXX) $(CXXFLAGS) /ZI /EHsc /nologo -c $(OCULA_INTERFACE_DIR)/VopsProperty.cpp $(OCULA_INTERFACE_OPTIONS) -I$(OCULA_INTERFACE_INCLUDES)  -I../include/windows/ -I../include/ /Fo$(OCULA_INTERFACE_DIR)/VopsProperty.obj
+	$(CXX) $(CXXFLAGS) /ZI /EHsc /nologo -c $(OCULA_INTERFACE_DIR)/VopsRpcInterface.cpp $(OCULA_INTERFACE_OPTIONS) -I$(OCULA_INTERFACE_INCLUDES)  -I../include/windows/ -I../include/ /Fo$(OCULA_INTERFACE_DIR)/VopsRpcInterface.obj
+	$(CXX) $(CXXFLAGS) /Zi /EHsc /nologo -c $(OCULA_INTERFACE_DIR)/ops_util.cpp $(OCULA_INTERFACE_OPTIONS) -I$(OCULA_INTERFACE_INCLUDES) -I../include/ /Fo$(OCULA_INTERFACE_DIR)/ops_util.obj
+	$(CXX) $(CXXFLAGS) /ZI /EHsc /nologo -c $(OCULA_INTERFACE_DIR)/vops.cpp $(OCULA_INTERFACE_OPTIONS) -DOCULA_TESTER -I$(OCULA_INTERFACE_INCLUDES) -I../include/ -I../include/windows/ /Fo$(OCULA_INTERFACE_DIR)/vops.obj
+	$(CXX) $(CXXFLAGS) /Zi /EHsc /nologo -c $(OCULA_INTERFACE_DIR)/ocula_tester.cpp $(OCULA_INTERFACE_OPTIONS) -I$(OCULA_INTERFACE_INCLUDES) -I../include/ -I../include/windows/  /Fo$(OCULA_INTERFACE_DIR)/ocula_tester.obj
+	$(CXX) /nologo /Fe..\bin\ocula_tester.exe /Zi $(OPT) $(OCULA_INTERFACE_DIR)/ocula_tester.obj -I$(OCULA_INTERFACE_INCLUDES) /link ..\lib\$(ARCH)\boost\libboost_date_time-$(COMPILER)0-mt-s-1_52.lib $(OCULA_INTERFACE_DIR)/vops.obj $(OCULA_INTERFACE_DIR)/ops_util.obj $(OCULA_INTERFACE_DIR)/VopsRpcInterface.obj $(OCULA_INTERFACE_DIR)/VopsProperty.obj $(OCULA_INTERFACE_DIR)/ExecSettings.obj $(OCULA_INTERFACE_DIR)/CommonFunctions.obj ws2_32.lib ..\lib\windows\pthreadVC2.lib

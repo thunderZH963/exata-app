@@ -1,0 +1,41 @@
+PURPOSE:-
+--------
+To test a simple tunnel between a pair of ISAKMP enabled nodes
+
+
+SCENARIO:-
+---------
+
+------ means link connection
+
+
+    1                        5
+     \                      /
+      \                    /
+       \                  /
+        3----------------4
+       /                  \
+      /                    \
+     /                      \
+    2                        6
+
+
+Node 3  and Node 4  ISAKMP enabled.
+Node 1 is sending CBR packets to node 6
+
+
+
+RUN:-
+----
+Run '<QUALNET_HOME>/bin/qualnet default.config'.
+
+
+DESCRIPTION OF THE FILES:-
+-------------------------
+1. default.app -  QualNet configuration file for application input.
+2. default.config - QualNet configuration input file.
+3. default.expected.stat - QualNet statistics collection.
+4. node3.isakmp - QualNet ISAKMP configuration file for node 3
+5. node4.isakmp - QualNet ISAKMP configuration file for node 4
+6. README - This file.
+

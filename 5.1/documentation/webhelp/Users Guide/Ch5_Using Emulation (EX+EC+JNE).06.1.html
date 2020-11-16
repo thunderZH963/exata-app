@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Using Emulation</title>
+    <link rel="StyleSheet" href="css/Ch5_Using%20Emulation%20(EX+EC+JNE).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">5	Using Emulation</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="ChapterTitle_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="ChapterTitle_inner" style="width: 72pt; white-space: nowrap;">
+                <span class="ChapterNumber">5	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="ChapterTitle_inner"><a name="1022444">Using Emulation</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyAfterHead"><span class="Variable"><a name="1022448">EXata</a></span> allows a large category of applications to be executed within the <span class="Variable">EXata</span> emulation network, including end-to-end networking applications, Internet‑based applications, and SNMP‑based applications. Additionally, <span class="Variable">EXata</span> allows third party packet sniffing software to capture and analyze the emulated traffic. </div>
+      <div class="BodyAfterHead"><a name="1037213">This chapter describes the steps involved in preparing an emulation testbed and configuring applications to run on it. It is assumed that a network scenario is available to be executed by </a><span class="Variable">EXata</span>, either in the <span class="Variable">EXata</span> GUI or via the command line interface. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.1.html#1989005', '');" title="Modeling Networks">Chapter&nbsp;4</a></span> for details of configuring network scenarios in <span class="Variable">EXata</span> or use one of the pre-configured scenarios available in the folder <span class="Variable">EXATA_HOME</span>/scenarios. </div>
+      <div class="Body"><a name="1121684">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1121691">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1121693">To use the features described in this chapter, </a><span class="Variable">EXata</span> must be run from an administrator or root user account.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1037271', '');" title="Configuring the EXata Testbed" name="1022453">Section&nbsp;5.1</a></span> describes how to configure the <span class="Variable">EXata</span> testbed consisting of Operational Hosts (the physical hardware running real applications) and the Emulation Server (the machine running <span class="Variable">EXata</span>).</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023340', '');" title="Running Applications" name="1022457">Section&nbsp;5.2</a></span> describes how to run real applications on an emulated network. This section also describes <span class="Variable">EXata</span>’s emulated server applications and the configuration requirements for running multicast applications on an emulated network.</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.4.html#1067414', '');" title="Connecting to Routers" name="1068110">Section&nbsp;5.3</a></span> describes how to connect operational hosts running a routing protocol to emulated nodes within <span class="Variable">EXata</span>.</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1024018', '');" title="Connecting to the Internet" name="1022461">Section&nbsp;5.4</a></span> describes how to run applications that need to access the Internet or other networks via an emulated network.</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.6.html#1123915', '');" title="Simple Network Management Protocol (SNMP)" name="1022465">Section&nbsp;5.5</a></span> describes the how to use network management protocols in <span class="Variable">EXata</span>.</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.7.html#1024313', '');" title="Using Packet Sniffing and Analysis Software" name="1037262">Section&nbsp;5.6</a></span> describes the <span class="Variable">EXata</span> packet sniffing interface that enables any third party packet sniffing and analysis software to capture and display the traffic within an emulated network.</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.8.html#1002928', '');" title="Configuring EXata for Parallel and Distributed Environments" name="1037269">Section&nbsp;5.7</a></span> describes how to set up an <span class="Variable">EXata</span> emulation testbed on parallel and distributed platforms.</div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

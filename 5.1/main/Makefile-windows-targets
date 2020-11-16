@@ -1,0 +1,123 @@
+#
+# Rules for targets.
+#
+
+
+product: $(ALL_TARGETS) $(ADDON_DEPS) 
+
+kernel: $(KERNEL_OBJS)
+
+$(TEMP_LIB): $(SIM_OBJS) $(KERNEL_OBJS)
+	lib /nologo /out:$(TEMP_LIB) $(SIM_OBJS) $(KERNEL_OBJS)
+
+$(LIBRARIES_LIB): $(LIBRARIES_OBJ)
+	lib /nologo /out:$(LIBRARIES_LIB) $(LIBRARIES_OBJ)
+
+$(SIM_EXEC): $(MAIN_OBJ) $(TEMP_LIB) $(LIBRARIES_LIB)
+	$(CXX) /nologo /Fe$@ $(DEBUG) $(OPT) $(TEMP_LIB) $(LIBRARIES_LIB) $(MAIN_OBJ) /link $(LIBS)
+!IF ("$(ARCH)" == "windows-x64")
+	mt.exe -manifest ..\lib\windows-x64\product.exe.manifest -outputresource:$(SIM_EXEC);1
+!ENDIF
+
+$(RADIO_RANGE_EXEC): $(RADIO_RANGE_OBJ) $(TEMP_LIB) $(LIBRARIES_LIB)
+	$(CXX) /nologo /Fe$@ $(DEBUG) $(OPT) $(TEMP_LIB) $(LIBRARIES_LIB) $(RADIO_RANGE_OBJ) /link $(LIBS)
+!IF ("$(ARCH)" == "windows-x64")
+	mt.exe -manifest ..\lib\windows-x64\product.exe.manifest -outputresource:$(RADIO_RANGE_EXEC);1
+!ENDIF
+
+$(UPGRADE_SCENARIO_EXEC): $(UPGRADE_SCENARIO_OBJ) $(TEMP_LIB) $(LIBRARIES_LIB)
+	$(CXX) /nologo /Fe$@ $(DEBUG) $(OPT) $(TEMP_LIB) $(LIBRARIES_LIB) $(UPGRADE_SCENARIO_OBJ) /link $(LIBS)
+!IF ("$(ARCH)" == "windows-x64")
+	mt.exe -manifest ..\lib\windows-x64\product.exe.manifest -outputresource:$(UPGRADE_SCENARIO_EXEC);1
+!ENDIF
+
+$(SHPTOXML_EXEC): $(SHPTOXML_OBJS)
+	$(CXX) /nologo /Fe$@ $(DEBUG) $(OPT) $(SHPTOXML_OBJS) /link $(LIBS)
+
+#
+# The following targets are used only with the CES addon.
+# Note that the targets will not be built unless the
+# CES addon is present. Further note that compilation errors will 
+# occur if the CES addon is not enabled (or present).
+#
+
+$(MTS2_EXEC): $(MTS2_OBJ) $(TEMP_LIB) $(LIBRARIES_LIB)
+	$(CXX) /nologo /Fe$@ $(DEBUG) $(OPT) $(TEMP_LIB) $(LIBRARIES_LIB) $(MTS2_OBJ) /link $(LIBS)
+!IF ("$(ARCH)" == "windows-x64")
+	mt.exe -manifest ..\lib\windows-x64\product.exe.manifest -outputresource:$(MTS2_EXEC);1
+!ENDIF
+
+#
+# Target "neat" removes all objects and the $(TEMP_LIB) file.
+# qdel (custom written) is used instead of del, since del has problems
+# with a long command line.
+#
+
+neat: $(ADDONS_CLEAN)
+      -del /s *.obj & cd ../libraries/ & del /s *.obj & cd ../interfaces/ & del /s *.obj & cd ../contributed/ & del /s *.obj & cd ../main
+      -del $(TEMP_LIB) > NUL 2>&1
+      -del $(LIBRARIESTEMP_LIB) > NUL 2>&1
+      -del $(RADIO_RANGE_OBJ) > NUL 2>&1
+      -del $(UPGRADE_SCENARIO_OBJ) > NUL 2>&1
+      -del $(SHPTOXML_OBJS) > NUL 2>&1
+      -del $(CONFIGPARSER_OBJ) > NUL 2>&1
+      -del $(MTS_OBJ) > NUL 2>&1
+      -del $(MTS2_OBJ) > NUL 2>&1
+
+# Target "clean" executes the rule for "neat", and deletes all
+# executables and debugging files.
+# 
+
+clean: neat	
+	-del ..\bin\qualnet.exe ..\bin\qualnet.mpi ..\bin\qualnet ..\bin\qualnet.pdb ..\bin\qualnet.ilk > NUL 2>&1
+	-del ..\bin\ces.exe ..\bin\ces.mpi ..\bin\ces ..\bin\ces.pdb ..\bin\ces.ilk > NUL 2>&1
+	-del ..\bin\jne.exe ..\bin\jne.mpi ..\bin\jne ..\bin\jne.pdb ..\bin\jne.ilk > NUL 2>&1
+	-del ..\bin\exata.exe ..\bin\exata.mpi ..\bin\exata ..\bin\exata.pdb ..\bin\exata.ilk > NUL 2>&1
+	-del $(MTS2_EXEC) > NUL 2>&1
+	-del $(MTS2_EXEC:.exe=.pdb) > NUL 2>&1
+	-del $(MTS2_EXEC:.exe=.ilk) > NUL 2>&1
+	-del $(RADIO_RANGE_EXEC) > NUL 2>&1
+	-del $(RADIO_RANGE_EXEC:.exe=.pdb) > NUL 2>&1
+	-del $(RADIO_RANGE_EXEC:.exe=.ilk) > NUL 2>&1
+	-del $(SHPTOXML_EXEC) > NUL 2>&1
+	-del $(SHPTOXML_EXEC:.exe=.pdb) > NUL 2>&1
+	-del $(SHPTOXML_EXEC:.exe=.ilk) > NUL 2>&1
+	-del $(UPGRADE_SCENARIO_EXEC) > NUL 2>&1
+	-del $(UPGRADE_SCENARIO_EXEC:.exe=.pdb) > NUL 2>&1
+	-del $(UPGRADE_SCENARIO_EXEC:.exe=.ilk) > NUL 2>&1
+	-del ..\bin\libexpat.dll > NUL 2>&1
+	-del ..\main\vc60.pdb > NUL 2>&1
+
+realclean: clean kernelclean privateclean
+
+#
+# Target "wc" executes wc (available from Cygwin and other sources) on
+# all available headers and source files.
+#
+
+wc:
+	wc $(ALLFILES)
+
+#
+# Targets with the "boost" prefix are used to build the Boost libraries
+# under addons/boost.
+#
+BOOST_VER = 1_52_0
+!if ("$(COMPILER)" == "vc8")
+BOOST_TOOLSET = msvc-8.0
+!elseif ("$(COMPILER)" == "vc9")
+BOOST_TOOLSET = msvc-9.0
+!elseif ("$(COMPILER)" == "vc10")
+BOOST_TOOLSET = msvc-10.0
+!else
+# compiler version not supported
+# using default values
+BOOST_TOOLSET = msvc
+!endif
+boost:
+	cd ..\addons\boost
+	$(MAKE) -f Makefile-windows DEFAULT_BOOST_TOOLSET=$(BOOST_TOOLSET) $(BOOST_VER)
+	
+boost-clean:
+	cd ..\addons\boost
+	$(MAKE) -f Makefile-windows DEFAULT_BOOST_TOOLSET=$(BOOST_TOOLSET) $(BOOST_VER)_clean

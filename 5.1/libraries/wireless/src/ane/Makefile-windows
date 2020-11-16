@@ -1,0 +1,12 @@
+#
+# Define SATELLITE addon.
+#
+
+include ../libraries/wireless/src/ane/Makefile-common
+
+ADDON_OPTIONS   = $(ADDON_OPTIONS) $(ANE_OPTIONS)
+ADDON_HDRS      = $(ADDON_HDRS) $(ANE_HDRS)
+ADDON_SRCS      = $(ADDON_SRCS) $(ANE_SRCS)
+ADDON_INCLUDES  = $(ADDON_INCLUDES) $(ANE_INCLUDES)
+ADDON_LIBRARIES = $(ADDON_LIBRARIES)
+

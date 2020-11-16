@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root version="1.0">
+	<category name="Exata Properties" icon="" propertytype="Exata">
+		<variable name="Internet Gateway" key="INTERNET-GATEWAY" type="Integer" default="1" help="" unique="true" />
+		<!-- <variable name="SNMP Trap Community String" key="SNMP-TRAP-COMMUNITY-STRING" type="File" default="1" help="" unique="true" />
+		<variable name="SNMP Manager Address" key="SNMP-MANAGER-ADDRESS" type="Dotted decimal" default="192.168.0.1" help="" unique="true" /> -->
+		<variable name="Packet Sniffer 802.11" key="PACKET-SNIFFER-DOT11" type="Selection" default="YES" help="" unique="true">
+			<option name="Yes" value="YES"/>
+			<option name="No" value="NO"/>
+		</variable>
+		<variable name="Packet Sniffer 802.11" key="PACKET-SNIFFER-ENABLE-APP" type="Selection" default="YES" help="" unique="true">
+			<option name="Yes" value="YES"/>
+			<option name="No" value="NO"/>
+		</variable>
+		<variable name="Packet Sniffer UDP" key="PACKET-SNIFFER-ENABLE-UDP" type="Selection" default="YES" help="" unique="true">
+			<option name="Yes" value="YES"/>
+			<option name="No" value="NO"/>
+		</variable>
+		<variable name="Packet Sniffer TCP" key="PACKET-SNIFFER-ENABLE-TCP" type="Selection" default="YES" help="" unique="true">
+			<option name="Yes" value="YES"/>
+			<option name="No" value="NO"/>
+		</variable>
+		<variable name="Packet Sniffer Routing" key="PACKET-SNIFFER-ENABLE-ROUTING" type="Selection" default="YES" help="" unique="true">
+			<option name="Yes" value="YES"/>
+			<option name="No" value="NO"/>
+		</variable>
+		<variable name="Packet Sniffer MAC" key="PACKET-SNIFFER-ENABLE-MAC" type="Selection" default="YES" help="" unique="true">
+			<option name="Yes" value="YES"/>
+			<option name="No" value="NO"/>
+		</variable>
+		<variable name="FTP Root Directory" key="FTP-ROOT-DIRECTORY" type="File" default="specify FTP root directory" help="" unique="true" />
+		<variable name="HTTP Root Directory" key="HTTP-ROOT-DIRECTORY" type="File" default="specify HTTP root directory" help="" unique="true" />
+		<variable name="Enable IPNE" key="IPNE" type="Selection" default="YES" help="" unique="true">
+			<option name="Yes" value="YES">
+				<variable name="Select IPNE file" key="IPNE-CONFIG-FILE" type="File" default="Select IPNE file" help="" unique="true" />
+			</option>
+			<option name="No" value="NO"/>
+		</variable>
+		<variable name="Packet Sniffer Node" key="PACKET-SNIFFER-NODE" type="Integer" default="1" help="" unique="true" />
+		<variable name="Exata External Node" key="EXATA-EXTERNAL-NODE" type="Dotted decimal" default="specify physical address" help="" unique="true" />
+		<variable name="EXata Node Debug Level" key="EXTERNAL-NODE-DEBUG-LEVEL" type="Selection" default="0" >
+			<option value="0" name="0" />
+			<option value="1" name="1" />
+			<option value="2" name="2" />
+			<option value="3" name="3" />
+		</variable>
+		<variable name="Cluster Host File" key="CLUSTER-HOSTFILE" type="File" default="Specify cluster host file." />
+      </category>
+</root>

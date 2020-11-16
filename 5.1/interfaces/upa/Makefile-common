@@ -1,0 +1,15 @@
+UPA_INTERFACE_OPTIONS = -DUPA_INTERFACE
+
+UPA_INTERFACE_DIR    = ../interfaces/upa
+UPA_INTERFACE_SRCDIR = ../interfaces/upa/src
+
+#
+# common sources
+#
+UPA_INTERFACE_SRCS = \
+$(UPA_INTERFACE_SRCDIR)/qualnet_upa.cpp \
+$(UPA_INTERFACE_SRCDIR)/upa_proc_net.cpp
+
+UPA_INTERFACE_INCLUDES = \
+-I$(UPA_INTERFACE_DIR)/src 
+

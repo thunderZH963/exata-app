@@ -1,0 +1,1907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Configuring the EXata Testbed</title>
+    <link rel="StyleSheet" href="css/Ch5_Using%20Emulation%20(EX+EC+JNE).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch5_Using%20Emulation%20(EX+EC+JNE).06.1.html#1037271">5	Using Emulation</a> &gt; 5.1  Configuring the EXata Testbed</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">5.1  <a name="1037271">Configuring the </a><span class="Variable">EXata</span> Testbed</div>
+      <div class="BodyAfterHead"><a name="1068407">To connect hardware-in-the-loop and to run applications on emulated nodes, including Internet-based applications and network managers, it is required to configure a testbed consisting of one or more operational hosts and an emulation server. Configuring the testbed requires configuration of the network (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068415', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.1</a></span>) and establishing a connection between each operational host and the emulation server (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068408', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.2</a></span>).</div>
+      <div class="Heading2Numbered">5.1.1  <a name="1068415">Network Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1068486">This section describes how to configure the network for the </a><span class="Variable">EXata</span> testbed. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068426', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.1.1</a></span> describes the procedure for configuring the network when the operational hosts and the emulation server are in the same LAN. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068445', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.1.2</a></span> describes the steps for configuring the network when the operational hosts and the emulation server are in different LANs.</div>
+      <div class="Heading3Numbered">5.1.1.1  <a name="1068426">Network Configuration for a Single LAN</a></div>
+      <div class="BodyAfterHead"><a name="1068578">This section describes how to configure the testbed network if the operational hosts and the emulation server are in the same LAN. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068579', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.1.1.1</a></span> describes the procedure when all operational hosts have the same subnet address. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068581', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.1.1.2</a></span> describes the procedure when the operational hosts have different subnet addresses.</div>
+      <div class="Heading4Numbered">5.1.1.1.1  <a name="1068579">Connecting Operational Hosts with Same Subnet Address</a></div>
+      <div class="BodyAfterHead"><a name="1068580">If all operational hosts and the emulation server are in the same LAN and all operational hosts have the same subnet address, then ensure that the emulation server also has the same subnet address. No other configuration is required for the emulation server.</a></div>
+      <div class="Heading4Numbered">5.1.1.1.2  <a name="1068581">Connecting Operational Hosts with Different Subnet Addresses</a></div>
+      <div class="BodyAfterHead"><a name="1068582">If all operational hosts and the emulation server are in the same LAN but the operational hosts have different subnet addresses, then multiple IP addresses need to be assigned to the interface on the emulation server: one from each of the subnets to which the operational hosts belong. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068609', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.1.1.2.1</a></span> describes how to assign multiple IP addresses to an interface on a Windows platform. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068649', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.1.1.2.2</a></span> describes how to assign multiple IP addresses to an interface on a Linux platform.</div>
+      <div class="Body"><a name="1068592">As an example, consider the emulation test-bed configuration shown in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068598', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-1</a></span>. The emulation server has one physical network card with assigned address 10.10.0.100. There are two operational hosts, with addresses 10.10.0.1 and 20.20.0.1, both of which must connect to the emulation server. In this configuration, whereas Operational Host 1 can connect to the emulation server, Operational Host 2 will not be able to establish a connection because the IP address of the emulation server belongs to a different subnet. </div>
+      <div class="Anchor"><a name="1068596"><img class="Default" src="images/Shared%20Interface-SingleAddress.png" width="438" height="329" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-1.&nbsp;&nbsp;<a name="1068598">Operational Hosts with Different Subnet Addresses</a></div>
+      <div class="Body"><a name="1068599">Following the procedure described in this section, the interface on the emulation server can be assigned an additional IP address which is in the same subnet as Operational Host 2. Operational Host 2 can now establish a connection with the emulation server as well, as shown in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068608', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-2</a></span>.</div>
+      <div class="Anchor"><a name="1068606"><img class="Default" src="images/SharedInterface-MultipleAddreesses.png" width="438" height="329" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-2.&nbsp;&nbsp;<a name="1068608">Multiple IP Addresses Assigned to a Shared Interface</a></div>
+      <div class="Heading5Numbered">5.1.1.1.2.1  <a name="1068609">Emulation Server Configuration in Windows</a></div>
+      <div class="BodyAfterHead"><a name="1068610">To assign multiple IP addresses to a shared interface of the emulation server running on a Windows 7 or Windows 8 platform, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1068611">Ensure that the shared interface on the emulation server is assigned an IP address in the same subnet as one of the operational hosts.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1068612">Identify the additional IP addresses that must be configured for the shared interface on the emulation server. This can be achieved by identifying the operational hosts that share the same interface but belong to other subnets and selecting an IP address in each of those subnets.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1116395">To assign an IPv4 address, do the following:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1068613">Go to </a><span class="Menu_D">Start &gt; Control Panel &gt; Network and Sharing Center &gt; Change adapter settings</span>. Right-click on the desired network interface and select <span class="Menu_D">Properties</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1116380">In the </a><span class="Menu_D">Networking</span> tab, select <span class="Menu_D">Internet Protocol Version 4 (TCP/IPv4)</span> from the scroll down list and click on the <span class="Menu_D">Properties</span> button. This opens the <span class="Menu_D">Internet Protocol Version 4 (TCP/IPv4) Properties</span> editor (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068623', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-3</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">c.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1116585">Select </a><span class="Menu_D">Use the following IP address</span>. You may notice some IP address already assigned in the editor.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1068621"><img class="Default" src="images/TCPIPv4Properties.gif" width="323" height="358" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-3.&nbsp;&nbsp;<a name="1068623">Internet Protocol Version 4 (TCP/IPv4) Properties Editor</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">d.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1068624">Click on the </a><span class="Menu_D">Advanced</span> button. This opens the <span class="Menu_D">Advanced TCP/IP Settings</span> editor. Click on the <span class="Menu_D">IP Settings</span> tab (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068633', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-4</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1068631"><img class="Default" src="images/AdvancedTCPIPSettings.png" width="323" height="384" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-4.&nbsp;&nbsp;<a name="1068633">Advanced TCP/IP Settings Editor for IPv4</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">e.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1068634">Click on the </a><span class="Menu_D">Add</span> button under the <span class="Menu_D">IP addresses</span> section. This opens the <span class="Menu_D">TCP/IP Address</span> editor (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068643', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-5</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1068641"><img class="Default" src="images/AddIPAddress.png" width="259" height="111" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-5.&nbsp;&nbsp;<a name="1068643">TCP/IP Address Editor for IPv4</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">f.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1068644">Enter the IPv4 address and subnet mask to assign to the interface and click </a><span class="Menu_D">Add</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">g.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1068645">Repeat the previous two steps to assign any additional IPv4 addresses to the same interface.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">h.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1068646">Click </a><span class="Menu_D">OK</span> on the open editors to finish the configuration.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1116455">To assign an IPv6 address, do the following:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1116456">Go to </a><span class="Menu_D">Start &gt; Control Panel &gt; Network and Sharing Center &gt; Change adapter settings</span>. Right-click on the desired network interface and select <span class="Menu_D">Properties</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1116457">In the </a><span class="Menu_D">Networking</span> tab, select <span class="Menu_D">Internet Protocol Version 6 (TCP/IPv46)</span> from the scroll down list and click on the <span class="Menu_D">Properties</span> button. This opens the <span class="Menu_D">Internet Protocol Version 6 (TCP/IPv6) Properties</span> editor (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1116466', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-6</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">c.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1117285">Select </a><span class="Menu_D">Use the following IPv6 address</span>. You may notice some IP address already assigned in the editor.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1116464"><img class="Default" src="images/TCPIPv6Properties.gif" width="435" height="358" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-6.&nbsp;&nbsp;<a name="1116466">Internet Protocol Version 6 (TCP/IPv6) Properties Editor</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">d.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1117355">Click on the </a><span class="Menu_D">Advanced</span> button. This opens the <span class="Menu_D">Advanced TCP/IP Settings</span> editor. Click on the <span class="Menu_D">IP Settings</span> tab (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068633', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-4</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1117362"><img class="Default" src="images/AdvancedTCPIPv6Settings.gif" width="323" height="384" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-7.&nbsp;&nbsp;<a name="1117363">Advanced TCP/IP Settings Editor for IPv6</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">e.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1117364">Click on the </a><span class="Menu_D">Add</span> button under the <span class="Menu_D">IP addresses</span> section. This opens the <span class="Menu_D">TCP/IP Address</span> editor (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068643', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-5</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1117371"><img class="Default" src="images/AddIPv6Address.gif" width="367" height="111" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-8.&nbsp;&nbsp;<a name="1117372">TCP/IP Address Editor for IPv6</a></div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">f.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1117373">Enter the IPv6 address and subnet prefix length to assign to the interface and click </a><span class="Menu_D">Add</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">g.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1117374">Repeat the previous two steps to assign any additional IPv6 addresses to the same interface.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">h.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1117375">Click </a><span class="Menu_D">OK</span> on the open editors to finish the configuration.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1116566">To verify the IP address assignment, open a command window and type </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">ipconfig</span>. You should see all the assigned addresses for the network interface.</div>
+      <div class="Body"><a name="1068648">To verify connectivity, ping the emulation server from the operational hosts. Use the subnet-specific IP address of the emulation server interface when pinging from each operational host.</a></div>
+      <div class="Heading5Numbered">5.1.1.1.2.2  <a name="1068649">Emulation Server Configuration in Linux</a></div>
+      <div class="BodyAfterHead"><a name="1068650">To assign multiple IP addresses to a shared interface of the emulation server running on a Linux platform, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1068651">Ensure that the emulation server interface is assigned an IP address in the same subnet as one of the operational hosts.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1068652">Identify the additional IP addresses that must be configured for the shared interface on the emulation server. This can be achieved by identifying the operational hosts that share the same interface but belong to other subnets and selecting an IP address in each of those subnets.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1068653">To assign an additional IPv4 address to the interface, open a command window and type:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1068654">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1068655">ifconfig &lt;device&gt;:&lt;address-num&gt; &lt;IPv4-address&gt; netmask &lt;subnet-mask&gt;</a></div>
+      <div class="Example"><a name="1068674">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 414pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1068658">&lt;device&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 306pt">
+            <div class="Body"><a name="1068660">Name of the network interface device that is used to connect to the operational hosts, e.g., </a><span style="font-family: &quot;Courier New&quot;">eth0</span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1068662">&lt;address-num&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1068664">Address index of the IP address to be assigned to the interface, e.g., </a><span style="font-family: &quot;Courier New&quot;">1</span>, <span style="font-family: &quot;Courier New&quot;">2</span>.</div>
+            <div class="BodyAfterHead"><a name="1068665">A unique address index should be used for each IP address assigned to the interface.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1068667">&lt;IPv4-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1068669">IPv4 address to be assigned to the interface</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1068671">&lt;subnet-mask&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1068673">Subnet mask to be assigned to the interface</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1068675">&nbsp;</a></div>
+      <div class="NumberedCont"><a name="1068676">Repeat this for every additional IPv4 address that needs to be assigned to the interface. For example, the following commands assign two additional IPv4 addresses to interface </a><span style="font-family: &quot;Courier New&quot;">eth0</span>:</div>
+      <div class="Command_Input"><a name="1068677">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1068678">ifconfig eth0:1 20.20.0.100 netmask 255.255.255.0</a></div>
+      <div class="Command_Input"><a name="1068679">ifconfig eth0:2 30.30.0.100 netmask 255.255.255.0</a></div>
+      <div class="Command_Input"><a name="1116934">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1116895">To assign an additional IPv6 address to the interface, open a command window and type:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1116896">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1116897">ifconfig &lt;device&gt; inet6 add &lt;IPv6-address&gt;/&lt;prefix-length&gt;</a></div>
+      <div class="Example"><a name="1116916">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 414pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1116900">&lt;device&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 306pt">
+            <div class="Body"><a name="1116902">Name of the network interface device that is used to connect to the operational hosts, e.g., </a><span style="font-family: &quot;Courier New&quot;">eth0</span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1116909">&lt;IPv6-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1116911">IPv6 address to be assigned to the interface</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1116913">&lt;prefix-length&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1116915">Prefix length</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1116917">&nbsp;</a></div>
+      <div class="NumberedCont"><a name="1117423">Repeat this for every additional IPv6 address that needs to be assigned to the interface. For example, the following commands assign two additional IPv6 addresses to interface </a><span style="font-family: &quot;Courier New&quot;">eth0</span>:</div>
+      <div class="Command_Input"><a name="1116919">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1116920">ifconfig eth0 inet6 add 3000::15:16/64</a></div>
+      <div class="Command_Input"><a name="1117440">ifconfig eth0 inet6 add 3001::12:21/64</a></div>
+      <div class="Command_Input"><a name="1116921">&nbsp;</a></div>
+      <div class="Body"><a name="1068680">To verify the IP address assignment, open a command window and type </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">ifconfig</span>. You should see all the assigned addresses for the network interface.</div>
+      <div class="Body"><a name="1068681">To verify connectivity, ping the emulation server from the operational hosts. Use the subnet-specific IP address of the emulation server interface when pinging from each operational host.</a></div>
+      <div class="Heading3Numbered">5.1.1.2  <a name="1068445">Network Configuration for Multiple LANs</a></div>
+      <div class="BodyAfterHead"><a name="1068811">This section describes how to configure the testbed network if the operational hosts and the emulation server are in different LANs (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068868', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-9</a></span>).</div>
+      <div class="Anchor"><a name="1068834"><img class="Default" src="images/MultipleLANsTestbed.PNG" width="547" height="192" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-9.&nbsp;&nbsp;<a name="1068868">Connecting Operational Hosts and Emulation Server in Different LANs</a></div>
+      <div class="Body"><a name="1068903">In such a network configuration, a Virtual Private Network (VPN) must be created between each operational host and the emulation server. Furthermore, it must be ensured that the VPN tunnel supports Ethernet encapsulation.The scripts provided for OpenVPN with </a><span class="Variable">EXata</span> ensure Ethernet encapsulation. For other VPN software, refer to the product documentation.</div>
+      <div class="Body"><a name="1068904">The rest of this section describes how to use OpenVPN software (</a><span class="Hyperlink">http://www.openvpn.net</span>) to create a VPN. For other VPN products and solutions, refer to the product’s documentation.</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068841', '');" title="Configuring the EXata Testbed" name="1069043">Section&nbsp;5.1.1.2.1</a></span> describes how to install the VPN software and <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1068933', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.1.2.2</a></span> describes how to configure a VPN on operational hosts and the emulation server.</div>
+      <div class="Heading4Numbered">5.1.1.2.1  <a name="1068841">Installing OpenVPN</a></div>
+      <div class="BodyAfterHead"><a name="1069122">OpenVPN must be installed on all operational hosts and the emulation server.</a></div>
+      <div class="Heading5Numbered">5.1.1.2.1.1  <a name="1068922">Installing OpenVPN on Windows</a></div>
+      <div class="BodyAfterHead"><a name="1069158">To install OpenVPN on a Windows platform, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1069054">Download the Windows installer from </a><span class="Hyperlink">http://www.openvpn.net/index.php/open-source/downloads.html</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1069168">Run the installer. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1069102">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1069104">You must have administrative privileges to run the OpenVPN installer.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading5Numbered">5.1.1.2.1.2  <a name="1069061">Installing OpenVPN on Linux</a></div>
+      <div class="BodyAfterHead"><a name="1069186">If the Linux distribution provides a command line utility (e.g., </a><span style="font-style: italic">apt-get</span>, <span style="font-style: italic">yum</span>) or a GUI-based utility to download and install software, you may use it to install the OpenVPN package from <br /><span class="Hyperlink">http://www.openvpn.net/index.php/open-source/downloads.htm.</span></div>
+      <div class="BodyAfterHead"><a name="1070037">Otherwise, perform the following steps to install OpenVPN:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1070024">Download the OpenVPN tarball from </a><span class="Hyperlink">http://www.openvpn.net/index.php/open-source/downloads.html</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1070025">Open a command window and change the directory to the location where the OpenVPN package was downloaded. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1070026">Use the following command to extract the software:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1069222">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1069294">tar xzvf openvpn-&lt;version&gt;.tar.gz</a></div>
+      <div class="Command_Input"><a name="1069251">&nbsp;</a></div>
+      <div class="NumberedCont"><a name="1069234">where </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">&lt;version&gt;</span> is the version number of the downloaded OpenVPN tarball.</div>
+      <div class="Anchor"><a name="1069277">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1069206">Use the following commands to install the software:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1069207">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1069301">./configure</a></div>
+      <div class="Command_Input"><a name="1069208">make</a></div>
+      <div class="Command_Input"><a name="1069209">make install</a></div>
+      <div class="Anchor"><a name="1069137">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1069319">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="Body"><a name="1069335">You may also need to install LZO library on your system. Refer to the download webpage or the README file in OpenVPN package for downloading and installing this library.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4Numbered">5.1.1.2.2  <a name="1068933">Configuring VPN</a></div>
+      <div class="BodyAfterHead"><a name="1069362">This section describes how to configure VPN on the operational hosts and the emulation server.</a></div>
+      <div class="Heading5Numbered">5.1.1.2.2.1  <a name="1069410">Verifying Connectivity</a></div>
+      <div class="BodyAfterHead"><a name="1069466">Before configuring and running OpenVPN, verify that all the operational hosts can connect to and are reachable from the emulation server. This can be accomplished by pinging each operational host from the the emulation server and pinging the emulation server from each operational host.</a></div>
+      <div class="Heading5Numbered">5.1.1.2.2.2  <a name="1069437">Running OpenVPN on the Emulation Server</a></div>
+      <div class="Heading4"><a name="1069495">Running OpenVPN on Windows</a></div>
+      <div class="BodyAfterHead"><a name="1069529">To run OpenVPN on an emulation server running on a Windows platform, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1069522">Open a command window and change the directory to </a><span class="Variable">EXATA_HOME</span>/interfaces/lib-emulation/openvpn. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1069496">Type the following command:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1069497">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1069564">openvpn.exe server-config-windows</a></div>
+      <div class="Body"><a name="1069712">To verify successful execution, open another command window and type </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">ipconfig</span>. You should see a new network interface named <span style="font-family: &quot;Courier New&quot;">Ethernet TAP 32</span>, with an IPv4 address of 192.168.0.1. </div>
+      <div class="Anchor"><a name="1069608">&nbsp;</a></div>
+      <div class="Heading4"><a name="1069585">Running OpenVPN on Linux</a></div>
+      <div class="BodyAfterHead"><a name="1069586">To run OpenVPN on an emulation server running on a Linux platform, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1069587">Open a command window and change the directory to </a><span class="Variable">EXATA_HOME</span>/interfaces/lib-emulation/openvpn. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1069588">Type the following command:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1069589">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1069590">openvpn server-config-linux</a></div>
+      <div class="Body"><a name="1069591">To verify successful execution, open another command window and type </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">ifconfig</span>. You should see a new network interface named <span style="font-family: &quot;Courier New&quot;">tap1</span>, with an IPv4 address of 192.168.0.1.</div>
+      <div class="Heading5Numbered">5.1.1.2.2.3  <a name="1068888">Running OpenVPN on Operational Hosts</a></div>
+      <div class="BodyAfterHead"><a name="1068459">This section describes how to run OpenVPN on an operational host.</a></div>
+      <div class="Anchor"><a name="1069628">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1069639">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1069641">You must start OpenVPN on the emulation server before running it on an operational host.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="1069663">Running OpenVPN on Windows</a></div>
+      <div class="BodyAfterHead"><a name="1069664">To run OpenVPN on an operational host running on a Windows platform, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1069665">Copy the </a><span class="Variable">EXATA_HOME</span>/interfaces/lib-emulation/openvpn folder from emulation server to the operational host.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1084161">Open a command window and change the directory to the openvpn folder.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1084334">In a text editor, open the file client-config-windows in the openvpn folder and locate the following line:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1084335">&nbsp;</a></div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1084212">remote &lt;IP Address&gt;</a></span></div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1084230">&nbsp;</a></div>
+      <div class="Indented"><a name="1084127">Change </a><span style="font-family: &quot;Courier New&quot;">&lt;IP Address&gt;</span> to the IPv4 address of the emulation server.</div>
+      <div class="Indented"><a name="1084244">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1084107">Save and close this file.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">5.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1069666">Type the following command:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1069667">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1069668">openvpn.exe client-config-windows</a></div>
+      <div class="Body"><a name="1069726">To verify successful execution, open another command window and type </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">ipconfig</span>. You should see a new network interface named <span style="font-family: &quot;Courier New&quot;">Ethernet TAP 32</span>, with an IPv4 address belonging to the subnet with subnet address 192.168.0.0/8.</div>
+      <div class="Anchor"><a name="1069670">&nbsp;</a></div>
+      <div class="Heading4"><a name="1069671">Running OpenVPN on Linux</a></div>
+      <div class="BodyAfterHead"><a name="1069672">To run OpenVPN on an operational host running on a Linux platform, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1084169">Copy the </a><span class="Variable">EXATA_HOME</span>/interfaces/lib-emulation/openvpn folder from emulation server to the operational host.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1084170">Open a terminal window and change the directory to the openvpn folder.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1084352">In a text editor, open the file client-config-linux in the openvpn folder and locate the following line:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1084353">&nbsp;</a></div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1084354">remote &lt;IP Address&gt;</a></span></div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1084355">&nbsp;</a></div>
+      <div class="Indented"><a name="1084356">Change </a><span style="font-family: &quot;Courier New&quot;">&lt;IP Address&gt;</span> to the IPv4 address of the emulation server.</div>
+      <div class="Anchor"><a name="1084357">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1084174">Save and close this file.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">5.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1069674">Type the following command:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1069675">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1069676">openvpn client-config-linux</a></div>
+      <div class="Body"><a name="1069762">To verify successful execution, open another command window and type </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">ifconfig</span>. You should see a new network interface named <span style="font-family: &quot;Courier New&quot;">tap1</span>, with an IPv4 address belonging to the subnet with subnet address 192.168.0.0/8. </div>
+      <div class="Heading5Numbered">5.1.1.2.2.4  <a name="1069791">Verifying VPN Connection</a></div>
+      <div class="BodyAfterHead"><a name="1069806">To verify the VPN connection, type the following in a command window on each operational host:</a></div>
+      <div class="Command_Input"><a name="1069828">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1069829">ping 192.168.0.1</a></div>
+      <div class="Body"><a name="1069813">This will attempt to connect to the VPN interface on the emulation server.</a></div>
+      <div class="Heading2Numbered">5.1.2  <a name="1068408">Connecting Operational Hosts with the Emulation Server</a></div>
+      <div class="BodyAfterHead"><a name="1064756">This section describes how to configure operational hosts to establish a connection with the emulation server, either by using the Connection Manager application (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1022605', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.2.1</a></span>) or manually (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1023069', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.2.2</a></span>).</div>
+      <div class="Heading3Numbered">5.1.2.1  <a name="1022605">Configuration Using Connection Manager</a></div>
+      <div class="BodyAfterHead"><a name="1022729">The Connection Manager application runs on an operational host and is responsible for managing the operational host’s networking configuration. Connection Manager is used to establish a connection between the host and the emulation server. When a connection is established, Connection Manager displays the list of emulated network nodes. Connection Manager can also be used to run multiple applications on different emulated nodes from the same operational host (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023814', '');" title="Running Applications">Section&nbsp;5.2.1.1.2</a></span>). </div>
+      <div class="Body"><a name="1037324">Unless the operational host is unable to run Connection Manager (for example, on non-computing platforms such as routers, non-standard operating system environments such as real time systems, etc.), it is recommended to use Connection Manager to manage connections between operational hosts and the emulation server. </a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1050536">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1050538">Connection Manager is downloaded separately from </a><span class="Variable">EXata</span> and is installed on a machine different from the one running <span class="Variable">EXata</span>. Refer to <span class="Variable" style="font-style: italic">EXata Installation Guide</span> for instructions for installing Connection Manager on the operational hosts. </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1050503">The rest of this section describes how to launch Connection Manager in Windows and Linux, and how to configure the emulation server manually and automatically.</a></div>
+      <div class="Anchor"><a name="1037556">&nbsp;</a></div>
+      <div class="Heading4"><a name="1037457">Starting Connection Manager in Windows</a></div>
+      <div class="BodyAfterHead"><a name="1037407">To start Connection Manager in Windows, do one of the following:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1037471">Double-click the </a><span class="Variable">EXata</span> Connection Manager icon on the Windows desktop.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1037411"><img class="Default" src="images/cm-desktopicon.PNG" width="83" height="85" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Anchor"><a name="1037568">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1037418">Select </a><span style="font-weight: bold">Start </span><span class="Bold">&gt;</span><span style="font-weight: bold"> All Programs </span><span class="Bold">&gt;</span><span style="font-weight: bold"> EXata-Connection-Manager </span><span class="Variable">5.1</span><span style="font-weight: bold"> </span><span class="Bold">&gt;</span><span style="font-weight: bold"> Connection Manager </span><span class="Variable">5.1</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1037503">Open a command-line window, change the directory to C:\Program Files\Scalable\EXata\</a><span class="Variable">5.1</span> (or the location where Connection Manager is installed), and type <span class="Courier" style="font-weight: bold">exata-connection-manager.exe</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1048547">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1048543">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1048545">You need administrator privileges to run the EXata Connection Manager. </a></div>
+            <div class="NoteText"><a name="1048546">If you are logged in as a non-Administrator on Windows, you can right-click Connection Manager icon, select </a><span style="font-weight: bold">Run as..</span> and provide the Administrator account name and password.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1037630">&nbsp;</a></div>
+      <div class="Heading4"><a name="1038595">Starting Connection Manager in Linux</a></div>
+      <div class="BodyAfterHead"><a name="1115693">To start Connection Manager in Linux, open a command-line window, type <br /></a><span class="Courier" style="font-weight: bold">cd ~/EXata-Connection-Manager/</span><span class="Variable" style="font-family: &quot;Courier New&quot;; font-size: 10pt; font-style: normal; font-weight: bold">5.1</span> (or the location where Connection Manager is installed), and type <span class="Courier" style="font-weight: bold">./exata-connection-manager</span>.</div>
+      <div class="Anchor"><a name="1048588">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1048573">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1048575">You need root privileges to run EXata Connection Manager. </a></div>
+            <div class="NoteText"><a name="1048576">If you are logged in as a non-root account on Linux, you can launch Connection Manager by typing </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">sudo ./exata-connection-manager</span> and providing the root password.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1022774">Upon launching Connection Manager, a connection can be established between the operational host and the emulation server, either by manually providing the address of the emulation server, or by letting Connection Manager automatically detect the emulation server.</a></div>
+      <div class="Anchor"><a name="1022775">&nbsp;</a></div>
+      <div class="Heading4"><a name="1022785">Manual Specification of Emulation Server</a></div>
+      <div class="BodyAfterHead"><a name="1127820">Before manually specifying the emulation server in ConnectionManager, ensure the following:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1127821">The operational host and the emulation server are connected with each other (you can use the </a><span class="Courier" style="font-weight: bold">ping</span> command to verify this).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1127825">On the emulation server, the </a><span class="Variable">EXata</span> process is not blocked by the firewall.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1127826">On the operational host, Connection Manager is not blocked by the firewall.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1037759">To specify the emulation server manually, provide the address of the emulation server to Connection Manager as follows:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1022801">Start Connection Manager and select </a><span class="Field">Manually configure EXata hostname or IP Address</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1037804">&nbsp;</a></div>
+      <div class="Body"><a name="1126127"><img class="Default" src="images/EmulationServer-ManualConfiguration.png" width="327" height="354" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-10.&nbsp;&nbsp;<a name="1037806">Manual Specification of Emulation Server</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1037782">Enter the IP address (e.g., 10.10.3.103 or fe80::216:35ff:fe64:3a5a) or host name (e.g., server01.mydomain) of the emulation server. You can also select from previously entered addresses from the pull down menu.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1029511">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1029522">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1029524">If you are providing a hostname, ensure that the operational host is reachable from the local DNS server.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1008411">Click </a><span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1022837">Connection Manager will attempt to configure the network settings on the operational host to create an emulated link between this host and the emulation server. If Connection Manager is successful in creating a connection, the address configuration screen will be replaced with Network and Application configuration screen (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1037926', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-11</a></span>). If this is the case, skip the remaining steps.</div>
+      <div class="NumberedCont"><a name="1124125">(If EXata is not running on the emulation server, the left screen in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1037926', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-11</a></span> is displayed. If EXata is running on the emulation server, a screen similar to the right screen in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1037926', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-11</a></span> is displayed.) </div>
+      <div class="Anchor"><a name="1037924"><img class="Default" src="images/Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.12.jpg" width="620" height="332" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-11.&nbsp;&nbsp;<a name="1037926">Emulation Server Successfully Connected</a></div>
+      <div class="NumberedCont"><a name="1037974">If, however, Connection Manager is unable to create a connection, it will display a message (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1127169', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-12</a></span>) asking for further network configuration information.</div>
+      <div class="Anchor"><a name="1031831"><img class="Default" src="images/CM-AutoConfigureFailure-IPv4.png" width="404" height="105" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-12.&nbsp;&nbsp;<a name="1127169">Connection Manager Failed to Connect to Emulation Server</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1127170">If Connection Manager is unsuccessful in creating a connection, click </a><span class="Menu">OK</span> on the displayed message (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1127169', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-12</a></span>). This changes the Connection Manager display (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1022867', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-13</a></span>) to let you enter additional configuration information. (The left screen in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1022867', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-13</a></span> is for IPv4 connections and the right screen is for IPv6 connections.)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1126059">.<img class="Default" src="images/Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.14.jpg" width="620" height="322" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-13.&nbsp;&nbsp;<a name="1022867">Advanced Configuration Options</a></div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1022875">Connection Manager lists the available network interfaces available on the operational host. From the pull-down menu, choose the interface that has been configured in the same subnet as the emulation server.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1022888">Enter the subnet mask (for IPv4) or prefix (for IPv6) of the network interface device </a><span style="font-style: italic">on the emulation server</span> that is used to connect to this operational host.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1038059">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1038066">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1038068">To identify this subnet mask, open a command-line window and type </a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">ipconfig</span>. Note the subnet mask for the appropriate network interface.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">c.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1022928">Click </a><span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">d.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1117027">If Connection Manager is unable to generate a valid IP address in the same subnet as the emulation server, it will display a message (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1117041', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-14</a></span>) asking to enter a valid IP address.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1117034"><img class="Default" src="images/CM-UnableToGenerateIPAddress.png" width="360" height="95" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-14.&nbsp;&nbsp;<a name="1117041">Connection Manager Failed to Generate a Valid IP Address</a></div>
+      <div class="NumberedCont"><a name="1117070">If this happens, click </a><span class="Menu">OK</span> on the displayed message. This changes the Connection Manager display to let you enter a valid IP address and subnet mask (for IPv4) or network prefix (for IPv6) to be assigned to the selected interface.</div>
+      <div class="Anchor"><a name="1117080"><img class="Default" src="images/Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.16.jpg" width="619" height="319" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-15.&nbsp;&nbsp;<a name="1117087">Assign Valid IP Address</a></div>
+      <div class="Anchor"><a name="1022936">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1038143">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1038145">If Connection Manager still cannot connect to the emulation server, it is likely, that the operational host and the emulation server are not connected with each other. Check the network cables for proper connectivity and consult your network administrator</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="1022944">Automatic Detection of Emulation Server</a></div>
+      <div class="BodyAfterHead"><a name="1022945">Connection Manager can also auto-detect emulation servers in the same subnet. For this mode to work, ensure the following:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1022960">A scenario is running on </a><span class="Variable">EXata</span>, either via GUI or command line.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1022969">The operational host and the emulation server are connected with each other (you can use the </a><span class="Courier" style="font-weight: bold">ping</span> command to verify this).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1022979">On the emulation server, the </a><span class="Variable">EXata</span> process is not blocked by the firewall.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1022980">On the operational host, Connection Manager is not blocked by the firewall.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1038197">If all the above conditions are met, you can automatically configure the emulation server by doing the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1038239">Start Connection Manager and select </a><span class="Field">Automatically detect EXata machine</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1038260"><img class="Default" src="images/CM-AutoDetect.png" width="327" height="341" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-16.&nbsp;&nbsp;<a name="1038276">Automatically Detecting Emulation Servers</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1117217">If Connection Manager is able to detect any running </a><span class="Variable">EXata</span> processes, it will display all the detected emulation servers in a pull down menu (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1038276', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-16</a></span>). If an IPv4 scenario is running on an emulation server, then the label <span style="font-weight: bold">NETWORK_IPV4</span> appears next to the interface address of the emulation server. If an IPv6 scenario is running on an emulation server, then the label <span style="font-weight: bold">NETWORK_IPV6</span> appears next to the interface address of the emulation server. If a mixed IPv4/IPv6 scenario is running on an emulation server, then there are two entries for the server in the list: one for IPv4 and the other for IPv6. Select the emulation server that you wish to connect to.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1023011">Click </a><span class="Menu">Next</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading4"><a name="1023018">Verifying the Connectivity</a></div>
+      <div class="BodyAfterHead"><a name="1023042">After Connection Manager has successfully connected to the emulation server, start the scenario in </a><span class="Variable">EXata</span> in <span style="font-style: italic">Emulation mode</span> if you have not already done so.</div>
+      <div class="Body"><a name="1125067">Connection Manager will indicate in its status bar that it has detected a</a>n <span class="Variable">EXata</span> process (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1125054', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-17</a></span>) and display a list of the nodes in the scenario being executed by <span class="Variable">EXata</span>. </div>
+      <div class="Anchor"><a name="1125087"><img class="Default" src="images/CM-ShowEmulatedNodes.png" width="327" height="346" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-17.&nbsp;&nbsp;<a name="1125054">List of Emulated Nodes in Network Tab</a></div>
+      <div class="Anchor"><a name="1125222">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1125219">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1125221">If a node has only one interface, then its address is displayed in the same row as the ID of the node. If a node has multiple interfaces, then the list of interfaces and their addresses can be displayed by clicking on the ‘+’ sign before the node ID.</a></div>
+            <div class="NoteText"><a name="1125261">Connection Manager lists all nodes and interfaces in the scenario. If you have connected the operational host to the emulation server using an IPv4 (IPv6) address, then only emulated interfaces with IPv4 (IPv6) addresses are enabled and can be selected as the default external node (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023590', '');" title="Running Applications">Section&nbsp;5.2.1.1.1</a></span>). </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1125128">When Connection Manager forms a connection to an </a><span class="Variable">EXata</span> process, a message is also displayed in the system tray icon (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1006272', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-18</a></span>).</div>
+      <div class="Anchor"><a name="1125058"><img class="Default" src="images/cm-systemtray.PNG" width="185" height="66" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-18.&nbsp;&nbsp;<a name="1006272">Connection Manager System Tray Icon</a></div>
+      <div class="Body"><a name="1125105">When the </a><span class="Variable">EXata</span> execution is terminated (by pressing the <span class="Menu">Stop</span> button in the GUI toolbar, or terminating the <span class="Variable">EXata</span> process on the command line interface), the list of nodes will disappear and Connection Manager will indicate that <span class="Variable">EXata</span> is offline, both in the status bar and the system tray.</div>
+      <div class="Heading3Numbered">5.1.2.2  <a name="1023069">Manual Configuration</a></div>
+      <div class="BodyAfterHead"><a name="1023088">Even though Connection Manager is the recommended approach for managing the operational host, there might be reasons where Connection Manager cannot be installed or executed on the operational host. For such cases, the operational host must be manually configured to connect with the emulation server. In addition, the external node mapping parameters must be configured as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2006622', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.1</a></span>. </div>
+      <div class="Body"><a name="1050763">This section describes the manual configuration of the operational host.</a></div>
+      <div class="Anchor"><a name="1029755"> </a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1029749">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1029751">With this manual configuration, multiple applications can not be run on different emulated nodes (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023814', '');" title="Running Applications">Section&nbsp;5.2.1.1.2</a></span>).</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4Numbered">5.1.2.2.1  <a name="1029757">Manual Configuration in Windows</a></div>
+      <div class="BodyAfterHead"><a name="1023105">To configure a Windows operational host, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1038436">Assign an IP address to the operational host, if it is not already assigned one. The operational host should be in the same subnet as the emulated server. Ensure that the emulation server is reachable from the operational host. To verify this connectivity, open a command window and type:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 28.8pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1045737">ping &lt;IPv4-address&gt;</a></span></div>
+      <div class="NumberedCont" style="text-indent: 0.6552000000000007pt"><a name="1117481">or</a></div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 28.8pt; text-indent: 0pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1117492">ping -6 &lt;IPv6-address&gt;</a></span></div>
+      <div class="Example" style="text-indent: -3.5999999999999996pt"><a name="1045743">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 417.6252pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 111.6252pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1117501">&lt;IPv4-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 306pt">
+            <div class="Body"><a name="1117503">IPv4 address of the emulation server</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1045740">&lt;IPv6-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1045742">IPv6 address of the emulation server</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="NumberedCont"><a name="1045692">Successful responses to the ping requests indicate a proper connection between the operational host and emulation server.</a></div>
+      <div class="NumberedCont"><a name="1038438">If the ping program reports failure in connection, ensure that the operational host and emulation server are properly connected with network cables and they have IP addresses belonging to the same subnet. Consult the networking administrator if the problem still persists.</a></div>
+      <div class="Anchor"><a name="1023179">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1023220">On the operational host, set the emulation server to be the default gateway. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1117518">To configure the default gateway for IPv4 networks on a Windows 7 or Windows 8 platform, do the following:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1122319">Go to </a><span class="Menu_D">Start &gt; Control Panel &gt; Network and Sharing Center &gt; Change adapter settings</span>. Right-click on the desired network interface and select <span class="Menu_D">Properties</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1122320">In the </a><span class="Menu_D">Networking</span> tab, select <span class="Menu_D">Internet Protocol Version 4 (TCP/IPv4)</span> from the scroll down list and click on the <span class="Menu_D">Properties</span> button.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="StepNumber">c.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1122324">Select </a><span class="Menu_D">Use the following IPv4 address</span>. Configure the default gateway as shown in the <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1008865', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-19</a></span>. The figure illustrates an example of an operational host with IPv4 address <span class="Courier">10.200.0.45</span>, subnet mask <span class="Courier">255.0.0.0</span>, and default gateway <span class="Courier">10.200.0.100</span>, which is the IPv4 address of the emulation server.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1023227"><img class="Default" src="images/windows-setting-default-gw.PNG" width="323" height="358" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-19.&nbsp;&nbsp;<a name="1008865">Setting Default IPv4 Gateway in Windows Operational Host</a></div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1122382">To configure the default gateway for IPv6 networks on a Windows 7 or Windows 8 platform, do the following:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1__0028first_0029_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1__0028first_0029_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="StepNumber">a.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1__0028first_0029_inner"><a name="1122383">Go to </a><span class="Menu_D">Start &gt; Control Panel &gt; Network and Sharing Center &gt; Change adapter settings</span>. Right-click on the desired network interface and select <span class="Menu_D">Properties</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="StepNumber">b.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1122384">In the </a><span class="Menu_D">Networking</span> tab, select <span class="Menu_D">Internet Protocol Version 6 (TCP/IPv6)</span> from the scroll down list and click on the <span class="Menu_D">Properties</span> button.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_Sub1_outer" style="margin-left: 28.8pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_Sub1_inner" style="width: 14.400000000000002pt; white-space: nowrap;">
+                <span class="StepNumber">c.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_Sub1_inner"><a name="1122385">Select </a><span class="Menu_D">Use the following IPv6 address</span>. Configure the default gateway as shown in the <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1117653', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-20</a></span>. The figure illustrates an example of an operational host with IPv6 address <span class="Courier">3000::15:16</span>, subnet prefix length <span class="Courier">64</span>, and default gateway <span class="Courier">3000::50:60</span>, which is the IPv6 address of the emulation server.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1117651"><img class="Default" src="images/DefaultIPv6Gateway.gif" width="435" height="358" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-20.&nbsp;&nbsp;<a name="1117653">Setting Default IPv6 Gateway in Windows Operational Host</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1123591">Set a default route to the emulation server. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1123592">To set a default IPv4 route on a Windows 7 or Windows 8 platform, open a command window, and type:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 28.8pt; text-indent: 14.374799999999997pt; text-transform: none; vertical-align: baseline"><a name="1123593">&nbsp;</a></div>
+      <div class="Command_Input" style="text-indent: 7.200000000000003pt"><span class="Courier" style="font-weight: bold"><a name="1117874">route add &lt;net-address&gt; mask &lt;subnet-mask&gt; &lt;IPv4-address&gt;</a></span></div>
+      <div class="Example" style="text-indent: 10.8pt"><a name="1045380">where</a></div>
+      <table class="ArgumentTable" style="margin-left: 50.4pt; text-align: left; width: 417.6pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 126pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1045390">&lt;net-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 291.6pt">
+            <div class="Body"><a name="1045392">Network address of the emulation server</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1045420">&lt;subnet-mask&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1045422">Subnet mask of the network</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1045416">&lt;IPv4-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1045418">IPv4 address of the emulation server</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1045373">&nbsp;</a></div>
+      <div class="NumberedCont" style="margin-left: 28.8pt; text-indent: 0pt"><a name="1038454">The network address is obtained by keeping the bits in the IP address that belong to the subnet mask, and clearing out everything else (also referred to as taking </a><span style="font-style: italic">bitwise-AND</span> of IP address and the subnet mask). For the example in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1008865', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-19</a></span>, the command is:</div>
+      <div class="Command_Input" style="text-indent: 7.200000000000003pt"><a name="1045436">&nbsp;</a></div>
+      <div class="Command_Input" style="text-indent: 7.200000000000003pt"><span class="Courier" style="font-weight: bold"><a name="1117890">route add 10.0.0.0 mask 255.0.0.0 10.200.0.100</a></span></div>
+      <div class="Anchor"><a name="1117818">&nbsp;</a></div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1117781">To set a default IPv6 route on a Windows 7 or Windows 8 platform, open a command window, and type:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 28.8pt; text-indent: 14.374799999999997pt; text-transform: none; vertical-align: baseline"><a name="1117782">&nbsp;</a></div>
+      <div class="NumberedCont" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 28.8pt; text-indent: 14.374799999999997pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118006">netsh interface ipv6 add route &lt;net-address&gt; &lt;interface&gt; &lt;IPv6-address&gt;</a></span></div>
+      <div class="Example" style="text-indent: 10.8pt"><a name="1117796">where</a></div>
+      <table class="ArgumentTable" style="margin-left: 50.4pt; text-align: left; width: 417.6pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 126pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1117785">&lt;net-address</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 291.6pt">
+            <div class="Body"><a name="1117787">IPv6 address of the emulation server with the subnet prefix length</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1117789">&lt;interface&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1117791">Interface name</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1117793">&lt;IPv6-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1117795">IPv6 address of the emulation server</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1117905">&nbsp;</a></div>
+      <div class="NumberedCont" style="margin-left: 28.8pt; text-indent: 0pt"><a name="1117906">For the example in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1117653', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-20</a></span>, the command is:</div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 7.200000000000003pt; text-transform: none; vertical-align: baseline"><a name="1117907">&nbsp;</a></div>
+      <div class="Command_Input" style="margin-left: 43.2pt; text-indent: 0pt"><span class="Courier" style="font-weight: bold"><a name="1117908">netsh interface ipv6 add route 3000::/64 “Local area connection 4” 3000::50:60</a></span></div>
+      <div class="Heading4Numbered">5.1.2.2.2  <a name="1023245">Manual Configuration in Linux</a></div>
+      <div class="BodyAfterHead"><a name="1023254">To configure a Linux operational host, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1038489">Assign an IP address to the operational host, if it is not already assigned one. The operational host should be in the same subnet as the emulated server. Ensure that the emulation server is reachable from the operational host. To verify this connectivity, open a command window and type: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1045456">&nbsp;</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1117979">ping &lt;IPv4-address&gt;</a></span></div>
+      <div class="NumberedCont" style="margin-left: 14.4pt; text-indent: 0pt"><a name="1117980">or</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1117981">ping6 &lt;IPv6-address&gt;</a></span></div>
+      <div class="Example" style="margin-left: 14.4pt; text-indent: 0pt"><a name="1117992">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 417.6252pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 111.6252pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1117985">&lt;IPv4-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 306pt">
+            <div class="Body"><a name="1117987">IPv4 address of the emulation server</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1117989">&lt;IPv6-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1117991">IPv6 address of the emulation server</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="NumberedCont"><a name="1045476">Successful responses to the ping requests indicate a proper connection between the operational host and emulation server.</a></div>
+      <div class="NumberedCont"><a name="1038491">If the ping program reports failure in connection, ensure that the operational host and emulation server are properly connected with network cables and they have IP addresses belonging to the same subnet. Consult the networking administrator if the problem still persists.</a></div>
+      <div class="Anchor"><a name="1038492">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1023299">On the operational host, set the emulation server to be the default gateway. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1118424">To configure a default IPv4 gateway, open a command window, and type (all parameters must be entered on the same line):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 28.8pt; text-indent: 14.374799999999997pt; text-transform: none; vertical-align: baseline"><a name="1118425">&nbsp;</a></div>
+      <div class="Command_Input" style="margin-left: 43.2pt; text-indent: 0pt"><span class="Courier" style="font-weight: bold"><a name="1118426">sudo route add default gw &lt;IPv4-address&gt;</a></span></div>
+      <div class="Example" style="text-indent: 10.8pt"><a name="1118440">where</a></div>
+      <table class="ArgumentTable" style="margin-left: 50.4pt; text-align: left; width: 417.6pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 126pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118437">&lt;IPv4-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 291.6pt">
+            <div class="Body"><a name="1118439">IPv4 address of the emulation server</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="NumberedCont" style="margin-left: 28.8pt; text-indent: 0pt"><a name="1023314">As an example, consider the IP address of the operational host as </a><span class="Courier">10.200.0.45</span> and that of the emulation server as <span class="Courier">10.200.0.100</span>, then the default gateway can be configured as:</div>
+      <div class="Command_Input" style="margin-left: 43.2pt; text-indent: 0pt"><a name="1023315">&nbsp;</a></div>
+      <div class="Command_Input" style="margin-left: 43.2pt; text-indent: 0pt"><span class="Courier" style="font-weight: bold"><a name="1045446">sudo route add default gw 10.200.0.100</a></span></div>
+      <div class="Anchor"><a name="1118217">&nbsp;</a></div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1118491">To configure a default IPv6 gateway, open a command window, and type (all parameters must be entered on the same line):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 28.8pt; text-indent: 14.374799999999997pt; text-transform: none; vertical-align: baseline"><a name="1118492">&nbsp;</a></div>
+      <div class="Command_Input" style="margin-left: 43.2pt; text-indent: 0pt"><span class="Courier" style="font-weight: bold"><a name="1118520">sudo route -A inet6 add &lt;net-address&gt; gw &lt;IPv6-address&gt;</a></span> <span class="Courier" style="font-weight: bold">dev</span> <span class="Courier" style="font-weight: bold">&lt;interface&gt; </span></div>
+      <div class="Example" style="text-indent: 10.8pt"><a name="1118534">where</a></div>
+      <table class="ArgumentTable" style="margin-left: 50.4pt; text-align: left; width: 417.6pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 126pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118523">&lt;net-address</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 291.6pt">
+            <div class="Body"><a name="1118525">Network address with the subnet prefix length</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118527">&lt;IPv6-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1118529">IPv6 address of the emulation server</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118531">&lt;interface&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1118533">Interface name</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1118535">&nbsp;</a></div>
+      <div class="NumberedCont" style="margin-left: 28.8pt; text-indent: 0pt"><a name="1118539">For the example in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1117653', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-20</a></span>, the command is:</div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 7.200000000000003pt; text-transform: none; vertical-align: baseline"><a name="1118540">&nbsp;</a></div>
+      <div class="Command_Input" style="margin-left: 43.2pt; text-indent: 0pt"><span class="Courier" style="font-weight: bold"><a name="1118541">sudo route -A inet6 add ::/64 gw 3000::50:60</a></span> dev eth0</div>
+      <div class="Anchor"><a name="1118547">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1118544">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1118546">If you are logged in as root in the terminal window, you can omit the </a><span style="font-weight: bold">sudo</span> keyword.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1118232">Set a default route to the emulation server. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1118233">To set a default IPv4 route, open a command window, and type (all parameters must be entered on the same line):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 28.8pt; text-indent: 14.374799999999997pt; text-transform: none; vertical-align: baseline"><a name="1118234">&nbsp;</a></div>
+      <div class="Command_Input" style="margin-left: 43.2pt; text-indent: 0pt"><span class="Courier" style="font-weight: bold"><a name="1118235">sudo route add –net &lt;net-address&gt; netmask &lt;subnet-mask&gt; gw <br />&lt;IPv4-address&gt;</a></span></div>
+      <div class="Example" style="text-indent: 10.8pt"><a name="1118249">where</a></div>
+      <table class="ArgumentTable" style="margin-left: 50.4pt; text-align: left; width: 417.6pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 126pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118238">&lt;net-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 291.6pt">
+            <div class="Body"><a name="1118240">Network address of the emulation server</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118242">&lt;subnet-mask&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1118244">Subnet mask of the network</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118246">&lt;IPv4-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1118248">IPv4 address of the emulation server</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1118250">&nbsp;</a></div>
+      <div class="NumberedCont" style="margin-left: 28.8pt; text-indent: 0pt"><a name="1118251">The network address is obtained by keeping the bits in the IP address that belong to the subnet mask, and clearing out everything else (also referred to as taking </a><span style="font-style: italic">bitwise-AND</span> of IP address and the subnet mask). For the example in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1008865', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-19</a></span>, the command is:</div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 7.200000000000003pt; text-transform: none; vertical-align: baseline"><a name="1118255">&nbsp;</a></div>
+      <div class="Command_Input" style="text-indent: 7.200000000000003pt"><span class="Courier" style="font-weight: bold"><a name="1118256">sudo route add –net 10.200.0.0 netmask 255.255.255.0 gw 10.200.0.100</a></span></div>
+      <div class="Anchor"><a name="1118257">&nbsp;</a></div>
+      <div class="Bulleted_Indented_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Indented_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Indented_inner"><a name="1118258">To set a default IPv6 route, open a command window, and type (all parameters must be entered on the same line):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 28.8pt; text-indent: 14.374799999999997pt; text-transform: none; vertical-align: baseline"><a name="1118259">&nbsp;</a></div>
+      <div class="Command_Input" style="margin-left: 43.2pt; text-indent: 0pt"><span class="Courier" style="font-weight: bold"><a name="1118260">sudo</a></span><span class="Courier"> </span><span class="Courier" style="font-weight: bold">route -A inet6 add &lt;net-address&gt; gw &lt;IPv6-address&gt;</span> <span class="Courier" style="font-weight: bold">dev</span> <span class="Courier" style="font-weight: bold">&lt;interface&gt; </span></div>
+      <div class="Example" style="text-indent: 10.8pt"><a name="1118274">where</a></div>
+      <table class="ArgumentTable" style="margin-left: 50.4pt; text-align: left; width: 417.6pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 126pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118350">&lt;net-address</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 291.6pt">
+            <div class="Body"><a name="1118352">Network address with the subnet prefix length</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118354">&lt;IPv6-address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1118356">IPv6 address of the emulation server</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1118358">&lt;interface&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="1118360">Interface name</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1118275">&nbsp;</a></div>
+      <div class="NumberedCont" style="margin-left: 28.8pt; text-indent: 0pt"><a name="1118279">For the example in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1117653', '');" title="Configuring the EXata Testbed">Figure&nbsp;5-20</a></span>, the command is:</div>
+      <div class="Command_Input" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 7.200000000000003pt; text-transform: none; vertical-align: baseline"><a name="1118280">&nbsp;</a></div>
+      <div class="Command_Input" style="margin-left: 43.2pt; text-indent: 0pt"><span class="Courier" style="font-weight: bold"><a name="1118281">sudo route -A inet6 add 3000::/64 gw 3000::50:60</a></span> dev eth0</div>
+      <div class="Anchor"><a name="1001707">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1034495">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1034497">If you are logged in as root in the terminal window, you can omit the </a><span style="font-weight: bold">sudo</span> keyword.</div>
+          </td>
+        </tr>
+      </table>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

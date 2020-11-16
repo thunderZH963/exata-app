@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebWorksHelpTOC version="5.0" xmlns="urn:WebWorks-Help-TOC-Schema">
+  <i t="1 Introduction to EXata" l="1#931443">
+    <i t="1.1 EXata Features and Benefits" l="2#951595" />
+    <i t="1.2 EXata Architecture" l="3#937637" />
+  </i>
+  <i t="2 Installing Connection Manager" l="4#1043894">
+    <i t="2.1 Supported Platforms" l="5#1055722" />
+    <i t="2.2 Installing Connection Manager on Windows" l="6#1055517" />
+    <i t="2.3 Installing Connection Manager on Linux" l="7#1054329" />
+  </i>
+  <i t="3 Using Connection Manager" l="8#1022444">
+    <i t="3.1 Starting Connection Manager" l="9#1050285">
+      <i t="3.1.1 Starting Connection Manager in Windows" l="9#1050287" />
+      <i t="3.1.2 Starting Connection Manager in Linux" l="9#1050330" />
+    </i>
+    <i t="3.2 Connecting Operational Hosts with the Emulation Server" l="10#1037271">
+      <i t="3.2.1 Manual Specification of Emulation Server" l="10#1022785" />
+      <i t="3.2.2 Automatic Detection of Emulation Server" l="10#1022944" />
+      <i t="3.2.3 Verifying the Connectivity" l="10#1056092" />
+    </i>
+    <i t="3.3 Running Applications" l="11#1023018">
+      <i t="3.3.1 Launching Applications on a Single Emulated Node" l="11#1023590">
+        <i t="3.3.1.1 Setting a Default External Node" l="11#1023766" />
+        <i t="3.3.1.2 Unsetting the Default EXata Node" l="11#1009510" />
+        <i t="3.3.1.3 Changing the Default EXata Node" l="11#1023795" />
+      </i>
+      <i t="3.3.2 Launching Applications on Different Emulated Nodes" l="11#1023814">
+        <i t="3.3.2.1 Launching an Application on a Selected Emulated Node" l="11#1040170" />
+        <i t="3.3.2.2 Restoring an Application Session" l="11#1052099" />
+        <i t="3.3.2.3 Saving and Loading Application Sessions" l="11#1039782" />
+        <i t="3.3.2.4 Quick Launch Application Tray" l="11#1016131" />
+      </i>
+    </i>
+  </i>
+</WebWorksHelpTOC>

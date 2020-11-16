@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Using Packet Sniffing and Analysis Software</title>
+    <link rel="StyleSheet" href="css/Ch5_Using%20Emulation%20(EX+EC+JNE).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch5_Using%20Emulation%20(EX+EC+JNE).06.1.html#1024313">5	Using Emulation</a> &gt; 5.6  Using Packet Sniffing and Analysis Software</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">5.6  <a name="1024313">Using Packet Sniffing and Analysis Software</a></div>
+      <div class="BodyAfterHead"><span class="Variable"><a name="1042267">EXata</a></span> supports sniffing of emulated network packets using popular third party software Wireshark (formerly Ethereal), Observer, or Microsoft Network Monitor. You can analyze the network packet by packet, protocol by protocol, and diagnose network problems and make use of the advanced capabilities such as statistics and reporting.</div>
+      <div class="BodyAfterHead"><a name="1024335">Packet analyzers can be used for:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024336">Analyzing network problems</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024340">Protocol verification</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024350">Monitoring network usage</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024355">Gathering and reporting network statistics</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024360">Filtering suspect content from network traffic</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024365">Reverse engineering protocols used over the network</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024370">Debugging client/server communications</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024380">Debugging network protocol implementations</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024381">Converting data to human readable format</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1024382">Fault analysis to discover problems in the network, such as lack of connectivity</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1002530">Performance analysis to discover network bottlenecks</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.7.html#1007805', '');" title="Using Packet Sniffing and Analysis Software" name="1042352">Figure&nbsp;5-55</a></span> shows the <span class="Variable">EXata</span> Packet Sniffing Interface. The core feature is provided by the <span class="Variable">EXata</span> Network Virtual Interface Card (ENETV) that acts as a bridge between the third party packet sniffing and analysis tools at one end, and the emulated network within <span class="Variable">EXata</span> at the other. When the Packet Sniffing Interface feature is enabled, <span class="Variable">EXata</span> configures this virtual network card on the emulation server and forwards all internal traffic within the emulated network to this virtual card. In addition, the Packet Sniffing Interface can correctly capture and show all the traffic that was generated from the operational hosts.</div>
+      <div class="Body"><a name="1042359">At the other end, the virtual network card is treated by the packet sniffing software as a physical network card which can be ‘tapped into’ to receive the packet streams. The high fidelity of the </a><span class="Variable">EXata</span> protocol stack ensures that the packets written to this network card conform to the standards so that the packet sniffing tools can capture and parse these packets correctly.</div>
+      <div class="Anchor"><a name="1010998"><img class="Default" src="images/diagram-pas.png" width="400" height="300" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-55.&nbsp;&nbsp;<span class="Variable"><a name="1007805">EXata</a></span> Packet Sniffing Interface</div>
+      <div class="Body"><a name="1024401">The Packet Sniffing Interface in </a><span class="Variable">EXata</span> is capable of displaying the packet contents and headers correctly for the transport layer (TCP and UDP), network layer (IPv4, IPv6, ICMP, and ICMPv6) and many routing protocols (including, OLSR, OSPF), applications (including FTP, HTTP), and MAC layer protocols.</div>
+      <div class="Body"><a name="1024402">By default, the ENETV displays all packets with </a><span style="font-style: italic">encapsulated Ethernet</span> MAC headers, i.e., the MAC headers of any custom or non-standard MAC protocol are converted into the familiar Ethernet MAC header format before being displayed by the ENETV.</div>
+      <div class="Body"><span class="Variable"><a name="1024408">EXata</a></span> also supports the IEEE 802.11 MAC protocol and is capable of displaying the data, control and management frames of IEEE 802.11 MAC.</div>
+      <div class="Anchor"><a name="1042421">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1042396">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1042398">Packet sniffing of the IEEE 802.11 MAC protocol is supported only on Linux emulation servers.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="1024416">&nbsp;</a></div>
+      <div class="Heading4"><a name="1042454">Installing ENETV on Windows</a></div>
+      <div class="BodyAfterHead"><a name="1002712">The ENETV driver can be installed along with the main </a><span class="Variable">EXata</span> installation. Refer to <span class="Variable" style="font-style: italic">EXata Installation Guide</span> for details.</div>
+      <div class="Body"><a name="1002721">If the ENETV driver was not installed during the main installation, it can be separately installed by performing the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1042485">Open a command window.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1042508">Change the directory to </a><span class="Variable">EXATA_HOME</span>/interfaces/pas/virtual_windows/&lt;OS-version&gt;/&lt;system-arch&gt;, where &lt;OS-version&gt; is the operating system version and &lt;system-arch&gt; is the architecture of the system on which ENETV driver needs to be installed.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1042515">Type the following command (all arguments must be entered on the same line):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1120995">For 32-bit systems:</a></div>
+      <div class="Command_Input"><a name="1042447">&nbsp;</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1120889">%</a></span><span class="Variable" style="font-family: &quot;Courier New&quot;; font-size: 10pt; font-style: normal; font-weight: bold">EXATA_HOME</span><span class="Courier" style="font-weight: bold">%\interfaces\pas\virtual_windows\devcon.exe install enetv.inf “root\enetv”</span></div>
+      <div class="Anchor"><a name="1121031">&nbsp;</a></div>
+      <div class="NumberedCont"><a name="1121015">For 64-bit systems:</a></div>
+      <div class="Command_Input"><a name="1121016">&nbsp;</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1121020">%</a></span><span class="Variable" style="font-family: &quot;Courier New&quot;; font-size: 10pt; font-style: normal; font-weight: bold">EXATA_HOME</span><span class="Courier" style="font-weight: bold">%\interfaces\pas\virtual_windows\devcon_amd64.exe install enetv.inf “root\enetv”</span></div>
+      <div class="NumberedCont"><a name="1121231">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1121215">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1121217">Alternatively, you can install the ENETV driver by using the batch file install-enetv.bat in directory the </a><span class="Variable">EXATA_HOME</span>/interfaces/pas/virtual_windows.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="1121871">To test that the </a><span class="Variable">EXata</span> Network Virtual driver has been successfully installed, open the Networks Connections window from <span class="Menu">Start</span><span class="Menu_D"> </span><span class="Bold">&gt;</span><span class="Menu" style="font-family: Arial; font-style: normal"> Control Panel</span><span class="Menu_D" style="font-family: Arial; font-style: normal"> </span><span class="Bold">&gt;</span><span class="Menu" style="font-family: Arial; font-style: normal"> Network and Sharing Center &gt; Change adapter settings</span>. Right‑click in the window and click on <span style="font-weight: bold">View</span><span class="Menu_D"> </span><span class="Bold">&gt;</span><span style="font-weight: bold"> Tiles</span>. The <span class="Variable">EXata</span> Device should be listed as shown in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.7.html#1002784', '');" title="Using Packet Sniffing and Analysis Software">Figure&nbsp;5-56</a></span>.</div>
+      <div class="Anchor"><a name="1121865"><img class="Default" src="images/windows-enetv-interface.PNG" width="504" height="385" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-56.&nbsp;&nbsp;<span class="Variable"><a name="1002784">EXata</a></span> Virtual Network Device</div>
+      <div class="Heading4"><a name="1121323">Uninstalling ENETV on Windows</a></div>
+      <div class="BodyAfterHead"><a name="1121324">To uinstall the ENETV driver, performing the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1121325">Open a command window.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1121329">Changing the directory to </a><span class="Variable">EXATA_HOME</span>/interfaces/pas/virtual_windows/&lt;OS-version&gt;/&lt;system-arch&gt;, where &lt;OS-version&gt; is the operating system version and &lt;system-arch&gt; is the architecture of the system on which ENETV driver needs to be uninstalled.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1121330">Type the following command (all arguments must be entered on the same line):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1121331">For 32-bit systems:</a></div>
+      <div class="Command_Input" style="margin-left: 28.8pt; text-indent: 0pt"><a name="1121332">&nbsp;</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1121336">%</a></span><span class="Variable" style="font-family: &quot;Courier New&quot;; font-size: 10pt; font-style: normal; font-weight: bold">EXATA_HOME</span><span class="Courier" style="font-weight: bold">%\interfaces\pas\virtual_windows\devcon.exe remove enetv.inf “root\enetv”</span></div>
+      <div class="Anchor"><a name="1121337">&nbsp;</a></div>
+      <div class="NumberedCont"><a name="1121338">For 64-bit systems:</a></div>
+      <div class="Command_Input"><a name="1121339">&nbsp;</a></div>
+      <div class="Command_Input"><span class="Courier" style="font-weight: bold"><a name="1121343">%</a></span><span class="Variable" style="font-family: &quot;Courier New&quot;; font-size: 10pt; font-style: normal; font-weight: bold">EXATA_HOME</span><span class="Courier" style="font-weight: bold">%\interfaces\pas\virtual_windows\devcon_amd64.exe remove enetv.inf “root\enetv”</span></div>
+      <div class="NumberedCont"><a name="1121352">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1121346">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1121348">Alternatively, you can unnstall the ENETV driver by using the batch file uninstall-enetv.bat in directory the </a><span class="Variable">EXATA_HOME</span>/interfaces/pas/virtual_windows.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="1006386">Installing ENETV on Linux</a></div>
+      <div class="BodyAfterHead"><a name="1002794">On Linux, </a><span class="Variable">EXata</span> automatically attempts to compile, load, and configure the ENETV driver each time the <span class="Variable">EXata</span> process is executed. In order to use the <span class="Variable">EXata</span> Packet Sniffer interface, Linux kernel source code or header files must be present. To verify if these are available on the emulation server, open a terminal window and do the following:</div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1113517">For Debian or Ubuntu systems, type:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-indent: 15.055200000000001pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1113518">dpkg -s kernel</a></span></div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-indent: 15.055200000000001pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1113519">dpkg -s kernel-headers</a></span></div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-indent: 15.055200000000001pt; text-transform: none; vertical-align: baseline"><a name="1113520">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1113521">For other systems, type:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-indent: 15.055200000000001pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1113522">rpm –q kernel</a></span></div>
+      <div class="NumberedCont" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-indent: 15.055200000000001pt; text-transform: none; vertical-align: baseline"><span class="Courier" style="font-weight: bold"><a name="1113523">rpm –q kernel-headers</a></span></div>
+      <div class="Body"><a name="1113524">If the above commands fail, consult your system administrator on how to install the kernel source or header files on the emulation server. </a></div>
+      <div class="Anchor"><a name="1113551">&nbsp;</a></div>
+      <div class="Heading4"><a name="1027855">Using the Packet Sniffing Interface</a></div>
+      <div class="BodyAfterHead"><a name="1042687">To use the Packet Sniffing Interface, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1042669">Enable the Packet Sniffing Interface and select node(s) for which the packets should be captured. See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2006827', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.3</a></span> for details on how to configure the Packet Sniffing Interface parameters for the command line interface and the GUI.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1050331">If a specific node is selected for sniffing packets and the </a><span class="Variable">EXata</span> GUI is running, the selected node is highlighted on the canvas by a brown triangle (see node 10 in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.7.html#1050359', '');" title="Using Packet Sniffing and Analysis Software">Figure&nbsp;5-57</a></span>). </div>
+      <div class="Anchor"><a name="1050293"><img class="Default" src="images/gui-set-packet-sniffing-node.png" width="394" height="392" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-57.&nbsp;&nbsp;<span class="Variable"><a name="1050359">EXata</a></span> GUI Displaying a Packet Sniffing Node</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1002855">Open Wireshark, Observer or any of other packet sniffing tool. Locate the toolbar in this software that asks for the network device for which to capture packets on. Provide the EXata Virtual Network Device (SNT EXata Virtual Interface for Windows and exata or exata_dot11 for Linux) as input to this configuration toolbar. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.7.html#1024444', '');" title="Using Packet Sniffing and Analysis Software">Figure&nbsp;5-58</a></span> shows SNT EXata Virtual Interface in ‘Capture Options’ windows in Wireshark.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1024442"><img class="Default" src="images/pas-wireshark.PNG" width="587" height="408" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-58.&nbsp;&nbsp;<a name="1024444">EXata Interface Selection in Wireshark</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1024445">Start the packet sniffing software to begin capturing the packets.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1002901">Start the </a><span class="Variable">EXata</span> process by pressing the <span class="Menu_D">Play</span> button in GUI mode, or launching <span class="Variable">EXata</span> in command line.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1002910">Verify that the packet sniffing software is able to capture and display the packets. All the transmitted and received packets for the node that was configured to capture packets should be displayed. </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.7.html#1002919', '');" title="Using Packet Sniffing and Analysis Software">Figure&nbsp;5-59</a></span> show an example of packets displayed in Wireshark:</div>
+      <div class="Anchor"><a name="1011232"><img class="Default" src="images/pas-wireshark-working.PNG" width="590" height="496" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-59.&nbsp;&nbsp;<a name="1002919">Captured Packet Contents in Wireshark</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

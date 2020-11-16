@@ -1,0 +1,9 @@
+PAS (Packet Analysis/Analyzer Support)
+
+For remote capture
+rpcap://<ipaddress>/<interface name>
+
+examples
+windows: rpcap://192.168.0.2/\Device\NPF_{1BBASED9-1242-2304-BEEE-2K23LWJ0293}
+
+linux: rpcap://192.168.0.2/eth0

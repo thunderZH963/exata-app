@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Introduction to EXata</title>
+    <link rel="StyleSheet" href="css/Ch1_Introduction.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">1	Introduction to EXata</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="ChapterTitle_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="ChapterTitle_inner" style="width: 72pt; white-space: nowrap;">
+                <span class="ChapterNumber">1	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="ChapterTitle_inner"><a name="1185911">Introduction to </a><span class="Variable">EXata</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyAfterHead"><span class="Variable"><a name="1185915">EXata</a></span> is a network emulator that lets you evaluate on-the-move communication networks faster and with more realism than any other emulator. With the optional Cyber Model Library, <span class="Variable">EXata</span> can be used as a toolkit for research and development, test and evaluation, and training of cyber warfare technologies. It uses a software virtual network (SVN) to digitally represent the entire network, the various protocol layers, antennas, and devices. <span class="Variable">EXATA_HOME</span> can interoperate, at one or more protocol layers, with real radios and devices to provide hardware-in-the-loop capabilities. <span class="Variable">EXata</span> can also be connected to systems with real applications, which run on the SVN just as they would run on real networks.</div>
+      <div class="Anchor"><a name="1185925">&nbsp;</a></div>
+      <div class="Heading4"><a name="1185926">Emulation and Simulation</a></div>
+      <div class="BodyAfterHead"><a name="1185927">A network emulator mimics the functions of a real network so that it appears, interacts, and behaves like the real network. The emulator provides an exact, high quality, reproduction of external behavior so that the emulated system is indistinguishable from the real system. An emulator provides a cost-effective method of evaluating new network technologies before actual systems or networks are built.</a></div>
+      <div class="Body"><a name="1185928">A network simulator duplicates the behavior of a real network, but cannot interact with real networks. A simulator uses lower quality reproduction or abstraction of the real system and focuses on simply replicating the real network’s behavior. A network simulation is a cost-effective method for developing the early stages of network centric systems. Users can evaluate the basic behavior of a network and test combinations of network features that are likely to work.</a></div>
+      <div class="Body"><a name="1185929">Network emulation helps in developing a net-centric system by providing an environment in which design decisions can be easily changed and their impact evaluated. Customers of the net-centric system can use the emulated network and see how their applications (such as VoIP, situational awareness, sensor data, and streaming video) will perform when the real system is built. The emulated network can also be integrated with legacy systems to test interoperability and be used to train users on the next generation networks. By evaluating what works best early in the design cycle, the cost of modifying a system can be greatly reduced. This also sets realistic expectations of what the communications network will deliver, i.e., it provides predictability.</a></div>
+      <div class="Body"><a name="1185933">The emulation capabilities of </a><span class="Variable">EXata</span> in conjunction with the Cyber Model Library can be used to create and modify attacks and counter measures. Attacks can be targeted on specialized networks, such as wireless, wired, mobile ad-hoc (MANET), and tactical networks. Users can then analyze the impact of attacks and counter-measures on the network itself, applications, and end-users. </div>
+      <div class="Body"><a name="1184840"><img class="Default" src="images/Emulation%20Lifecycle.png" width="478" height="254" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 1-1.&nbsp;&nbsp;<a name="1184841">Life-cycle of Developing a Net-Centric System</a></div>
+      <div class="Body"><span class="Variable"><a name="1157188">EXata</a></span> is composed of the following tools:</div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><span class="Variable"><a name="1059518">EXata</a></span> Architect — A graphical experiment design and visualization tool. Architect has two modes: Design mode, for designing experiments, and Visualize mode, for running and visualizing experiments.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><span class="Variable"><a name="1059522">EXata</a></span> Analyzer — A graphical statistics analyzing tool.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><span class="Variable"><a name="1059526">EXata</a></span> Packet Tracer — A graphical tool to display and analyze packet traces.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><span class="Variable"><a name="1059530">EXata</a></span> File Editor — A text editing tool.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><span class="Variable"><a name="1059534">EXata</a></span> Command Line Interface — Command line access to the simulator.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1088855">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1088845">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1088850">Some of the features in this guide are not included with the standard </a><span class="Variable">EXata</span> distribution and may be sold separately. To inquire about purchasing additional <span class="Variable">EXata</span> modules, contact Scalable Network Technologies' Sales Department at <span class="Hyperlink"><a href="mailto:sales@scalable-networks.com" target="external_window">sales@scalable-networks.com</a></span>.</div>
+          </td>
+        </tr>
+      </table>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

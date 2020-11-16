@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebWorksHelpBook version="5.0" name="Product Tour" context="Product_Tour" locale="en" xmlns="urn:WebWorks-Help-Book-Files-Schema">
+  <CommonWordsToSkip minlen="3">
+    a about after all also am an and another any are as at
+    be because been before being between both but by
+    came can come copyright corp corporation could
+    did do does
+    each etc
+    for from
+    get goes got
+    had has have he her here him himself his how
+    if in inc into is it its
+    let like
+    make many me might more most much must my
+    never nor not now
+    of off on one only or other our out over own
+    reserved rights
+    said same see set shall she should since so some still such
+    take than that the their them then there these they this those though through to too
+    under us use
+    very
+    was way we well were what when where which while who why will with would
+    yes yet you your
+   </CommonWordsToSkip>
+  <ScoringPrefs>
+    <meta name="keywords" weight="100" />
+    <meta name="description" weight="50" />
+    <meta name="summary" weight="50" />
+    <title weight="20" />
+    <h1 weight="15" />
+    <h2 weight="10" />
+    <caption weight="10" />
+    <h3 weight="7" />
+    <th weight="5" />
+    <h4 weight="5" />
+    <h5 weight="4" />
+    <h6 weight="3" />
+    <h7 weight="2" />
+  </ScoringPrefs>
+  <DocumentInfo>
+    <Document title="Introduction" href="Ch1%20Introduction.html" />
+    <Document title="Simulation Demo" href="Ch2%20Simulation.2.1.html" />
+    <Document title="Scenario Description" href="Ch2%20Simulation.2.2.html" />
+    <Document title="Navigating within the Scenario" href="Ch2%20Simulation.2.3.html" />
+    <Document title="Scenario Configuration" href="Ch2%20Simulation.2.4.html" />
+    <Document title="Running the Scenario" href="Ch2%20Simulation.2.5.html" />
+    <Document title="Analyzing Simulation Results" href="Ch2%20Simulation.2.6.html" />
+    <Document title="Running the Simulation Again" href="Ch2%20Simulation.2.7.html" />
+    <Document title="Creating Simulation Scenarios" href="Ch3%20Creating%20Scenarios.3.01.html" />
+    <Document title="Create a New Scenario" href="Ch3%20Creating%20Scenarios.3.02.html" />
+    <Document title="General Simulation Parameters" href="Ch3%20Creating%20Scenarios.3.03.html" />
+    <Document title="Saving Scenario and Copying Terrain Files" href="Ch3%20Creating%20Scenarios.3.04.html" />
+    <Document title="Terrain and Channel Parameters" href="Ch3%20Creating%20Scenarios.3.05.html" />
+    <Document title="Creating Network Topology" href="Ch3%20Creating%20Scenarios.3.06.html" />
+    <Document title="Specifying Mobility Pattern for Mobile Station 1" href="Ch3%20Creating%20Scenarios.3.07.html" />
+    <Document title="Creating an Application Session" href="Ch3%20Creating%20Scenarios.3.08.html" />
+    <Document title="Setting Parameters" href="Ch3%20Creating%20Scenarios.3.09.html" />
+    <Document title="Saving and Running Scenario" href="Ch3%20Creating%20Scenarios.3.10.html" />
+    <Document title="Emulation Testbed and Demo" href="Ch4%20Emulation%20(EX+JNE).4.1.html" />
+    <Document title="Setting up the Testbed" href="Ch4%20Emulation%20(EX+JNE).4.2.html" />
+    <Document title="Set up Video Application" href="Ch4%20Emulation%20(EX+JNE).4.3.html" />
+    <Document title="Start Emulation" href="Ch4%20Emulation%20(EX+JNE).4.4.html" />
+    <Document title="Launching Cyber Attacks" href="Ch5%20Cyber%20Attacks%20(EX%20only).5.1.html" />
+    <Document title="Jamming Attack Model Configuration" href="Ch5%20Cyber%20Attacks%20(EX%20only).5.2.html" />
+    <Document title="Launching Jamming Attack" href="Ch5%20Cyber%20Attacks%20(EX%20only).5.3.html" />
+    <Document title="Cyber Warfare Demo" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.1.html" />
+    <Document title="Hardware and Software Configuration" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.2.html" />
+    <Document title="Launching the Demo Scenario" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.3.html" />
+    <Document title="Demonstrating Video and Chat Applications" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.4.html" />
+    <Document title="Demonstrating Firewall-based Defense of Blue Force Network" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.5.html" />
+    <Document title="Demonstrating Eavesdropping and Virus Attacks" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.6.html" />
+    <Document title="Demonstrating Intrusion Detection System" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.7.html" />
+    <Document title="Demonstrating Counter-measures by the Blue Force" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.8.html" />
+    <Document title="Launching Metasploit Attack" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.9.html" />
+  </DocumentInfo>
+  <TopicMap />
+</WebWorksHelpBook>

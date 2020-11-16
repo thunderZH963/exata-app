@@ -1,0 +1,6 @@
+include ../libraries/umts/Makefile-common
+
+ADDON_OPTIONS   = $(ADDON_OPTIONS) $(UMTS_OPTIONS)
+ADDON_SRCS      = $(ADDON_SRCS) $(UMTS_SRCS)
+ADDON_INCLUDES  = $(ADDON_INCLUDES) $(UMTS_INCLUDES)
+

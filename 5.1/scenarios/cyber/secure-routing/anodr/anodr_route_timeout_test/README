@@ -1,0 +1,58 @@
+# Copyright (c) 2001-2013, SCALABLE Network Technologies, Inc.  All Rights Reserved.
+#                          600 Corporate Pointe
+#                          Suite 1200
+#                          Culver City, CA 90230
+#                          info@scalable-networks.com
+#
+# This source code is licensed, not sold, and is subject to a written
+# license agreement.  Among other things, no portion of this source
+# code may be copied, transmitted, disclosed, displayed, distributed,
+# translated, used as the basis for a derivative work, or used, in
+# whole or in part, for any program or purpose other than its intended
+# use in compliance with the license agreement as part of the QualNet
+# software.  This source code and certain of the algorithms contained
+# within it are confidential trade secrets of Scalable Network
+# Technologies, Inc. and may not be used as the basis for any other
+# software, hardware, product or service.
+
+
+
+PURPOSE:-
+--------
+To test the functionality of route time out in ANODR routing protocol when configured in a subnet
+
+
+SCENARIO:-
+---------
+
+                          
+                            
+             [1]             [2] 
+                          
+                          
+                           
+                           
+Node1 and 2 are placed in a wireless adhoc network.Node1 sends data packets to Node2 at an interval 
+of 7 secs. As the interval between the data packets is more than default ANODR-ACTIVE-ROUTE-TIMEOUT
+(5secs),a new RREQ should be sent every time the Node1 needs to send data
+
+
+
+Application:
+------------
+CBR application is configured between Node 1 and Node 2
+
+
+RUN:-
+----
+Run '<QUALNET_HOME>/bin/qualnet anodr_route_timeout_test.config'.
+
+
+DESCRIPTION OF THE FILES:-
+-------------------------
+1. anodr_route_timeout_test.app               - QualNet configuration file for application input.
+2. anodr_route_timeout_test.config            - QualNet configuration input file.
+3. anodr_route_timeout_test.expected.stat     - QualNet statistics collection.
+4. anodr_route_timeout_test.nodes             - QualNet Configuration file for node position input.
+5. README                            - This file.
+

@@ -1,0 +1,155 @@
+
+# ISAKMP configuration file
+# 
+# DEFAULT values are defiend in isakmp.h file.
+#
+#
+# To configure  a node with ISAKMP parameters
+#
+# NODE  node-interface-ipv4-address
+# PEER  peer-ipv4-address       <node-peer configuration>
+
+NODE 192.168.4.2
+PEER 192.168.4.1 5-2-Config
+
+# To Configure <node-peer configuration> .
+# <node-peer configuration>
+# NOTE: Parameter should be given in the order specified below
+
+# PHASE 1   
+# DOI               Domain-of-Interpretation
+# EXCHANGE_TYPE     exchange-type
+# FLAGS             flags e.g. ACE ,CE ,AE,AC, A ,C ,E ,NONE    
+# TRANSFORMS        <transform 1> ,[<transform 2>]...
+
+#
+# PHASE 2   
+# LOCAL-ID-TYPE     Local-id-type given by RFC  
+# LOCAL-NETWORK     Local-network-address
+# LOCAL-NETMASK     Local-network-mask
+# REMOTE-ID-TYPE    Remote-id-type given by RFC 
+# REMOTE-NETWORK    Remote-network-address
+# REMOTE-NETMASK    Remote-network-mask
+# DOI               Domain-of-Interpretation
+# EXCHANGE_TYPE     exchange-type   
+# FLAGS             flags e.g. ACE ,CE ,AE,AC, A ,C ,E ,NONE
+# PROPOSALS         <Proposal-1> ,[Proposal-2>]...
+
+
+5-2-Config
+
+PHASE 1             
+DOI ISAKMP_DOI                  
+EXCHANGE_TYPE EXCH_AGGR
+FLAGS NONE              
+TRANSFORMS 3DES-SHA 
+
+PHASE 2
+LOCAL-ID-TYPE IPV4_ADDR_SUBNET
+LOCAL-NETWORK 192.168.7.0
+LOCAL-NETMASK 255.255.255.0
+REMOTE-ID-TYPE IPV4_ADDR_SUBNET
+REMOTE-NETWORK 192.168.1.0
+REMOTE-NETMASK 255.255.255.0
+UPPER-LAYER-PROTOCOL  UDP
+DOI IPSEC_DOI
+EXCHANGE_TYPE EXCH_AUTH
+FLAGS NONE
+PROPOSALS ESP-DES-MD5-PFS AH-MD5-PFS
+
+#***************************************************************************************************
+# To Configure <Proposals > for phase 2
+#
+# <Proposal >
+# name of sections describing List of Protocols proposed
+# PROTOCOLS     <Protocol 1>,[<Protocol 2>],....
+#***************************************************************************************************
+
+#phase 2 proposals
+ESP-DES-MD5-PFS
+PROTOCOLS ESP-DES-MD5-PFS       
+
+AH-MD5-PFS
+PROTOCOLS AH-MD5-PFS
+
+#***************************************************************************************************
+# To Configure <Protocol >  for phase 2
+#
+# <Protocol >
+# PROTOCOL_ID       protocol-id
+# name of section describing List of Transforms for a particular protocol proposed
+# TRANSFORMS        <Transform 1>,[<Transform 1>],....
+#***************************************************************************************************
+
+# phase 2 protocols
+ESP-DES-MD5-PFS
+PROTOCOL_ID ESP
+TRANSFORMS ESP-DES-MD5-PFS-XF   
+
+AH-MD5-PFS
+PROTOCOL_ID AH
+TRANSFORMS AH-MD5-PFS-XF
+
+        
+#***************************************************************************************************
+# To Configure <transform no> for phase 1
+#
+#  <transform no>
+#  TRANSFORM_NAME
+#  TRANSFORM_ID
+#  ENCRYPTION_ALGORITHM     encryption-algo     or DEFAULT
+#  HASH_ALGORITHM           hash-algo           or DEFAULT
+#  AUTHENTICATION_METHOD    auth-method         or DEFAULT
+#  GROUP_DESCRIPTION        grp-description     or DEFAULT
+#  LIFE                     Life of this transform or DEFAULT
+#***************************************************************************************************
+ 
+# Phase 1 Transform  
+
+Phase-1-Transforms
+
+TRANSFORM_NAME 3DES-SHA
+TRANSFORM_ID KEY_IKE
+ENCRYPTION_ALGORITHM DES-CBC
+HASH_ALGORITHM SHA
+AUTHENTICATION_METHOD RSA_SIG
+GROUP_DESCRIPTION MODP_1024
+LIFE
+ 
+TRANSFORM_NAME DES-MD5  
+TRANSFORM_ID KEY_IKE                 
+ENCRYPTION_ALGORITHM DES-CBC
+HASH_ALGORITHM MD5
+AUTHENTICATION_METHOD PRE_SHARED
+GROUP_DESCRIPTION MODP_1024
+LIFE
+
+#***************************************************************************************************
+# To Configure <transform no> for phase 2
+#  <transform no>
+#  TRANSFORM_ID                 specified by RFC
+#  ENCAPSULATION_MODE           TUNNEL,TRANSPORT or DEFAULT
+#  GROUP_DESCRIPTION            grp-description  or DEFAULT
+#  AUTHENTICATION_ALGORITHM     auth-algo  or DEFAULT
+#  LIFE                         Life of this transform or DEFAULT   
+#****************************************************************************************************
+        
+# Phase 2 Transforms
+
+Phase-2-Transforms
+
+TRANSFORM_NAME ESP-DES-MD5-PFS-XF
+TRANSFORM_ID ESP_DES
+ENCAPSULATION_MODE TUNNEL
+GROUP_DESCRIPTION MODP_1024
+AUTHENTICATION_ALGORITHM HMAC-MD5-96
+LIFE 
+
+TRANSFORM_NAME AH-MD5-PFS-XF
+TRANSFORM_ID AH_MD5
+ENCAPSULATION_MODE TUNNEL
+GROUP_DESCRIPTION MODP_1024
+AUTHENTICATION_ALGORITHM HMAC-MD5
+LIFE 
+
+

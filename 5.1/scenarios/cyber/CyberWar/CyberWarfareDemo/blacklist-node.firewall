@@ -1,0 +1,1 @@
+FIREWALL 9 -A INPUT --src 60.1.0.28 -j DROP

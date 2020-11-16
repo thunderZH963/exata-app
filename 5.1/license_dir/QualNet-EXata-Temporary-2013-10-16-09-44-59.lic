@@ -1,0 +1,39 @@
+INCREMENT cellular-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=0CE766B4AB06
+INCREMENT standard_interfaces-full parsec 2014.0416 16-apr-2014 \
+	uncounted HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 \
+	START=15-oct-2013 TS_OK SIGN=F64306E4B9D4
+INCREMENT enterprise_mm-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=5DC8D25001BA
+INCREMENT wireless-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=6CDAD854D3A6
+INCREMENT umts-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=BE40D7A25956
+INCREMENT qualnet-thread parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=65B873923B38
+INCREMENT lte-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=2D419A46F4B8
+INCREMENT qualnet-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=10D307E00504
+INCREMENT advanced_wireless-full parsec 2014.0416 16-apr-2014 \
+	uncounted HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 \
+	START=15-oct-2013 TS_OK SIGN=DE9FFDFA9A16
+INCREMENT cyber-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=43F6707000F0
+INCREMENT exata-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=443CAAA0672A
+INCREMENT urban_prop-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=C9B7BE003344
+INCREMENT sensor_network-full parsec 2014.0416 16-apr-2014 uncounted \
+	HOSTID=f07bcba3fa0a ISSUED=16-oct-2013 START=15-oct-2013 TS_OK \
+	SIGN=800A9CB8BAE4

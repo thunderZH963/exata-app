@@ -1,0 +1,1 @@
+FIREWALL 3 -A FORWARD --in-interface 2 --out-interface 0 -p tcp --tcp-flags SYN,ACK SYN -j DROP

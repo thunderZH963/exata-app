@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Virus Attack Model</title>
+    <link rel="StyleSheet" href="css/Virus%20Attack.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch6%20-%20Attack%20Models.16.1.html#998690">6	Attack Models</a> &gt; 6.4  Virus Attack Model</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">6.4  <a name="998690">Virus Attack Model</a></div>
+      <div class="Heading2Numbered">6.4.1  <a name="1002431">Description</a></div>
+      <div class="BodyAfterHead"><a name="998702">An attacker in the network launches a virus attack at a victim’s computer by sending malformed packets with malicious payloads. The effect of the attacks could range from shutting down the victim’s computer to taking over complete ownership. </a></div>
+      <div class="Body"><a name="998714">In </a><span class="Variable">EXata</span>, a virus attack is modeled as the attacker node sending packets with payloads that contain<span style="font-weight: bold"> </span>signatures of some well-known attacks. Note that these packets <span style="font-style: italic">do not</span> contain any actual virus payload, only their signatures. It is expected that any Intrusion Detection Systems (IDS) or Anti-Virus Software can detect the signature of these packets and classify them as malicious. </div>
+      <div class="Heading2Numbered">6.4.2  <a name="1001370">Configuration Recommendations</a></div>
+      <div class="BodyAfterHead"><a name="1001529">To observe the effect of a virus attack in a scenario, it is recommended that the victim node be configured as an External Node. i.e., one that is mapped to an operational host (refer to Chapter 5 of </a><span class="Variable" style="font-style: italic">EXata</span><span style="font-style: italic"> User’s Guide</span>). In this case, the malformed packets sent by the attacker are forwarded to the counterpart operational host. At the operational host, the effect of receiving the malformed packets can be observed by running an IDS, such as Snort (<span class="Hyperlink"><a href="http://www.snort.org" target="external_window">www.snort.org</a></span>), which will detect malformed packet payloads and trigger alerts.</div>
+      <div class="Anchor"><a name="1001535">&nbsp;</a></div>
+      <div class="Heading2Numbered">6.4.3  <a name="1002450">Runtime Commands for Virus Attack Model</a></div>
+      <div class="BodyAfterHead"><a name="1001444">To launch a Virus attack, execute the following command from the HITL interface (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Cyber', 'Ch6%20-%20Attack%20Models.16.2.html#999930', '');" title="Initiating Attacks from EXata GUI">Section&nbsp;6.1</a></span>):</div>
+      <div class="Declaration"><a name="998749">&nbsp;</a></div>
+      <div class="Declaration"><a name="1000700">	attack &lt;attacker-node-id&gt; &lt;victim-IP-Address&gt;</a></div>
+      <div class="Example"><a name="999907">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 144pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="999917">&lt;attacker-node-id&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 288pt">
+            <div class="Body"><a name="999919">ID of the node that is launching the attack.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="999921">&lt;victim-IP-Address&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="999923">IP address of the victim node at which the attack is targeted. </a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Example"><a name="1000860">Example: </a></div>
+      <div class="BodyAfterHead" style="margin-left: 36pt; text-indent: 0pt"><a name="1000861">The following command launches a virus attack from node 15 on interface 192.168.1.102:</a></div>
+      <div class="Declaration" style="margin-left: 54pt; text-indent: 0pt"><a name="1000862">&nbsp;</a></div>
+      <div class="Declaration" style="margin-left: 54pt; text-indent: 0pt"><a name="1000863">attack 15 192.168.1.102</a></div>
+      <div class="Heading2Numbered">6.4.4  <a name="1002468">Statistics</a></div>
+      <div class="BodyAfterHead"><a name="1002469">No statistics are collected for the Virus Attack model.</a></div>
+      <div class="Heading2Numbered">6.4.5  <a name="1002502">References</a></div>
+      <div class="BodyAfterHead"><a name="1002503">None.</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

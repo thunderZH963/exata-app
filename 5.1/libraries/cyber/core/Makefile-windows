@@ -1,0 +1,18 @@
+#
+# Define CYBER addon.
+#
+
+#
+# Core network security functionality.
+# This is required for CES to run properly.
+#
+include ../libraries/cyber/core/Makefile-common
+
+ADDON_OPTIONS   = $(ADDON_OPTIONS) $(CYBER_OPTIONS) -DWIN32 -D__WIN32__
+ADDON_HDRS      = $(ADDON_HDRS) $(CYBER_HDRS)
+ADDON_SRCS      = $(ADDON_SRCS) $(CYBER_SRCS)
+ADDON_INCLUDES  = $(ADDON_INCLUDES) $(CYBER_INCLUDES)
+
+#
+# For network security library additions
+#

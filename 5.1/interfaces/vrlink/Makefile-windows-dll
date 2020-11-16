@@ -1,0 +1,135 @@
+!IFNDEF VLHOME
+!ERROR You must set the environment variable VLHOME to the VRLINK installation directory.
+!ENDIF
+
+include ../interfaces/vrlink/Makefile-common
+
+VRLINK_INTERFACE_DIS_DSO_NAME = vrlink_interface-dis.dll
+VRLINK_INTERFACE_HLA13_DSO_NAME = vrlink_interface-hla13.dll
+VRLINK_INTERFACE_HLA1516_DSO_NAME = vrlink_interface-hla1516.dll
+
+VRLINK_INTERFACE_LIBRARIES = \
+    vlutil.lib \
+    vlutild.lib \
+    vl.lib \
+    matrix.lib \
+    mtl.lib \
+    netapi32.lib \
+    iphlpapi.lib \
+    comctl32.lib \
+    WS2_32.lib
+
+
+!IF "$(ARCH)" == "windows-x64"
+VRLINK_LIB_DIR = $(VLHOME)\lib64
+VRLINK_INTERFACE_LIBRARIES = $(VRLINK_INTERFACE_LIBRARIES) iconv_64.lib libxml2_64.lib
+!ELSEIF "$(ARCH)" == "windows"
+VRLINK_LIB_DIR = $(VLHOME)\lib
+VRLINK_INTERFACE_LIBRARIES = $(VRLINK_INTERFACE_LIBRARIES) iconv.lib libxml2.lib
+!ENDIF
+#
+# DIS section
+#
+VRLINK_INTERFACE_DIS_DSO_OBJS = \
+    $(VRLINK_INTERFACE_SRC_DIR)/vrlink_shared.obj-dis-$(ARCH)-$(COMPILER) \
+    $(VRLINK_INTERFACE_SRC_DIR)/vrlink_main.obj-dis-$(ARCH)-$(COMPILER) \
+    $(VRLINK_INTERFACE_SRC_DIR)/vrlink_dis.obj-dis-$(ARCH)-$(COMPILER)
+
+VRLINK_INTERFACE_DIS_INCLUDES = \
+    $(VRLINK_INTERFACE_INCLUDES) -I$(VLHOME)\include
+
+VRLINK_INTERFACE_DIS_LIBRARIES = \
+    /libpath:"$(VRLINK_LIB_DIR)" $(VRLINK_INTERFACE_LIBRARIES) vlDIS.lib
+
+../bin/$(VRLINK_INTERFACE_DIS_DSO_NAME): $(VRLINK_INTERFACE_DIS_DSO_OBJS)
+	$(CXX) /nologo /Fe$@ $(DEBUG) $(OPT) $(VRLINK_INTERFACE_DIS_DSO_OBJS) $(LIBRARIES_LIB) /link /DLL /DEF:../interfaces/vrlink/vrlink_interface_dll.def /DEBUG $(VRLINK_INTERFACE_DIS_LIBRARIES)
+
+.cpp.obj-dis-$(ARCH)-$(COMPILER):
+	$(CXX) $(CXXFLAGS) $(VRLINK_INTERFACE_DIS_INCLUDES) -DT_USE_DLL -DDtDIS /Fo$@ /c $<
+
+include ../interfaces/vrlink/Makefile-windows-rti
+
+#
+# HLA 13 section
+#
+VRLINK_INTERFACE_HLA13_DSO_OBJS = \
+    $(VRLINK_INTERFACE_SRC_DIR)/vrlink_shared.obj-hla13-$(ARCH)-$(COMPILER) \
+    $(VRLINK_INTERFACE_SRC_DIR)/vrlink_main.obj-hla13-$(ARCH)-$(COMPILER) \
+    $(VRLINK_INTERFACE_SRC_DIR)/vrlink_hla.obj-hla13-$(ARCH)-$(COMPILER)
+
+VRLINK_INTERFACE_HLA13_INCLUDES = \
+    $(VRLINK_INTERFACE_INCLUDES) -I$(VLHOME)\include -I$(RTI_HLA13_INCLUDE_DIR)
+
+VRLINK_INTERFACE_HLA13_LIBRARIES = \
+    /libpath:"$(VRLINK_LIB_DIR)" $(VRLINK_INTERFACE_LIBRARIES) vlHLA13.lib \
+    /libpath:"$(RTI_LIB_DIR)" $(RTI_HLA13_LIBRARY) $(RTI_ADDITIONAL_LIBRARIES)
+
+../bin/$(VRLINK_INTERFACE_HLA13_DSO_NAME): $(VRLINK_INTERFACE_HLA13_DSO_OBJS)
+	$(CXX) /nologo /Fe$@ $(DEBUG) $(OPT) $(VRLINK_INTERFACE_HLA13_DSO_OBJS) $(LIBRARIES_LIB) /link /DLL /DEF:../interfaces/vrlink/vrlink_interface_dll.def /DEBUG $(VRLINK_INTERFACE_HLA13_LIBRARIES)
+
+
+.cpp.obj-hla13-$(ARCH)-$(COMPILER):
+	$(CXX) $(CXXFLAGS) $(VRLINK_INTERFACE_HLA13_INCLUDES) -DT_USE_DLL -DDtHLA -DDtHLA13 $(RTI_DEFINES) /Fo$@ /c $<
+
+#
+# HLA 1516 section
+#
+VRLINK_INTERFACE_HLA1516_DSO_OBJS = \
+    $(VRLINK_INTERFACE_SRC_DIR)/vrlink_shared.obj-hla1516-$(ARCH)-$(COMPILER) \
+    $(VRLINK_INTERFACE_SRC_DIR)/vrlink_main.obj-hla1516-$(ARCH)-$(COMPILER) \
+    $(VRLINK_INTERFACE_SRC_DIR)/vrlink_hla.obj-hla1516-$(ARCH)-$(COMPILER)
+
+VRLINK_INTERFACE_HLA1516_INCLUDES = \
+    $(VRLINK_INTERFACE_INCLUDES) -I$(VLHOME)\include -I$(RTI_HLA1516_INCLUDE_DIR)
+
+VRLINK_INTERFACE_HLA1516_LIBRARIES = \
+    /libpath:"$(VRLINK_LIB_DIR)" $(VRLINK_INTERFACE_LIBRARIES) vlHLA1516.lib \
+    /libpath:"$(RTI_LIB_DIR)" $(RTI_HLA1516_LIBRARY) $(RTI_ADDITIONAL_LIBRARIES) 
+
+../bin/$(VRLINK_INTERFACE_HLA1516_DSO_NAME): $(VRLINK_INTERFACE_HLA1516_DSO_OBJS)
+	$(CXX) /nologo /Fe$@ $(DEBUG) $(OPT) $(VRLINK_INTERFACE_HLA1516_DSO_OBJS) $(LIBRARIES_LIB) /link /DLL /DEF:../interfaces/vrlink/vrlink_interface_dll.def /DEBUG $(VRLINK_INTERFACE_HLA1516_LIBRARIES)
+
+
+.cpp.obj-hla1516-$(ARCH)-$(COMPILER):
+	$(CXX) $(CXXFLAGS) $(VRLINK_INTERFACE_HLA1516_INCLUDES) -DT_USE_DLL -DDtHLA -DDtHLA_1516 $(RTI_DEFINES) /Fo$@ /c $<
+
+#
+# Targets
+#
+VRLINK_INTERFACE_SHARED_OBJECTS = \
+    ../bin/$(VRLINK_INTERFACE_DIS_DSO_NAME) \
+    ../bin/$(VRLINK_INTERFACE_HLA13_DSO_NAME) \
+    ../bin/$(VRLINK_INTERFACE_HLA1516_DSO_NAME)
+
+ADDON_DEPS      = $(ADDON_DEPS) $(VRLINK_INTERFACE_SHARED_OBJECTS)
+
+clean-vrlink-all:
+    -del $(VRLINK_INTERFACE_DIS_DSO_OBJS) > NUL 2>&1
+    -del $(VRLINK_INTERFACE_HLA13_DSO_OBJS) > NUL 2>&1
+    -del $(VRLINK_INTERFACE_HLA1516_DSO_OBJS) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_DIS_DSO_NAME:.dll=.exp) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_DIS_DSO_NAME:.dll=.ilk) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_DIS_DSO_NAME:.dll=.lib) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_DIS_DSO_NAME:.dll=.pdb) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_DIS_DSO_NAME) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA13_DSO_NAME:.dll=.exp) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA13_DSO_NAME:.dll=.ilk) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA13_DSO_NAME:.dll=.lib) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA13_DSO_NAME:.dll=.pdb) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA13_DSO_NAME) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA1516_DSO_NAME:.dll=.exp) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA1516_DSO_NAME:.dll=.ilk) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA1516_DSO_NAME:.dll=.lib) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA1516_DSO_NAME:.dll=.pdb) > NUL 2>&1
+    -del ..\bin\$(VRLINK_INTERFACE_HLA1516_DSO_NAME) > NUL 2>&1
+
+ADDONS_CLEAN = $(ADDONS_CLEAN) clean-vrlink-all
+
+vrlink-dsos: $(VRLINK_INTERFACE_SHARED_OBJECTS)
+
+store-vrlink-dsos: vrlink-dsos
+    copy ..\bin\$(VRLINK_INTERFACE_DIS_DSO_NAME) ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_INTERFACE_DIS_DSO_NAME)
+    copy ..\bin\$(VRLINK_INTERFACE_HLA13_DSO_NAME) ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_INTERFACE_HLA13_DSO_NAME)    
+    copy ..\bin\$(VRLINK_INTERFACE_HLA1516_DSO_NAME) ..\lib\$(ARCH)-$(COMPILER)\vrlink\$(VRLINK_INTERFACE_HLA1516_DSO_NAME)
+
+build-and-store-vrlink-dsos: vrlink-dsos store-vrlink-dsos

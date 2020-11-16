@@ -1,0 +1,1315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Simple Network Management Protocol (SNMP)</title>
+    <link rel="StyleSheet" href="css/SNMP%20Model.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch2%20-%20Network%20Mangement%20Models.html#998322">2	Network Management Models</a> &gt; 2.1  Simple Network Management Protocol (SNMP)</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">2.1  <a name="998322">Simple Network Management Protocol (SNMP)</a></div>
+      <div class="Heading2Numbered">2.1.1  <a name="1006288">Description</a></div>
+      <div class="BodyAfterHead"><a name="1006292">Simple Network Management Protocol (SNMP) is a UDP-based network protocol which runs over IP using Port 161 and 162. It is used mostly in network management systems to monitor network-attached devices for conditions that warrant administrative attention. SNMP makes management data available in the form of variables on the managed systems, which describe the system configuration. These variables can then be queried (and sometimes set) by managing applications.</a></div>
+      <div class="BodyAfterHead"><span class="Variable"><a name="1006297">EXata</a></span> offers the capability to manage nodes in a scenario by an SNMP manager. The SNMP managers can review the current network status, set the network properties, or assign <span style="font-style: italic">traps</span> to receive feedback from the managed nodes. <span class="Variable">EXata</span> provides this feature by implementing SNMP agents on nodes in a scenario. SNMP agents can be enabled on all nodes and can be configured to handle the SNMP <span style="font-style: italic">get</span> and <span style="font-style: italic">se</span>t commands. Additional configuration is required to handle the <span style="font-style: italic">trap</span> command.</div>
+      <div class="Heading2Numbered">2.1.2  <a name="1006272">Features and Assumptions</a></div>
+      <div class="BodyAfterHead"><a name="1000003">This section describes the implemented features, omitted features, and assumptions and limitations of the SNMP model.</a></div>
+      <div class="Heading3Numbered">2.1.2.1  <a name="1000040">Implemented Features</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006325">Command responder application</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006326">Notification originator</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006327">User-based Security Module (for SNMPv3)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006328">Authentication (for SNMPv3)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006329">Encryption (for SNMPv3)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006330">Access Control</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">2.1.2.2  <a name="1000046">Omitted Features</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006346">This model supports SNMPv1, SNMPv2c and SNMPv3 only. SNMPv2 and SNMPv2u are not supported.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006347">This model provides only SNMP client features. Third-party SNMP managers must be used to interact with the SNMP client model.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3Numbered">2.1.2.3  <a name="1000016">Assumptions and Limitations</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006365">Groups present in MIB-II are supported except EGP and Transmission.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><span class="Variable"><a name="1006366">EXata</a></span> is compiled with OpenSSL support. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006396">SNMP </a><span style="font-style: italic">Coldstart trap</span> is send at the initialization of scenario. In a wireless scenario, these traps may be dropped because it takes some time for routes to converge. In order to receive these at the manager, static routes can be configured.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006397">The implementation of the SNMP model is in accordance with Net-SNMP. Therefore, errors like TOO-BIG and GEN-ERR are never sent.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1006398">Multiple SNMP managers cannot be configured for an SNMP client.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading2Numbered">2.1.3  <a name="998337">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="998338">To enable the SNMP agent, include the following parameter in the scenario configuration (.config) file: </a></div>
+      <div class="Declaration"><a name="998339">  </a></div>
+      <div class="Declaration"><a name="998340">  [&lt;Qualifier&gt;]SNMP-ENABLED     YES</a></div>
+      <div class="Body"><a name="998341">The scope of this parameter declaration can be Global or Node.</a></div>
+      <div class="Anchor"><a name="998347">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="998344">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="998346">The default value of </a><span style="font-family: &quot;Courier New&quot;">SNMP-ENABLED</span> is <span style="font-family: &quot;Courier New&quot;">NO</span>. </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="998348">SNMP Agent Parameters</a></div>
+      <div class="BodyAfterHead"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#998358', '');" title="Simple Network Management Protocol (SNMP)" name="998422">Table&nbsp;2-1</a></span> lists the SNMP Agent configuration parameters.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 2-1.&nbsp;&nbsp;<a name="998358">SNMP Agent Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="998364">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 100.8pt">
+            <div class="CellHeading"><a name="998366">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 205.2pt">
+            <div class="CellHeading"><a name="998368">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="998370">SNMP-VERSION</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="998371">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="998372">Scope</a></div>
+            <div class="CellBody_Indented"><a name="998373">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998375">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="998376">1</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="998377">2</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="998378">3</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="998379">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="998380">1</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998382">SNMP version for the SNMP agent.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="998384">SNMP-NOTIFICATION-TYPE</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="998385">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="998386">Scope</a></div>
+            <div class="CellBody_Indented"><a name="998387">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998389">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="998390">INFORM</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="998391">NONE</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="998392">TRAP</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="998393">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="998394">NONE</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998396">Enables trap or inform on the SNMP agent.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="998398">SNMP-MANAGER-ADDRESS</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="998399">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="998400">Scope</a></div>
+            <div class="CellBody_Indented"><a name="998401">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998403">IPv4 Address</a></div>
+            <div class="CellRun-In_Courier"><a name="998404">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="998405">192.168.0.1</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998407">Address of the SNMP manager where the trap information is relayed.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="998409">SNMPD-CONF-FILE</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="998410">Required</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="998411">Scope</a></div>
+            <div class="CellBody_Indented"><a name="998412">Global, Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998414">Filename</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998416">Name of the SNMP Agent Configuration file.</a></div>
+            <div class="CellBody"><a name="998417">This file should have the extension “.conf”.</a></div>
+            <div class="CellBody"><a name="998418">The format of the SNMP Agent Configuration file is described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#998424', '');" title="Simple Network Management Protocol (SNMP)">Section&nbsp;2.1.3.1</a></span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">2.1.3.1  <a name="998424">Format of the SNMP Agent Configuration File</a></div>
+      <div class="BodyAfterHead"><a name="998425">This section describes the format of the SNMP Agent Configuration file. The configuration file should have extension ".conf" (e.g. agent.conf). Parameters can be entered in the file in any order. </a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998426">To specify the read-only access community name (only for SNMPv1 and SNMPv2c), enter the following line in the SNMP Agent Configuration file:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="998427">&nbsp;</a></div>
+      <div class="Declaration"><a name="998428">rocommunity &lt;community-name&gt;</a></div>
+      <div class="Where"><a name="998434">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998431">&lt;community-name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 324pt">
+            <div class="Body"><a name="998433">Name of the community.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Where"><span style="font-style: italic"><a name="998435">Example</a></span>:</div>
+      <div class="Declaration"><a name="998436">rocommunity public</a></div>
+      <div class="Declaration"><a name="998437">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998438">To specify the read-write access community name (only for SNMPv1 and SNMPv2c), enter the following line in the SNMP Agent Configuration file:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="998439">&nbsp;</a></div>
+      <div class="Declaration"><a name="998440">rwcommunity &lt;community-name&gt;</a></div>
+      <div class="Where"><a name="998446">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998443">&lt;community-name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 324pt">
+            <div class="Body"><a name="998445">Name of the community.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Where"><span style="font-style: italic"><a name="998447">Example</a></span>:</div>
+      <div class="Declaration"><a name="998448">rwcommunity private</a></div>
+      <div class="Declaration"><a name="998449">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998450">To create a USM-based SNMP user (only for SNMPv3), enter the following line in the SNMP Agent Configuration file (all parameters should be entered on the same line):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="998451">&nbsp;</a></div>
+      <div class="Declaration"><a name="998452">createUser [-e &lt;engine-ID&gt;] &lt;user-name&gt; &lt;hash-algorithm&gt; &lt;auth-phrase&gt; &lt;encrypt-algorithm&gt; &lt;priv-phrase&gt;</a></div>
+      <div class="Where"><a name="998487">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 126pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998455">&lt;engine-ID&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 306pt">
+            <div class="Body"><a name="998457">Administratively unique identifier for the SNMPv3 engine.</a></div>
+            <div class="BodyAfterHead"><a name="998458">Specification of </a><span style="font-family: &quot;Courier New&quot;">&lt;engine-ID&gt;</span> is optional.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998460">&lt;user-name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998462">SNMPv3 authentication user name.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998464">&lt;hash-algorithm&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998466">Hashing algorithm to be used. </a></div>
+            <div class="BodyAfterHead"><a name="998467">This can be </a><span style="font-family: &quot;Courier New&quot;">MD5</span> or <span style="font-family: &quot;Courier New&quot;">SHA</span>.</div>
+            <div class="BodyAfterHead"><a name="998468">	</a><span style="font-family: &quot;Courier New&quot;">MD5</span>:	Message Digest Algorithm</div>
+            <div class="BodyAfterHead"><a name="998469">	</a><span style="font-family: &quot;Courier New&quot;">SHA</span>:	Secure Hash Algorithm</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998471">&lt;auth-phrase&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998473">Authentication key.</a></div>
+            <div class="BodyAfterHead"><a name="998474">This is a string enclosed in </a><span style="font-family: &quot;Courier New&quot;">"</span> and <span style="font-family: &quot;Courier New&quot;">"</span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998476">&lt;encrypt-algorithm&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998478">Encryption algorithm to be used. </a></div>
+            <div class="BodyAfterHead"><a name="998479">This can be </a><span style="font-family: &quot;Courier New&quot;">DEA</span> or <span style="font-family: &quot;Courier New&quot;">EAS</span>.</div>
+            <div class="BodyAfterHead"><a name="998480">	</a><span style="font-family: &quot;Courier New&quot;">DEA</span>:	Data Encryption Standard</div>
+            <div class="BodyAfterHead"><a name="998481">	</a><span style="font-family: &quot;Courier New&quot;">EAS</span>:	Advanced Encryption Standard</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998483">&lt;priv-algorithm&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998485">Privacy key.</a></div>
+            <div class="BodyAfterHead"><a name="998486">This is a string enclosed in </a><span style="font-family: &quot;Courier New&quot;">"</span> and <span style="font-family: &quot;Courier New&quot;">"</span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Where"><span style="font-style: italic"><a name="998488">Example</a></span>:</div>
+      <div class="Declaration"><a name="998489">createUser user MD5 "password" DES "password1"</a></div>
+      <div class="Declaration"><a name="998490">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998491">To specify a read-write user name (only for SNMPv3), enter the following line in the SNMP Agent Configuration file:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="998492">&nbsp;</a></div>
+      <div class="Declaration"><a name="998493">rwuser &lt;user-name&gt; [&lt;security&gt;]</a></div>
+      <div class="Where"><a name="998508">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 90pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998496">&lt;user-name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 342pt">
+            <div class="Body"><a name="998498">SNMPv3 authentication user name.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998500">&lt;security&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998502">Security type. </a></div>
+            <div class="BodyAfterHead"><a name="998503">This can be </a><span style="font-family: &quot;Courier New&quot;">auth</span>, <span style="font-family: &quot;Courier New&quot;">noauth</span>, or <span style="font-family: &quot;Courier New&quot;">priv</span>.</div>
+            <div class="BodyAfterHead"><a name="998504">	</a><span style="font-family: &quot;Courier New&quot;">auth</span>:	Authentication and no privacy</div>
+            <div class="BodyAfterHead"><a name="998505">	</a><span style="font-family: &quot;Courier New&quot;">noauth</span>:	No authentication and no privacy</div>
+            <div class="BodyAfterHead"><a name="998506">	</a><span style="font-family: &quot;Courier New&quot;">priv</span>:	Authentication and privacy</div>
+            <div class="BodyAfterHead"><a name="998507">Specification of security type is optional. The default security level in SNMPv3 is authentication and no privacy.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Where"><span style="font-style: italic"><a name="998509">Example</a></span>:</div>
+      <div class="Declaration"><a name="998510">rwuser user priv</a></div>
+      <div class="Declaration"><a name="998511">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998512">To specify a read-only user name (only for SNMPv3), enter the following line in the SNMP Agent Configuration file:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="998513">&nbsp;</a></div>
+      <div class="Declaration"><a name="998514">rouser &lt;user-name&gt; &lt;security&gt;</a></div>
+      <div class="Where"><a name="998529">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 90pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998517">&lt;user-name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 342pt">
+            <div class="Body"><a name="998519">SNMPv3 authentication user name.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998521">&lt;security&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998523">Security type. </a></div>
+            <div class="BodyAfterHead"><a name="998524">This can be </a><span style="font-family: &quot;Courier New&quot;">auth</span>, <span style="font-family: &quot;Courier New&quot;">noauth</span>, or <span style="font-family: &quot;Courier New&quot;">priv</span>.</div>
+            <div class="BodyAfterHead"><a name="998525">	</a><span style="font-family: &quot;Courier New&quot;">auth</span>:	Authentication and no privacy</div>
+            <div class="BodyAfterHead"><a name="998526">	</a><span style="font-family: &quot;Courier New&quot;">noauth</span>:	No authentication and no privacy</div>
+            <div class="BodyAfterHead"><a name="998527">	</a><span style="font-family: &quot;Courier New&quot;">priv</span>:	Authentication and privacy</div>
+            <div class="BodyAfterHead"><a name="998528">Specification of security type is optional. The default security level in SNMPv3 is authentication and no privacy.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Where"><span style="font-style: italic"><a name="998530">Example</a></span>:</div>
+      <div class="Declaration"><a name="998531">rouser default noauth</a></div>
+      <div class="Declaration"><a name="998532">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998533">To define a view (only for SNMPv3), enter the following line in the SNMP Agent Configuration file:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="998534">&nbsp;</a></div>
+      <div class="Declaration"><a name="998535">view &lt;view-name&gt; &lt;type&gt; &lt;OID&gt; [&lt;mask&gt;]</a></div>
+      <div class="Where"><a name="998556">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998538">&lt;view-name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 324pt">
+            <div class="Body"><a name="998540">View name to build up a more complex collection of OIDs.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998542">&lt;type&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998544">Type of view for an OID.</a></div>
+            <div class="BodyAfterHead"><a name="998545">This can be </a><span style="font-family: &quot;Courier New&quot;">included</span> or <span style="font-family: &quot;Courier New&quot;">excluded</span>.</div>
+            <div class="BodyAfterHead"><a name="998546">This is used to define a more complex view, e.g., by excluding certain sensitive objects from an otherwise accessible subtree.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998548">&lt;OID&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998550">Identifier used to name an object of a MIB table.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998552">&lt;mask&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998554">List of hex octets, optionally separated by </a><span style="font-family: &quot;Courier New&quot;">.</span> or <span style="font-family: &quot;Courier New&quot;">:</span>, enclosed in <span style="font-family: &quot;Courier New&quot;">[</span> and <span style="font-family: &quot;Courier New&quot;">]</span>, with the set bits indicating which sub-identifiers in the view OID to match against. </div>
+            <div class="BodyAfterHead"><a name="998555">Specification of </a><span style="font-family: &quot;Courier New&quot;">&lt;mask&gt;</span> is optional. If it is not specified, this defaults to matching the OID exactly (all bits set), thus defining a simple OID subtree.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Where"><span style="font-style: italic"><a name="998557">Examples</a></span>:</div>
+      <div class="Declaration"><a name="998558">view demoWrite included .1.3.6.1.2.1.1.6</a></div>
+      <div class="Declaration"><a name="998559">view demoRead excluded .1.3.6.1.2.1.4</a></div>
+      <div class="Declaration"><a name="998560">view demoA included .1.3.6.1.2.1  [1.1.1.1.1.1]</a></div>
+      <div class="Declaration"><a name="998561">view demoB included .1.3.6.1.2.1.1.1 [1.1.1]</a></div>
+      <div class="Declaration"><a name="998562">view demoC included .1.3.6.1.2.1.2 </a></div>
+      <div class="Declaration"><a name="998563">view demoD included .1.3.6.1.2.1.1 [1.1.0.1.0.1.1]</a></div>
+      <div class="Declaration"><a name="998564">view demoE included .1.3.6.1.2.1.2  [1.1.0.1.0]</a></div>
+      <div class="Declaration"><a name="998565">view demoF included .1.3.6.1.2.11  [1.1.0.1.0.1]</a></div>
+      <div class="Declaration"><a name="998566">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998567">To map a community name to a security name (for SNMPv1 and SNMPv2c), enter the following line in the SNMP Agent Configuration file:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="998568">&nbsp;</a></div>
+      <div class="Declaration"><a name="998569">com2sec &lt;name&gt; &lt;source&gt; &lt;community&gt;</a></div>
+      <div class="Where"><a name="998584">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998572">&lt;name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 324pt">
+            <div class="Body"><a name="998574">Security name.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998576">&lt;source&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998578">Restricted source. </a></div>
+            <div class="BodyAfterHead"><a name="998579">This can be </a><span style="font-family: &quot;Courier New&quot;">default</span> (indicating global)<span style="font-weight: bold"> </span>or a range of source addresses. A restricted source can either be a specific hostname or address, or a subnet represented in the IP-address/mask format.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998581">&lt;community&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998583">Name of the community.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Where"><span style="font-style: italic"><a name="998585">Examples</a></span>:</div>
+      <div class="Declaration"><a name="998586">com2sec v1User default demopublic_v1</a></div>
+      <div class="Declaration"><a name="998587">com2sec v2cUser default demopublic</a></div>
+      <div class="Declaration"><a name="998588">com2sec v1User 10.10.10.1 demopublic</a></div>
+      <div class="Declaration"><a name="998589">com2sec v2cUser 10.10.10.0/255.255.255.0 demopublic</a></div>
+      <div class="Declaration"><a name="998590">com2sec v2cUser 10.10.10.0/24 demopublic</a></div>
+      <div class="Declaration"><a name="998591">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998592">To map a security name to a named group, enter the following line in the SNMP Agent Configuration file:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="998593">&nbsp;</a></div>
+      <div class="Declaration"><a name="998594">group &lt;name&gt; &lt;model&gt; &lt;security&gt;</a></div>
+      <div class="Where"><a name="998614">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998597">&lt;name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 324pt">
+            <div class="Body"><a name="998599">Group name.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998601">&lt;model&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998603">Security model. </a></div>
+            <div class="BodyAfterHead"><a name="998604">This can be </a><span style="font-family: &quot;Courier New&quot;">ksm</span>, <span style="font-family: &quot;Courier New&quot;">tsm</span>, <span style="font-family: &quot;Courier New&quot;">usm</span>, <span style="font-family: &quot;Courier New&quot;">v1</span>, or <span style="font-family: &quot;Courier New&quot;">v2c</span>.</div>
+            <div class="BodyAfterHead"><a name="998605">	</a><span style="font-family: &quot;Courier New&quot;">ksm</span>:	Kerberos Security Model</div>
+            <div class="BodyAfterHead"><a name="998606">	</a><span style="font-family: &quot;Courier New&quot;">tsm</span>:	Transport Security Model</div>
+            <div class="BodyAfterHead"><a name="998607">	</a><span style="font-family: &quot;Courier New&quot;">usm</span>:	User Security Model</div>
+            <div class="BodyAfterHead"><a name="998608">	</a><span style="font-family: &quot;Courier New&quot;">v1</span>:	SNMP Version 1 Security Model</div>
+            <div class="BodyAfterHead"><a name="998609">	</a><span style="font-family: &quot;Courier New&quot;">v2c</span>:	SNMP Version 2c Security Model</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998611">&lt;security&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998613">Security name.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Where"><span style="font-style: italic"><a name="998615">Examples</a></span>:</div>
+      <div class="Declaration"><a name="998616">group demogroup1 v1  v1User                                  </a></div>
+      <div class="Declaration"><a name="998617">group demogroup1 v2c v2cUser </a></div>
+      <div class="Declaration"><a name="998618">group demogroup3 usm usmUser</a></div>
+      <div class="Declaration"><a name="998619">group demogroup4 usm  usmUser1</a></div>
+      <div class="Declaration"><a name="998620">&nbsp;</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="998621">To map a group of users or communities to a view, enter the following line in the SNMP Agent Configuration file (all parameters should be entered on the same line):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration"><a name="998622">&nbsp;</a></div>
+      <div class="Declaration"><a name="998623"> access &lt;name&gt; [&lt;context&gt;] &lt;model&gt; &lt;level&gt; &lt;match-type&gt; &lt;read&gt; &lt;write&gt; &lt;notify&gt;</a></div>
+      <div class="Where"><a name="998672">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998626">&lt;name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 324pt">
+            <div class="Body"><a name="998628">Name of group of users or communities.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998630">&lt;context&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998632">String indicating the context name.</a></div>
+            <div class="BodyAfterHead"><a name="998633">Specification of </a><span style="font-family: &quot;Courier New&quot;">&lt;context&gt;</span> is optional. If it is omitted, it defaults to the null string, <span style="font-family: &quot;Courier New&quot;">""</span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998635">&lt;model&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998637">Security model.</a></div>
+            <div class="BodyAfterHead"><a name="998638">This can be </a><span style="font-family: &quot;Courier New&quot;">any</span>, <span style="font-family: &quot;Courier New&quot;">ksm</span>, <span style="font-family: &quot;Courier New&quot;">tsm</span>, <span style="font-family: &quot;Courier New&quot;">usm</span>, <span style="font-family: &quot;Courier New&quot;">v1</span>, or <span style="font-family: &quot;Courier New&quot;">v2c</span>.</div>
+            <div class="BodyAfterHead"><a name="998639">	</a><span style="font-family: &quot;Courier New&quot;">any</span>:	Any of the security models listed below</div>
+            <div class="BodyAfterHead"><a name="998640">	</a><span style="font-family: &quot;Courier New&quot;">ksm</span>:	Kerberos Security Model</div>
+            <div class="BodyAfterHead"><a name="998641">	</a><span style="font-family: &quot;Courier New&quot;">tsm</span>:	Transport Security Model</div>
+            <div class="BodyAfterHead"><a name="998642">	</a><span style="font-family: &quot;Courier New&quot;">usm</span>:	User Security Model</div>
+            <div class="BodyAfterHead"><a name="998643">	</a><span style="font-family: &quot;Courier New&quot;">v1</span>:	SNMP Version 1 Security Model</div>
+            <div class="BodyAfterHead"><a name="998644">	</a><span style="font-family: &quot;Courier New&quot;">v2c</span>:	SNMP Version 2c Security Model</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998646">&lt;level&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body"><a name="998648">Authentication level. </a></div>
+            <div class="BodyAfterHead"><a name="998649">This can be </a><span style="font-family: &quot;Courier New&quot;">auth</span>, <span style="font-family: &quot;Courier New&quot;">noauth</span>, or <span style="font-family: &quot;Courier New&quot;">priv</span>.</div>
+            <div class="BodyAfterHead"><a name="998650">	</a><span style="font-family: &quot;Courier New&quot;">auth</span>:	Authentication and no privacy</div>
+            <div class="BodyAfterHead"><a name="998651">	</a><span style="font-family: &quot;Courier New&quot;">noauth</span>:	No authentication and no privacy</div>
+            <div class="BodyAfterHead"><a name="998652">	</a><span style="font-family: &quot;Courier New&quot;">priv</span>:	Authentication and privacy</div>
+            <div class="Body"><span style="font-weight: bold"><a name="998653">Note:</a></span> For v1 or v2c access, <span style="font-family: &quot;Courier New&quot;">&lt;level&gt;</span> should be <span style="font-family: &quot;Courier New&quot;">noauth</span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998655">&lt;match-type&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="998657">Specifies how </a><span style="font-family: &quot;Courier New&quot;">&lt;context&gt;</span> should be matched against the context of the incoming request, either exactly or prefix-only.</div>
+            <div class="BodyAfterHead"><span style="font-family: &quot;Courier New&quot;"><a name="998658">&lt;match-type&gt;</a></span> can be <span style="font-family: &quot;Courier New&quot;">exact</span> or <span style="font-family: &quot;Courier New&quot;">prefix</span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998660">&lt;read&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="998662">View name to be used for </a><span style="font-family: &quot;Courier New&quot;">GET</span> requests.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998664">&lt;write&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="998666">View name to be used for </a><span style="font-family: &quot;Courier New&quot;">SET</span> requests. </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="998668">&lt;notify&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="998670">View name to be used for </a><span style="font-family: &quot;Courier New&quot;">TRAP/INFORM</span> requests.</div>
+            <div class="BodyAfterHead"><span style="font-weight: bold"><a name="998671">Note:</a></span> <span style="font-family: &quot;Courier New&quot;">&lt;notify&gt;</span> is not currently used.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Where"><span style="font-style: italic"><a name="998673">Examples</a></span>:</div>
+      <div class="Declaration"><a name="998674">access demogroup1 ""   any   noauth    prefix    demoA none none</a></div>
+      <div class="Declaration"><a name="998675">access demogroup1 ""   any   noauth    prefix    demoB none none</a></div>
+      <div class="Declaration"><a name="998676">access demogroup2 ""   any   noauth    prefix    demoD none none</a></div>
+      <div class="Declaration"><a name="998677">access demogroup2 ""   any   auth      prefix    demoRead none none</a></div>
+      <div class="Declaration"><a name="998678">access demogroup3 ""   any   noauth    prefix    demoA none none</a></div>
+      <div class="Declaration"><a name="998679">access demogroup3 ""   any   noauth    prefix    demoB none none</a></div>
+      <div class="Declaration"><a name="998680">access demogroup3 ""   any   noauth    prefix   demoD none none</a></div>
+      <div class="Declaration"><a name="998681">access demogroup3 ""   any   auth      prefix   demoRead none none</a></div>
+      <div class="Declaration"><a name="998682">access demogroup4 ""   any   noauth    prefix    demoRead demoWrite none</a></div>
+      <div class="Heading2Numbered">2.1.4  <a name="998684">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="998685">To configure the SNMP Agent at a node in the GUI, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="998692">Go to</a><span class="Menu_Item"> Default Device Properties Editor </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Node Configuration </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Network Management</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="998696">Set </a><span class="Field">Enable SNMP Agent</span> to <span class="Value">Yes.</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1006992"><img class="Default" src="images/SNMP-EnableSNMP.gif" width="611" height="273" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-1.&nbsp;&nbsp;<a name="1007077">Enabling SNMP</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 2-2.&nbsp;&nbsp;<a name="1007036">Command Line Equivalent of SNMP Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1007042">GUI Parameter </a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 144pt">
+            <div class="CellHeading"><a name="1007044">Scope of GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="1007046">Command Line Parameter</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1007048">Enable SNMP Agent</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1007050">Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="1007052">SNMP-ENABLED</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1006981">Set the SNMP parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#998707', '');" title="Simple Network Management Protocol (SNMP)">Table&nbsp;2-3</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="998700"><img class="Default" src="images/SNMP-ConfigureParameters.gif" width="611" height="273" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-2.&nbsp;&nbsp;<a name="998748">Configuring SNMP Agent Parameters</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 2-3.&nbsp;&nbsp;<a name="998707">Command Line Equivalent of SNMP Agent Configuration Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="998713">GUI Parameter </a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 144pt">
+            <div class="CellHeading"><a name="998715">Scope of GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="998717">Command Line Parameter</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998725">SNMP Version</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998727">Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="998729">SNMP-VERSION</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998731">Enable Notifications</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998733">Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="998735">SNMP-NOTIFICATION-TYPE</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998737">SNMP Manager Address</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998739">Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="998741">SNMP-MANGER-ADDRESS</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998743">SNMP Configuration File</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="998745">Node</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="998747">SNMPD-CONF-FILE</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">2.1.5  <a name="999696">Using SNMP</a></div>
+      <div class="BodyAfterHead"><a name="999697">EXata implements an SNMP agent on each emulated node. An SNMP manager can communicate with these SNMP agents to manage the nodes in the emulated network. The same SNMP manager may also manage physical nodes simultaneously. The </a><span class="Variable">EXata</span> SNMP agent gathers data from the management information base (MIB), which is the repository for information about device parameters and network data, and translates that information into a form compatible with SNMP. The <span class="Variable">EXata</span> SNMP agent can also send traps to a management system, such as HP OpenView, IBM Tivoli, or SolarWinds Orion.</div>
+      <div class="Anchor"><a name="999704">&nbsp;</a></div>
+      <div class="Heading4"><a name="999705">Using SNMP Manager</a></div>
+      <div class="BodyAfterHead"><a name="999706">To use an SNMP manager with EXata, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="999707">Connect an operational host to the emulation server. Configure one of the emulated nodes as the default emulated node for the operational host, as described in </a><span class="Variable" style="font-style: italic">EXata User’s Guide</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="999711">Run the SNMP manager on the operational host. This in effect runs the SNMP manager on the default emulated node.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="999712">The SNMP manager can now be used to manage the various MIBs and Traps via the SNMP agent running on each emulated node.</a></div>
+      <div class="Anchor"><a name="999713">&nbsp;</a></div>
+      <div class="Heading4"><a name="999714">SNMP Features</a></div>
+      <div class="BodyAfterHead"><a name="999718">The </a><span class="Variable">EXata</span> SNMP agent follows the SNMPv1 protocol standard and supports a comprehensive list of SNMP MIBs defined in accordance with the MIB-II standard. The agent implements the SNMP-GET, SNMP-GET-NEXT, SNMP-SET, and SNMP-TRAP messages. The list of MIBs supported includes System MIB, TCP MIB, UDP MIB, IP MIB, Interfaces MIB, and 802.11 MIB.</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#999734', '');" title="Simple Network Management Protocol (SNMP)" name="999722">Figure&nbsp;2-3</a></span> shows a snapshot of an off-the-shelf SNMP manager (LoriotPro) displaying nodes within an <span class="Variable">EXata</span> scenario. In the figure, the manager has discovered these emulated nodes using ICMP messages.</div>
+      <div class="Anchor"><a name="999729"><img class="Default" src="images/networksnmp.png" width="801" height="190" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-3.&nbsp;&nbsp;<a name="999734">SNMP Manager Displaying Nodes Running </a><span class="Variable">EXata</span> SNMP Agents</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#1004314', '');" title="Simple Network Management Protocol (SNMP)" name="1004247">Figure&nbsp;2-4</a></span>, <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#1004459', '');" title="Simple Network Management Protocol (SNMP)">Figure&nbsp;2-5</a></span>, <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#1004560', '');" title="Simple Network Management Protocol (SNMP)">Figure&nbsp;2-6</a></span>, <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#1004671', '');" title="Simple Network Management Protocol (SNMP)">Figure&nbsp;2-7</a></span> and <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#1004890', '');" title="Simple Network Management Protocol (SNMP)">Figure&nbsp;2-8</a></span> show System, TCP, UDP, Interface, and IP MIBs respectively.</div>
+      <div class="Anchor"><a name="1004248"><img class="Default" src="images/systemMIB.png" width="739" height="159" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-4.&nbsp;&nbsp;<a name="1004314">System MIB Describing the </a><span class="Variable">EXata</span> SNMP Agent</div>
+      <div class="Anchor"><a name="1004393"><img class="Default" src="images/tcpmib.png" width="633" height="84" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Anchor"><a name="1004394"><img class="Default" src="images/tcpmib_2.png" width="185" height="231" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-5.&nbsp;&nbsp;<a name="1004459">TCP MIB Connection Table Listing the Open Ports Along with TCP Statistics</a></div>
+      <div class="Anchor"><a name="1004502"><img class="Default" src="images/udpmib_entry.png" width="286" height="85" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Anchor"><a name="1004503"><img class="Default" src="images/udpmib_2.png" width="231" height="138" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-6.&nbsp;&nbsp;<a name="1004560">UDP MIB Showing UDP Table Entry and UDP Datagram Statistics for a Given Node</a></div>
+      <div class="Anchor"><a name="1004561"><img class="Default" src="images/ifmib.png" width="1008" height="68" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-7.&nbsp;&nbsp;<a name="1004671">IF MIB Detailing the Interface Information for a Given Node</a></div>
+      <div class="Anchor"><a name="1004786"><img class="Default" src="images/ipaddentry.png" width="371" height="70" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Anchor"><a name="1004787"><img class="Default" src="images/ipmib_2.png" width="200" height="279" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Anchor"><a name="1004791"><img class="Default" src="images/iproutemib.png" width="820" height="375" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-8.&nbsp;&nbsp;<a name="1004890">IP MIB Entry Showing IP Address, Routing and Statistics Information for a Given Node</a></div>
+      <div class="Anchor"><a name="1004891"><img class="Default" src="images/snmptrap_prodtour.png" width="585" height="280" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 2-9.&nbsp;&nbsp;<a name="1004892">SNMP Trap Message Indicating Restart of Node 10 Following a Link Break</a></div>
+      <div class="Body"><a name="999805">Note that to capture traps, the scenario configuration file should include the correct SNMP community string to which the manager belongs, and the correct IP address of the manager, which in this case is the IP address of the emulated node it is mapped to.</a></div>
+      <div class="Heading2Numbered">2.1.6  <a name="999925">Statistics</a></div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Network_Management', 'SNMP%20Model.html#1006473', '');" title="Simple Network Management Protocol (SNMP)" name="1006444">Table&nbsp;2‑4</a></span> lists the SNMP statistics that are output to the statistics (.stat) file at the end of emulation.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 2‑4.&nbsp;&nbsp;<a name="1006473">SNMP Statistics</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 180pt">
+            <div class="CellHeading"><a name="1006477">Statistic</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 288pt">
+            <div class="CellHeading"><a name="1006479">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006481">Snmp Agent,Total in packets</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006483">Total number of packets received by the agent node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006485">Snmp Agent,Total out packets</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006487">Total number of packets sent by the agent node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006489">Snmp Agent,Total Get requests</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006491">Total number of Get-request commands received by the agent node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006493">Snmp Agent,Total GetNext requests</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006495">Total number of GetNext-request commands received by the agent node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006497">Snmp Agent,Total GetBulk requests</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006499">Total number of GetBulk-request commands received by the agent node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006501">Snmp Agent,Total responses</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006503">Total number of Responses sent by the agent node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006505">Snmp Agent,Total traps sent</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006507">Total number of Traps sent by the agent node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006509">Snmp Agent,Total informs sent</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006511">Total number of Informs sent by the agent node.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006513">Snmp Agent,Total inform ack received</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1006515">Total number of Inform acknowledgements received by the agent node.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">2.1.7  <a name="1006744">References</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1006745">RFC3411: “An Architecture for Describing Simple Network Management Protocol (SNMP) Management Frameworks.” D. Harrington, R. Presuhn, B. Wijnen. (Dec 2002)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1006741">RFC3412: “Message Processing and Dispatching for the Simple Network Management Protocol (SNMP).” J. Case, D. Harrington, R. Presuhn, B. Wijnen. (Dec 2002)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1006733">RFC3413: “Simple Network Management Protocol (SNMP) Applications.” D. Levi, P. Meyer, B. Stewart (Dec 2002)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1006575">RFC3414: “User-based Security Model (USM) for version 3 of the Simple  Network Management Protocol (SNMPv3).” U. Blumenthal, B. Wijnen. (Dec 2002)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">5.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1006720">:RFC3415: “View-based Access Control Model (VACM) for the Simple Network Management Protocol (SNMP).” B. Wijnen, R. Presuhn, K. McCloghrie. (Dec 2002)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">6.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1006721">RFC1213: “Management Information Base for Network Management of TCP/IP-based       internets: MIB-II.” K. McCloghrie. (march 1919)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">7.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><span class="Hyperlink"><a href="http://net-snmp.sourceforge.net/wiki/index.php" target="external_window" name="1006578">http://net-snmp.sourceforge.net/wiki/index.php</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

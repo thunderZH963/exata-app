@@ -1,0 +1,12 @@
+LIB_OPENSSL_OPTIONS = -DOPENSSL_LIB
+LIB_OPENSSL_DIR      = ../interfaces/openSSL/
+LIB_OPENSSL_SRCDIR = ../interfaces/openSSL/src
+
+LIB_OPENSSL_INCLUDES = \
+-I$(LIB_OPENSSL_DIR)/include \
+-I$(LIB_OPENSSL_DIR)/src
+
+LIB_OPENSSL_SRCS = \
+$(LIB_OPENSSL_SRCDIR)/network_crypto.cpp
+
+LIB_OPENSSL_HDRS = $(LIB_OPENSSL_SRCDIR)/network_crypto.h

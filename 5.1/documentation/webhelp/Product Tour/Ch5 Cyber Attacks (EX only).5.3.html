@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Launching Jamming Attack</title>
+    <link rel="StyleSheet" href="css/Ch5%20Cyber%20Attacks%20(EX%20only).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch5%20Cyber%20Attacks%20(EX%20only).5.1.html#1014465">5	Launching Cyber Attacks</a> &gt; 5.2  Launching Jamming Attack</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">5.2  <a name="1014465">Launching Jamming Attack</a></div>
+      <div class="BodyAfterHead" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1014466">We will start an emulation and while the emulation is running we will launch a jamming attack and observe its impact on the network. For this demonstration, we will emulate video traffic between two operational hosts using the </a></span>CyberWiFiDemo as the scenario, as described in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch4%20Emulation%20(EX+JNE).4.1.html', '');" title="Emulation Testbed and Demo">Chapter&nbsp;4</a></span>. </div>
+      <div class="Body"><a name="1014657">To see the effects of a jamming attack, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1014666">Set up the testbed and start the emulation, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch4%20Emulation%20(EX+JNE).4.1.html', '');" title="Emulation Testbed and Demo">Chapter&nbsp;4</a></span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="NumberedCont"><a name="1014772">Make sure that the streaming video traffic is properly emulated by </a><span class="Variable">EXata</span> and the video is displayed at Operational Host 2.</div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1014773">While the emulation is running, click on the </a><span class="Menu_D">Human in the Loop</span> button at the bottom of the <span class="Menu_D">Visualization Controls</span> panel (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch5%20Cyber%20Attacks%20(EX%20only).5.3.html#1014468', '');" title="Launching Jamming Attack">Figure&nbsp;5-1</a></span>). </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1014467"><img class="Default" src="images/HITLInterfaceButton.gif" width="253" height="519" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-1.&nbsp;&nbsp;<a name="1014468">Human in the Loop Button</a></div>
+      <div class="NumberedCont"><a name="1014746">This opens the Human-In-The-Loop (HITL) interface (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch5%20Cyber%20Attacks%20(EX%20only).5.3.html#1014791', '');" title="Launching Jamming Attack">Figure&nbsp;5-2</a></span>), which is used to enter commands to interact with the ascender while the scenario is running.</div>
+      <div class="Anchor"><a name="1014784"><img class="Default" src="images/HITLInterface.gif" width="228" height="176" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-2.&nbsp;&nbsp;<a name="1014791">Human in the Loop Interface</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1014818">To launch the jamming attack, type the following and press the <img class="Default" src="images/SendCommandButton.gif" width="28" height="27" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1014469">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1014892">	jammer 4 100S 0</a></div>
+      <div class="Command_Input"><a name="1014945">&nbsp;</a></div>
+      <div class="NumberedCont"><a name="1014470">This command will launch the jamming attack from node 4 (Mobile Station 4) for 100 seconds for the pre-configured jammer type 0.</a></div>
+      <div class="NumberedCont"><a name="1015252">At this point, we should observe animation of wireless broadcast emanating from Mobile Station 4 (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch5%20Cyber%20Attacks%20(EX%20only).5.3.html#1015033', '');" title="Launching Jamming Attack">Figure&nbsp;5-3</a></span>). We should also be able to see that the streaming video has stopped: the <span class="Variable">EXata</span> GUI does not show blue arrows any more, and the VLC media player at Operational Host 2 does not display any video.</div>
+      <div class="Anchor"><a name="1015263"><img class="Default" src="images/WifiJammer.png" width="491" height="435" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-3.&nbsp;&nbsp;<a name="1015033">Jamming Attack in Progress</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1015037">To stop the jamming attack, type the following and press the <img class="Default" src="images/SendCommandButton.gif" width="28" height="27" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Code_Segment_Large" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="1015038">&nbsp;</a></div>
+      <div class="Command_Input"><span style="font-family: Arial"><a name="1015001">	</a></span>stop jammer 4</div>
+      <div class="Command_Input"><a name="1015212">&nbsp;</a></div>
+      <div class="NumberedCont"><a name="1014502">At this point the wireless broadcast animation from Mobile Station 4 should stop and the video stream should resume.</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

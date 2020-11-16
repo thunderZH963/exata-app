@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Demonstrating Intrusion Detection System</title>
+    <link rel="StyleSheet" href="css/Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.1.html#1003758">A	Cyber Warfare Demo</a> &gt; A.6  Demonstrating Intrusion Detection System</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">A.6  <a name="1003758">Demonstrating Intrusion Detection System</a></div>
+      <div class="BodyAfterHead"><a name="1003759">To demonstrate the intrusion detection system, launch a virus attack as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.6.html#1003754', '');" title="Demonstrating Eavesdropping and Virus Attacks">Section&nbsp;A.5.2</a></span>. At the Destination<span style="font-weight: bold"> </span>host, do the following:</div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1003760">Open a command window and change the directory to c:\snort.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003761">Enter the following command: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Input"><a name="1003762">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1005641">bin\snort –i 2 –l log –c etc\snort.conf</a></div>
+      <div class="Command_Input"><a name="1005648">&nbsp;</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003763">Wait for Snort to finish initialization and then launch Firefox.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003764">Open the file c:\snort\log\alert.html in Firefox.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1005668">Snort will post an alert to Firefox when the signature of an attack is detected.</a></div>
+      <div class="Anchor"><a name="1003773">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1003767">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="Body"><a name="1003769">If the file c:\snort\log\alert.ids gets over 500&nbsp;KB, Firefox will crash. This occurs after about 1 hour of logging network attacks. To avoid this, while the demo is running and before the file gets to 500&nbsp;KB, do the following:</a></div>
+            <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">1.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Numbered__0028first_0029_inner"><a name="1003770">Use Explorer to browse to the location of the file.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Numbered_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">2.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Numbered_inner"><a name="1003771">Open the file with a text editor. Delete all the entries in the file.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Numbered_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">3.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Numbered_inner"><a name="1003772">Save the file, overwriting it if prompted.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

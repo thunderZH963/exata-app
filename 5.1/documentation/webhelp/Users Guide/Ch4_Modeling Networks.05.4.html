@@ -1,0 +1,1669 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Configuring the Emulation Environment</title>
+    <link rel="StyleSheet" href="css/Ch4_Modeling%20Networks.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch4_Modeling%20Networks.05.1.html#2006591">4	Modeling Networks</a> &gt; 4.3  Configuring the Emulation Environment</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">4.3  <a name="2006591">Configuring the Emulation Environment</a></div>
+      <div class="BodyAfterHead"><a name="2006595">This section describes how to configure the emulation features of </a><span class="Variable">EXata</span> in command line and using the <span class="Variable">EXata</span> GUI. </div>
+      <div class="Body"><a name="2006602">In the </a><span class="Variable">EXata</span> GUI, the emulation features are available only in the Emulation mode. The Emulation mode can be enabled from the <span class="Menu">Emulation</span> toolbar.</div>
+      <div class="Anchor"><a name="2006606"><img class="Default" src="images/EnablingEmulationMode.png" width="199" height="57" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-59.&nbsp;&nbsp;<a name="2006610">Enabling Emulation Mode in </a><span class="Variable">EXata</span> GUI</div>
+      <div class="Anchor"><a name="2006620">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Notes_003a">
+              <span class="Bold">Notes:</span><a name="2006613">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="Note_Numbered__0028first_0029_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Note_Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">1.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Note_Numbered__0028first_0029_inner"><a name="2006618">In </a><span class="Variable">EXata</span> GUI, the execution mode (emulation or simulation) can be selected only in Design mode of Architect. </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Note_Numbered_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Note_Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">2.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Note_Numbered_inner"><a name="2006619">If emulation mode is enabled, then some emulation features can be configured in both Design and Visualize modes, while the other emulation features can be configured only in Design mode.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">4.3.1  <a name="2006622">External Node Mapping</a></div>
+      <div class="BodyAfterHead"><a name="2006626">The External Node Mapping creates a mapping between a network interface on a</a>n <span class="Variable">EXata</span> node and a physical operational node. The <span class="Variable">EXata</span> node that is mapped to an operational host is referred to as the <span style="font-style: italic">External Node</span>. Any traffic originating from the operational host is inserted at the <span class="Variable">EXata</span> external node, and similarly, any traffic received at the <span class="Variable">EXata</span> external node is forwarded to the operational host.</div>
+      <div class="Body"><a name="2006636">External node mappings can be created to set up a test-bed that consists of both simulated nodes (within </a><span class="Variable">EXata</span>) and physical nodes (operational hosts).</div>
+      <div class="Heading3Numbered">4.3.1.1  <a name="2006640">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2006641">To create a mapping between external and operational hosts for the command line interface, include the parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2006651', '');" title="Configuring the Emulation Environment">Table&nbsp;4-99</a></span> in the scenario configuration (.config) file.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 4-99.&nbsp;&nbsp;<a name="2006651">External Node Mapping Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 118.8pt">
+            <div class="CellHeading"><a name="2006657">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 61.2pt">
+            <div class="CellHeading"><a name="2006659">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 288pt">
+            <div class="CellHeading"><a name="2006661">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2006663">EXATA-EXTERNAL-NODE</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2006664">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2006665">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="2006666">Interface</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2008991">IPv4 Address</a></div>
+            <div class="CellBody"><a name="2006669">&nbsp;</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2008996">Address of the operational host to which this interface is mapped.</a></div>
+            <div class="CellBody" style="margin-left: 106.2504pt"><a name="2006677">&nbsp;</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body"><a name="2006684">For example, the following line creates a mapping between the </a><span class="Variable">EXata</span> node with the interface address 192.168.0.1 and an operational host with the address 20.100.100.45. </div>
+      <div class="Declaration"><a name="2006685">&nbsp;</a></div>
+      <div class="Declaration"><a name="2006686">[192.168.0.1] EXATA-EXTERNAL-NODE 20.100.100.45</a></div>
+      <div class="Body"><a name="2006690">The interface address 192.168.0.1 exists within the </a><span class="Variable">EXata</span> scenario, and does not correspond to any physical entity. The physical address 20.100.100.45, on the other hand, exists as a physical address on a physical entity, and does not correspond to any <span class="Variable">EXata</span> node in the scenario.</div>
+      <div class="Heading3Numbered">4.3.1.2  <a name="2006699">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2006703">External node mappings can be created with the Connection Manager (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1022605', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1.2.1</a></span>) or by using the mapping editor in <span class="Variable">EXata</span> GUI. Configuration through the Connection Manager offers additional benefits, such as running multiple applications on different external nodes, which are not available from the <span class="Variable">EXata</span> GUI mapping editor. It is recommended that the <span class="Variable">EXata</span> GUI mapping editor only be used for operational hosts that can not run Connection Manager.</div>
+      <div class="BodyAfterHead"><a name="2006716">To create a mapping between external and operational hosts in </a><span class="Variable">EXata</span> GUI, do the following:</div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="2006720">Launch the mapping editor by clicking the <img class="Default" src="images/ConnectionManager-Button_2.png" width="30" height="30" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button on the </a><span class="Menu">Emulation</span> toolbar.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2008692"><img class="Default" src="images/MappingEditor.png" width="470" height="251" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-60.&nbsp;&nbsp;<a name="2006729">External Node Mapping Editor</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2006733">To create a new mapping, click the <img class="Default" src="images/PlusIcon_8.png" width="21" height="21" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2006737">From the pull-down menu in the</a><span class="Field"> EXata Node IP Address</span> column, select the <span class="Variable">EXata</span> node.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2006738">In the </a><span class="Field">Real</span><span class="Field">/Operational</span><span class="Field"> Host IP Address</span> column, enter the IP address of the operational host which is to be mapped to the selected <span class="Variable">EXata</span> node.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">5.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2006747">To delete a mapping, select the mapping and click the <img class="Default" src="images/MinusIcon_9.png" width="22" height="21" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2006753">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2006750">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="2006752">External nodes can be mapped in both Design and Visualize modes.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">4.3.2  <a name="2006755">Internet Gateway Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2006756">One of the nodes in the scenario can be configured to be the </a><span style="font-style: italic">Internet Gateway</span> node, which serves as a gateway between the scenario and the Internet. This feature allows applications running on operational hosts to connect to the Internet or other external networks. Typically, the traffic originating from applications (for example, a web browser) at the operational host is inserted into the <span class="Variable">EXata</span> emulator where it undergoes the dynamics of the model scenario and is then sent out to the Internet or the external network. </div>
+      <div class="Body"><a name="2006766">See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.5.html#1024018', '');" title="Connecting to the Internet">Section&nbsp;5.4</a></span><span style="font-weight: bold"> </span>for details of Internet Gateway capabilities offered by <span class="Variable">EXata</span>.</div>
+      <div class="Heading3Numbered">4.3.2.1  <a name="2006767">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2006768">To configure the Internet gateway node for the command line interface, include the parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2006778', '');" title="Configuring the Emulation Environment">Table&nbsp;4-100</a></span> in the scenario configuration (.config) file.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 4-100.&nbsp;&nbsp;<a name="2006778">Internet Gateway Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="2006784">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 100.8pt">
+            <div class="CellHeading"><a name="2006786">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 205.2pt">
+            <div class="CellHeading"><a name="2006788">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2006790">INTERNET-GATEWAY</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2006791">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2006792">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2006793">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006795">Integer</a></div>
+            <div class="CellRun-In_Courier"><a name="2006796">Range</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006800">≥ 0</a></div>
+            <div class="CellRun-In_Courier"><a name="2006801">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006802">0</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006804">ID of the node that serves as the Internet Gateway.</a></div>
+            <div class="CellBody"><a name="2006805">A value of </a><span style="font-family: &quot;Courier New&quot;">0</span> indicates that the Internet gateway feature is disabled.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.3.2.2  <a name="2006806">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2006807">To configure the Internet gateway node in the GUI, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="2006811">Launch the </a><span class="Menu_Item">Advanced Emulation Configuration</span> editor by clicking the <img class="Default" src="images/AdvancedEmualtionConfiguration-Button_2.png" width="30" height="30" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button on the <span class="Menu">Emulation</span> toolbar and go to the <span class="Menu">Internet Gateway</span> tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2006815"><img class="Default" src="images/InternetGatewayTab.png" width="400" height="282" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-61.&nbsp;&nbsp;<a name="2006816">Configuring Internet Gateway</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2006817">Check the box labeled </a><span class="Field">Enable Internet Gateway</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2006818">From the pull-down menu, select the node that is to serve as the Internet gateway.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2006824">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2006821">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="2006823">Internet gateway can be configured only in Design mode.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">4.3.3  <a name="2006827">Packet Sniffing Interface Configuration</a></div>
+      <div class="BodyAfterHead"><span class="Variable"><a name="2006831">EXata</a></span> offers the capability of making the traffic inside a scenario visible to an external packet sniffing software (such as Wireshark or Microsoft Network Monitor). The packet sniffing software can thus examine the packets that are transmitted and received within the emulated scenario. </div>
+      <div class="Body"><a name="2006838">See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.7.html#1024313', '');" title="Using Packet Sniffing and Analysis Software">Section&nbsp;5.6</a></span><span style="font-weight: bold"> </span>for details of Packet Sniffing capabilities offered by <span class="Variable">EXata</span>.</div>
+      <div class="Heading3Numbered">4.3.3.1  <a name="2006839">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2006840">To configure the packet sniffing interface for the command line interface, include the parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2006850', '');" title="Configuring the Emulation Environment">Table&nbsp;4-101</a></span> in the scenario configuration (.config) file.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 4-101.&nbsp;&nbsp;<a name="2006850">Packet Sniffing Interface Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="2006856">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 100.8pt">
+            <div class="CellHeading"><a name="2006858">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 205.2pt">
+            <div class="CellHeading"><a name="2006860">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2006862">PACKET-SNIFFER-NODE</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2006863">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2006864">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2006865">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006867">Integer</a></div>
+            <div class="CellRun-In_Courier"><a name="2006868">Range</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006872">≥ 0</a></div>
+            <div class="CellRun-In_Courier"><a name="2006873">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006874">0</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006876">ID of the node for which packet sniffing is enabled. Packets transmitted or received by this node are made visible to the external sniffing software.</a></div>
+            <div class="CellBody"><a name="2006877">A value of </a><span style="font-family: &quot;Courier New&quot;">0</span> indicates that picket sniffing is enabled for all nodes in the network. If this parameter is not included, then packet sniffing is disabled for all nodes.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2006879">PACKET-SNIFFER-DOT11</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2006880">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2006881">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2006882">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006884">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006885">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006886">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="2006887">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006888">NO</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006890">Specifies whether 802.11 MAC frames should be displayed on a separate virtual network interface.</a></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="2006891">This feature is available only on Linux systems.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2006893">PACKET-SNIFFER-ENABLE-APP</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2006894">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2006895">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2006896">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006898">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006899">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006900">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="2006901">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006902">YES</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006904">Specifies whether application packets should be are sniffed.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2006906">PACKET-SNIFFER-ENABLE-TCP</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2006907">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2006908">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2006909">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006911">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006912">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006913">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="2006914">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006915">YES</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006917">Specifies whether TCP packets should be sniffed.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2006919">PACKET-SNIFFER-ENABLE-UDP</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2006920">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2006921">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2006922">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006924">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006925">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006926">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="2006927">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006928">YES</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006930">Specifies whether UDP packets should be sniffed.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2006932">PACKET-SNIFFER-ENABLE-ROUTING</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2006933">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2006934">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2006935">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006937">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006938">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006939">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="2006940">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006941">YES</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006943">Specifies whether routing packets should be sniffed.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2006945">PACKET-SNIFFER-ENABLE-MAC</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2006946">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2006947">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2006948">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006950">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006951">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2006952">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="2006953">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2006954">YES</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2006956">Specifies whether MAC layer packets should be sniffed.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.3.3.2  <a name="2006957">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2006958">To configure the packet sniffing interface in the GUI, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="2006962">Click the <img class="Default" src="images/PacketSnifferDisabled-Button_2.png" width="22" height="21" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button on the </a><span class="Menu">Emulation</span> toolbar. This enables a pull-down menu.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2006963">From the pull-down menu, select the node(s) to sniff on. You can select any one node or all nodes in the scenario.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2006967"><img class="Default" src="images/SelectPSNode.gif" width="248" height="65" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-62.&nbsp;&nbsp;<a name="2006968">Selecting Node(s) for Packet Sniffing</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2006972">Launch the </a><span class="Menu">Advanced Emulation Configuration</span> editor by clicking the <img class="Default" src="images/AdvancedEmualtionConfiguration-Button_2.png" width="30" height="30" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button on the <span class="Menu">Emulation</span> toolbar and go to the <span class="Menu">PSI</span> tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2006976"><img class="Default" src="images/PSIConfiguration.gif" width="400" height="282" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-63.&nbsp;&nbsp;<a name="2006977">Configuring Packet Sniffing Interface</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">4.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2006978">Select the options by checking the appropriate boxes. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2006985">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Notes_003a">
+              <span class="Bold">Notes:</span><a name="2006981">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">1.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Numbered__0028first_0029_inner"><a name="2006983">The node(s) to sniff on can be selected in both Design and Visualize modes. </a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="Numbered_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                      <span class="StepNumber">2.	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="Numbered_inner"><a name="2006984">The packet sniffing interface options can be selected in both Design and Visualize modes.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">4.3.4  <a name="2006986">Emulated Server Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2006990">All nodes in a</a>n <span class="Variable">EXata</span> scenario run the FTP server, HTTP server and Telnet server applications at the respective port numbers. Any client application on the operational host can connect to these servers to initiate a session and interact with servers (for example, download a file from FTP, view a web page from the HTTP server, etc.). </div>
+      <div class="Body"><span class="Variable"><a name="2006994">EXata</a></span> allows the user to configure the set of files that are exported by the FTP and HTTP servers. That is, a user may configure a directory on the local computer (running <span class="Variable">EXata</span>) to serve as the root folder for the FTP and HTTP servers.</div>
+      <div class="Heading3Numbered">4.3.4.1  <a name="2006998">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2006999">To configure the emulated server parameters for the command line interface, include the parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007009', '');" title="Configuring the Emulation Environment">Table&nbsp;4-102</a></span> in the scenario configuration (.config) file.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 4-102.&nbsp;&nbsp;<a name="2007009">Emulated Server Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="2007015">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 100.8pt">
+            <div class="CellHeading"><a name="2007017">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 205.2pt">
+            <div class="CellHeading"><a name="2007019">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2007021">FTP-ROOT-DIRECTORY</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2007022">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2007023">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2007024">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007026">Path (see note)</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007028">Path to the FTP root directory.</a></div>
+            <div class="CellBody"><a name="2007029">Files in this directory are exported to FTP clients.</a></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="2007030">If this parameter is not specified, then an </a><span style="font-style: italic">in-memory</span> image of the file system is exported. </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2007032">HTTP-ROOT-DIRECTORY</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2007033">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2007034">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2007035">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007037">Path (see note)</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007039">Path to the HTTP root directory.</a></div>
+            <div class="CellBody"><a name="2007040">Files in this directory are exported to HTTP clients.</a></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="2007041">if this parameter is not specified, then the directory </a><span class="Variable">EXATA_HOME</span>/data/webfiles is used as the HTTP root directory.</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="2007076">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2007047">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="font-family: Arial"><a name="2007049">The path to the FTP or HTTP root directory can be specified as an absolute path, a path relative to the current directory, or by using the environment variable for the </a></span><span class="Variable">EXata</span><span style="font-family: Arial"> installation directory (</span>$<span class="Variable">EXATA_HOME</span><span style="font-family: Arial"> on both Windows and Linux systems). </span></div>
+            <div class="CellBody" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007056">Following are examples of HTTP root directory paths:</a></span></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 45.62496pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007063">C:\scalable\</a></span><span class="Variable">exata</span>\<span class="Variable">5.1</span>\data<span style="font-family: Arial">                        (For Windows) </span></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 45.62496pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007070">/root/scalable/</a></span><span class="Variable">exata</span>/<span class="Variable">5.1</span>/data        <span style="font-family: Arial">(For UNIX)</span></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 45.62496pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007071">../../data/terrain/los-angeles-w</a></span><span style="font-family: Arial">	               (For Windows and UNIX)</span></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 45.62496pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007075">$</a></span><span class="Variable">EXATA_HOME</span>/data<span style="font-family: Arial">                                             (For Windows and UNIX)</span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.3.4.2  <a name="2007077">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2007078">To configure the emulated server parameters in the GUI, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="2007082">Launch the </a><span class="Menu">Advanced Emulation Configuration</span> editor by clicking the <img class="Default" src="images/AdvancedEmualtionConfiguration-Button_2.png" width="30" height="30" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button on the <span class="Menu">Emulation</span> toolbar and go to the <span class="Menu">Emulated Servers</span> tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007086"><img class="Default" src="images/Emulated%20Servers-Tab.gif" width="400" height="282" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-64.&nbsp;&nbsp;<a name="2007087">Configuring Emulated Servers</a></div>
+      <div class="Anchor"><a name="2007119">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2007090">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="font-family: Arial"><a name="2007092">The path to the FTP or HTTP root directory can be specified as an absolute path, a path relative to the current directory, or by using the environment variable for the </a></span><span class="Variable">EXata</span><span style="font-family: Arial"> installation directory (</span>$<span class="Variable">EXATA_HOME</span><span style="font-family: Arial"> on both Windows and Linux systems). </span></div>
+            <div class="CellBody" style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007099">Following are examples of HTTP root directory paths:</a></span></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 45.62496pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007106">C:\scalable\</a></span><span class="Variable">exata</span>\<span class="Variable">5.1</span>\data<span style="font-family: Arial">                        (For Windows) </span></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 45.62496pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007113">/root/scalable/</a></span><span class="Variable">exata</span>/<span class="Variable">5.1</span>/data        <span style="font-family: Arial">(For UNIX)</span></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 45.62496pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007114">../../data/terrain/los-angeles-w</a></span><span style="font-family: Arial">	               (For Windows and UNIX)</span></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-indent: 45.62496pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007118">$</a></span><span class="Variable">EXATA_HOME</span>/data<span style="font-family: Arial">                                             (For Windows and UNIX)</span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2007120">Enter the path to the FTP and HTTP root directories in the appropriate boxes.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007126">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2007123">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="2007125">Emulated servers can be configured only in Design mode.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">4.3.5  <a name="2007128">Advanced Emulation Features</a></div>
+      <div class="BodyAfterHead"><a name="2007129">This section describes some advanced emulation features and how to configure them.</a></div>
+      <div class="Heading3Numbered">4.3.5.1  <a name="2007130">Debugging</a></div>
+      <div class="BodyAfterHead"><span class="Variable"><a name="2007134">EXata</a></span> provides debugging information to review the connection and traffic between the operational hosts and the emulated network. The level of detail of debugging information can be configured.</div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007143', '');" title="Configuring the Emulation Environment" name="2007141">Section&nbsp;4.3.5.1.1</a></span> describes how to configure debugging parameters. <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007217', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.5.1.2</a></span> describes the debugging information that is displayed during an emulation run.</div>
+      <div class="Heading4Numbered">4.3.5.1.1  <a name="2007143">Configuring Debugging Parameters</a></div>
+      <div class="BodyAfterHead"><a name="2007144">This section describes how to configure debugging parameters for the command line (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007152', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.5.1.1.1</a></span>) and in the GUI (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007198', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.5.1.1.2</a></span>).</div>
+      <div class="Heading5Numbered">4.3.5.1.1.1  <a name="2007152">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2007153">To configure the debugging parameters for the command line interface, include the parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007163', '');" title="Configuring the Emulation Environment">Table&nbsp;4-103</a></span> in the scenario configuration (.config) file.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 4-103.&nbsp;&nbsp;<a name="2007163">Debugging Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="2007169">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 100.8pt">
+            <div class="CellHeading"><a name="2007171">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 205.2pt">
+            <div class="CellHeading"><a name="2007173">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2007175">EXTERNAL-NODE-DEBUG-LEVEL</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2007176">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2007177">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2007178">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007180">Integer</a></div>
+            <div class="CellRun-In_Courier"><a name="2007181">Range</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2007182">[0, 3]</a></div>
+            <div class="CellRun-In_Courier"><a name="2007183">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2007184">0</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007186">Level of the debugging information to be displayed.</a></div>
+            <div class="CellBody" style="margin-left: 18.07488pt"><span style="font-family: &quot;Courier New&quot;"><a name="2007187">3</a></span>	: Show each packet that is received or transmitted by the operational host, show the external interface statistics, and print debug messages. Print debugging statistics every three seconds (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007217', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.5.1.2</a></span><span style="font-size: 10.0pt">)</span>.</div>
+            <div class="CellBody" style="margin-left: 18.07488pt"><span style="font-family: &quot;Courier New&quot;"><a name="2007191">2</a></span>	: Show the external interface statistics and print debug messages. Print debugging statistics every three seconds (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007217', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.5.1.2</a></span><span style="font-size: 10.0pt">)</span>.</div>
+            <div class="CellBody" style="margin-left: 18.07488pt"><span style="font-family: &quot;Courier New&quot;"><a name="2007195">1</a></span>	: Print debug messages.</div>
+            <div class="CellBody" style="margin-left: 18.07488pt"><span style="font-family: &quot;Courier New&quot;"><a name="2007196">0</a></span>	: Do not display any debugging information.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading5Numbered">4.3.5.1.1.2  <a name="2007198">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2007199">To configure the debugging parameters in the GUI, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="2007203">Launch the </a><span class="Menu">Advanced Emulation Configuration</span> editor by clicking the <img class="Default" src="images/AdvancedEmualtionConfiguration-Button_2.png" width="30" height="30" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button on the <span class="Menu">Emulation</span> toolbar and go to the <span class="Menu">Advanced</span> tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007207"><img class="Default" src="images/DebuggingTab.png" width="400" height="282" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-65.&nbsp;&nbsp;<a name="2007208">Configuring Debugging Parameters</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2007209">From the pull-down menu in the </a><span class="Menu">Debugging</span> section, select the level of debugging information to be displayed.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007215">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2007212">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="2007214">Debugging options can be configured only in Design mode.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4Numbered">4.3.5.1.2  <a name="2007217">Debugging Information</a></div>
+      <div class="BodyAfterHead"><a name="2007221">If the parameter </a><span style="font-family: &quot;Courier New&quot;">EXTERNAL-NODE-DEBUG-LEVEL</span> is set to 2 or higher (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007152', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.5.1.1.1</a></span>) or an equivalent debugging level is configured in the GUI (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007198', '');" title="Configuring the Emulation Environment">Section&nbsp;4.3.5.1.1.2</a></span>), statistics, which can help in debugging, are printed every three seconds when the emulation is run. If the emulation is run from the command line, these statistics are printed to the command window from which the emulation is run. If the emulation is run from the GUI, these statistics are printed to the Output Window of Architect (see <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch6_Architect-Visualize%20Mode.07.7.html#1071605', '');" title="Bottom Panels">Section&nbsp;6.6.2</a></span>). </div>
+      <div class="Body"><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007237', '');" title="Configuring the Emulation Environment" name="2007231">Figure&nbsp;4-66</a></span> shows sample debugging information printed to the output window.</div>
+      <div class="Anchor"><a name="2007235"><img class="Default" src="images/DebuggingStats.png" width="605" height="240" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-66.&nbsp;&nbsp;<a name="2007237">Sample Debugging Information</a></div>
+      <div class="Body"><a name="2007238">The debugging statistics can be divided into the following groups:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="2007239">Time Statistics</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="2007240">Device Capture Statistics</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="2007241">Traffic Statistics</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007242">&nbsp;</a></div>
+      <div class="Heading4"><a name="2007243">Time Statistics</a></div>
+      <div class="BodyAfterHead"><a name="2007244">The time statistics are printed in the following format:</a></div>
+      <div class="Command_Input"><a name="2007245">EXata statistics at &lt;sim-time&gt; sec:: </a></div>
+      <div class="Command_Input"><a name="2007246">    Deviation from Real Time = &lt;deviation&gt; sec </a></div>
+      <div class="Command_Input"><a name="2007247">    External Interface Capture Lag = &lt;avg-lag&gt; +- &lt;std-dev&gt; msec</a></div>
+      <div class="Example"><a name="2007273">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007250">&lt;sim-time&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 324pt">
+            <div class="BodyAfterHead"><a name="2007252">Simulation time when the statistics are printed. </a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007254">&lt;deviation&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007256">Difference between the real time elapsed since the beginning of the simulation</a><span style="font-weight: bold"> </span>and the simulation time when the statistics are printed.</div>
+            <div class="BodyAfterHead"><a name="2007257">This value should be close to zero. A higher value indicates that </a><span class="Variable">EXata</span> is unable to keep up with the real time.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007262">&lt;avg-lag&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007264">The deviation in capturing packets from the network interface against the real time deadline, averaged over all packets received in the last three seconds. </a></div>
+            <div class="BodyAfterHead"><a name="2007265">This value should be close to zero. A higher value indicates sluggishness in the host Operating System to deliver packets to the </a><span class="Variable">EXata</span> process.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007270">&lt;std-dev&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007272">Standard deviation of the packet capture lag. </a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4"><a name="2007275">Device Capture Statistics</a></div>
+      <div class="BodyAfterHead"><a name="2007276">The device capture statistics show the packets dropped due to buffer overflow (this can occur under high traffic load from operational hosts). </a></div>
+      <div class="BodyAfterHead"><a name="2007277">The packet drop statistics are printed for each device that is connected to an operational host in the following format:</a></div>
+      <div class="Command_Input"><a name="2007278">Device Capture Statistics (this period/cumulative)::</a></div>
+      <div class="Command_Input"><a name="2007279">   Device:&lt;device-name&gt;  Received= &lt;r1&gt;/&lt;r2&gt;  Dropped= &lt;d1&gt;/&lt;d2&gt;</a></div>
+      <div class="Example"><a name="2007301">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 108pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007282">&lt;device-name&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 324pt">
+            <div class="BodyAfterHead"><a name="2007284">Device name. </a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007286">&lt;r1&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007288">Total number of packets received on this device in the last three seconds.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007290">&lt;r2&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007292">Total number of packets received on this device (from the beginning of the simulation to the current time).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007294">&lt;d1&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007296">Total number of packets dropped by this device in the last three seconds.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007298">&lt;d2&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007300">Total number of packets dropped by this device (from the beginning of the simulation to the current time).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="2007307">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2007304">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="2007306">Some versions of the libpcap library on Linux have a bug due to which the packet statistics are not correctly displayed. If the number of received packets incorrectly displayed as 0, consider updating the libpcap library.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Anchor"><a name="2007308">&nbsp;</a></div>
+      <div class="Heading4"><a name="2007309">Traffic Statistics</a></div>
+      <div class="BodyAfterHead"><a name="2007310">The traffic statistics show the statistics for all traffic and for application traffic in the following format:</a></div>
+      <div class="Command_Input"><a name="2007311">Total Traffic Statistics (this period/cumulative)::</a></div>
+      <div class="Command_Input"><a name="2007312"> IN::  	&lt;Total-in-stats&gt; </a></div>
+      <div class="Command_Input"><a name="2007313"> OUT:: &lt;Total-out-stats&gt; </a></div>
+      <div class="Command_Input"><a name="2007314">Application Traffic Statistics::</a></div>
+      <div class="Command_Input"><a name="2007315"> Packets IN (this period/cumulative)</a></div>
+      <div class="Command_Input"><a name="2007316">    TCP::	&lt;TCP-in-stats&gt;</a></div>
+      <div class="Command_Input"><a name="2007317">    UDP::	&lt;UDP-in-stats&gt;</a></div>
+      <div class="Command_Input"><a name="2007318">    Total::&lt;Total-app-in-stats&gt;</a></div>
+      <div class="Command_Input"><a name="2007319"> Packets OUT (this period/cumulative)</a></div>
+      <div class="Command_Input"><a name="2007320">    TCP::	&lt;TCP-out-stats&gt;</a></div>
+      <div class="Command_Input"><a name="2007321">    UDP::	&lt;UDP-out-stats&gt;</a></div>
+      <div class="Command_Input"><a name="2007322">    Total::&lt;Total-app-out-stats&gt;</a></div>
+      <div class="Command_Input"><a name="2007323">Multicast Traffic Statistics (this period/cumulative)::</a></div>
+      <div class="Command_Input"><a name="2007324"> IN::  	&lt;Multicast-in-stats&gt; </a></div>
+      <div class="Command_Input"><a name="2007325"> OUT:: &lt;Multicast-out-stats&gt; </a></div>
+      <div class="Example"><a name="2007383">where</a></div>
+      <table class="ArgumentTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 144pt">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007328">&lt;Total-in-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top; width: 288pt">
+            <div class="BodyAfterHead"><a name="2007330">Statistics for all (application and control) incoming traffic (from the operational hosts to </a><span class="Variable">EXata</span>). These are displayed in the following format:</div>
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; margin-left: 18pt; margin-top: 6.0pt; text-indent: -1.8000000000000007pt; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007334">Packets=&lt;p1&gt;/&lt;p2&gt; Pkts/sec=&lt;pr1&gt;/&lt;pr2&gt; Bytes=&lt;b1&gt;/b2&gt; Bytes/sec=&lt;br1&gt;/br2&gt; </a></span></div>
+            <div class="Body"><a name="2007335">where</a></div>
+            <div class="Body" style="margin-bottom: 2.0pt; margin-left: 54pt; margin-top: 0.0pt"><a name="2007336">	</a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">&lt;p1&gt;</span>	Number of packets received in the last three seconds</div>
+            <div class="Body" style="margin-bottom: 2.0pt; margin-left: 54pt; margin-top: 0.0pt"><a name="2007337">	</a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">&lt;p2&gt;</span>	Number of packets received from the beginning of the simulation to the current time </div>
+            <div class="Body" style="margin-bottom: 2.0pt; margin-left: 54pt; margin-top: 0.0pt"><a name="2007338">	</a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">&lt;pr1&gt;</span>	Rate of packets received in the last three seconds, in packets/sec</div>
+            <div class="Body" style="margin-bottom: 2.0pt; margin-left: 54pt; margin-top: 0.0pt"><a name="2007339">	</a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">&lt;pr2&gt;</span>	Rate of packets received from the beginning of the simulation to the current time, in packets/sec</div>
+            <div class="Body" style="margin-bottom: 2.0pt; margin-left: 54pt; margin-top: 0.0pt"><a name="2007340">	</a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">&lt;b1&gt;</span>	Number of bytes received in the last three seconds.</div>
+            <div class="Body" style="margin-bottom: 2.0pt; margin-left: 54pt; margin-top: 0.0pt"><a name="2007341">	</a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">&lt;b2&gt;</span>	Number of bytes received from the beginning of the simulation to the current time </div>
+            <div class="Body" style="margin-bottom: 2.0pt; margin-left: 54pt; margin-top: 0.0pt"><a name="2007342">	</a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">&lt;br1&gt;</span>	Rate of bytes received in the last three seconds, in packets/sec</div>
+            <div class="Body" style="margin-bottom: 2.0pt; margin-left: 54pt; margin-top: 0.0pt"><a name="2007343">	</a><span style="font-family: &quot;Courier New&quot;; font-weight: bold">&lt;br2&gt;</span>	Rate of bytes received from the beginning of the simulation to the current time, in packets/sec</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007345">&lt;Total-out-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007347">Statistics for all (application and control) outgoing traffic (from </a><span class="Variable">EXata</span> to the operational hosts). These are displayed in the same format as the total incoming traffic statistics.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007352">	&lt;TCP-in-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007354">TCP statistics for incoming traffic. These are displayed in the same format as the total incoming traffic statistics.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007356">&lt;UDP-in-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007358">UDP statistics for incoming traffic. These are displayed in the same format as the total incoming traffic statistics.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007360">&lt;Total-app-in-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007362">Statistics for all incoming application traffic (TCP and UDP). These are displayed in the same format as the total incoming traffic statistics.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007364">&lt;TCP-out-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007366">TCP statistics for outgoing traffic. These are displayed in the same format as the total incoming traffic statistics.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007368">&lt;UDP-out-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007370">UDP statistics for outgoing traffic. These are displayed in the same format as the total incoming traffic statistics.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007372">&lt;Total-app-out-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007374">Statistics for all outgoing application traffic (TCP and UDP). These are displayed in the same format as the total incoming traffic statistics.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007376">&lt;Multicast-in-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007378">Statistics for incoming multicast traffic. These are displayed in the same format as the total incoming traffic statistics.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Body" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="2007380">&lt;Multicast-out-stats&gt;</a></span></div>
+          </td>
+          <td style="padding-bottom: 6pt; padding-left: 0pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="BodyAfterHead"><a name="2007382">Statistics for outgoing multicast traffic. These are displayed in the same format as the total incoming traffic statistics.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.3.5.2  <a name="2007513">Cluster Computing Configuration</a></div>
+      <div class="BodyAfterHead"><span class="Variable"><a name="2007517">EXata</a></span> fully supports Symmetric Multiprocessor (SMP) and cluster computing environments for external interfaces. Whereas the SMP environment is transparent to the user, for the cluster environment the user may configure the external interfaces to run on a single cluster node<span style="font-weight: bold"> </span>or all<span style="font-weight: bold"> </span>cluster nodes.</div>
+      <div class="Body"><a name="2007524">See </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.8.html#1002928', '');" title="Configuring EXata for Parallel and Distributed Environments">Section&nbsp;5.7</a></span><span style="font-weight: bold"> </span>for details of distributed platform capabilities offered by <span class="Variable">EXata</span>. This section describes how to configure multiple instances of external interfaces: one each on each cluster node.</div>
+      <div class="Heading4Numbered">4.3.5.2.1  <a name="2007525">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2007526">To configure the cluster parameters for the command line interface, include the parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007536', '');" title="Configuring the Emulation Environment">Table&nbsp;4-104</a></span> in the scenario configuration (.config) file.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 4-104.&nbsp;&nbsp;<a name="2007536">Cluster Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="2007542">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 100.8pt">
+            <div class="CellHeading"><a name="2007544">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 205.2pt">
+            <div class="CellHeading"><a name="2007546">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2007548">CLUSTER-HOST-FILE</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2007549">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2007550">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2007551">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007553">Filename</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007555">Name of the hostfile that is used by the MPI runtime environment.</a></div>
+            <div class="CellBody"><a name="2007559">See </a><span class="Variable" style="font-style: italic">EXata Distributed Reference Guide</span> for details of the hostfile.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4Numbered">4.3.5.2.2  <a name="2007560">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2007561">To configure the cluster parameters in the GUI, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="2007565">Launch the </a><span class="Menu">Advanced Emulation Configuration</span> editor by clicking the <img class="Default" src="images/AdvancedEmualtionConfiguration-Button_2.png" width="30" height="30" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button on the <span class="Menu">Emulation</span> toolbar and go to the <span class="Menu">Advanced</span> tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007569"><img class="Default" src="images/ClusterConfiguration.gif" width="400" height="282" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-67.&nbsp;&nbsp;<a name="2007570">Configuring Cluster Configuration Parameters</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2007574">In the </a><span class="Menu">Cluster Configuration</span> section, click the <img class="Default" src="images/SelelctFile-Icon.png" width="24" height="24" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button and select the cluster configuration file from the file selector that is launched.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007580">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2007577">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="2007579">Clusters can be configured only in Design mode.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.3.5.3  <a name="2007581">Legacy IP Network Emulation (IPNE)</a></div>
+      <div class="BodyAfterHead"><a name="2007585">Legacy IP Network Emulation (IPNE) is a feature available as an addon to </a><span class="Variable">EXata</span>. This feature is deprecated in <span class="Variable">EXata</span>, but it is provided for backward compatibility.</div>
+      <div class="Heading4Numbered">4.3.5.3.1  <a name="2007589">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2007590">To configure the Legacy IPNE parameters for the command line interface, include the parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007600', '');" title="Configuring the Emulation Environment">Table&nbsp;4-105</a></span> in the scenario configuration (.config) file.</div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 4-105.&nbsp;&nbsp;<a name="2007600">Legacy IPNE Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="2007606">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 100.8pt">
+            <div class="CellHeading"><a name="2007608">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 205.2pt">
+            <div class="CellHeading"><a name="2007610">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2007612">IPNE</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2007613">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2007614">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2007615">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007617">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2007618">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2007619">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="2007620">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2007621">NO</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007623">Enables legacy IPNE.</a></div>
+            <div class="CellNote_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellNote_inner" style="width: 25.2pt; white-space: nowrap;">
+                      <span class="Bold">Note: 	</span>
+                    </div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellNote_inner"><a name="2007624">The Connection Manager is disabled if legacy IPNE is enabled.</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2007626">IPNE-CONFIG-FILE</a></div>
+            <div class="CellRun-In_Courier"><a name="2007627">Dependency</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2007628">IPNE = YES</a></div>
+            <div class="Cell_2nd_Line" style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: Arial; font-size: 9.0pt; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007629">Required</a></span></div>
+            <div class="CellRun-In_Plain"><a name="2007630">Scope</a></div>
+            <div class="CellBody_Indented"><a name="2007631">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007633">Filename</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2007634">&nbsp;</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007636">Name of the IPNE configuration file.</a></div>
+            <div class="CellBody"><a name="2007637">Refer to </a><span style="font-style: italic">Network Emulation Interface Model Library</span> for a description of the IPNE configuration file.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading4Numbered">4.3.5.3.2  <a name="2007638">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2007639">To configure the legacy IPNE parameters in the GUI, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="2007643">Launch the</a><span class="Menu_Item"> </span><span class="Menu" style="font-family: Arial; font-size: 10pt; font-style: normal">Advanced Emulation Configuration</span> editor by clicking the <img class="Default" src="images/AdvancedEmualtionConfiguration-Button_2.png" width="30" height="30" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button on the <span class="Menu">Emulation</span> toolbar and go to the <span class="Menu">Advanced</span> tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007647"><img class="Default" src="images/LegacyIPNE.gif" width="400" height="282" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-68.&nbsp;&nbsp;<a name="2007648">Configuring Legacy IPNE Parameters</a></div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2007649">In the</a><span class="Menu_Item"> </span><span class="Menu" style="font-family: Arial; font-size: 10pt; font-style: normal">Legacy IPNE </span>section, check the box labeled <span class="Field">Enable Legacy IPNE</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2007653">Click the <img class="Default" src="images/SelelctFile-Icon.png" width="24" height="24" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button and select the IPNE configuration file from the file selector that is launched.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007659">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2007656">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="2007658">Legacy IPNE can be configured only in Design mode.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading2Numbered">4.3.6  <a name="2007660">Warm-up Phase</a></div>
+      <div class="BodyAfterHead"><a name="2007661">In some scenarios, it may take some time for routes in the network to converge. It is often desirable to inject external traffic into the network after the routes converge. To speed up the execution of the scenario, a warm-up phase can be configured. In the warm-phase, the scenario runs as fast as possible, i.e., in simulation mode. After the warm-up phase ends, the scenario runs in real-time, i.e., in emulation mode.</a></div>
+      <div class="Body"><a name="2007662">The scenario can be configured to treat external packets received during the warm-up phase in one of two ways:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="2007663">all external packets received during the warm-up phase are dropped without being processed, or</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="2007664">each external packet received during the warm-up phase is delivered to its destination with zero delay.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007670">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="2007667">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="2007669">The warm-up phase operation is different if the Socket interface is used. Refer to </a><span style="font-style: italic">Federation Interfaces Library</span> for details.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.3.6.1  <a name="2007671">Command Line Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2007672">To configure the warm-up phase for the command line interface, include the parameters listed in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007682', '');" title="Configuring the Emulation Environment">Table&nbsp;4-106</a></span> in the scenario configuration (.config) file. </div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 4-106.&nbsp;&nbsp;<a name="2007682">Warm-up Phase Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="2007688">Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 100.8pt">
+            <div class="CellHeading"><a name="2007690">Value</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 205.2pt">
+            <div class="CellHeading"><a name="2007692">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2007694">EXTERNAL-WARM-UP-TIME</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2007695">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2007696">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="2007697">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007699">Time</a></div>
+            <div class="CellRun-In_Courier"><a name="2007700">Range</a></div>
+            <div class="CellBody" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 9.0pt; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="2007704">≥ 0S</a></span></div>
+            <div class="CellRun-In_Courier"><a name="2007705">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2007706">0S</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody" style="margin-left: 27pt"><a name="2007708">Length of the warm-up phase.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="Parameter_Name"><a name="2007710">EXTERNAL-WARM-UP-DROP</a></div>
+            <div class="Cell_2nd_Line"><span style="font-style: italic"><a name="2007711">Optional</a></span> </div>
+            <div class="CellRun-In_Plain"><a name="2007712">Scope</a></div>
+            <div class="Cell_2nd_Line"><a name="2007713">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007715">List:</a></div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2007716">YES</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellBulleted_Courier_outer" style="margin-left: 0pt">
+              <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+                <tr style="vertical-align: baseline;">
+                  <td>
+                    <div class="CellBulleted_Courier_inner" style="width: 9pt; white-space: nowrap;">•	</div>
+                  </td>
+                  <td width="100%">
+                    <div class="CellBulleted_Courier_inner"><a name="2007717">NO</a></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="CellRun-In_Courier"><a name="2007718">Default</a></div>
+            <div class="CellBody_Courier_Indented"><a name="2007719">NO</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007721">Indicates whether packets received from external sources in the warm-up phase are dropped or delivered to the destination with zero delay.</a></div>
+            <div class="CellBody"><a name="2007722">By default external packets are delivered to the destination with zero delay.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3Numbered">4.3.6.2  <a name="2007723">GUI Configuration</a></div>
+      <div class="BodyAfterHead"><a name="2007724">To configure the warm-up phase in the GUI, perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="2007731">Go to </a><span class="Menu_Item">Scenario Properties Editor </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> External Interfaces </span><span class="Bold" style="font-size: 10pt">&gt;</span><span class="Menu_Item" style="color: #000000"> Warm-up Phase</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="2007732">To enable the warm-up phase, set </a><span class="Field">Enable Warm-up Phase</span> to <span class="Value">Yes</span> and set the dependent parameters listed in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.4.html#2007746', '');" title="Configuring the Emulation Environment">Table&nbsp;4-107</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="2007739"><img class="Default" src="images/Warm-upPhase.gif" width="587" height="214" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 4-69.&nbsp;&nbsp;<a name="2007769">Setting Warm-up Phase Parameters</a></div>
+      <table class="Format_A" style="text-align: left; width: 468pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">TABLE 4-107.&nbsp;&nbsp;<a name="2007746">Command Line Equivalent of Warm-up Phase Parameters&nbsp;</a></div>
+        </caption>
+        <tr>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="2007752">GUI Parameter </a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 144pt">
+            <div class="CellHeading"><a name="2007754">Scope of GUI Parameter</a></div>
+          </td>
+          <td style="background-color: #E6E6E6; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: bottom; width: 162pt">
+            <div class="CellHeading"><a name="2007756">Command Line Parameter</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody" style="margin-bottom: 3.0pt"><span class="Parameter_Name" style="font-size: 9.0pt; font-style: normal"><a name="2007758">Warm-up Time</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007760">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="2007762">EXTERNAL-WARM-UP-TIME</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody" style="margin-bottom: 3.0pt"><span class="Parameter_Name" style="font-size: 9.0pt; font-style: normal"><a name="2007764">Drop Packets During Warm-up Phase</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="2007766">Global</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 2pt; padding-left: 6pt; padding-right: 6pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody_Courier"><a name="2007768">EXTERNAL-WARM-UP-DROP</a></div>
+          </td>
+        </tr>
+      </table>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

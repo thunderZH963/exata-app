@@ -1,0 +1,5 @@
+include ../interfaces/vrlink/Makefile-windows
+
+#include ../interfaces/vrlink/synch/Makefile-windows
+
+#include ../interfaces/vrlink/testfed/Makefile-windows

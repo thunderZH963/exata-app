@@ -1,0 +1,32 @@
+AUTO_IPNE_INTERFACE_OPTIONS = -DAUTO_IPNE_INTERFACE
+
+AUTO_IPNE_INTERFACE_DIR    = ../interfaces/auto-ipne
+AUTO_IPNE_INTERFACE_SRCDIR = ../interfaces/auto-ipne/src
+
+#
+# common sources
+#
+AUTO_IPNE_INTERFACE_SRCS = \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/auto-ipnetworkemulator.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/ipne_qualnet_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/capture_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/inject_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/connection_manager.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/arp_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/ospf_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/voip_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/olsr_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/mdp_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/pim_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/record_replay.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/packet_validation.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/ipsec_interface.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/capture_interface_ipsec.cpp \
+$(AUTO_IPNE_INTERFACE_SRCDIR)/igmpv3_interface.cpp
+
+AUTO_IPNE_INTERFACE_INCLUDES = \
+-I$(AUTO_IPNE_INTERFACE_DIR)/src \
+-I$(IPNE_INTERFACE_DIR)/libnet/include \
+-I$(IPNE_INTERFACE_DIR)/libnet/include/libnet \
+-I$(IPNE_INTERFACE_DIR)/libpcap/include
+

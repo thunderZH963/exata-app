@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebWorksHelpBook version="5.0" name="Cyber" context="Cyber" locale="en" xmlns="urn:WebWorks-Help-Book-Files-Schema">
+  <CommonWordsToSkip minlen="3">
+    a about after all also am an and another any are as at
+    be because been before being between both but by
+    came can come copyright corp corporation could
+    did do does
+    each etc
+    for from
+    get goes got
+    had has have he her here him himself his how
+    if in inc into is it its
+    let like
+    make many me might more most much must my
+    never nor not now
+    of off on one only or other our out over own
+    reserved rights
+    said same see set shall she should since so some still such
+    take than that the their them then there these they this those though through to too
+    under us use
+    very
+    was way we well were what when where which while who why will with would
+    yes yet you your
+   </CommonWordsToSkip>
+  <ScoringPrefs>
+    <meta name="keywords" weight="100" />
+    <meta name="description" weight="50" />
+    <meta name="summary" weight="50" />
+    <title weight="20" />
+    <h1 weight="15" />
+    <h2 weight="10" />
+    <caption weight="10" />
+    <h3 weight="7" />
+    <th weight="5" />
+    <h4 weight="5" />
+    <h5 weight="4" />
+    <h6 weight="3" />
+    <h7 weight="2" />
+  </ScoringPrefs>
+  <DocumentInfo>
+    <Document title="Overview of Model Library" href="Ch1%20-%20Overview.01.1.html" />
+    <Document title="Conventions Used" href="Ch1%20-%20Overview.01.2.html" />
+    <Document title="MAC Layer Models" href="Ch2%20-%20MAC%20Layer%20Models.html" />
+    <Document title="Wired Equivalent Privacy and CTR with CBC-MAC Protocol" href="WEP_CCMP.html" />
+    <Document title="Network Layer Models" href="Ch3%20-%20Newtork%20Layer%20Models.html" />
+    <Document title="Credential Model: IFF Certificate" href="Certificate.html" />
+    <Document title="Firewall Model" href="Firewall%20Model.html" />
+    <Document title="Information Assurance Hierarchical Encryption Protocol (IAHEP)" href="IAHEP.html" />
+    <Document title="Internet Protocol Security (IPSec) Model" href="IPSec.html" />
+    <Document title="Internet Security Association and Key Management Protocolwith Internet Key Exchange (ISAKMP-IKE)" href="ISAKMP-IKE.html" />
+    <Document title="Public Key Infrastructure (PKI) Model" href="PKI.html" />
+    <Document title="Secure Neighbor" href="Secure_Neighbor.html" />
+    <Document title="Routing Protocol Models" href="Ch4%20-%20Routing%20Protocol%20Models.html" />
+    <Document title="Anonymous On-Demand Routing (ANODR) Protocol" href="ANODR.html" />
+    <Document title="Multi-layer Models" href="Ch5%20-%20Multi-layer%20Models.html" />
+    <Document title="Adversary Model" href="Adversary.html" />
+    <Document title="Attack Models" href="Ch6%20-%20Attack%20Models.16.1.html" />
+    <Document title="Initiating Attacks from EXata GUI" href="Ch6%20-%20Attack%20Models.16.2.html" />
+    <Document title="Denial of Service (DOS) Attack Model" href="Denial%20of%20Service%20Attack%20Model.html" />
+    <Document title="Signals Intelligence (SIGINT) Attack Model" href="SIGINT%20Model.html" />
+    <Document title="Virus Attack Model" href="Virus%20Attack.html" />
+    <Document title="Wireless Eavesdropping Attack Model" href="Eavesdropping%20Model.html" />
+    <Document title="Wireless Jamming Attack Model" href="Jammer%20Model.html" />
+    <Document title="OS Resource Models" href="Ch7%20-%20OS%20Resource%20Models.html" />
+    <Document title="CPU and Memory Resource Model" href="CPU%20and%20Memory%20Resource%20Model.html" />
+  </DocumentInfo>
+  <TopicMap />
+</WebWorksHelpBook>

@@ -1,0 +1,25 @@
+function FileData_Pairs(x)
+{
+x.t("2008","2013");
+x.t("scalable","network");
+x.t("refer","exata");
+x.t("covers","system");
+x.t("platforms","refer");
+x.t("exata","linux");
+x.t("exata","distributed");
+x.t("installing","exata");
+x.t("guide","2008");
+x.t("network","technologies");
+x.t("requirements","installation");
+x.t("2013","scalable");
+x.t("chapter","covers");
+x.t("reference","guide");
+x.t("linux","installing");
+x.t("linux","chapter");
+x.t("linux","systems");
+x.t("systems","distributed");
+x.t("system","requirements");
+x.t("installation","exata");
+x.t("distributed","platforms");
+x.t("distributed","reference");
+}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Demonstrating Eavesdropping and Virus Attacks</title>
+    <link rel="StyleSheet" href="css/Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.1.html#1003746">A	Cyber Warfare Demo</a> &gt; A.5  Demonstrating Eavesdropping and Virus Attacks</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">A.5  <a name="1003746">Demonstrating Eavesdropping and Virus Attacks</a></div>
+      <div class="BodyAfterHead"><a name="1005590">We will now demonstrate eavesdropping and virus attacks in the testbed.</a></div>
+      <div class="Heading2Numbered">A.5.1  <a name="1003747">Launching Eavesdropping Attack</a></div>
+      <div class="BodyAfterHead"><a name="1003748">To launch an eavesdropping attack, do the following:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1003749">Launch VLC media player at the Cyber Attacker host.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003750">Configure VLC media player</a><span style="font-weight: bold"> </span>as a receiver, as described in <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.4.html#1004836', '');" title="Demonstrating Video and Chat Applications">Section&nbsp;A.3.1.1</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">3.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1003751">At the emulation server, go to the Human-In-The-Loop (HITL) interface (as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Ch5%20Cyber%20Attacks%20(EX%20only).5.3.html#1014465', '');" title="Launching Jamming Attack">Section&nbsp;5.2</a></span>), type the following command, and press the <img class="Default" src="images/SendCommandButton_3.gif" width="28" height="27" style="display: inline; float: none; left: 0.0; top: 0.0" alt="" /> button:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Declaration" style="color: #000000; font-family: &quot;Courier New&quot;; font-size: 10.0pt; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><a name="1003752">&nbsp;</a></div>
+      <div class="Command_Input"><a name="1005573">eaves 21 switchheader</a></div>
+      <div class="Body"><a name="1005583">At this point, the VLC player at the Cyber Attacker host should start receiving video because node 21 is mapped to the Cyber Attacker host in the scenario.</a></div>
+      <div class="Heading2Numbered">A.5.2  <a name="1003754">Launching Virus Attack</a></div>
+      <div class="BodyAfterHead"><a name="1003755">To launch a virus attack, use the following HITL command:</a></div>
+      <div class="Command_Input"><a name="1003756">attack 20 190.0.5.2</a></div>
+      <div class="Body"><a name="1005597">This causes node 20 to launch a virus attack. In </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Product_Tour', 'Appendix%20A%20Cyber%20Warfare%20Demo%20(EX%20only).6.7.html#1003758', '');" title="Demonstrating Intrusion Detection System">Section&nbsp;A.6</a></span>, we will demonstrate how this virus attack is detected by the blue force computers.</div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

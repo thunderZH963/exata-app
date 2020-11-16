@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>Connecting to Routers</title>
+    <link rel="StyleSheet" href="css/Ch5_Using%20Emulation%20(EX+EC+JNE).css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <div>
+      <img src="snt-logo-text2-transparent-small.png" />
+    </div>
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Ch5_Using%20Emulation%20(EX+EC+JNE).06.1.html#1067414">5	Using Emulation</a> &gt; 5.3  Connecting to Routers</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1Numbered">5.3  <a name="1067414">Connecting to Routers</a></div>
+      <div class="BodyAfterHead"><a name="1120451">Just as an emulated node in </a><span class="Variable">EXata</span> can be mapped to an operational host running an application (as a External Node or an External Application Node), an emulated node can also be mapped to an operational host running a routing protocol. The operational host can be a router device, such as a Cisco router, or can be a computer implementing the full protocol stack. The emulated node that such an operational host is mapped to is called an <span style="font-style: italic">External Router</span> <span style="font-style: italic">Node</span>. This mapping allows the routing protocol running on the operational host to interact and share routing information with the routing protocol model running on the emulated nodes within <span class="Variable">EXata</span>.</div>
+      <div class="Anchor"><a name="1120479">&nbsp;</a></div>
+      <table class="NoteTable" style="text-align: left; width: 432pt" cellspacing="0" summary="">
+        <caption></caption>
+        <tr>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 36pt">
+            <div class="Note_003a">
+              <span class="Bold">Note:</span><a name="1120476">&nbsp;</a></div>
+          </td>
+          <td style="padding-bottom: 2pt; padding-left: 0pt; padding-right: 0pt; padding-top: 4pt; vertical-align: top; width: 396pt">
+            <div class="NoteText"><a name="1120478">An emulated node can not be mapped to an operational host running a routing protocol if the operational host is running IPv6.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="BodyAfterHead"><span class="Variable"><a name="1120458">EXata</a></span> interoperates with the following routing protocols:</div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1120459">Border Gateway Protocol v4 (BGPv4)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1111235">Internet Control Message Protocol (ICMP)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1111236">Internet Group Management Protocol (IGMP), both with and without the Proxy mode</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1087914">Open Shortest Path First (OSPF version 2)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1087902">Optimized Link State Routing (OLSR)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1111241">Protocol Independent Multicast Protocol: Dense Mode (PIM-DM)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1111242">Protocol Independent Multicast Protocol: Sparse Mode (PIM-SM)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><span class="Variable"><a name="1067706">EXata</a></span> models of these routing protocols are high-fidelity and follow the industry standards and will interoperate with the routing protocols running on operational hosts as long as their implementation also follow the industry standards.</div>
+      <div class="Body"><a name="1067768">As an example, consider the configuration shown in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.4.html#1067770', '');" title="Connecting to Routers">Figure&nbsp;5-45</a></span>. The emulated scenario comprises six nodes. Node 1 is mapped to Operational Host 1 which is running an off-the-shelf implementation of OSPF. Node 2 is mapped to Operational Host 2 which is not running any routing protocol.</div>
+      <div class="Anchor"><a name="1067769"><img class="Default" src="images/RoutingProtocolInteroperability.PNG" width="471" height="279" style="display: block; float: none; left: 0.0; top: 0.0" alt="" /></a></div>
+      <div class="Figure">FIGURE 5-45.&nbsp;&nbsp;<a name="1067770">Mapping Routers to Emulated Nodes</a></div>
+      <div class="Body"><a name="1112315">OSPF packets sent by the Operational Host 1 are captured by the Emulation Server at node 1 and are forwarded to the emulated nodes in the scenario. Emulated nodes running OSPF update their routing tables upon receiving these packets. In turn, the OSPF control packets generated by the emulated nodes are also received by node 1. Node 1 is configured to not run a routing protocol and the OSPF control packets received by node 1 are forwarded to Operational Host 1.</a></div>
+      <div class="Body"><a name="1112316">To establish a connection between an operational host running a routing protocol and an emulated node (External Router Node), perform the following steps:</a></div>
+      <div class="Numbered__0028first_0029_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered__0028first_0029_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">1.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered__0028first_0029_inner"><a name="1067566">Connect the emulation server and operational host, as described in </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.2.html#1037271', '');" title="Configuring the EXata Testbed">Section&nbsp;5.1</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Numbered_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Numbered_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="StepNumber">2.	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Numbered_inner"><a name="1067586">Create a mapping between the operational host and the External Router Node in the same manner as creating a mapping between an operational host and an External Node (see </a><span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch5_Using%20Emulation%20(EX+EC+JNE).06.3.html#1023340', '');" title="Running Applications">Section&nbsp;5.2</a></span>). </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1067576">The following conditions should be met for the routing protocol running at the operational host and the routing protocol model running at the External Router Node to interoperate:</a></div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1067935">The routing protocol should be OLSR, OSPFv2, or RIPv2</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1067926">The External Router Node should have only one interface</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_outer" style="margin-left: 0pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_inner"><a name="1067944">The External Router Node should be configured to not run any routing protocol.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><a name="1067971">For configuration for the command line interface, the parameter </a><span style="font-family: &quot;Courier New&quot;">ROUTING-PROTOCOL</span> should be set to <span style="font-family: &quot;Courier New&quot;">NONE</span> for the interface of the External Router Node in the scenario configuration (.config) file. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.3.html#1018636', '');" title="Configuring Scenarios">Section&nbsp;4.2.8.3.2.1</a></span> for details.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bulleted_Sub1_outer" style="margin-left: 14.4pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline;">
+            <td>
+              <div class="Bulleted_Sub1_inner" style="width: 14.4pt; white-space: nowrap;">
+                <span class="BulletSymbol">-	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Bulleted_Sub1_inner"><a name="1067983">For configuration using the GUI, the parameter </a><span class="Field">Routing Protocol IPv4</span> should be set to <span class="Value">None</span> in the Interface Properties Editor for the interface of the External Router Node. See <span class="Cross-Ref"><a href="javascript:WWHClickedPopup('Users_Guide', 'Ch4_Modeling%20Networks.05.3.html#1018670', '');" title="Configuring Scenarios">Section&nbsp;4.2.8.3.2.2</a></span> for details.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body"><a name="1068032">To verify the interoperability, check the routing table at the operational host. For link state protocols such as OSPF that aggregate the entire topology information, the routing table will display all the nodes in the emulated scenario.</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <hr align="left" />
+    <table align="left">
+      <tr>
+        <td class="WebWorks_Company_Phone_Bottom">© 2008 - 2013 SCALABLE Network Technologies, Inc. All rights reserved.</td>
+      </tr>
+    </table>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

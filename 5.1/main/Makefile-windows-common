@@ -1,0 +1,159 @@
+#
+# Define platform-neutral includes.
+# (source files, header files, include directories)
+#
+
+include Makefile-common
+
+#
+# Convert / to \ in paths.
+#
+
+SIM_SRCS = $(SIM_SRCS:/=\)
+RADIO_RANGE_SRC = $(RADIO_RANGE_SRC:/=\)
+UPGRADE_SCENARIO_SRC = $(UPGRADE_SCENARIO_SRC:/=\)
+CONFIGPARSER_SRC = $(CONFIGPARSER_SRC:/=\)
+
+INCLUDE_DIRS = $(INCLUDE_DIRS:/=\) -I../include/windows
+
+#
+# Define $(ALLFILES) for using "wc" to count program size.
+#
+
+ALLFILES = $(SIM_HDRS) $(SIM_SRCS) $(RADIO_RANGE_SRC) $(CONFIGPARSER_SRC) $(UPGRADE_SCENARIO_SRC)
+
+#
+# Define libraries.
+# The libraries necessary for FLEXlm are defined separately so it's
+# easier to not use them.
+#
+
+FLEXLM_LIBS = \
+oldnames.lib \
+kernel32.lib \
+user32.lib \
+netapi32.lib \
+advapi32.lib \
+gdi32.lib \
+comdlg32.lib \
+comctl32.lib \
+ole32.lib \
+oleaut32.lib \
+crypt32.lib \
+wintrust.lib \
+..\license_dir\$(ARCH)\lmgr.lib
+
+LIBS = $(LIBS) $(ADDON_LIBRARIES) $(FLEXLM_LIBS)
+
+#
+# Define simulator objects, and objects containing main().
+#
+
+SIM_OBJS = $(SIM_SRCS:.cpp=.obj)
+SIM_OBJS = $(SIM_OBJS:.c=.obj)
+RADIO_RANGE_OBJ = $(RADIO_RANGE_SRC:.cpp=.obj)
+UPGRADE_SCENARIO_OBJ = $(UPGRADE_SCENARIO_SRC:.cpp=.obj)
+CONFIGPARSER_OBJ = $(CONFIGPARSER_SRC:.cpp=.obj)
+
+#
+# Define $(OBJS) for the cleanup rules.
+# (macro not used for compilation)
+#
+
+OBJS = $(SIM_OBJS) $(RADIO_RANGE_OBJ) $(SHPTOXML_OBJS) $(CONFIGPARSER_OBJ) $(MTS_OBJ) $(MTS2_OBJ) $(UPGRADE_SCENARIO_OBJ) $(SYNCH_OBJS) $(TESTFED_OBJS)
+
+#
+# Define $(TEMP_LIB) target.  cl on Windows 9x has problems at the link
+# step with a long command line (but the lib command does not).
+#
+
+TEMP_LIB = ..\main\temp.lib
+LIBRARIES_LIB = ..\main\libraries.lib
+
+#
+# Define compilers.
+#
+
+CC = cl
+CXX = cl
+
+#
+# Define compiler flags.
+#
+
+CFLAGS = \
+/MT /nologo \
+$(INCLUDE_DIRS) \
+$(FLAGS) \
+$(DEBUG) \
+$(OPT) \
+$(ADDON_OPTIONS)
+
+CXXFLAGS = \
+/GX /MT /nologo \
+$(INCLUDE_DIRS) \
+$(FLAGS) \
+$(DEBUG) \
+$(OPT) \
+$(ADDON_OPTIONS)
+
+#
+# Add extra suffixes.
+# (we only need to add items which nmake is not aware of)
+#
+
+.SUFFIXES: .o-$(ARCH) .o-$(ARCH)-$(COMPILER)
+
+#
+# Define .c->.obj, .cpp->.obj suffix rules.
+#
+# /Fo is like -o in UNIX.  We need this because otherwise cl will
+# put object files in the main\ folder.  Also, /Fo is for .obj files,
+# /Fe is for .exe files.
+#
+
+.c.obj:
+	$(CC) $(CFLAGS) /Fo$@ /c $<
+
+.cpp.obj:
+	$(CXX) $(CXXFLAGS) /Fo$@ /c $<
+
+#
+# Define .o-$(ARCH)->.obj suffix rule.
+# e.g., this rule copies main.o-windows to main.obj.
+#
+# The second suffix rule copies compiler-dependent object files (C++).
+#
+
+.o-$(ARCH).obj:
+	copy $< $@
+	..\bin\qtouch $@
+
+.o-$(ARCH)-$(COMPILER).obj:
+	copy $< $@
+	..\bin\qtouch $@
+
+#
+# Define windows specific dll dependencies.
+#
+
+../bin/libexpat.dll: force
+        copy ..\lib\$(ARCH)\libexpat.dll ..\bin\libexpat.dll
+
+../bin/pthreadVC2.dll: force
+        copy ..\lib\$(ARCH)\pthreadVC2.dll ..\bin\pthreadVC2.dll
+
+force :
+
+ADDON_LIBRARIES = $(ADDON_LIBRARIES) ../lib/$(ARCH)/pthreadVC2.lib
+
+ADDON_DEPS      = $(ADDON_DEPS) ../bin/libexpat.dll ../bin/pthreadVC2.dll
+
+#
+# Insert makedepend-generated rules below.
+# (make sure Windows-style paths and .obj targets are used)
+#
+# If you receive a "don't know how to make" error, deleting everything
+# below (or just the offending line) may solve the problem.
+#
+

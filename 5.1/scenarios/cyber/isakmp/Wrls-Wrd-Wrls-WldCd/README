@@ -1,0 +1,55 @@
+# Copyright (c) 2001-2013, SCALABLE Network Technologies, Inc.  All Rights Reserved.
+#                          600 Corporate Pointe
+#                          Suite 1200
+#                          Culver City, CA 90230
+#                          info@scalable-networks.com
+#
+# This source code is licensed, not sold, and is subject to a written
+# license agreement.  Among other things, no portion of this source
+# code may be copied, transmitted, disclosed, displayed, distributed,
+# translated, used as the basis for a derivative work, or used, in
+# whole or in part, for any program or purpose other than its intended
+# use in compliance with the license agreement as part of the QualNet
+# software.  This source code and certain of the algorithms contained
+# within it are confidential trade secrets of Scalable Network
+# Technologies, Inc. and may not be used as the basis for any other
+# software, hardware, product or service.
+
+
+PURPOSE:-
+--------
+To test the functionalities of ISAKMP implementation in a simple ISAKMP 
+Wireless-Wired-Wireless Combination Network.
+
+
+SCENARIO:-
+---------   Wireless Subnet             Wireless Subnet
+        --------------                        ---------------
+        |     2       |        Link           |        8      |
+        |1           4|-----5-----------6-----|7            9 |
+        |      3      | Link             Link |       10      |
+        --------------                        ---------------
+Two wireless subnets are connected via wired point to point link through 
+nodes 5 and 6. ISAKMP is enabled at nodes 2 and 9.
+
+
+APPLICATIONS:-
+-------------
+Node 2 is sending CBR packet to Node 9 
+
+
+RUN:-
+----
+Run '<QUALNET_HOME>/bin/qualnet Wrls-Wrd-Wrls-WldCd.config'
+
+
+DESCRIPTION OF THE FILES:-
+-------------------------
+1. Wrls-Wrd-Wrls-WldCd.app - QualNet configuration file for 
+                             application input.
+2. Wrls-Wrd-Wrls-WldCd.config - QualNet configuration input file.
+3. Wrls-Wrd-Wrls-WldCd.expected.stat - QualNet statistics collection.
+4. Wrls-Wrd-Wrls-WldCd.nodes - QualNet configuration file for node
+                               position.
+5. Wrls-Wrd-Wrls-WldCd.isakmp - QualNet isakmp configuration file
+6. README - This file.

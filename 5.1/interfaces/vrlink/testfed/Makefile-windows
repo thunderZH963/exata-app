@@ -1,0 +1,27 @@
+
+include ../interfaces/vrlink/testfed/Makefile-common
+include ../interfaces/vrlink/testfed/Makefile-windows-common
+
+
+$(TESTFED_TARGET): $(TESTFED_OBJS) $(TESTFED_TARGET_DEPENDENCIES)
+    $(CXX) /Fe$@ $(LDFLAGS) $(TESTFED_OBJS) /link ws2_32.lib
+      
+
+TESTFED_VRLINK_INTERFACE_INCLUDES = -I$(TESTFED_VRLINK_INTERFACE_SRC_DIR)
+
+TESTFED_VRLINK_INTERFACE_OBJS = $(TESTFED_VRLINK_INTERFACE_SRCS:.cpp=.obj)
+TESTFED_VRLINK_INTERFACE_OBJS = $(TESTFED_VRLINK_INTERFACE_OBJS:.c=.obj)
+TESTFED_VRLINK_INTERFACE_OBJS = $(TESTFED_VRLINK_INTERFACE_OBJS:/=\)
+
+
+ADDON_DEPS      = $(ADDON_DEPS) $(TESTFED_TARGET)
+
+
+clean-vrlink-testfed:
+    -del $(TESTFED_VRLINK_INTERFACE_OBJS) > NUL 2>&1
+    -del $(TESTFED_TARGET) > NUL 2>&1
+    -del $(TESTFED_TARGET:.exe=.pdb) > NUL 2>&1
+    -del $(TESTFED_TARGET:.exe=.ilk) > NUL 2>&1
+
+
+ADDONS_CLEAN = $(ADDONS_CLEAN) clean-vrlink-testfed

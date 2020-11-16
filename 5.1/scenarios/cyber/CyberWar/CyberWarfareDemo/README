@@ -1,0 +1,203 @@
+# Copyright (c) 2001-2013, SCALABLE Network Technologies, Inc.  All Rights Reserved.
+#                          600 Corporate Pointe
+#                          Suite 1200
+#                          Culver City, CA 90230
+#                          info@scalable-networks.com
+#
+# This source code is licensed, not sold, and is subject to a written
+# license agreement.  Among other things, no portion of this source
+# code may be copied, transmitted, disclosed, displayed, distributed,
+# translated, used as the basis for a derivative work, or used, in
+# whole or in part, for any program or purpose other than its intended
+# use in compliance with the license agreement as part of the QualNet
+# software.  This source code and certain of the algorithms contained
+# within it are confidential trade secrets of Scalable Network
+# Technologies, Inc. and may not be used as the basis for any other
+# software, hardware, product or service.
+
+PURPOSE:-
+--------
+Setup a test bed with an emulation server running EXata/Cyber, and several 
+operational hosts running various applications to demonstrate followings 
+capabilities:
+
+	1. The transfer of application traffic (video and chat)
+	2. Various Cyber attacks (eavesdropping and virus attacks) 
+	3. Counter-measures against, jamming and denial of
+	   service counter-attacks, kinetic strike and application 
+	   traffic encryption) the attack.
+	4. Use of Metasploit to mimic virus attacks 
+	5. Use of Snort to detect intrusions.
+
+HARDWARE REQUIREMENT:
+--------------------
+1. One computer with three Ethernet interfaces.
+2. Four computers with one Ethernet interface each:
+    -Application Source (Operational Host 1).
+    -Application Destination (Operational Host 2).
+    -Cyber Attacker (Operational Host 3).
+    -Emulation Machine 
+    -VR FORCE Machine 
+3. One switch or hub.
+4. Three standard Ethernet cables.
+5. Two "cross-over" Ethernet cables.
+
+SOFTWARE REQUIREMENT:
+-------------------
+1. One copy of EXata/Cyber.
+2. One copy of VR Forces.
+3. VLC media player (version 1.1.10 or newer) for video streaming 
+   (available at http://www.videolan.org/vlc).
+4. Microsoft Net meeting, for online text and video chatting.
+5. Snort® intrusion detection software 
+   (available at http://www.snort.org).
+6. Metasploit® Framework 
+   (available at http://www.metasploit.com).
+7. Internet Explorer, version 6.0.
+
+NETWORK CONNECTION:
+-------------------
+
+[SOURCE]				    [CYBER ATTACKER]
+   |						    |
+   |						    |   
+   |------------------[SWITCH/HUB]------------------|
+                           |
+			   |
+			   |
+			   |
+			   |
+			   |
+   |-----------------[EMULATION SERVER]---------------|
+   |						      |			
+   |						      |
+[DESTINATION]					  [VR FORCE]
+
+
+NETWORK CONFIGURATION
+---------------------
+
+Host               IPAddress     SubnetMask      Default
+=============================================================
+Emulation Server   190.0.3.101   255.255.255.0    N/A
+                   60.1.0.101    255.255.255.0    N/A
+                   190.0.5.101   255.255.255.0    N/A
+Source             60.1.0.19     255.255.255.0    60.1.0.101
+Destination        190.0.5.2     255.255.255.0    190.0.5.101
+Attacker           60.1.0.27     255.255.255.0    60.1.0.101
+VRForces           190.0.3.103   255.255.255.0    60.0.3.101
+
+SCENARIO:-
+---------
+  
+There is total 24 nodes in the scenario. Nodes 7 to 30 are in a
+wireless subnet. Nodes 9, 27, 31 are in satellite subnet. 
+Routing protocol is configured as OLSR except on node 31. A firewall 
+has been configured at node 9. By default the sceanrio runs witout VR-Forces
+To run this scenario with VR-Forces, edit the config file and change HLA 
+to YES and configure the corresponding parameters.
+  
+Applications are configured as below:
+  
+    CBR 7 8 0 512 1S 1S 179M PRECEDENCE 0 
+    CBR 11 12 0 512 1D 1S 179M PRECEDENCE 0 
+    CBR 20 19 0 512 5H 1S 179M PRECEDENCE 0 
+    CBR 21 19 0 512 5H 1S 179M PRECEDENCE 0 
+    CBR 29 19 0 512 5H 1S 179M PRECEDENCE 0 
+    CBR 30 19 0 512 5H 1S 179M PRECEDENCE 0
+  
+  
+ TEST PROCIDURE:
+ --------------
+ 1. Node 16 is the emulation Application source.Connect node 16 to Operation Host1.
+ 
+ 2. Node 9 is the destination node. Connect Node 9 to Operational Host2.
+ 
+ 3. Node 21 is the attacker node. Connect Node 21 to Operational Host3.
+ 
+ 4. Open the VR Force scenario on the Operational Host 3 if VR Force to be used.
+ 
+ 5. Start video streaming at Operation Host with unicast destination address
+    of node 9. Video should be correctly received by Operational Host2.
+ 
+ 6. To test firewall based defence, Connect Node 19 to Operation Host and 
+    start vedio streaming but all packets should be rejected by the 
+    firewall and therefore, the video traffic would not reach the VLC 
+    application at the Destination host.
+    
+ 7. To test Eavesdropping Attack, Launch VLC media player at the Cyber 
+    Attacker host at the receiving mode. At the emulation server, go to the 
+    Human-In-The-Loop (HITL) interface,and type the following command, and
+    press the button:
+
+		eaves 21 switchheader
+
+    VLC player at the Cyber Attacker host should start receiving video 
+    because node 21 is mapped to the Cyber Attacker host in the scenario
+    
+ 8. To launch a virus attack, use the following HITL command:
+ 
+		attack 20 190.0.5.2
+		
+    This causes node 20 to launch a virus attack.
+    
+ 9. To test Intrusion Detection System, launch a virus attack and on the 
+    victim machine use snort to detect the threat.
+    
+ 10. To test counter-measures against attacks, use the following methods:
+ 	
+	1. Jam the communication to prevent eavesdropping.
+	2. Launch denial-of-service attack against the attacker that is 
+           sending virus packets.
+	3. Launch a kinetic strike.
+	4. Encrypt the video transmission.
+  
+
+11. In this scenario, the Cyber Attacker host uses Metasploit to start a 
+    webserver that hosts a website which is infected. The victim machine
+    visits this website and gets infected. The result of the infection 
+    is to grant the attacker complete access to the victim machine. 
+    The attacker is now able to execute any command on the victim machine.
+
+
+RUN:-
+----
+Run "<EXATA_HOME>/bin/exata CyberWarfareDemo.config".
+
+DESCRIPTION OF THE FILES:-
+-------------------------
+
+1.  blacklist-node.firewall: QualNet Firewall configuration file.
+2.  destroyerF.bmp: Node icon file.
+3.  destroyerF.png: Node icon file.
+4.  fixed-wing-comm-friend.png: Node icon file.
+5.  fixed-wing-drone-rpv-uav-comm-friend.png: Node icon file.
+6.  ground track equipment ground vehicle armored c2v-acv friend.PNG:Node icon file.
+7.  ground track unit combat support mil intel surveillance sensor friend.PNG: Node icon file.
+8.  ground track unit combat support mil intel surveillance sensor hostile.PNG:Node icon file.
+9.  groundF.PNG:Node icon file.
+10. groundH.bmp:Node icon file.
+11. groundH.png:Node icon file.
+12. heli-ahH.bmp:Node icon file.
+13. heli-ahH.png:Node icon file.
+14. node16.routes-static: QualNet static route configuration file.
+15. CyberWarfareDemo.app: QualNet configuration file for application input.
+16. CyberWarfareDemo.config: QualNet configuration input file.
+17. CyberWarfareDemo.display: QualNet GUI display configuration file.
+18. CyberWarfareDemo.fault: QualNet fault configuration file.
+19. CyberWarfareDemo.hla-entities: HLA entities configuration file.
+20. CyberWarfareDemo.hla-networks: HLA network configuration file.
+21. CyberWarfareDemo.hla-radios : HLA radio configuration file.
+22. CyberWarfareDemo.nodes: QualNet configuration file for node position.
+23. CyberWarfareDemo.router-models: QualNet Router Model file.
+24. CyberWarfareDemo.expected.stat: QualNet statistics collection.
+25. VR-Link.fed: FED file for VR Force
+26. CyberWarfareDemo.expected.stat: QualNet statistics collection.
+27. README: This file.
+
+
+
+
+
+
+

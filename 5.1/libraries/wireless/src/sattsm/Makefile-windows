@@ -1,0 +1,12 @@
+#
+# Define SATTSM addon.
+#
+
+include ../libraries/wireless/src/sattsm/Makefile-common
+
+ADDON_OPTIONS   = $(ADDON_OPTIONS) $(SATTSM_OPTIONS)
+ADDON_HDRS      = $(ADDON_HDRS) $(SATTSM_HDRS)
+ADDON_SRCS      = $(ADDON_SRCS) $(SATTSM_SRCS)
+ADDON_INCLUDES  = $(ADDON_INCLUDES) $(SATTSM_INCLUDES)
+ADDON_LIBRARIES = $(ADDON_LIBRARIES)
+

@@ -1,0 +1,12 @@
+mode server 
+tls-server 
+ca keys/ca.crt
+cert keys/server.crt
+key keys/server.key
+dh keys/dh1024.pem
+dev tap1 
+server 192.168.0.0 255.255.255.0
+verb 0
+duplicate-cn
+push "redirect-gateway def1"
+keepalive 10 120
