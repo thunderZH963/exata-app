@@ -420,6 +420,10 @@ enum TraceProtocolType
     // DHCP
     TRACE_DHCP,
 
+    // zhanghua add
+    TRACE_NEWCBR,
+    /add end
+
     // Must be last one!!!
     TRACE_ANY_PROTOCOL
 };

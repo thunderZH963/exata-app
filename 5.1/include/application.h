@@ -256,6 +256,10 @@ enum AppType
     APP_DNS_CLIENT,
     APP_DNS_SERVER,
     APP_TRAFFIC_SENDER,
+    //zhanghua add
+    APP_NEWCBR_CLIENT,
+    APP_NEWCBR_SERVER,
+    //add end
     APP_PLACEHOLDER
 };
 

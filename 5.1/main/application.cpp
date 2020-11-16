@@ -42,6 +42,9 @@
 #include "app_gen_ftp.h"
 #include "app_telnet.h"
 #include "app_cbr.h"
+//zhanghua add
+#include "app_newcbr.h"
+/add end
 #include "app_forward.h"
 #include "app_http.h"
 #include "app_traffic_gen.h"
@@ -3538,6 +3541,340 @@ APP_InitializeApplications(
 #else // ADDON_MGEN4
                 ERROR_ReportError("MGEN4 addon required\n");
 #endif // ADDON_MGEN4
+            }
+            //zhanghua add
+            else
+            if (strcmp(appStr, "NEWCBR") == 0)
+            {
+
+                char profileName[MAX_STRING_LENGTH] = "/0";
+                BOOL isProfileNameSet = FALSE;
+                BOOL isMdpEnabled = FALSE;
+                char sourceString[MAX_STRING_LENGTH];
+                char destString[BIG_STRING_LENGTH];
+                char intervalStr[MAX_STRING_LENGTH];
+                char startTimeStr[MAX_STRING_LENGTH];
+                char endTimeStr[MAX_STRING_LENGTH];
+                int itemsToSend;
+                int itemSize;
+                NodeAddress sourceNodeId;
+                Address sourceAddr;
+                NodeAddress destNodeId;
+                Address destAddr;
+                unsigned tos = APP_DEFAULT_TOS;
+                BOOL isRsvpTeEnabled = FALSE;
+                char optionToken1[MAX_STRING_LENGTH];
+                char optionToken2[MAX_STRING_LENGTH];
+                char optionToken3[MAX_STRING_LENGTH];
+                char optionToken4[MAX_STRING_LENGTH];
+                char optionToken5[MAX_STRING_LENGTH];
+                char optionToken6[MAX_STRING_LENGTH];
+
+                numValues = sscanf(appInput.inputStrings[i],
+                                   "%*s %s %s %d %d %s %s %s %s %s %s %s %s %s",
+                                   sourceString,
+                                   destString,
+                                   &itemsToSend,
+                                   &itemSize,
+                                   intervalStr,
+                                   startTimeStr,
+                                   endTimeStr,
+                                   optionToken1,
+                                   optionToken2,
+                                   optionToken3,
+                                   optionToken4,
+                                   optionToken5,
+                                   optionToken6);
+
+                switch (numValues)
+                {
+                    case 7:
+                        break;
+                    case 8:
+                        if (!strcmp(optionToken1, "RSVP-TE"))
+                        {
+                            isRsvpTeEnabled = TRUE;
+                            break;
+                        }
+                        else if (!strcmp(optionToken1, "MDP-ENABLED"))
+                        {
+                            isMdpEnabled = TRUE;
+                            isProfileNameSet = FALSE;
+                            break;
+                        }// else fall through default
+                    case 9 :
+                        if (APP_AssignTos(optionToken1, optionToken2, &tos))
+                        {
+                            break;
+                        }
+                        else if (!strcmp(optionToken1, "RSVP-TE")
+                                 && !strcmp(optionToken2, "MDP-ENABLED"))
+                        {
+                            isRsvpTeEnabled = TRUE;
+                            isMdpEnabled = TRUE;
+                            isProfileNameSet = FALSE;
+                            break;
+                        }// else fall through default
+                    case 10 :
+                        if (APP_AssignTos(optionToken1, optionToken2, &tos))
+                        {
+                            if (!strcmp(optionToken3, "RSVP-TE"))
+                            {
+                                isRsvpTeEnabled = TRUE;
+                                break;
+                            }
+                            else if (!strcmp(optionToken3, "MDP-ENABLED"))
+                            {
+                                isMdpEnabled = TRUE;
+                                isProfileNameSet = FALSE;
+                                break;
+                            }
+                        }
+                        else if (!strcmp(optionToken1, "RSVP-TE")
+                                 &&
+                                 APP_AssignTos(optionToken2, optionToken3, &tos))
+                        {
+                            isRsvpTeEnabled = TRUE;
+                            break;
+                        }
+                        else if (!strcmp(optionToken1, "MDP-ENABLED")
+                                 && !strcmp(optionToken2, "MDP-PROFILE")
+                                 && strcmp(optionToken3, ""))
+                        {
+                            isMdpEnabled = TRUE;
+                            isProfileNameSet = TRUE;
+                            sprintf(profileName, "%s", optionToken3);
+                            break;
+                        }// else fall through default
+                    case 11 :
+                        if (APP_AssignTos(optionToken1, optionToken2, &tos)
+                            && !strcmp(optionToken3, "RSVP-TE")
+                            && !strcmp(optionToken4, "MDP-ENABLED"))
+                        {
+                            isRsvpTeEnabled = TRUE;
+                            isMdpEnabled = TRUE;
+                            isProfileNameSet = FALSE;
+                            break;
+                        }
+                        else if (!strcmp(optionToken1, "RSVP-TE"))
+                        {
+                            if (APP_AssignTos(optionToken2,optionToken3,&tos)
+                                && !strcmp(optionToken4, "MDP-ENABLED"))
+                            {
+                                isRsvpTeEnabled = TRUE;
+                                isMdpEnabled = TRUE;
+                                isProfileNameSet = FALSE;
+                                break;
+                            }
+                            else if (!strcmp(optionToken2, "MDP-ENABLED")
+                                     && !strcmp(optionToken3, "MDP-PROFILE")
+                                     && strcmp(optionToken4, ""))
+                            {
+                                isRsvpTeEnabled = TRUE;
+                                isMdpEnabled = TRUE;
+                                isProfileNameSet = TRUE;
+                                sprintf(profileName, "%s", optionToken4);
+                                break;
+                            }
+                        }// else fall through default
+                    case 12 :
+                        if (APP_AssignTos(optionToken1, optionToken2, &tos)
+                            && !strcmp(optionToken3, "MDP-ENABLED")
+                            && !strcmp(optionToken4, "MDP-PROFILE")
+                            && strcmp(optionToken5, ""))
+                        {
+                            isMdpEnabled = TRUE;
+                            isProfileNameSet = TRUE;
+                            sprintf(profileName, "%s", optionToken5);
+                            break;
+                        }// else fall through default
+                    case 13 :
+                        if ((APP_AssignTos(optionToken1, optionToken2, &tos)
+                             && !strcmp(optionToken3, "RSVP-TE")
+                             && !strcmp(optionToken4, "MDP-ENABLED")
+                             && !strcmp(optionToken5, "MDP-PROFILE")
+                             && strcmp(optionToken6, ""))
+                            ||
+                            (!strcmp(optionToken1, "RSVP-TE")
+                             && APP_AssignTos(optionToken2, optionToken3, &tos)
+                             && !strcmp(optionToken4, "MDP-ENABLED")
+                             && !strcmp(optionToken5, "MDP-PROFILE")
+                             && strcmp(optionToken6, "")))
+                        {
+                            isRsvpTeEnabled = TRUE;
+                            isMdpEnabled = TRUE;
+                            isProfileNameSet = TRUE;
+                            sprintf(profileName, "%s", optionToken6);
+                            break;
+                        }// else fall through default
+                    default:
+                    {
+                        char errorString[MAX_STRING_LENGTH + 100];
+                        sprintf(errorString,
+                                "Wrong CBR configuration format!\n"
+                                "CBR <src> <dest> <items to send> "
+                                "<item size> <interval> <start time> "
+                                "<end time> [TOS <tos-value> | DSCP <dscp-value>"
+                                " | PRECEDENCE <precedence-value>] [RSVP-TE] "
+                                "[MDP-ENABLED [MDP-PROFILE <profile name>] ]\n");
+                        ERROR_ReportError(errorString);
+                    }
+                }
+
+                IO_AppParseSourceAndDestStrings(
+                        firstNode,
+                        appInput.inputStrings[i],
+                        sourceString,
+                        &sourceNodeId,
+                        &sourceAddr,
+                        destString,
+                        &destNodeId,
+                        &destAddr);
+
+                node = MAPPING_GetNodePtrFromHash(nodeHash, sourceNodeId);
+                if (node != NULL)
+                {
+                    clocktype startTime = TIME_ConvertToClock(startTimeStr);
+                    clocktype endTime = TIME_ConvertToClock(endTimeStr);
+                    clocktype interval = TIME_ConvertToClock(intervalStr);
+
+                    if ((node->adaptationData.adaptationProtocol
+                         != ADAPTATION_PROTOCOL_NONE)
+                        && (!node->adaptationData.endSystem))
+                    {
+
+                        char err[MAX_STRING_LENGTH];
+                        sprintf(err,"Only end system can be a valid source\n");
+                        ERROR_ReportWarning(err);
+
+                        return;
+                    }
+
+#ifdef DEBUG
+                    char clockStr[MAX_CLOCK_STRING_LENGTH];
+                    printf("Starting CBR client with:\n");
+                    printf("  src nodeId:    %u\n", sourceNodeId);
+                    printf("  dst nodeId:    %u\n", destNodeId);
+                    printf("  dst address:   %u\n", destAddr);
+                    printf("  items to send: %d\n", itemsToSend);
+                    printf("  item size:     %d\n", itemSize);
+                    ctoa(interval, clockStr);
+                    printf("  interval:      %s\n", clockStr);
+                    ctoa(startTime, clockStr);
+                    printf("  start time:    %s\n", clockStr);
+                    ctoa(endTime, clockStr);
+                    printf("  end time:      %s\n", clockStr);
+                    printf("  tos:           %u\n", tos);
+#endif /* DEBUG */
+
+                    // checks if destination is configured as url and find
+                    // url destination address such that application server
+                    // can be initialized
+                    Address urlDestAddress;
+                    isUrl = node->appData.appTrafficSender->
+                            appCheckUrlAndGetUrlDestinationAddress(
+                            node,
+                            appInput.inputStrings[i],
+                            isMdpEnabled,
+                            &sourceAddr,
+                            &destAddr,
+                            &destNodeId,
+                            &urlDestAddress,
+                            &AppCbrUrlSessionStartCallback);
+
+                    if (isMdpEnabled)
+                    {
+                        AppNewcbrClientInit(
+                                node,
+                                sourceAddr,
+                                destAddr,
+                                itemsToSend,
+                                itemSize,
+                                interval,
+                                startTime,
+                                endTime,
+                                tos,
+                                sourceString,
+                                destString,
+                                isRsvpTeEnabled,
+                                appNamePtr,
+                                isMdpEnabled,
+                                isProfileNameSet,
+                                profileName,
+                                i+1,
+                                nodeInput);
+                    }
+                    else
+                    {
+                        AppNewcbrClientInit(
+                                node,
+                                sourceAddr,
+                                destAddr,
+                                itemsToSend,
+                                itemSize,
+                                interval,
+                                startTime,
+                                endTime,
+                                tos,
+                                sourceString,
+                                destString,
+                                isRsvpTeEnabled,
+                                appNamePtr);
+                    }
+                    // dns
+                    if (isUrl)
+                    {
+                        memcpy(&destAddr, &urlDestAddress, sizeof(Address));
+                    }
+                    if (destAddr.networkType != NETWORK_INVALID &&
+                        sourceAddr.networkType != destAddr.networkType)
+                    {
+                        ERROR_ReportErrorArgs(
+                                "CBR: At node %d, Source and Destination IP"
+                                " version mismatch inside %s\n",
+                                node->nodeId,
+                                appInput.inputStrings[i]);
+                    }
+                }
+
+                if (!isUrl && ADDR_IsUrl(destString) == TRUE)
+                {
+                    AppUpdateUrlServerNodeIdAndAddress(
+                            firstNode,
+                            destString,
+                            &destAddr,
+                            &destNodeId);
+                }
+
+                // Handle Loopback Address
+                if (node == NULL || !APP_SuccessfullyHandledLoopback(
+                        node,
+                        appInput.inputStrings[i],
+                        destAddr,
+                        destNodeId,
+                        sourceAddr,
+                        sourceNodeId))
+                {
+                    node = MAPPING_GetNodePtrFromHash(nodeHash, destNodeId);
+                }
+
+                if (node != NULL)
+                {
+                    AppNewcbrServerInit(node);
+                }
+
+                if (isMdpEnabled)
+                {
+                    //for MDP layer init on destination node
+                    node = MAPPING_GetNodePtrFromHash(nodeHash, destNodeId);
+                    if (node != NULL)
+                    {
+                        MdpLayerInitForOtherPartitionNodes(node,
+                                                           nodeInput,
+                                                           NULL,
+                                                           TRUE);
+                    }
+                }
             }
             else
                 if (strcmp(appStr, "mgen3") == 0)
@@ -7224,6 +7561,18 @@ void APP_ProcessEvent(Node *node, Message *msg)
                             node, msg);
             break;
         }
+        //zhanghua add
+        case APP_NEWCBR_CLIENT:
+        {
+            AppLayerNewcbrClient(node, msg);
+            break;
+        }
+        case APP_NEWCBR_SERVER:
+        {
+            AppLayerNewcbrServer(node, msg);
+            break;
+        }
+        /add end
         default:
         {
             int i;
