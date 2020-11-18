@@ -56,6 +56,7 @@ AppLayerNewcbrClient(Node *node, Message *msg)
 
             switch (timer->type)
             {
+                // only support this
                 case APP_TIMER_SEND_PKT:
                 {
                     NewcbrData data;
@@ -71,6 +72,7 @@ AppLayerNewcbrClient(Node *node, Message *msg)
                         " send\n", node->nodeId, clientPtr->itemsToSend);
 #endif /* DEBUG */
 
+                    // judge if close session
                     if (((clientPtr->itemsToSend > 1) &&
                          (node->getNodeTime() + clientPtr->interval
                           < clientPtr->endTime)) ||
@@ -104,48 +106,10 @@ AppLayerNewcbrClient(Node *node, Message *msg)
                     data.interval = clientPtr->interval;
 #endif // ADVANCED_WIRELESS_LIB || UMTS_LIB || MUOS_LIB
 
-#ifdef DEBUG
-                    {
-                        char clockStr[MAX_STRING_LENGTH];
-                        char addrStr[MAX_STRING_LENGTH];
 
-                        TIME_PrintClockInSecond(node->getNodeTime(), clockStr, node);
-                        IO_ConvertIpAddressToString(
-                            &clientPtr->remoteAddr, addrStr);
-
-                        printf("NEWCBR Client: node %ld sending data packet"
-                               " at time %sS to NEWCBR server %s\n",
-                               node->nodeId, clockStr, addrStr);
-                        printf("    size of payload is %d\n",
-                               clientPtr->itemSize);
-                    }
-#endif /* DEBUG */
                     // Note: An overloaded Function
                     memset(newcbrData, 0, NEWCBR_HEADER_SIZE);
                     memcpy(newcbrData, (char *) &data, sizeof(data));
-#ifdef ADDON_DB
-                    StatsDBAppEventParam appParam;
-                    appParam.m_SessionInitiator = node->nodeId;
-                    appParam.m_ReceiverId = clientPtr->receiverId;
-                    appParam.SetAppType("NEWCBR");
-                    appParam.SetFragNum(0);
-
-                    if (!clientPtr->applicationName->empty())
-                    {
-                        appParam.SetAppName(
-                            clientPtr->applicationName->c_str());
-                    }
-                    // dns
-                    if (clientPtr->remoteAddr.networkType != NETWORK_INVALID)
-                    {
-                        appParam.SetReceiverAddr(&clientPtr->remoteAddr);
-                    }
-                    appParam.SetPriority(clientPtr->tos);
-                    appParam.SetSessionId(clientPtr->sessionId);
-                    appParam.SetMsgSize(clientPtr->itemSize);
-                    appParam.m_TotalMsgSize = clientPtr->itemSize;
-                    appParam.m_fragEnabled = FALSE;
-#endif // ADDON_DB
 
                     // Dynamic address
                     // Create and send a UDP msg with header and virtual
@@ -181,6 +145,8 @@ AppLayerNewcbrClient(Node *node, Message *msg)
 
                         int payloadSize =
                                 clientPtr->itemSize - NEWCBR_HEADER_SIZE;
+
+                        //modified in future
                         APP_AddVirtualPayload(
                                 node,
                                 sentMsg,
@@ -194,17 +160,9 @@ AppLayerNewcbrClient(Node *node, Message *msg)
                                 sizeof(int),
                                 INFO_TYPE_DataSize);
 
-                        if (clientPtr->isMdpEnabled)
-                        {
-                            APP_UdpSetMdpEnabled(sentMsg,
-                                                 clientPtr->mdpUniqueId);
-                        }
-
                         // dns
                         AppUdpPacketSendingInfo packetSendingInfo;
-#ifdef ADDON_DB
-                        packetSendingInfo.appParam = appParam;
-#endif
+
                         packetSendingInfo.itemSize = clientPtr->itemSize;
                         packetSendingInfo.stats = clientPtr->stats;
                         packetSendingInfo.fragNo = NO_UDP_FRAG;
@@ -407,60 +365,13 @@ AppNewcbrClientInit(
         ERROR_ReportError(error);
     }
 
-#ifdef ADDON_NGCNMS
-    clocktype origStart = startTime;
-
-    // for restarts (node and interface).
-    if (NODE_IsDisabled(node))
-    {
-        clocktype currTime = node->getNodeTime();
-        if (endTime <= currTime)
-        {
-            // application already finished.
-            return;
-        }
-        else if (startTime >= currTime)
-        {
-            // application hasnt started yet
-            startTime -= currTime;
-        }
-        else
-        {
-            // application has already started,
-            // so pick up where we left off.
-
-            // try to determine the number of items already sent.
-            if (itemsToSend != 0)
-            {
-                clocktype diffTime = currTime - startTime;
-                int itemsSent = diffTime / interval;
-
-                if (itemsToSend < itemsSent)
-                {
-                    return;
-                }
-
-                itemsToSend -= itemsSent;
-            }
-
-            // start right away.
-            startTime = 0;
-
-        }
-    }
-#endif
-
     clientPtr = AppNewcbrClientNewNewcbrClient(node,
                                          clientAddr,
                                          serverAddr,
                                          itemsToSend,
                                          itemSize,
                                          interval,
-#ifndef ADDON_NGCNMS
-                                         startTime,
-#else
-            origStart,
-#endif
+                                         origStart,
                                          endTime,
                                          (TosType) tos,
                                          appName);
@@ -507,25 +418,6 @@ AppNewcbrClientInit(
             GUI_CreateAppHopByHopFlowFilter(clientPtr->stats->GetSessionId(),
                                             node->nodeId, srcString, destString, "NEWCBR");
         }
-    }
-    // client pointer initialization with respect to mdp
-    clientPtr->isMdpEnabled = isMdpEnabled;
-    clientPtr->mdpUniqueId = uniqueId;
-
-    if (isMdpEnabled)
-    {
-        // MDP Layer Init
-        MdpLayerInit(node,
-                     clientAddr,
-                     serverAddr,
-                     clientPtr->sourcePort,
-                     APP_NEWCBR_CLIENT,
-                     isProfileNameSet,
-                     profileName,
-                     uniqueId,
-                     nodeInput,
-                     -1,
-                     TRUE);
     }
 
     if (node->transportData.rsvpProtocol && isRsvpTeEnabled)
@@ -577,11 +469,7 @@ AppNewcbrClientInit(
 
     MESSAGE_Send(node, timerMsg, startTime);
 
-#ifdef ADDON_NGCNMS
 
-    clientPtr->lastTimer = timerMsg;
-
-#endif
     // Dynamic Address
     // update the client with url info if destination configured as URL
     if (serverAddr.networkType == NETWORK_INVALID && destString)
@@ -777,9 +665,7 @@ AppNewcbrClientNewNewcbrClient(Node *node,
     memcpy(&(newcbrClient->localAddr), &localAddr, sizeof(Address));
     memcpy(&(newcbrClient->remoteAddr), &remoteAddr, sizeof(Address));
     newcbrClient->interval = interval;
-#ifndef ADDON_NGCNMS
-    newcbrClient->sessionStart = node->getNodeTime() + startTime;
-#else
+
     if (!NODE_IsDisabled(node))
     {
         newcbrClient->sessionStart = node->getNodeTime() + startTime;
@@ -789,7 +675,7 @@ AppNewcbrClientNewNewcbrClient(Node *node,
         // start time was already figured out in caller function.
         newcbrClient->sessionStart = startTime;
     }
-#endif
+
     newcbrClient->sessionIsClosed = FALSE;
     newcbrClient->sessionLastSent = node->getNodeTime();
     newcbrClient->sessionFinish = node->getNodeTime();
@@ -801,8 +687,7 @@ AppNewcbrClientNewNewcbrClient(Node *node,
     newcbrClient->tos = tos;
     newcbrClient->uniqueId = node->appData.uniqueId++;
     //client pointer initialization with respect to mdp
-    newcbrClient->isMdpEnabled = FALSE;
-    newcbrClient->mdpUniqueId = -1;  //invalid value
+
     newcbrClient->stats = NULL;
     // dns
     newcbrClient->serverUrl = new std::string();
@@ -818,27 +703,7 @@ AppNewcbrClientNewNewcbrClient(Node *node,
     {
         newcbrClient->applicationName = new std::string();
     }
-#ifdef ADDON_DB
-    newcbrClient->sessionId = newcbrClient->uniqueId;
 
-    // dns
-    // Skipped if the server network type is not valid
-    // it should happen only when the server is given by a URL
-    // receiverId will be initialized when url is resolved
-    if (newcbrClient->remoteAddr.networkType != NETWORK_INVALID)
-    {
-        if (Address_IsAnyAddress(&(newcbrClient->remoteAddr)) ||
-            Address_IsMulticastAddress(&newcbrClient->remoteAddr))
-        {
-            newcbrClient->receiverId = 0;
-        }
-        else
-        {
-            newcbrClient->receiverId =
-                MAPPING_GetNodeIdFromInterfaceAddress(node, remoteAddr);
-        }
-    }
-#endif // ADDON_DB
 
     // Add CBR variables to hierarchy
     std::string path;
@@ -856,25 +721,6 @@ AppNewcbrClientNewNewcbrClient(Node *node,
                 new D_ClocktypeObj(&newcbrClient->interval));
     }
 
-// The HUMAN_IN_THE_LOOP_DEMO is part of a gui user-defined command
-// demo.
-// The type of service value for this CBR application is added to
-// the dynamic hierarchy so that the user-defined-command can change
-// it during simulation.
-#ifdef HUMAN_IN_THE_LOOP_DEMO
-    if (h->CreateApplicationPath(
-            node,
-            "newcbrClient",
-            cbrClient->sourcePort,
-            "tos",                  // object name
-            path))                  // path (output)
-    {
-        h->AddObject(
-            path,
-            new D_UInt32Obj(&newcbrClient->tos));
-    }
-
-#endif
 
 #ifdef DEBUG
     {
@@ -941,12 +787,6 @@ AppNewcbrClientScheduleNextPkt(Node *node, AppDataNewcbrClient *clientPtr)
     }
 #endif /* DEBUG */
 
-#ifdef ADDON_NGCNMS
-
-    clientPtr->lastTimer = timerMsg;
-
-#endif
-
     MESSAGE_Send(node, timerMsg, clientPtr->interval);
 }
 
@@ -970,9 +810,7 @@ AppLayerNewcbrServer(Node *node, Message *msg)
         {
             UdpToAppRecv *info;
             NewcbrData data;
-#ifdef ADDON_DB
-            AppMsgStatus msgStatus = APP_MSG_OLD;
-#endif // ADDON_DB
+
 
             ERROR_Assert(sizeof(data) <= NEWCBR_HEADER_SIZE,
                          "NewcbrData size cant be greater than NEWCBR_HEADER_SIZE");
@@ -1036,23 +874,7 @@ AppLayerNewcbrServer(Node *node, Message *msg)
                             serverPtr->uniqueId);
                     serverPtr->stats->SessionStart(node);
                 }
-#ifdef ADDON_DB
-                // cbr application, clientPort == serverPort
-                STATSDB_HandleSessionDescTableInsert(node, msg,
-                    info->sourceAddr, info->destAddr,
-                    info->sourcePort, info->destPort,
-                    "NEWCBR", "UDP");
 
-                StatsDBAppEventParam* appParamInfo = NULL;
-                appParamInfo = (StatsDBAppEventParam*) MESSAGE_ReturnInfo(
-                                   msg,
-                                   INFO_TYPE_AppStatsDbContent);
-                if (appParamInfo != NULL)
-                {
-                    STATSDB_HandleAppConnCreation(node, info->sourceAddr,
-                        info->destAddr, appParamInfo->m_SessionId);
-                }
-#endif
             }
 
             if (serverPtr == NULL)
@@ -1063,12 +885,9 @@ AppLayerNewcbrServer(Node *node, Message *msg)
                 ERROR_ReportError(error);
             }
 
-#ifdef ADDON_BOEINGFCS
-            if ((serverPtr->useSeqNoCheck && data.seqNo >= serverPtr->seqNo) ||
-                (serverPtr->useSeqNoCheck == FALSE))
-#else
+
             if (data.seqNo >= serverPtr->seqNo || data.isMdpEnabled)
-#endif
+
             {
 
                 if (node->appData.appStats)
@@ -1099,19 +918,6 @@ AppLayerNewcbrServer(Node *node, Message *msg)
                 }
                 serverPtr->seqNo = data.seqNo + 1;
 
-#ifdef LTE_LIB
-                #ifdef LTE_LIB_LOG
-#ifdef LTE_LIB_VALIDATION_LOG
-                static char addrStr[MAX_STRING_LENGTH];
-                IO_ConvertIpAddressToString(&serverPtr->remoteAddr, addrStr);
-                lte::LteLog::InfoFormat(
-                        node, -1, "APP", "%s,%s,%llu",
-                        "AppPacketDelay", addrStr, delay);
-#endif
-#endif
-#endif
-
-
 
                 if (data.type == 'd')
                 {
@@ -1132,60 +938,6 @@ AppLayerNewcbrServer(Node *node, Message *msg)
                 }
             }
 
-#ifdef ADDON_DB
-            msgStatus = APP_MSG_NEW;
-            StatsDb* db = node->partitionData->statsDb;
-            if (db != NULL)
-            {
-                clocktype delay = node->getNodeTime() - data.txTime;
-
-                if (node->appData.appStats)
-                {
-                    if (serverPtr->stats->GetMessagesReceived().GetValue(node->getNodeTime()) == 1)
-                    { // Only need this info once
-                        StatsDBAppEventParam* appParamInfo = NULL;
-                        appParamInfo = (StatsDBAppEventParam*) MESSAGE_ReturnInfo(msg, INFO_TYPE_AppStatsDbContent);
-                        if (appParamInfo != NULL)
-                        {
-                            serverPtr->sessionId = appParamInfo->m_SessionId;
-                            serverPtr->sessionInitiator = appParamInfo->m_SessionInitiator;
-                        }
-                    }
-
-                    SequenceNumber::Status seqStatus =
-                        APP_ReportStatsDbReceiveEvent(
-                            node,
-                            msg,
-                            &(serverPtr->seqNumCache),
-                            data.seqNo,
-                            delay,
-                            (clocktype)serverPtr->stats->
-                                GetJitter().GetValue(node->getNodeTime()),
-                            MESSAGE_ReturnPacketSize(msg),
-                            (Int32)serverPtr->stats->
-                                GetMessagesReceived().
-                                GetValue(node->getNodeTime()),
-                            msgStatus);
-
-                    if (seqStatus == SequenceNumber::SEQ_NEW)
-                    {
-                        // get hop count
-                        StatsDBNetworkEventParam* ipParamInfo;
-                        ipParamInfo = (StatsDBNetworkEventParam*)
-                            MESSAGE_ReturnInfo(msg, INFO_TYPE_NetStatsDbContent);
-
-                        if (ipParamInfo == NULL)
-                        {
-                            printf ("ERROR: We should have Network Events Info");
-                        }
-                        else
-                        {
-                            serverPtr->hopCount += (Int32) ipParamInfo->m_HopCount;
-                        }
-                    }
-                }
-            }
-#endif // ADDON_DB
             break;
         }
 
@@ -1303,13 +1055,7 @@ AppNewcbrServerFinalize(Node *node, AppInfo* appInfo)
                                     serverPtr->sourcePort);
         }
     }
-#ifdef ADDON_DB
-    if (serverPtr->seqNumCache != NULL)
-    {
-        delete serverPtr->seqNumCache;
-        serverPtr->seqNumCache = NULL;
-    }
-#endif // ADDON_DB
+
 }
 
 /*
@@ -1383,28 +1129,7 @@ AppNewcbrServerNewNewcbrServer(Node *node,
     //    cbrServer->lastInterArrivalInterval = 0;
     //    cbrServer->lastPacketReceptionTime = 0;
     newcbrServer->stats = NULL;
-#ifdef ADDON_DB
-    newcbrServer->sessionId = -1;
-    newcbrServer->sessionInitiator = 0;
-    newcbrServer->hopCount = 0;
-    newcbrServer->seqNumCache = NULL;
-#endif // ADDON_DB
 
-
-#ifdef ADDON_BOEINGFCS
-    BOOL retVal = FALSE;
-
-    newcbrServer->useSeqNoCheck = TRUE;
-
-    IO_ReadBool(
-        node->nodeId,
-        ANY_ADDRESS,
-        node->partitionData->nodeInput,
-        "APP-NEWCBR-USE-SEQUENCE-NUMBER-CHECK",
-        &retVal,
-        &newcbrServer->useSeqNoCheck);
-
-#endif
 
     APP_RegisterNewApp(node, APP_NEWCBR_SERVER, newcbrServer);
 
@@ -1609,24 +1334,6 @@ AppNewcbrUrlSessionStartCallback(
     AppNewcbrClientAddAddressInformation(node,
                                       clientPtr);
 
-#ifdef ADDON_DB
-
-    // initialize receiverid
-
-    if (clientPtr->remoteAddr.networkType != NETWORK_INVALID)
-    {
-        if (Address_IsAnyAddress(&(clientPtr->remoteAddr)) ||
-            Address_IsMulticastAddress(&clientPtr->remoteAddr))
-        {
-            clientPtr->receiverId = 0;
-        }
-        else
-        {
-            clientPtr->receiverId =
-                MAPPING_GetNodeIdFromInterfaceAddress(node, *serverAddr);
-        }
-    }
-#endif // ADDON_DB
 
     if ((serverAddr->networkType != NETWORK_INVALID)
         && (node->appData.appStats))
@@ -1665,25 +1372,7 @@ AppNewcbrUrlSessionStartCallback(
         }
         return (FALSE);
     }
-#ifdef ADDON_DB
-    StatsDBAppEventParam appParam;
-    appParam.m_SessionInitiator = node->nodeId;
-    appParam.m_ReceiverId = clientPtr->receiverId;
-    appParam.SetAppType("NEWCBR");
-    appParam.SetFragNum(0);
 
-    if (!clientPtr->applicationName->empty())
-    {
-        appParam.SetAppName(
-            clientPtr->applicationName->c_str());
-    }
-    appParam.SetReceiverAddr(&clientPtr->remoteAddr);
-    appParam.SetPriority(clientPtr->tos);
-    appParam.SetSessionId(clientPtr->sessionId);
-    appParam.SetMsgSize(clientPtr->itemSize);
-    appParam.m_TotalMsgSize = clientPtr->itemSize;
-    appParam.m_fragEnabled = FALSE;
-#endif // ADDON_DB
     clientPtr->sessionStart = node->getNodeTime();
     // send the messages
     // Dynamic address
@@ -1698,17 +1387,12 @@ AppNewcbrUrlSessionStartCallback(
     if (AppNewcbrClientGetSessionAddressState(node, clientPtr)
         == ADDRESS_FOUND)
     {
-#ifdef ADDON_DB
-        memcpy(
-            &packetSendingInfo->appParam,
-            &appParam,
-            sizeof(StatsDBAppEventParam));
-#else
+
         memset(
                 &packetSendingInfo->appParam,
                 NULL,
                 sizeof(StatsDBAppEventParam));
-#endif
+
         packetSendingInfo->stats = clientPtr->stats;
         return (TRUE);
     }
